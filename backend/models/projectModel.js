@@ -20,7 +20,7 @@ const projectSchema = mongoose.Schema(
       required: true,
     },
     img: {
-      type: String,
+      type: String
     },
     trelloUrl: {
       type: String,

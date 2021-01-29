@@ -42,13 +42,13 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
-  color: #0563bb;
+  color: #6ca1d4;
   margin-bottom: 10px;
 }
 .resume .resume-item {
   padding: 0 0 20px 20px;
   margin-top: -2px;
-  border-left: 2px solid #0563bb;
+  border-left: 2px solid #6ca1d4;
   position: relative;
 }
 .resume .resume-item::before {
@@ -60,7 +60,7 @@ body {
   left: -9px;
   top: 0;
   background: #303030;
-  border: 2px solid #0563bb;
+  border: 2px solid #6ca1d4;
 }
 .resume .resume-item ul li {
   padding-bottom: 10px;

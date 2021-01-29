@@ -27,7 +27,7 @@ const projects = [
     frontendStack: ["Reactjs", "Redux", "Bootstrap"],
     backendStack: ["Nodejs", "Expressjs"],
     databaseStack: ["MongoDB", "Mongoosejs"],
-    status: "In Development"
+    status: "Under Construction"
   },
   {
     title: "Todo",
