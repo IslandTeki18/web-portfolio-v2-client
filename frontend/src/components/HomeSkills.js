@@ -10,7 +10,7 @@ const HomeSkills = () => {
         </div>
       </div>
       <div className="row">
-        <div className="col-md-4 mb-3 mb-md-0" data-aos="fade-right">
+        <div className="col-md-4 mb-3 mb-md-0" data-aos="slide-up">
           <div className="card h-100">
             <div className="card-header text-center">
               <i
@@ -39,7 +39,7 @@ const HomeSkills = () => {
             </ul>
           </div>
         </div>
-        <div className="col-md-4 mb-3 mb-md-0" data-aos="fade-up">
+        <div className="col-md-4 mb-3 mb-md-0" data-aos="slide-up">
           <div className="card h-100">
             <div className="card-header text-center">
               <i className="fas fa-tools" style={{ fontSize: "30px" }}></i>
@@ -59,7 +59,7 @@ const HomeSkills = () => {
             </ul>
           </div>
         </div>
-        <div className="col-md-4 mb-3 mb-md-0" data-aos="fade-left">
+        <div className="col-md-4 mb-3 mb-md-0" data-aos="slide-up">
           <div className="card h-100">
             <div className="card-header text-center">
               <i className="fas fa-server" style={{ fontSize: "30px" }}></i>
