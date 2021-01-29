@@ -14,8 +14,6 @@ import AdminContactDetailsScreen from "./screens/AdminContactDetailsScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import AOS from "aos";
-AOS.init();
 
 function App() {
   return (

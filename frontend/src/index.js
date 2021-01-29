@@ -6,7 +6,6 @@ import { Provider } from "react-redux";
 import "./bootstrap.min.css";
 import "./index.css";
 import "animate.css";
-import "aos/dist/aos.css";
 
 ReactDOM.render(
   <React.StrictMode>
