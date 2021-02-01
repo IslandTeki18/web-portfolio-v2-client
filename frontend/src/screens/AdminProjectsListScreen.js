@@ -87,61 +87,63 @@ const AdminProjectsListScreen = ({ history }) => {
           ) : error ? (
             <Message variant="danger">{error}</Message>
           ) : (
-            <table className="table table-sm table-dark table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Last Updated</th>
-                  <th scope="col">Created</th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {projects
-                  .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
-                  .map((project) => (
-                    <tr key={project._id}>
-                      <th>{project._id.substring(18)}</th>
-                      <td>{project.title}</td>
-                      <td>{project.status}</td>
-                      <td>{moment(project.updatedAt).calendar()}</td>
-                      <td>{moment(project.createdAt).calendar()}</td>
-                      <td>
-                        <Link to={`/admin/project/${project._id}/edit`}>
-                          <button className="btn btn-outline-info btn-sm">
+            <div className="table-responsive">
+              <table className="table table-sm table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Created</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {projects
+                    .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+                    .map((project) => (
+                      <tr key={project._id}>
+                        <th>{project._id.substring(18)}</th>
+                        <td>{project.title}</td>
+                        <td>{project.status}</td>
+                        <td>{moment(project.updatedAt).calendar()}</td>
+                        <td>{moment(project.createdAt).calendar()}</td>
+                        <td>
+                          <Link to={`/admin/project/${project._id}/edit`}>
+                            <button className="btn btn-outline-info btn-sm">
+                              <i
+                                className="far fa-edit"
+                                style={{ fontSize: "19px" }}
+                              ></i>
+                            </button>
+                          </Link>
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-outline-danger btn-sm"
+                            onClick={() => deleteHandler(project._id)}
+                          >
                             <i
-                              className="far fa-edit"
-                              style={{ fontSize: "19px" }}
+                              className="far fa-trash-alt"
+                              style={{ fontSize: "20px" }}
                             ></i>
                           </button>
-                        </Link>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-outline-danger btn-sm"
-                          onClick={() => deleteHandler(project._id)}
-                        >
-                          <i
-                            className="far fa-trash-alt"
-                            style={{ fontSize: "20px" }}
-                          ></i>
-                        </button>
-                      </td>
-                      <td>
-                        <Link to={`/project/${project._id}`}>
-                          <button className="btn btn-success btn-sm">
-                            View Details
-                          </button>
-                        </Link>
-                      </td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
+                        </td>
+                        <td>
+                          <Link to={`/project/${project._id}`}>
+                            <button className="btn btn-success btn-sm">
+                              View Details
+                            </button>
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
           )}
         </div>
       </div>

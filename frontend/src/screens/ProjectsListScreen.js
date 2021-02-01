@@ -34,7 +34,7 @@ const ProjectsListScreen = () => {
             .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
             .map((project) => (
               <div className="row py-3" key={project._id}>
-                <div className="col-md-7 col-sm-6" data-aos="slide-up">
+                <div className="col-md-7 col-sm-6">
                   <Link to={`/project/${project._id}`}>
                     <img
                       className="img-fluid rounded mb-3 mb-md-0"
@@ -43,7 +43,7 @@ const ProjectsListScreen = () => {
                     />
                   </Link>
                 </div>
-                <div className="col-md-5 col-sm-6" data-aos="slide-up">
+                <div className="col-md-5 col-sm-6">
                   <h4>{project.title}</h4>
                   <hr style={{ backgroundColor: "white" }} />
                   <span
@@ -62,13 +62,13 @@ const ProjectsListScreen = () => {
                   </span>
                   <p>{project.shortDescription}</p>
                   <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-6 col-xs-6">
                       <h4>Frontend</h4>
                       <p>{project.frontendStack.join(" | ")}</p>
                       <h4>Backend</h4>
                       <p>{project.backendStack.join(" | ")}</p>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-6 col-xs-6">
                       <h4>Last Updated:</h4>
                       <p>{moment(project.updatedAt).calendar()}</p>
                       <h4>Database</h4>
