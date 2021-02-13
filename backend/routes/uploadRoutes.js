@@ -1,7 +1,7 @@
 import express from "express";
 import { protect, admin } from "../middleware/authMiddleware.js";
 import { uploadImages } from "../middleware/uploadMiddleware.js";
-import { uploadProductImage } from "../controllers/uploadControler.js";
+import { uploadProductImage } from "../controllers/uploadController.js";
 
 const router = express.Router();
 
