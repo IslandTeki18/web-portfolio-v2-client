@@ -12,38 +12,42 @@ const AboutMeScreen = () => {
               <div className="row">
                 <div className="col-lx-6">
                   <p className="text-lg text-muted mb-lg-2">
-                    Born in Western Samoa on a tiny little island called Apia, I
-                    was adopted and brought to the states. My story begins in
-                    the great state of Utah. It here where I found, not only the
-                    love of my life but also my love for technology.
+                    Born from the great state of Utah. My adopted mother was a
+                    successful business woman and gave me a life full of
+                    adventure and fun. We've lived in other various places as
+                    well - Hawaii, Jackson Hole Wyoming, and the Cayman Islands
+                    to name a few. Because we visited all of these places my
+                    siblings and I were homeschool till my seventh grade year
+                    when my mom decided to offically settle back down in Utah.
                   </p>
                 </div>
                 <div className="col-lx-6">
                   <p className="text-lg text-muted mb-0">
-                    After working sales for a few years, I decided to take my
-                    chance in the tech industry and took a 12 week coding
-                    bootcamp in Salt Lake City for iOS app development. It here
-                    where I found that I love to build things and have people
-                    interact with them. The market was tough in the app industry
-                    and I soon picked up web development and started to apply
-                    for web dev jobs. At last I landed a job in Provo UT, close
-                    to my home.
+                    I met my beautiful wife over snapchat, which is a long story
+                    but to keep it short, we dated for a year and then decided
+                    to tie the knot. If you haven't noticed our little booger
+                    Ensley from the photo, we have one little girl of our own.
                   </p>
                 </div>
               </div>
-              <hr className="my-3" style={{ backgroundColor: "white" }} />
+              <hr className="my-3" style={{ backgroundColor: "#a8bed4" }} />
               <div className="row">
                 <div className="col-lx-6">
                   <p className="text-lg text-muted mb-lg-2">
-                    After my first web developer job I decided to take my web
-                    development skills to the next level and learned to become a
-                    full stack developer.
+                    After working in sales for a few years, I realized that I
+                    was drawn to tech. My brother was running a mobile app
+                    agency at the time and told me that the tech industry was the
+                    way to go. I left my sales job, went to coding bootcamp for
+                    mobile development.
                   </p>
                 </div>
                 <div className="col-lx-6">
                   <p className="text-lg text-muted mb-0">
-                    My beautiful wife and I married in 2016, and we have a
-                    beautiful little girl named Ensley.
+                    After the bootcamp, the market for Mid Level iOS Developers
+                    here in Utah was a tough and competetive market. Needing a
+                    job I learned basic web development and started applying for
+                    entry level jobs and eventually landed a small gig in Provo,
+                    Utah. The rest is history... and on my resume page.
                   </p>
                 </div>
               </div>

@@ -2,14 +2,17 @@
 
 > Basic portfolio platform built in the MERN stack and Redux
 
+[Portfolio](https://landonmckelldevportfolio.herokuapp.com/) Website
+
 ![screenshot](https://github.com/ETM32019/personal-portfolio/blob/main/uploads/image-1611296711643.png)
 
 ## User Stories
 
-- [x] as a user, you can visit all of the public pages such as home, projects, contact, and resume.
+- [x] as a user, you can visit all of the public pages such as home, projects, contact, and resume
 - [x] as a user, you can submit a contact form, visit the social links, and email me specifically
 - [x] as a user, you be able to view all of the current projects, have buttons that lead to the trello board, the git repo, or the project website
-- [x] as an admin, I am able to create projects, and edit all the current attributes to them.
+- [x] as an admin, I am able to create projects, and edit all the current attributes to them
+- [x] as an admin, I am able to see all of the contact form submits and be able to mark them as read in the details page (admin view only)
 
 ## Features
 
@@ -31,6 +34,7 @@
 - [Mongoose](https://mongoosejs.com/) - Object-modeling tool for Node.js
 - [Node.js](https://nodejs.org/en/) - Runtime environment to help build fast server applications
 - [React](https://reactjs.org/) - JavaScript library for building user interfaces
+- [Create React App](https://create-react-app.dev/) - Creates simple single-page react applications
 - [Redux](https://redux.js.org/) - JavaScript library to help better manage application state
 
 ## Acknowledgments
