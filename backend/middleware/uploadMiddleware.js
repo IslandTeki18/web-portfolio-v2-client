@@ -2,9 +2,9 @@ import path from "path";
 import multer from "multer";
 
 const checkFileType = (file, cb) => {
-  // Allowed ext
+  // Allowed extension
   const filetypes = /jpeg|jpg|png/;
-  // Check ext
+  // Check extension
   const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
   // Check mime
   const mimetype = filetypes.test(file.mimetype);
@@ -16,11 +16,23 @@ const checkFileType = (file, cb) => {
   }
 };
 
-const uploadImages = multer({
-  dest: "temp/",
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename(req, file, cb) {
+    cb(
+      null,
+      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
+    );
+  },
+});
+
+const upload = multer({
+  storage,
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   },
 });
 
-export { uploadImages };
+export { upload };

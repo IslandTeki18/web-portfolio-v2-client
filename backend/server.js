@@ -10,9 +10,7 @@ import userRoutes from "./routes/userRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
 dotenv.config();
-
 connectDB();
-
 const app = express();
 
 app.use(express.json());
