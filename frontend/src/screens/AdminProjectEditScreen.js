@@ -21,7 +21,7 @@ const AdminProjectEditScreen = ({ match, history }) => {
   const [backendStack, setBackendStack] = useState([""]);
   const [databaseStack, setDatabaseStack] = useState([""]);
   const [uploading, setUploading] = useState(false);
-
+  const [show, setShow] = useState(false);
   // New features
   const [status, setStatus] = useState("");
 
@@ -58,14 +58,28 @@ const AdminProjectEditScreen = ({ match, history }) => {
         setStatus(project.status);
       }
     }
-  }, [dispatch, history, successUpdate, project, projectId]);
+    // show the message, after 5 seconds remove the message
+    if (error || errorUpdate) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [
+    dispatch,
+    history,
+    successUpdate,
+    project,
+    projectId,
+    error,
+    errorUpdate,
+  ]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
     setUploading(true);
-
     try {
       const config = {
         headers: {
@@ -73,7 +87,6 @@ const AdminProjectEditScreen = ({ match, history }) => {
         },
       };
       const { data } = await axios.post("/api/upload", formData, config);
-
       setImg(data);
       setUploading(false);
     } catch (error) {
@@ -112,11 +125,17 @@ const AdminProjectEditScreen = ({ match, history }) => {
           <div className="col-md-8 offset-md-2 my-4">
             <h2>Project Edit</h2>
             {loadingUpdate && <Loader />}
-            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+            {errorUpdate && (
+              <Message variant="danger" show={show}>
+                {errorUpdate}
+              </Message>
+            )}
             {loading ? (
               <Loader />
             ) : error ? (
-              <Message variant="danger">{error}</Message>
+              <Message variant="danger" show={show}>
+                {error}
+              </Message>
             ) : (
               <form onSubmit={submitHandler}>
                 <div className="form-row mb-2">

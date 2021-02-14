@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
@@ -13,7 +13,7 @@ import moment from "moment";
 
 const AdminProjectsListScreen = ({ history }) => {
   const dispatch = useDispatch();
-
+  const [show, setShow] = useState(false);
   const projectList = useSelector((state) => state.projectList);
   const { loading, error, projects } = projectList;
 
@@ -46,6 +46,14 @@ const AdminProjectsListScreen = ({ history }) => {
     } else {
       dispatch(listProjects());
     }
+
+    // show the message, after 5 seconds remove the message
+    if (error || errorCreate || successCreate || deleteSuccess || deleteError) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
   }, [
     dispatch,
     userInfo,
@@ -53,6 +61,9 @@ const AdminProjectsListScreen = ({ history }) => {
     history,
     createdProject,
     deleteSuccess,
+    deleteError,
+    error,
+    errorCreate,
   ]);
 
   const deleteHandler = (id) => {
@@ -79,13 +90,23 @@ const AdminProjectsListScreen = ({ history }) => {
             </button>
           </div>
           {deleteLoading && <Loader />}
-          {deleteError && <Message variant="danger">{deleteError}</Message>}
+          {deleteError && (
+            <Message variant="danger" show={show}>
+              {deleteError}
+            </Message>
+          )}
           {loadingCreate && <Loader />}
-          {errorCreate && <Message variant="danger">{errorCreate}</Message>}
+          {errorCreate && (
+            <Message variant="danger" show={show}>
+              {errorCreate}
+            </Message>
+          )}
           {loading ? (
             <Loader />
           ) : error ? (
-            <Message variant="danger">{error}</Message>
+            <Message variant="danger" show={show}>
+              {error}
+            </Message>
           ) : (
             <div className="table-responsive">
               <table className="table table-sm table-dark table-striped">

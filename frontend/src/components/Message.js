@@ -1,12 +1,10 @@
-import React from "react";
+import Alert from "react-bootstrap/Alert";
 
-const Message = ({ variant, children }) => {
+const Message = ({ variant, children, show }) => {
   return (
-    <div>
-      <div className={`alert alert-${variant}`} role="alert">
-        {children}
-      </div>
-    </div>
+    <Alert variant={variant} show={show}>
+      {children}
+    </Alert>
   );
 };
 

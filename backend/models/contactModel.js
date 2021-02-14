@@ -14,7 +14,6 @@ const contactSchema = mongoose.Schema(
         },
         message: (props) => `${props.value} is not a valid phone number!`,
       },
-      required: [true, "User phone number required"],
     },
     email: {
       type: String,
@@ -22,6 +21,7 @@ const contactSchema = mongoose.Schema(
     },
     message: {
       type: String,
+      required: [true, "Leave me message!"],
     },
     haveRead: {
       type: Boolean,

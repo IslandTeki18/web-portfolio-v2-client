@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -9,6 +9,7 @@ const ContactMeScreen = () => {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [show, setShow] = useState(false);
   // Set confirmation message to show user message has been sent
   const [confirmation, setConfirmation] = useState(null);
 
@@ -16,6 +17,16 @@ const ContactMeScreen = () => {
 
   const contactCreate = useSelector((state) => state.contactCreate);
   const { loading, error, success } = contactCreate;
+
+  useEffect(() => {
+    // show the message, after 5 seconds remove the message
+    if (error || success) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [error, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,9 +43,17 @@ const ContactMeScreen = () => {
           <div className="card">
             <div className="card-header">
               <h4>Contact Me</h4>
-              {success && <Message variant="success">{confirmation}</Message>}
+              {success && (
+                <Message variant="success" show={show}>
+                  {confirmation}
+                </Message>
+              )}
               {loading && <Loader />}
-              {error && <Message variant="danger">{error}</Message>}
+              {error && (
+                <Message variant="danger" show={show}>
+                  {error}
+                </Message>
+              )}
             </div>
             <div className="card-body">
               <form onSubmit={submitHandler}>

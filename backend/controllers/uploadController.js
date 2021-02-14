@@ -31,7 +31,7 @@ const uploadProductImage = asyncHandler((req, res) => {
     }
  
     if (data) {
-      fs.unlinkSync(req.file.path); // Empty temp folder
+      fs.unlinkSync(req.file.path); // Empty uploads folder
       const locationUrl = data.Location;
       res.send(locationUrl);
     }

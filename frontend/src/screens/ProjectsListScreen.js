@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -8,20 +8,29 @@ import moment from "moment";
 
 const ProjectsListScreen = () => {
   const dispatch = useDispatch();
-
+  const [show, setShow] = useState(false);
   const projectList = useSelector((state) => state.projectList);
   const { loading, error, projects } = projectList;
 
   useEffect(() => {
     dispatch(listProjects());
-  }, [dispatch]);
+    // show the message, after 5 seconds remove the message
+    if (error) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [dispatch, error]);
 
   return (
     <>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="danger" show={show}>
+          {error}
+        </Message>
       ) : (
         <div className="container pt-3">
           <div className="row">

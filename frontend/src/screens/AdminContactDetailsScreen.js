@@ -12,7 +12,7 @@ import { CONTACT_UPDATE_RESET } from "../constants/contactConstants";
 
 const AdminContactDetailsScreen = ({ match, history }) => {
   const contactId = match.params.id;
-
+  const [show, setShow] = useState(false);
   const [haveRead, setHaveRead] = useState(false);
 
   const dispatch = useDispatch();
@@ -38,7 +38,23 @@ const AdminContactDetailsScreen = ({ match, history }) => {
         setHaveRead(contact.haveRead);
       }
     }
-  }, [dispatch, history, successUpdate, contact, contactId]);
+
+    // show the message, after 5 seconds remove the message
+    if (error || errorUpdate) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [
+    dispatch,
+    history,
+    successUpdate,
+    contact,
+    contactId,
+    error,
+    errorUpdate,
+  ]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -62,11 +78,17 @@ const AdminContactDetailsScreen = ({ match, history }) => {
           <div className="col-md-8 offset-md-2 my-4">
             <h2>Contact Details</h2>
             {loadingUpdate && <Loader />}
-            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+            {errorUpdate && (
+              <Message variant="danger" show={show}>
+                {errorUpdate}
+              </Message>
+            )}
             {loading ? (
               <Loader />
             ) : error ? (
-              <Message>{error}</Message>
+              <Message variant="danger" show={show}>
+                {error}
+              </Message>
             ) : (
               <>
                 <hr />

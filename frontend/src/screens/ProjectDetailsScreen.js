@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -7,21 +7,30 @@ import { listProjectDetails } from "../actions/projectActions";
 
 const ProjectDetailsScreen = ({ match }) => {
   const dispatch = useDispatch();
-
+  const [show, setShow] = useState(false);
   const projectDetails = useSelector((state) => state.projectDetails);
   const { loading, error, project } = projectDetails;
 
   useEffect(() => {
     window.scrollTo(0, 0);
     dispatch(listProjectDetails(match.params.id));
-  }, [dispatch, match]);
+    // show the message, after 5 seconds remove the message
+    if (error) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [dispatch, match, error]);
 
   return (
     <>
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">{error}</Message>
+        <Message variant="danger" show={show}>
+          {error}
+        </Message>
       ) : (
         <div className="container">
           <h2 className="my-4">{project.title}</h2>

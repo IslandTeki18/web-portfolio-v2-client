@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const AdminContactListScreen = ({ history }) => {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
 
   const contactList = useSelector((state) => state.contactList);
   const { loading, error, contacts } = contactList;
@@ -27,7 +28,15 @@ const AdminContactListScreen = ({ history }) => {
     } else {
       history.push("/admin/login");
     }
-  }, [dispatch, userInfo, history, successDelete]);
+
+    // show the message, after 5 seconds remove the message
+    if (error || errorDelete || successDelete) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [dispatch, userInfo, history, successDelete, error, errorDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this message?")) {
@@ -43,14 +52,19 @@ const AdminContactListScreen = ({ history }) => {
             <h3>Contact List</h3>
           </div>
           {loadingDelete && <Loader />}
-          {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+          {errorDelete && <Message variant="danger" show={show}>{errorDelete}</Message>}
           {successDelete && (
-            <Message variant="success">{`Contact Information Deleted`}</Message>
+            <Message
+              variant="success"
+              show={show}
+            >{`Contact Information Deleted`}</Message>
           )}
           {loading ? (
             <Loader />
           ) : error ? (
-            <Message variant="danger">{error}</Message>
+            <Message variant="danger" show={show}>
+              {error}
+            </Message>
           ) : (
             <div className="table-responsive">
               <table className="table table-dark table-striped">

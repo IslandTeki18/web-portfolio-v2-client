@@ -7,6 +7,7 @@ import Message from "../components/Message";
 const AdminLoginScreen = ({ location, history }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [show, setShow] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -16,8 +17,17 @@ const AdminLoginScreen = ({ location, history }) => {
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
+    // redirect if logged in
     if (userInfo) history.push(redirect);
-  }, [userInfo, history, redirect]);
+
+    // show the message, after 5 seconds remove the message
+    if (error) {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 5000);
+    }
+  }, [userInfo, history, redirect, error]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -32,7 +42,7 @@ const AdminLoginScreen = ({ location, history }) => {
               <h4>Admin Login</h4>
             </div>
             <div className="card-body">
-              {error && <Message variant="danger">{error}</Message>}
+              {error && <Message variant="danger" show={show}>{error}</Message>}
               {loading && <Loader />}
               <form onSubmit={submitHandler}>
                 <div className="form-group">
