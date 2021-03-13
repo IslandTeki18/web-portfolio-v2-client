@@ -35,63 +35,91 @@ const ProjectsListScreen = () => {
         <div className="container pt-3">
           <div className="row">
             <div className="col-12">
-              <h3>Recent Projects</h3>
-              <hr style={{ backgroundColor: "white" }} />
+              <h2>
+                <u>Recent Projects</u>
+              </h2>
             </div>
           </div>
           {projects
             .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
             .map((project) => (
-              <div className="row py-3" key={project._id}>
-                <div className="col-md-7 col-sm-6">
-                  <Link to={`/project/${project._id}`}>
-                    <img
-                      className="img-fluid rounded mb-3 mb-md-0"
-                      src={project.img}
-                      alt={project.name}
-                    />
-                  </Link>
-                </div>
-                <div className="col-md-5 col-sm-6">
-                  <h4>{project.title}</h4>
-                  <hr style={{ backgroundColor: "white" }} />
-                  <span
-                    className={`badge badge-pill badge-${
-                      project.status === "Live"
-                        ? "success"
-                        : project.status === "Not Live"
-                        ? "danger"
-                        : project.status === "Under Construction" ||
-                          "Remodeling"
-                        ? "warning"
-                        : "primary"
-                    }`}
-                  >
-                    {project.status}
-                  </span>
-                  <p>{project.shortDescription}</p>
-                  <div className="row">
-                    <div className="col-md-6 col-xs-6">
-                      <h4>Frontend</h4>
-                      <p>{project.frontendStack.join(" | ")}</p>
-                      <h4>Backend</h4>
-                      <p>{project.backendStack.join(" | ")}</p>
+              <>
+                <div className="row py-3" key={project._id}>
+                  <div className="col-lg-6 col-sm-12">
+                    <Link to={`/project/${project._id}`}>
+                      <img
+                        className="img-fluid rounded mb-3 mb-md-0"
+                        src={project.img}
+                        alt={project.name}
+                      />
+                    </Link>
+                  </div>
+                  <div className="col-lg-6 col-sm-12 mt-3">
+                    <div
+                      className="d-flex align-items-center"
+                      id="title-status-wrapper"
+                    >
+                      <h4 className="mr-4">{project.title}</h4>
+                      <span
+                        className={`badge badge-${
+                          project.status === "Live"
+                            ? "success"
+                            : project.status === "Not Live"
+                            ? "danger"
+                            : project.status === "Under Construction" ||
+                              "Remodeling"
+                            ? "warning"
+                            : "primary"
+                        }`}
+                      >
+                        <h6 style={{ marginTop: "5px" }}>{project.status}</h6>
+                      </span>
                     </div>
-                    <div className="col-md-6 col-xs-6">
-                      <h4>Last Updated:</h4>
-                      <p>{moment(project.updatedAt).calendar()}</p>
-                      <h4>Database</h4>
-                      <p>{project.databaseStack.join(" | ")}</p>
+                    <hr style={{ backgroundColor: "grey" }} />
+                    <p>{project.shortDescription}</p>
+                    <div className="row">
+                      <div className="col-sm-12 col-md-8 d-flex">
+                        <ul style={{paddingInlineStart: "18px"}}>
+                          {project.frontendStack.map((x, idx) => (
+                            <li key={idx}>{x}</li>
+                          ))}
+                        </ul>
+                        <ul>
+                          {project.backendStack.map((x, idx) => (
+                            <li key={idx}>{x}</li>
+                          ))}
+                        </ul>
+                        <ul>
+                          {project.databaseStack.map((x, idx) => (
+                            <li key={idx}>{x}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="col-sm-12 col-md-4">
+                        <Link
+                          className="btn btn-primary btn-block"
+                          to={`/project/${project._id}`}
+                        >
+                          Project Details
+                        </Link>
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                        >
+                          <button
+                            className="btn btn-light btn-block mt-2"
+                            disabled={project.githubUrl === "" ? true : false}
+                          >
+                            Github Repo
+                          </button>
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <Link
-                    className="btn btn-primary"
-                    to={`/project/${project._id}`}
-                  >
-                    View Project
-                  </Link>
                 </div>
-              </div>
+                <hr style={{ backgroundColor: "white", width: "60%" }} />
+              </>
             ))}
         </div>
       )}
