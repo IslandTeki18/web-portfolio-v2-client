@@ -7,8 +7,8 @@ const AboutMeScreen = () => {
         <div className="col-lg-0 col-xl-6">
           <div className="d-flex align-items-center p-5">
             <div className="">
-              <h6 className="text-uppercase text-primary mb-2">About Me</h6>
-              <h1 className="display-4 font-weight-bold mb-3">Landon McKell</h1>
+              <h6 className="text-uppercase mb-2 text-white">About Me</h6>
+              <h1 className="display-4 font-weight-bold mb-3 text-white">Landon McKell</h1>
               <div className="row">
                 <div className="col-lx-6">
                   <p className="text-lg text-muted mb-lg-2">

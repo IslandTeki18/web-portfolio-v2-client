@@ -4,6 +4,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { listProjectDetails } from "../actions/projectActions";
+import moment from "moment";
 
 const ProjectDetailsScreen = ({ match }) => {
   const dispatch = useDispatch();
@@ -32,122 +33,145 @@ const ProjectDetailsScreen = ({ match }) => {
           {error}
         </Message>
       ) : (
-        <div className="container">
-          <h2 className="my-4">{project.title}</h2>
-          <div className="row pb-4">
-            <div className="col-md-7">
-              <img className="img-fluid" src={project.img} alt={project.name} />
-            </div>
-            <div className="col-md-5">
-              <h4 className="my-3">Project Description</h4>
-              <p>{project.longDescription}</p>
-              <div className="row">
-                <div className="col-md-6 text-left">
-                  <h5>
-                    <u>Frontend Stack</u>
-                  </h5>
-                  {!project.frontendStack ? (
-                    <Loader />
-                  ) : (
-                    <ul className="text-left">
-                      {project.frontendStack.map((x, index) => (
-                        <li key={index}>{x.toString()}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-                <div className="col-md-6 text-left">
-                  <h5>
-                    <u>Backend Stack</u>
-                  </h5>
-                  {!project.backendStack ? (
-                    <Loader />
-                  ) : (
-                    <ul className="text-left">
-                      {project.backendStack.map((x, index) => (
-                        <li key={index}>{x.toString()}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-                <div className="col-md-6">
-                  <h5>
-                    <u>Project Status</u>
-                  </h5>
-                  <span
-                    className={`badge badge-pill badge-${
-                      project.status === "Live"
-                        ? "success"
-                        : project.status === "Not Live"
-                        ? "danger"
-                        : project.status === "Under Construction" ||
-                          "Remodeling"
-                        ? "warning"
-                        : "primary"
-                    }`}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-                <div className="col-md-6 text-left">
-                  <h5>
-                    <u>Database Stack</u>
-                  </h5>
-                  {!project.databaseStack ? (
-                    <Loader />
-                  ) : (
-                    <ul className="text-left">
-                      {project.databaseStack.map((x, index) => (
-                        <li key={index}>{x.toString()}</li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </div>
-              <div className="btn-group my-4">
-                <a
-                  href={project.trelloUrl}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  <button
-                    className="btn btn-primary details-btn"
-                    disabled={project.trelloUrl === "" ? true : false}
-                  >
-                    Trello
-                  </button>
-                </a>
-                <a
-                  href={project.githubUrl}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  <button
-                    className="btn btn-secondary details-btn"
-                    disabled={project.githubUrl === "" ? true : false}
-                  >
-                    Github
-                  </button>
-                </a>
-                <a
-                  href={project.projectUrl}
-                  rel="noreferrer noopener"
-                  target="_blank"
-                >
-                  <button
-                    className="btn btn-success details-btn"
-                    disabled={project.projectUrl === "" ? true : false}
-                  >
-                    Project Website
-                  </button>
-                </a>
-              </div>
-              <Link className="btn btn-link" to="/projects">
+        <>
+          <section className="py-3" id="project-details-section">
+            <div className="container text-white">
+              <Link
+                className="btn btn-primary text-white btn-sm m-3"
+                to="/projects"
+              >
                 Go Back
               </Link>
+              <div className="row">
+                <div className="col-lg-6 col-md-12 col-sm-12">
+                  <div className="row mb-3">
+                    <div className="col text-center">
+                      Status:
+                      <span
+                        className={`badge badge-${
+                          project.status === "Live"
+                            ? "success"
+                            : project.status === "Not Live"
+                            ? "danger"
+                            : project.status === "Under Construction" ||
+                              "Remodeling"
+                            ? "warning"
+                            : "primary"
+                        } ml-2`}
+                      >
+                        {project.status}
+                      </span>
+                    </div>
+                    <div className="col d-flex text-center">
+                      Updated At:
+                      <div className="ml-2">
+                        {moment(project.updatedAt).calendar()}
+                      </div>
+                    </div>
+                  </div>
+                  <img
+                    className="img-fluid"
+                    src={project.img}
+                    alt={project.name}
+                  />
+                </div>
+                <div className="col-lg-6 col-md-12 col-sm-12 mt-sm-2">
+                  <h2 className="text-white">{project.title}</h2>
+                  <div className="row">
+                    <div className="col">
+                      <a
+                        href="http://"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button
+                          className="btn btn-primary btn-block btn-sm"
+                          disabled={project.projectUrl === "" ? true : false}
+                        >
+                          Website
+                        </button>
+                      </a>
+                    </div>
+                    <div className="col">
+                      <a
+                        href="http://"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button
+                          className="btn btn-secondary btn-block btn-sm"
+                          disabled={project.githubUrl === "" ? true : false}
+                        >
+                          Github Repo
+                        </button>
+                      </a>
+                    </div>
+                    <div className="col">
+                      <a
+                        href="http://"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button
+                          className="btn btn-secondary btn-block btn-sm"
+                          disabled={project.trelloUrl === "" ? true : false}
+                        >
+                          Trello
+                        </button>
+                      </a>
+                    </div>
+                  </div>
+                  <h4 className="my-3 text-white">Project Description:</h4>
+                  <p>{project.longDescription}</p>
+                  <div className="row">
+                    <div className="col-md-4 text-left">
+                      <h5 className="text-white">
+                        <u>Frontend Stack</u>
+                      </h5>
+                      {!project.frontendStack ? (
+                        <Loader />
+                      ) : (
+                        <ul className="text-left">
+                          {project.frontendStack.map((x, index) => (
+                            <li key={index}>{x.toString()}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="col-md-4 text-left">
+                      <h5 className="text-white">
+                        <u>Backend Stack</u>
+                      </h5>
+                      {!project.backendStack ? (
+                        <Loader />
+                      ) : (
+                        <ul className="text-left">
+                          {project.backendStack.map((x, index) => (
+                            <li key={index}>{x.toString()}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="col-md-4 text-left">
+                      <h5 className="text-white">
+                        <u>Database Stack</u>
+                      </h5>
+                      {!project.databaseStack ? (
+                        <Loader />
+                      ) : (
+                        <ul className="text-left">
+                          {project.databaseStack.map((x, index) => (
+                            <li key={index}>{x.toString()}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </section>
+        </>
       )}
     </>
   );

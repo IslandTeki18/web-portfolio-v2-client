@@ -5,8 +5,8 @@ const HomeSkills = () => {
     <div className="container">
       <div className="row text-center">
         <div className="col-md-12 mb-2">
-          <h2>Technology Stacks</h2>
-          <hr />
+          <h2 className='text-white'>Technology Stacks</h2>
+          <hr style={{backgroundColor: "white"}} />
         </div>
       </div>
       <div className="row">

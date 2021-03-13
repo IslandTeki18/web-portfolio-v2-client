@@ -19,7 +19,7 @@ function App() {
   return (
     <Router>
       <Header />
-      <main>
+      <main className="bg-dark">
         <Route exact path="/" component={HomeScreen} />
         <Route path="/about" component={AboutMeScreen} />
         <Route path="/project/:id" component={ProjectDetailsScreen} />

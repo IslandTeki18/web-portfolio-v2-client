@@ -3,9 +3,9 @@ import React from "react";
 const ResumeScreen = () => {
   return (
     <section className="resume py-2">
-      <div className="container">
+      <div className="container text-white">
         <div className="section-title">
-          <h2>Resume</h2>
+          <h2 className="text-white">Resume</h2>
           <p>
             I build beautiful custom websites using modern technology such as
             React, Nodejs, Express, and MongoDB. I am full stack web developer
@@ -35,7 +35,7 @@ const ResumeScreen = () => {
             <h3 className="resume-title">Education</h3>
             <div className="resume-item">
               <h4>Dev Mountain iOS Immersive Bootcamp</h4>
-              <h5>May 2018 - Aug 2018</h5>
+              <h5 className="text-white">May 2018 - Aug 2018</h5>
               <p>
                 <em>Salt Lake City, UT</em>
               </p>
@@ -49,7 +49,7 @@ const ResumeScreen = () => {
             </div>
             <div className="resume-item">
               <h4>CS Student of Utah Valley University</h4>
-              <h5>2016 - 2017</h5>
+              <h5 className="text-white">2016 - 2017</h5>
               <p>
                 <em>Utah Valley University, Orem, UT</em>
               </p>
@@ -65,7 +65,7 @@ const ResumeScreen = () => {
             <h3 className="resume-title">Professional Experience</h3>
             <div className="resume-item">
               <h4>Gmetrix LLC</h4>
-              <h5>Nov 2019 - Present</h5>
+              <h5 className="text-white">Nov 2019 - Present</h5>
               <p>
                 <em>Lindon, UT</em>
               </p>
@@ -89,7 +89,7 @@ const ResumeScreen = () => {
             </div>
             <div className="resume-item">
               <h4>Bright Bridge Web LLC</h4>
-              <h5>Oct 2018 - Nov 2019</h5>
+              <h5 className="text-white">Oct 2018 - Nov 2019</h5>
               <p>
                 <em>Provo, UT</em>
               </p>

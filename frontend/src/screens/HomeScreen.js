@@ -39,8 +39,8 @@ const HomeScreen = () => {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  <h2 className="animate__animated animate__fadeInDown">
-                    Recent Projects
+                  <h2 className="animate__animated animate__fadeInDown text-white">
+                    <u>Recent Projects</u>
                   </h2>
                 </div>
               </div>
@@ -48,7 +48,7 @@ const HomeScreen = () => {
                 {projects
                   .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
                   .map((project) => (
-                    <div className="col-md-4 mb-5" key={project._id}>
+                    <div className="col-md-6 mb-5" key={project._id}>
                       <div className="card home-card-ht">
                         <img
                           className="card-img-top img-fluid"
@@ -66,7 +66,7 @@ const HomeScreen = () => {
                             to={`/project/${project._id}`}
                             className="btn btn-primary"
                           >
-                            Check out project
+                            Project Details
                           </Link>
                         </div>
                       </div>
@@ -75,7 +75,7 @@ const HomeScreen = () => {
               </div>
             </div>
           </section>
-          <section className="bg-info py-5 skills-section">
+          <section className="bg-dark py-5 skills-section">
             <HomeSkills />
           </section>
         </>

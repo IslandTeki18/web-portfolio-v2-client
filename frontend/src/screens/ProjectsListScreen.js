@@ -4,7 +4,6 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { listProjects } from "../actions/projectActions";
-import moment from "moment";
 
 const ProjectsListScreen = () => {
   const dispatch = useDispatch();
@@ -32,10 +31,10 @@ const ProjectsListScreen = () => {
           {error}
         </Message>
       ) : (
-        <div className="container pt-3">
+        <div className="container py-3 text-white">
           <div className="row">
             <div className="col-12">
-              <h2>
+              <h2 className="text-white">
                 <u>Recent Projects</u>
               </h2>
             </div>
@@ -59,7 +58,7 @@ const ProjectsListScreen = () => {
                       className="d-flex align-items-center"
                       id="title-status-wrapper"
                     >
-                      <h4 className="mr-4">{project.title}</h4>
+                      <h3 className="mr-4 text-white">{project.title}</h3>
                       <span
                         className={`badge badge-${
                           project.status === "Live"
@@ -75,11 +74,10 @@ const ProjectsListScreen = () => {
                         <h6 style={{ marginTop: "5px" }}>{project.status}</h6>
                       </span>
                     </div>
-                    <hr style={{ backgroundColor: "grey" }} />
-                    <p>{project.shortDescription}</p>
+                    <p className="my-3">{project.shortDescription}</p>
                     <div className="row">
                       <div className="col-sm-12 col-md-8 d-flex">
-                        <ul style={{paddingInlineStart: "18px"}}>
+                        <ul style={{ paddingInlineStart: "18px" }}>
                           {project.frontendStack.map((x, idx) => (
                             <li key={idx}>{x}</li>
                           ))}
@@ -97,7 +95,7 @@ const ProjectsListScreen = () => {
                       </div>
                       <div className="col-sm-12 col-md-4">
                         <Link
-                          className="btn btn-primary btn-block"
+                          className="btn btn-primary btn-block btn-sm"
                           to={`/project/${project._id}`}
                         >
                           Project Details
@@ -108,7 +106,7 @@ const ProjectsListScreen = () => {
                           rel="noreferrer noopener"
                         >
                           <button
-                            className="btn btn-light btn-block mt-2"
+                            className="btn btn-light btn-block btn-sm mt-2"
                             disabled={project.githubUrl === "" ? true : false}
                           >
                             Github Repo
