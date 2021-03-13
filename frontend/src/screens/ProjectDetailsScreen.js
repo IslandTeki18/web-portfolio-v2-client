@@ -63,7 +63,7 @@ const ProjectDetailsScreen = ({ match }) => {
                       </span>
                     </div>
                     <div className="col d-flex text-center">
-                      Updated At:
+                      Updated:
                       <div className="ml-2">
                         {moment(project.updatedAt).calendar()}
                       </div>
@@ -80,7 +80,7 @@ const ProjectDetailsScreen = ({ match }) => {
                   <div className="row">
                     <div className="col">
                       <a
-                        href="http://"
+                        href={project.projectUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -94,7 +94,7 @@ const ProjectDetailsScreen = ({ match }) => {
                     </div>
                     <div className="col">
                       <a
-                        href="http://"
+                        href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -108,7 +108,7 @@ const ProjectDetailsScreen = ({ match }) => {
                     </div>
                     <div className="col">
                       <a
-                        href="http://"
+                        href={project.trelloUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
