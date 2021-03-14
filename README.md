@@ -2,7 +2,7 @@
 
 > Basic portfolio platform built in the MERN stack and Redux
 
-[Portfolio](https://landonmckelldevportfolio.herokuapp.com/) Website
+[Portfolio](https://landonmckell.com/) Website
 
 ![screenshot](https://github.com/ETM32019/personal-portfolio/blob/main/uploads/image-1611296711643.png)
 
@@ -47,7 +47,7 @@
 
 The MIT License
 
-Copyright (c) 2020 Landon McKell https://landonmckelldevportfolio.herokuapp.com/
+Copyright (c) 2020 Landon McKell https://landonmckell.com/
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

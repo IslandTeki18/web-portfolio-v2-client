@@ -144,7 +144,7 @@ const ProjectDetailsScreen = ({ match }) => {
                       </h5>
                       {!project.backendStack ? (
                         <Loader />
-                      ) : (
+                      ) : ( 
                         <ul className="text-left">
                           {project.backendStack.map((x, index) => (
                             <li key={index}>{x.toString()}</li>

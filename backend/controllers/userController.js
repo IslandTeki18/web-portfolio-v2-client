@@ -37,8 +37,32 @@ const getAdminProfile = asyncHandler(async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error("Admin Not Here");
+    throw new Error("User not found");
   }
 });
 
-export { postAuthUser, getAdminProfile };
+//@desc     Update User Settings
+//@route    PUT /api/users/profile/settings
+//@access   Private/Admin
+const putUpdateAdmin = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id)
+  if (user) {
+    user.username = req.body.username || user.username;
+    if (req.body.password) {
+      user.password = req.body.password
+    }
+    const updatedAdmin = await user.save()
+
+    res.json({
+      _id: updatedAdmin._id,
+      username: updatedAdmin.username,
+      isAdmin: updatedAdmin.isAdmin,
+      token: generateToken(updatedAdmin._id)
+    })
+  } else {
+    res.status(404)
+    throw new Error("User not found")
+  }
+})
+
+export { postAuthUser, getAdminProfile, putUpdateAdmin };

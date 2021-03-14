@@ -51,6 +51,9 @@ const Header = () => {
                   <Link className="dropdown-item" to="/admin/viewcontacts">
                     View Contacts
                   </Link>
+                  <Link className="dropdown-item" to="/admin/settings">
+                    Settings
+                  </Link>
                   <div className="dropdown-divider"></div>
                   <Link
                     className="dropdown-item"

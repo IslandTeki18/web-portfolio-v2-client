@@ -6,6 +6,7 @@ import ProjectsListScreen from "./screens/ProjectsListScreen";
 import ProjectDetailsScreen from "./screens/ProjectDetailsScreen";
 import ResumeScreen from "./screens/ResumeScreen";
 import AdminLoginScreen from "./screens/AdminLoginScreen";
+import AdminProfileSettingsScreen from "./screens/AdminProfileSettingsScreen";
 import AdminProjectsListScreen from "./screens/AdminProjectsListScreen";
 import AdminProjectEditScreen from "./screens/AdminProjectEditScreen";
 import AdminContactListScreen from "./screens/AdminContactListScreen";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/contact" component={ContactMeScreen} />
         <Route path="/resume" component={ResumeScreen} />
         <Route path="/admin/login" component={AdminLoginScreen} />
+        <Route path="/admin/settings" component={AdminProfileSettingsScreen} />
         <Route
           path="/admin/project/:id/edit"
           component={AdminProjectEditScreen}
