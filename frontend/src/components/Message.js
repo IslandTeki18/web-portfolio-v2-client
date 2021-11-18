@@ -1,4 +1,4 @@
-import Alert from "react-bootstrap/Alert";
+import PropTypes from "prop-types";
 
 const Message = ({ variant, children, isDismissible }) => {
     return (
@@ -14,6 +14,12 @@ const Message = ({ variant, children, isDismissible }) => {
 
 Message.defaultProps = {
     variant: "info",
+    isDismissible: false,
+};
+
+Message.propTypes = {
+    variant: PropTypes.string,
+    isDismissible: PropTypes.bool,
 };
 
 export default Message;
