@@ -12,7 +12,6 @@ import { CONTACT_UPDATE_RESET } from "../constants/contactConstants";
 
 const AdminContactDetailsScreen = ({ match, history }) => {
   const contactId = match.params.id;
-  const [show, setShow] = useState(false);
   const [haveRead, setHaveRead] = useState(false);
 
   const dispatch = useDispatch();
@@ -37,14 +36,6 @@ const AdminContactDetailsScreen = ({ match, history }) => {
       } else {
         setHaveRead(contact.haveRead);
       }
-    }
-
-    // show the message, after 5 seconds remove the message
-    if (error || errorUpdate) {
-      setShow(true);
-      setTimeout(() => {
-        setShow(false);
-      }, 5000);
     }
   }, [
     dispatch,
@@ -79,14 +70,14 @@ const AdminContactDetailsScreen = ({ match, history }) => {
             <h2>Contact Details</h2>
             {loadingUpdate && <Loader />}
             {errorUpdate && (
-              <Message variant="danger" show={show}>
+              <Message variant="danger" isDismissible>
                 {errorUpdate}
               </Message>
             )}
             {loading ? (
               <Loader />
             ) : error ? (
-              <Message variant="danger" show={show}>
+              <Message variant="danger" isDismissible>
                 {error}
               </Message>
             ) : (

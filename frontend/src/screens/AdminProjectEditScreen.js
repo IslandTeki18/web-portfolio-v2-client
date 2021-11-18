@@ -21,8 +21,6 @@ const AdminProjectEditScreen = ({ match, history }) => {
   const [backendStack, setBackendStack] = useState([""]);
   const [databaseStack, setDatabaseStack] = useState([""]);
   const [uploading, setUploading] = useState(false);
-  const [show, setShow] = useState(false);
-  // New features
   const [status, setStatus] = useState("");
 
   const dispatch = useDispatch();
@@ -58,13 +56,7 @@ const AdminProjectEditScreen = ({ match, history }) => {
         setStatus(project.status);
       }
     }
-    // show the message, after 5 seconds remove the message
-    if (error || errorUpdate) {
-      setShow(true);
-      setTimeout(() => {
-        setShow(false);
-      }, 5000);
-    }
+
   }, [
     dispatch,
     history,
@@ -126,14 +118,14 @@ const AdminProjectEditScreen = ({ match, history }) => {
             <h2>Project Edit</h2>
             {loadingUpdate && <Loader />}
             {errorUpdate && (
-              <Message variant="danger" show={show}>
+              <Message variant="danger" isDismissible>
                 {errorUpdate}
               </Message>
             )}
             {loading ? (
               <Loader />
             ) : error ? (
-              <Message variant="danger" show={show}>
+              <Message variant="danger" isDismissible>
                 {error}
               </Message>
             ) : (

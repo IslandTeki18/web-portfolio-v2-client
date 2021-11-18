@@ -13,7 +13,6 @@ import moment from "moment";
 
 const AdminProjectsListScreen = ({ history }) => {
   const dispatch = useDispatch();
-  const [show, setShow] = useState(false);
   const projectList = useSelector((state) => state.projectList);
   const { loading, error, projects } = projectList;
 
@@ -47,13 +46,6 @@ const AdminProjectsListScreen = ({ history }) => {
       dispatch(listProjects());
     }
 
-    // show the message, after 5 seconds remove the message
-    if (error || errorCreate || successCreate || deleteSuccess || deleteError) {
-      setShow(true);
-      setTimeout(() => {
-        setShow(false);
-      }, 5000);
-    }
   }, [
     dispatch,
     userInfo,
@@ -91,20 +83,20 @@ const AdminProjectsListScreen = ({ history }) => {
           </div>
           {deleteLoading && <Loader />}
           {deleteError && (
-            <Message variant="danger" show={show}>
+            <Message variant="danger" isDismissible>
               {deleteError}
             </Message>
           )}
           {loadingCreate && <Loader />}
           {errorCreate && (
-            <Message variant="danger" show={show}>
+            <Message variant="danger" isDismissible>
               {errorCreate}
             </Message>
           )}
           {loading ? (
             <Loader />
           ) : error ? (
-            <Message variant="danger" show={show}>
+            <Message variant="danger" isDismissible>
               {error}
             </Message>
           ) : (

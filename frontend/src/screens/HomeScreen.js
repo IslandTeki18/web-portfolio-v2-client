@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import HomeHeader from "../components/HomeHeader";
 import HomeSkills from "../components/HomeSkills";
@@ -9,20 +9,13 @@ import { listProjects } from "../actions/projectActions";
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const [show, setShow] = useState(false);
     const projectList = useSelector((state) => state.projectList);
     const { loading, error, projects } = projectList;
 
     useEffect(() => {
         window.scrollTo(0, 0, "smooth");
         dispatch(listProjects());
-        if (error) {
-            setShow(true);
-            setTimeout(() => {
-                setShow(false);
-            }, 5000);
-        }
-    }, [dispatch, error]);
+    }, [dispatch]);
 
     function renderProjects() {
         return projects
@@ -56,7 +49,7 @@ const HomeScreen = () => {
     return loading ? (
         <Loader />
     ) : error ? (
-        <Message variant="danger" show={show}>
+        <Message variant="danger" isDismissible>
             {error}
         </Message>
     ) : (
