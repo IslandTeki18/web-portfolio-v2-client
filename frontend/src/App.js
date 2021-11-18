@@ -27,7 +27,7 @@ function App() {
         <Route path="/projects" component={ProjectsListScreen} />
         <Route path="/contact" component={ContactMeScreen} />
         <Route path="/resume" component={ResumeScreen} />
-        <Route path="/admin/login" component={AdminLoginScreen} />
+        <Route path="/login" component={AdminLoginScreen} />
         <Route path="/admin/settings" component={AdminProfileSettingsScreen} />
         <Route
           path="/admin/project/:id/edit"

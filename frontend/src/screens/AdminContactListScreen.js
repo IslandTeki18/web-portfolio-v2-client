@@ -47,7 +47,7 @@ const AdminContactListScreen = ({ history }) => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-md-8 offset-md-2 my-4">
+        <div className="col-md-12 my-4">
           <div className="col">
             <h3>Contact List</h3>
           </div>
@@ -75,8 +75,8 @@ const AdminContactListScreen = ({ history }) => {
                     <th>PHONE</th>
                     <th>EMAIL</th>
                     <th className="text-center">HAVE READ?</th>
-                    <th></th>
-                    <th></th>
+                    <th>view</th>
+                    <th>remove</th>
                   </tr>
                 </thead>
                 <tbody>
