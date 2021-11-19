@@ -4,9 +4,11 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { listContacts, deleteContact } from "../actions/contactActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
-const AdminContactListScreen = ({ history }) => {
+const AdminContactListScreen = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const contactList = useSelector((state) => state.contactList);
     const { loading, error, contacts } = contactList;
@@ -25,9 +27,9 @@ const AdminContactListScreen = ({ history }) => {
         if (userInfo && userInfo.isAdmin) {
             dispatch(listContacts());
         } else {
-            history.push("/admin/login");
+            navigate("/admin/login");
         }
-    }, [dispatch, userInfo, history, successDelete, error, errorDelete]);
+    }, [dispatch, userInfo, navigate, successDelete, error, errorDelete]);
 
     const deleteHandler = (id) => {
         if (window.confirm("Are you sure you want to delete this message?")) {
@@ -40,7 +42,7 @@ const AdminContactListScreen = ({ history }) => {
             <div className="row">
                 <div className="col-md-12 my-4">
                     <div className="col">
-                        <h3>Contact List</h3>
+                        <h3 className="text-white">Contact List</h3>
                     </div>
                     {loadingDelete && <Loader />}
                     {errorDelete && (

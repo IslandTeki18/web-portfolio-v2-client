@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -64,7 +64,7 @@ const ContactMeScreen = () => {
                                         Phone
                                     </label>
                                     <input
-                                        type="phone"
+                                        type="tel"
                                         className="form-control"
                                         placeholder="Enter phone..."
                                         id="phoneTextInput"

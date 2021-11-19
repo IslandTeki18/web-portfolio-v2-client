@@ -3,18 +3,20 @@ import { Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 import { listProjectDetails } from "../actions/projectActions";
 import moment from "moment";
 
-const ProjectDetailsScreen = ({ match }) => {
+const ProjectDetailsScreen = () => {
+    const projectId = useParams();
     const dispatch = useDispatch();
     const projectDetails = useSelector((state) => state.projectDetails);
     const { loading, error, project } = projectDetails;
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        dispatch(listProjectDetails(match.params.id));
-    }, [dispatch, match]);
+        dispatch(listProjectDetails(projectId.id));
+    }, [dispatch, projectId]);
 
     return (
         <>

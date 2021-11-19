@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import { updateUserProfile, getUserDetails } from "../actions/userActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const AdminProfileSettingsScreen = ({ history }) => {
+const AdminProfileSettingsScreen = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState(null);
-
-    const dispatch = useDispatch();
 
     const userDetails = useSelector((state) => state.userDetails);
     const { loading, error, user } = userDetails;
@@ -24,7 +26,7 @@ const AdminProfileSettingsScreen = ({ history }) => {
     useEffect(() => {
         // if user is not logged in, kick out to login page
         if (!userInfo) {
-            history.push("/");
+            navigate("/");
         } else {
             if (!user || !user.username || success) {
                 dispatch(getUserDetails("settings"));
@@ -32,7 +34,7 @@ const AdminProfileSettingsScreen = ({ history }) => {
                 setUsername(user.username);
             }
         }
-    }, [userInfo, history, user, dispatch, success]);
+    }, [userInfo, navigate, user, dispatch, success]);
 
     // password submit handler
     const submitHandler = (e) => {

@@ -1,24 +1,22 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const AdminLoginScreen = ({ location, history }) => {
+const AdminLoginScreen = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-
-    const dispatch = useDispatch();
 
     const userLogin = useSelector((state) => state.userLogin);
     const { loading, error, userInfo } = userLogin;
 
-    const redirect = location.search ? location.search.split("=")[1] : "/";
-
     useEffect(() => {
-        // redirect if logged in
-        if (userInfo) history.push(redirect);
-    }, [userInfo, history, redirect, error]);
+        if (userInfo) navigate(`/`);
+    }, [userInfo, navigate]);
 
     const submitHandler = (e) => {
         e.preventDefault();

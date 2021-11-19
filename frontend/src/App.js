@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import AboutMeScreen from "./screens/AboutMeScreen";
 import ContactMeScreen from "./screens/ContactMeScreen";
@@ -15,38 +15,48 @@ import AdminContactDetailsScreen from "./screens/AdminContactDetailsScreen";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-
 function App() {
-  return (
-    <Router>
-      <Header />
-      <main className="bg-dark">
-        <Route exact path="/" component={HomeScreen} />
-        <Route path="/about" component={AboutMeScreen} />
-        <Route path="/project/:id" component={ProjectDetailsScreen} />
-        <Route path="/projects" component={ProjectsListScreen} />
-        <Route path="/contact" component={ContactMeScreen} />
-        <Route path="/resume" component={ResumeScreen} />
-        <Route path="/login" component={AdminLoginScreen} />
-        <Route path="/admin/settings" component={AdminProfileSettingsScreen} />
-        <Route
-          path="/admin/project/:id/edit"
-          component={AdminProjectEditScreen}
-        />
-        <Route
-          path="/admin/contact/:id/details"
-          component={AdminContactDetailsScreen}
-        />
-        <Route
-          exact
-          path="/admin/viewprojects"
-          component={AdminProjectsListScreen}
-        />
-        <Route path="/admin/viewcontacts" component={AdminContactListScreen} />
-      </main>
-      <Footer />
-    </Router>
-  );
+    return (
+        <Router>
+            <Header />
+            <main className="bg-dark">
+                <Routes>
+                    <Route exact path="/" element={<HomeScreen />} />
+                    <Route path="/about" element={<AboutMeScreen />} />
+                    <Route
+                        path="/project/:id"
+                        element={<ProjectDetailsScreen />}
+                    />
+                    <Route path="/projects" element={<ProjectsListScreen />} />
+                    <Route path="/contact" element={<ContactMeScreen />} />
+                    <Route path="/resume" element={<ResumeScreen />} />
+                    <Route path="/login" element={<AdminLoginScreen />} />
+                    <Route
+                        path="/admin/settings"
+                        element={<AdminProfileSettingsScreen />}
+                    />
+                    <Route
+                        path="/admin/project/:id/edit"
+                        element={<AdminProjectEditScreen />}
+                    />
+                    <Route
+                        path="/admin/contact/:id/details"
+                        element={<AdminContactDetailsScreen />}
+                    />
+                    <Route
+                        exact
+                        path="/admin/viewprojects"
+                        element={<AdminProjectsListScreen />}
+                    />
+                    <Route
+                        path="/admin/viewcontacts"
+                        element={<AdminContactListScreen />}
+                    />
+                </Routes>
+            </main>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;
