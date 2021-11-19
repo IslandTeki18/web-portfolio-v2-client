@@ -91,7 +91,7 @@ const AdminProjectEditScreen = () => {
         e.preventDefault();
         dispatch(
             updateProject({
-                _id: projectId,
+                _id: projectId.id,
                 title,
                 shortDescription,
                 longDescription,
