@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../components/atoms/loader/Loader";
+import Message from "../components/atoms/message/Message";
 import { listProjectDetails, updateProject } from "../actions/projectActions";
 import { PROJECT_UPDATE_RESET } from "../constants/projectConstants";
 
@@ -112,7 +112,7 @@ const AdminProjectEditScreen = () => {
             <Link className="btn btn-light m-3" to="/admin/viewprojects">
                 Go Back
             </Link>
-            <div className="container">
+            <div className="container text-white">
                 <div className="row">
                     <div className="col-md-8 offset-md-2 my-4">
                         <h2>Project Edit</h2>

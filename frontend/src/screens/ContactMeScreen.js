@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+import Message from "../components/atoms/message/Message";
+import Loader from "../components/atoms/loader/Loader";
 import { createContact } from "../actions/contactActions";
 
 const ContactMeScreen = () => {

@@ -27,7 +27,7 @@ const ResumeScreen = () => {
                 </em>
               </p>
               <ul>
-                <li>Santaquin, Utah 84655</li>
+                <li>Spanish Fork, Utah 84660</li>
                 <li>(801) 310-5876</li>
                 <li>landon.roney7923@gmail.com</li>
               </ul>
@@ -64,8 +64,32 @@ const ResumeScreen = () => {
           <div className="col-lg-6">
             <h3 className="resume-title">Professional Experience</h3>
             <div className="resume-item">
+              <h4>Red Sky Technologies</h4>
+              <h5 className="text-white">Mar 2021 - Present</h5>
+              <p>
+                <em>Spanish Fork, UT</em>
+              </p>
+              <ul>
+                <li>
+                  Develop and maintain the new direction of the elearning
+                  project. Provide test cases for our QA team and implement
+                  design changes and layouts.
+                </li>
+                <li>
+                  Develop Microsoft Office product simulations using Unity.
+                  Build out educational quiz and test questions for students and
+                  users of the simulations.
+                </li>
+                <li>
+                  Develop these features and products using popular full stack
+                  technologys such as Reactjs, Nodejs, ASP.net, .Net core and
+                  more.
+                </li>
+              </ul>
+            </div>
+            <div className="resume-item">
               <h4>Gmetrix LLC</h4>
-              <h5 className="text-white">Nov 2019 - Present</h5>
+              <h5 className="text-white">Nov 2019 - Mar 2021</h5>
               <p>
                 <em>Lindon, UT</em>
               </p>

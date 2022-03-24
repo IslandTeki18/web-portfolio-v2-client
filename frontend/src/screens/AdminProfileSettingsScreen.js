@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { updateUserProfile, getUserDetails } from "../actions/userActions";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../components/atoms/loader/Loader";
+import Message from "../components/atoms/message/Message";
 
 const AdminProfileSettingsScreen = () => {
     const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../components/atoms/loader/Loader";
+import Message from "../components/atoms/message/Message";
 import { listContacts, deleteContact } from "../actions/contactActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
