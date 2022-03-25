@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router-dom";
-import Loader from "../components/atoms/loader/Loader";
-import Message from "../components/atoms/message/Message";
-import { listProjectDetails, updateProject } from "../actions/projectActions";
-import { PROJECT_UPDATE_RESET } from "../constants/projectConstants";
+import Loader from "../../components/atoms/loader/Loader";
+import Message from "../../components/atoms/message/Message";
+import { listProjectDetails, updateProject } from "../../actions/projectActions";
+import { PROJECT_UPDATE_RESET } from "../../constants/projectConstants";
 
-const AdminProjectEditScreen = () => {
+const AdminProjectEditPage = () => {
     const projectId = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -108,7 +108,7 @@ const AdminProjectEditScreen = () => {
     };
 
     return (
-        <>
+        <div className="dkAdminProjectEditPage">
             <Link className="btn btn-light m-3" to="/admin/viewprojects">
                 Go Back
             </Link>
@@ -335,8 +335,8 @@ const AdminProjectEditScreen = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
-export default AdminProjectEditScreen;
+export default AdminProjectEditPage;

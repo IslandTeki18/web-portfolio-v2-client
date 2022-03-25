@@ -1,17 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const HomeHeader = () => {
+const HeroSection = (props) => {
   return (
     <header className="bg-primary py-5 mb-5">
       <div className="container h-100">
         <div className="row h-100 align-items-center">
           <div className="col-lg-12">
             <h1 className="display-4 text-white mt-5 mb-2">
-              Landon McKell
+              {props.displayText}
             </h1>
-            <p className="lead mb-5 text-white-50">
-              I build beautiful custom websites using modern technology such as React, Nodejs, Express, and MongoDB. I am full stack web developer living the Utah area.
-            </p>
+            <p className="lead mb-5 text-white-50">{props.heroDescrption}</p>
           </div>
         </div>
       </div>
@@ -19,4 +18,9 @@ const HomeHeader = () => {
   );
 };
 
-export default HomeHeader;
+HeroSection.propTypes = {
+  displayText: PropTypes.string,
+  heroDescrption: PropTypes.string,
+};
+
+export default HeroSection;

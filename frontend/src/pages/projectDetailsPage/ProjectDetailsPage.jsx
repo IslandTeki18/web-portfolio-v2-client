@@ -1,11 +1,12 @@
 import { useEffect } from "react";
+import "./ProjectDetailsPage.scss"
 import { Link } from "react-router-dom";
-import Loader from "../components/atoms/loader/Loader";
-import Message from "../components/atoms/message/Message";
+import Loader from "../../components/atoms/loader/Loader";
+import Message from "../../components/atoms/message/Message";
 import { useParams } from "react-router";
-import useGetProjectDetails from "../customHooks/useGetProjectDetails";
+import useGetProjectDetails from "../../customHooks/useGetProjectDetails";
 
-const ProjectDetailsScreen = () => {
+const ProjectDetailsPage = () => {
   const { id } = useParams();
   const { loading, error, project } = useGetProjectDetails(id);
 
@@ -166,4 +167,4 @@ const ProjectDetailsScreen = () => {
   );
 };
 
-export default ProjectDetailsScreen;
+export default ProjectDetailsPage;

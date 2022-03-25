@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomeScreen from "./screens/HomeScreen";
-import AboutMeScreen from "./screens/AboutMeScreen";
-import ContactMeScreen from "./screens/ContactMeScreen";
-import ProjectsListScreen from "./screens/ProjectsListScreen";
-import ProjectDetailsScreen from "./screens/ProjectDetailsScreen";
-import ResumeScreen from "./screens/ResumeScreen";
-import AdminLoginScreen from "./screens/AdminLoginScreen";
-import AdminProfileSettingsScreen from "./screens/AdminProfileSettingsScreen";
-import AdminProjectsListScreen from "./screens/AdminProjectsListScreen";
-import AdminProjectEditScreen from "./screens/AdminProjectEditScreen";
-import AdminContactListScreen from "./screens/AdminContactListScreen";
-import AdminContactDetailsScreen from "./screens/AdminContactDetailsScreen";
+import HomePage from "./pages/homePage/HomePage";
+import AboutMePage from "./pages/aboutMePage/AboutMePage";
+import ContactMePage from "./pages/contactMePage/ContactMePage";
+import ProjectsListPage from "./pages/projectsListPage/ProjectsListPage";
+import ProjectDetailsPage from "./pages/projectDetailsPage/ProjectDetailsPage";
+import ResumePage from "./pages/resumePage/ResumePage";
+import AdminLoginPage from "./pages/adminLoginPage/AdminLoginPage";
+import AdminProfileSettingsPage from "./pages/adminProfileSettingsPage/AdminProfileSettingsPage";
+import AdminProjectsListPage from "./pages/adminProjectsListPage/AdminProjectsListPage";
+import AdminProjectEditPage from "./pages/adminProjectEditPage/AdminProjectEditPage";
+import AdminContactListPage from "./pages/adminContactListPage/AdminContactListPage";
+import AdminContactDetailsPage from "./pages/adminContactDetailsPage/AdminContactDetailsPage";
 
 import Header from "./components/atoms/header/Header";
 import Footer from "./components/atoms/footer/Footer";
@@ -21,33 +21,33 @@ function App() {
       <Header />
       <main className="bg-dark">
         <Routes>
-          <Route exact path="/" element={<HomeScreen />} />
-          <Route path="/about" element={<AboutMeScreen />} />
-          <Route path="/project/:id" element={<ProjectDetailsScreen />} />
-          <Route path="/projects" element={<ProjectsListScreen />} />
-          <Route path="/contact" element={<ContactMeScreen />} />
-          <Route path="/resume" element={<ResumeScreen />} />
-          <Route path="/login" element={<AdminLoginScreen />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutMePage />} />
+          <Route path="/project/:id" element={<ProjectDetailsPage />} />
+          <Route path="/projects" element={<ProjectsListPage />} />
+          <Route path="/contact" element={<ContactMePage />} />
+          <Route path="/resume" element={<ResumePage />} />
+          <Route path="/login" element={<AdminLoginPage />} />
           <Route
             path="/admin/settings"
-            element={<AdminProfileSettingsScreen />}
+            element={<AdminProfileSettingsPage />}
           />
           <Route
             path="/admin/project/:id/edit"
-            element={<AdminProjectEditScreen />}
+            element={<AdminProjectEditPage />}
           />
           <Route
             path="/admin/contact/:id/details"
-            element={<AdminContactDetailsScreen />}
+            element={<AdminContactDetailsPage />}
           />
           <Route
             exact
             path="/admin/viewprojects"
-            element={<AdminProjectsListScreen />}
+            element={<AdminProjectsListPage />}
           />
           <Route
             path="/admin/viewcontacts"
-            element={<AdminContactListScreen />}
+            element={<AdminContactListPage />}
           />
         </Routes>
       </main>

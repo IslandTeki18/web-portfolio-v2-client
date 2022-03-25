@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import Loader from "../components/atoms/loader/Loader";
-import Message from "../components/atoms/message/Message";
+import Loader from "../../components/atoms/loader/Loader";
+import Message from "../../components/atoms/message/Message";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import {
     getContactDetails,
     updateContact,
     deleteContact,
-} from "../actions/contactActions";
-import { CONTACT_UPDATE_RESET } from "../constants/contactConstants";
+} from "../../actions/contactActions";
+import { CONTACT_UPDATE_RESET } from "../../constants/contactConstants";
 
-const AdminContactDetailsScreen = () => {
+const AdminContactDetailsPage = () => {
     const navigate = useNavigate();
     const slug = useParams();
     const dispatch = useDispatch();
@@ -52,7 +52,7 @@ const AdminContactDetailsScreen = () => {
     };
 
     return (
-        <>
+        <div className="dkAdminContactDetailsPage">
             <Link className="btn btn-light m-3" to="/admin/viewcontacts">
                 Go Back
             </Link>
@@ -140,8 +140,8 @@ const AdminContactDetailsScreen = () => {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
-export default AdminContactDetailsScreen;
+export default AdminContactDetailsPage;

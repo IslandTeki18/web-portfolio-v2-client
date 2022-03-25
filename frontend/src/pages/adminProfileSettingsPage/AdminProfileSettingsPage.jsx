@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { updateUserProfile, getUserDetails } from "../actions/userActions";
-import Loader from "../components/atoms/loader/Loader";
-import Message from "../components/atoms/message/Message";
+import { updateUserProfile, getUserDetails } from "../../actions/userActions";
+import Loader from "../../components/atoms/loader/Loader";
+import Message from "../../components/atoms/message/Message";
 
-const AdminProfileSettingsScreen = () => {
+const AdminProfileSettingsPage = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -53,7 +53,7 @@ const AdminProfileSettingsScreen = () => {
     };
 
     return (
-        <>
+        <div className="dkAdminProfileSettingsPage">
             {/* User Settings Section */}
             <section className="py-3" id="user-settings-section">
                 <div className="container">
@@ -147,8 +147,8 @@ const AdminProfileSettingsScreen = () => {
                     </form>
                 </div>
             </section>
-        </>
+        </div>
     );
 };
 
-export default AdminProfileSettingsScreen;
+export default AdminProfileSettingsPage;

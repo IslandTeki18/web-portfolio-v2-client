@@ -1,9 +1,9 @@
-import Loader from "../components/atoms/loader/Loader";
-import Message from "../components/atoms/message/Message";
-import ProjectListCard from "../components/organisms/projectListCard/ProjectListCard";
-import { useGetProjects } from "../customHooks/useGetProjects";
+import Loader from "../../components/atoms/loader/Loader";
+import Message from "../../components/atoms/message/Message";
+import ProjectListCard from "../../components/organisms/projectListCard/ProjectListCard";
+import { useGetProjects } from "../../customHooks/useGetProjects";
 
-const ProjectsListScreen = () => {
+const ProjectsListPage = () => {
   const { loading, error, projects } = useGetProjects();
 
   if (loading) {
@@ -15,7 +15,8 @@ const ProjectsListScreen = () => {
     </Message>;
   }
   return (
-    <div className="container py-3 text-white">
+    <div className="dkProjectListPage">
+      <div className="container py-3 text-white">
       <div className="row">
         <div className="col-12">
           <h2 className="text-white">
@@ -29,7 +30,8 @@ const ProjectsListScreen = () => {
           <ProjectListCard project={project} />
         ))}
     </div>
+    </div>
   );
 };
 
-export default ProjectsListScreen;
+export default ProjectsListPage;

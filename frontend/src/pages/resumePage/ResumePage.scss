@@ -1,0 +1,42 @@
+.dkResumePage {
+  .section-title {
+    text-align: center;
+    padding-bottom: 30px;
+  }
+  .resume .resume-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #a8bed4;
+  }
+  .resume .resume-item h4 {
+    line-height: 18px;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+    color: #6ca1d4;
+    margin-bottom: 10px;
+  }
+  .resume .resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid #6ca1d4;
+    position: relative;
+  }
+  .resume .resume-item::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50px;
+    left: -9px;
+    top: 0;
+    background: #303030;
+    border: 2px solid #6ca1d4;
+  }
+  .resume .resume-item ul li {
+    padding-bottom: 10px;
+  }
+}
