@@ -1,5 +1,14 @@
 .dkProjectDetailsPage {
-    .details-btn {
-        min-width: 7em;
-      }
+  .details-btn {
+    min-width: 7em;
+  }
+  .statusUpdateContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .dkLabel {
+    display: flex;
+    justify-content: flex-end;
+  }
 }

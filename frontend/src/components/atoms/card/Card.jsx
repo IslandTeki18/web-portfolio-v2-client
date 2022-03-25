@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Img from "../img/Img";
 
 const Card = (props) => {
   return (
     <div className={`dkCard card`}>
       {props.imgTop && (
-        <img
+        <Img
           className={`card-img-top ${props.imageClassName}`}
           src={props.imgSrc}
           alt={props.imageAlt}

@@ -41,7 +41,7 @@
 
 - This build was inspired by Brad Traversy's MERN eCommerce course on Udemy [MERN eCommerce](https://www.udemy.com/course/mern-ecommerce/)
 - Design was inspired by [Start Bootstrap](https://startbootstrap.com/template/small-business)'s free business template for the home screen, project list screen and project details screen.
-- [Material-UI](https://material-ui.com/getting-started/installation/), [React](https://reactjs.org/docs/getting-started.html), [Redux](https://redux.js.org/introduction), [Mongoose](https://mongoosejs.com/docs/guide.html) documentation.
+- [React](https://reactjs.org/docs/getting-started.html), [Redux](https://redux.js.org/introduction), [Mongoose](https://mongoosejs.com/docs/guide.html) documentation.
 
 ## License
 

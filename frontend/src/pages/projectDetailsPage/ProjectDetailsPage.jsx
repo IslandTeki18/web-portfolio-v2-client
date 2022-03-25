@@ -1,10 +1,12 @@
 import { useEffect } from "react";
-import "./ProjectDetailsPage.scss"
+import "./ProjectDetailsPage.scss";
 import { Link } from "react-router-dom";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 import { useParams } from "react-router";
 import useGetProjectDetails from "../../customHooks/useGetProjectDetails";
+import Badge from "../../components/atoms/badge/Badge";
+import Img from "../../components/atoms/img/Img";
 
 const ProjectDetailsPage = () => {
   const { id } = useParams();
@@ -13,6 +15,20 @@ const ProjectDetailsPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  function setBadgeColor(status) {
+    switch (status) {
+      case "Live":
+        return "success";
+      case "Not Live":
+        return "danger";
+      case "Under Construction":
+      case "Remodeling":
+        return "warning";
+      default:
+        return "secondary";
+    }
+  }
 
   if (loading) {
     return <Loader />;
@@ -28,33 +44,22 @@ const ProjectDetailsPage = () => {
     <div className="dkProjectDetailsPage">
       <section className="py-3" id="project-details-section">
         <div className="container text-white">
-          <Link
-            className="btn btn-primary text-white btn-sm m-3"
-            to="/projects"
-          >
+          <Link className="btn btn-secondary btn-sm mb-2" to="/projects">
             Go Back
           </Link>
           <div className="row">
             <div className="col-lg-6 col-md-12 col-sm-12">
-              <div className="row mb-3">
-                <div className="col text-center">
+              <div className="row pb-3 statusUpdateContainer">
+                <div className="col dkLabel">
                   Status:
-                  <span
-                    className={`badge badge-${
-                      project.status === "Live"
-                        ? "success"
-                        : project.status === "Not Live"
-                        ? "danger"
-                        : project.status === "Under Construction" ||
-                          "Remodeling"
-                        ? "warning"
-                        : "primary"
-                    } ml-2`}
+                  <Badge
+                    variant={setBadgeColor(project.status)}
+                    className="ms-2"
                   >
                     {project.status}
-                  </span>
+                  </Badge>
                 </div>
-                <div className="col d-flex text-center">
+                <div className="col dkLabel">
                   Updated:
                   <div className="ms-2">
                     {project.updatedAt &&
@@ -65,64 +70,51 @@ const ProjectDetailsPage = () => {
                   </div>
                 </div>
               </div>
-              <img className="img-fluid" src={project.img} alt={project.name} />
+              <Img className="img-fluid" src={project.img} alt={project.name} />
             </div>
-            <div className="col-lg-6 col-md-12 col-sm-12 mt-sm-2">
-              <h2 className="text-white">{project.title}</h2>
+            <div className="col-lg-6 col-md-12 col-sm-12 mt-sm-2 mt-md-0">
+              <h4 className="text-white">{project.title}</h4>
               <div className="row">
-                <div className="col">
+                <div className="btn-group pb-2" role="group">
                   <a
                     href={project.projectUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className={`btn btn-primary ${
+                      project.projectUrl === "" ? "disabled" : ""
+                    } btn-sm`}
                   >
-                    <button
-                      className="btn btn-primary btn-block btn-sm"
-                      disabled={project.projectUrl === "" ? true : false}
-                    >
-                      Website
-                    </button>
+                    Website
                   </a>
-                </div>
-                <div className="col">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className={`btn btn-secondary ${
+                      project.githubUrl === "" ? "disabled" : ""
+                    } btn-sm`}
                   >
-                    <button
-                      className="btn btn-secondary btn-block btn-sm"
-                      disabled={project.githubUrl === "" ? true : false}
-                    >
-                      Github Repo
-                    </button>
+                    Github Repo
                   </a>
-                </div>
-                <div className="col">
                   <a
                     href={project.trelloUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className={`btn btn-secondary ${
+                      project.trelloUrl === "" ? "disabled" : ""
+                    } btn-sm`}
                   >
-                    <button
-                      className="btn btn-secondary btn-block btn-sm"
-                      disabled={project.trelloUrl === "" ? true : false}
-                    >
-                      Trello
-                    </button>
+                    Trello
                   </a>
                 </div>
               </div>
-              <h4 className="my-3 text-white">Project Description:</h4>
               <p>{project.longDescription}</p>
               <div className="row">
                 <div className="col-md-4 text-left">
-                  <h5 className="text-white">
+                  <h6 className="text-white">
                     <u>Frontend Stack</u>
-                  </h5>
-                  {!project.frontendStack ? (
-                    <Loader />
-                  ) : (
+                  </h6>
+                  {project.frontendStack && (
                     <ul className="text-left">
                       {project.frontendStack.map((x, index) => (
                         <li key={index}>{x.toString()}</li>
@@ -131,12 +123,10 @@ const ProjectDetailsPage = () => {
                   )}
                 </div>
                 <div className="col-md-4 text-left">
-                  <h5 className="text-white">
+                  <h6 className="text-white">
                     <u>Backend Stack</u>
-                  </h5>
-                  {!project.backendStack ? (
-                    <Loader />
-                  ) : (
+                  </h6>
+                  {project.backendStack && (
                     <ul className="text-left">
                       {project.backendStack.map((x, index) => (
                         <li key={index}>{x.toString()}</li>
@@ -145,12 +135,10 @@ const ProjectDetailsPage = () => {
                   )}
                 </div>
                 <div className="col-md-4 text-left">
-                  <h5 className="text-white">
+                  <h6 className="text-white">
                     <u>Database Stack</u>
-                  </h5>
-                  {!project.databaseStack ? (
-                    <Loader />
-                  ) : (
+                  </h6>
+                  {project.databaseStack && (
                     <ul className="text-left">
                       {project.databaseStack.map((x, index) => (
                         <li key={index}>{x.toString()}</li>
