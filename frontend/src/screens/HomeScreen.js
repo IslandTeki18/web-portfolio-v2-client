@@ -52,7 +52,7 @@ const HomeScreen = () => {
         <HomeHeader />
         <div className="container">
           <div className="col-md-12">
-            <h2 className="animate__animated animate__fadeInDown text-white">
+            <h2 className="text-white">
               <u>Recent Projects</u>
             </h2>
           </div>

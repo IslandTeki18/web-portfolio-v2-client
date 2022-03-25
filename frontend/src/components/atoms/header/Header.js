@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-fluid">
+      <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           Landon McKell
         </Link>

@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import Loader from "../components/atoms/loader/Loader";
 import Message from "../components/atoms/message/Message";
 import { useParams } from "react-router";
-import moment from "moment";
 import useGetProjectDetails from "../customHooks/useGetProjectDetails";
 
 const ProjectDetailsScreen = () => {
-  const projectId = useParams();
-  const { loading, error, project } = useGetProjectDetails(projectId);
+  const { id } = useParams();
+  const { loading, error, project } = useGetProjectDetails(id);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,8 +55,12 @@ const ProjectDetailsScreen = () => {
                 </div>
                 <div className="col d-flex text-center">
                   Updated:
-                  <div className="ml-2">
-                    {moment(project.updatedAt).calendar()}
+                  <div className="ms-2">
+                    {project.updatedAt &&
+                      new Intl.DateTimeFormat("en-US", {
+                        dateStyle: "short",
+                        timeStyle: "short",
+                      }).format(new Date(project.updatedAt))}
                   </div>
                 </div>
               </div>

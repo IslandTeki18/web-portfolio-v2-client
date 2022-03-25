@@ -7,7 +7,6 @@ function useGetProjectDetails(id) {
   const projectDetails = useSelector((state) => state.projectDetails);
   const { loading, error, project } = projectDetails;
   useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch(listProjectDetails(id));
   }, [dispatch, id]);
   return { loading, error, project };

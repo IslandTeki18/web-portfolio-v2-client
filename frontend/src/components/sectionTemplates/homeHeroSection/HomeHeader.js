@@ -6,7 +6,7 @@ const HomeHeader = () => {
       <div className="container h-100">
         <div className="row h-100 align-items-center">
           <div className="col-lg-12">
-            <h1 className="display-4 text-white mt-5 mb-2 animate__animated animate__fadeIn">
+            <h1 className="display-4 text-white mt-5 mb-2">
               Landon McKell
             </h1>
             <p className="lead mb-5 text-white-50">
