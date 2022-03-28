@@ -23,7 +23,7 @@ const ContactForm = (props) => {
   return (
     <div className={`dkContactForm ${props.className}`}>
       <Form onSubmit={onSubmit}>
-        <div className="d-flex justify-content-between mb-2 gap-3">
+        <div className="d-flex justify-content-between mb-4 gap-3">
           <Input
             type="name"
             className="form-control"
@@ -44,7 +44,7 @@ const ContactForm = (props) => {
         </div>
         <Input
           type="email"
-          className="form-control mb-2"
+          className="form-control mb-4"
           placeholder="Enter email..."
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
@@ -53,7 +53,7 @@ const ContactForm = (props) => {
           required
         />
         <textarea
-          className="form-control mb-2"
+          className="form-control mb-4"
           id="contactMeTextArea"
           placeholder="Send me a message..."
           rows="5"

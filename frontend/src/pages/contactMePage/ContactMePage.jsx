@@ -1,108 +1,91 @@
-import { useState } from "react";
+import "./ContactMePage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/atoms/message/Message";
 import Loader from "../../components/atoms/loader/Loader";
 import { createContact } from "../../actions/contactActions";
 import ContactForm from "../../components/organisms/contactForm/ContactForm";
+import Icon from "../../components/atoms/icon/Icon";
+import TitleSection from "../../components/sectionTemplates/titleSection/TitleSection";
 
 const ContactMePage = () => {
   const dispatch = useDispatch();
 
   const contactCreate = useSelector((state) => state.contactCreate);
-  const { loading, error, success } = contactCreate;
+  const { error, success } = contactCreate;
 
   return (
     <div className="dkContactMePage">
+      <section id="contactTitleSection">
+        <TitleSection
+          className="text-white"
+          titleBegin="CONTACT"
+          titleEnd="ME"
+          titleFont="display-2 pt-3"
+          color="#FFB52E"
+        />
+      </section>
       <section id="contactInformationSection">
-        <div className="container py-4">
+        <div className="container py-md-5 py-sm-3">
           <div className="row">
-            <div className="col-md-4">
-              <div className="card">
-                <div className="card-header text-center">
-                  <h4>Social Media</h4>
+            <div className="col-lg-4 col-md-6 col-sm-12 order-1 order-md-0">
+              <div className="d-flex justify-content-start align-items-center text-white">
+                <Icon className="fas fa-phone-square me-3" size={40} />
+                <div className="contactDescription">
+                  <h6 className="text-uppercase fw-light">Call Me</h6>
+                  <p className="fs-5">
+                    <em>Call/Text</em>: 801-310-5876
+                  </p>
                 </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    <div className="d-flex justify-content-center">
-                      <i
-                        className="fab fa-instagram mr-3"
-                        style={{ fontSize: "30px" }}
-                      ></i>
-                      <h5>
-                        <a
-                          className="btn"
-                          href="https://www.instagram.com/landon.mckell/"
-                        >
-                          Instagram
-                        </a>
-                      </h5>
-                    </div>
-                  </li>
-                  <li className="list-group-item">
-                    <div className="d-flex justify-content-center">
-                      <i
-                        className="fab fa-github-square mr-3"
-                        style={{ fontSize: "30px" }}
-                      ></i>
-                      <h5>
-                        <a className="btn" href="https://github.com/ETM32019">
-                          Github
-                        </a>
-                      </h5>
-                    </div>
-                  </li>
-                  <li className="list-group-item">
-                    <div className="d-flex justify-content-center">
-                      <i
-                        className="fab fa-linkedin mr-3"
-                        style={{ fontSize: "30px" }}
-                      ></i>
-                      <h5>
-                        <a
-                          className="btn"
-                          href="https://www.linkedin.com/in/landon-mckell/"
-                        >
-                          LinkedIn
-                        </a>
-                      </h5>
-                    </div>
-                  </li>
-                </ul>
               </div>
-              <div className="card mt-4">
-                <div className="card-header text-center">
-                  <h4>Other Contact Methods</h4>
+              <div className="d-flex justify-content-start align-items-center text-white mt-3">
+                <Icon className="fas fa-envelope-square me-3" size={40} />
+                <div className="contactDescription">
+                  <h6 className="text-uppercase fw-light">
+                    Shoot me an email!
+                  </h6>
+                  <a
+                    className="fs-5 text-decoration-none text-white"
+                    href="mailto:landon.roney7923@gmail.com?subject=From Portfolio"
+                  >
+                    landon.roney7923@gmail.com
+                  </a>
                 </div>
-                <ul className="list-group list-group-flush">
-                  <li className="list-group-item">
-                    <div className="d-flex justify-content-between">
-                      <h5>
-                        <em>Call/Text</em>: 801-310-5876
-                      </h5>
-                      <i
-                        className="fas fa-phone-square mr-3"
-                        style={{ fontSize: "30px" }}
-                      ></i>
-                    </div>
-                  </li>
-                  <li className="list-group-item">
-                    <div className="d-flex justify-content-between">
-                      <h5>
-                        <em>Email:</em>{" "}
-                        <a href="mailto:landon.roney7923@gmail.com?subject=From Portfolio">
-                          landon.roney7923@gmail.com
-                        </a>
-                      </h5>
-                      <i
-                        className="fas fa-envelope-square mr-3"
-                        style={{ fontSize: "30px" }}
-                      ></i>
-                    </div>
-                  </li>
-                </ul>
+              </div>
+              <div className="socialMediaIcons mt-4">
+                <a
+                  href="https://github.com/ETM32019"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                >
+                  <Icon
+                    className="fab fa-github-square"
+                    size={30}
+                    color="#FFB52E"
+                  />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/landon-mckell/"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                >
+                  <Icon className="fab fa-linkedin" size={30} color="#FFB52E" />
+                </a>
+                <a
+                  href="https://www.instagram.com/landon.mckell/"
+                  rel="noreferrer noopener"
+                  target="_blank"
+                >
+                  <Icon
+                    className="fab fa-instagram"
+                    size={30}
+                    color="#FFB52E"
+                  />
+                </a>
               </div>
             </div>
-            <div className="col-md-8">
+            <div className="col-lg-8 col-md-6 col-sm-12 order-0 order-md-1 mb-3 mb-md-0">
+              {error && <Message variant="danger">{error}</Message>}
+              {success && <Message variant="success">Message Sent!</Message>}
               <ContactForm
                 formCallback={(form) => {
                   dispatch(
