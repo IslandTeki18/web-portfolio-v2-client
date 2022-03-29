@@ -1,7 +1,6 @@
 import "./ContactMePage.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/atoms/message/Message";
-import Loader from "../../components/atoms/loader/Loader";
 import { createContact } from "../../actions/contactActions";
 import ContactForm from "../../components/organisms/contactForm/ContactForm";
 import Icon from "../../components/atoms/icon/Icon";
