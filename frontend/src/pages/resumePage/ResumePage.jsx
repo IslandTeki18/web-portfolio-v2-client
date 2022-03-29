@@ -1,4 +1,5 @@
 import React from "react";
+import ResumeEdu from "../../components/molecules/resumeEdu/ResumeEdu";
 import ResumeExp from "../../components/molecules/resumeExp/ResumeExp";
 import "./ResumePage.scss";
 
@@ -25,8 +26,8 @@ const ResumePage = () => {
                 <h4>Landon McKell</h4>
                 <p>
                   <em>
-                    Self taught and driven Full Stack Developer with 2+ years of
-                    experience developing web applications in the MERN stack.
+                    Self taught and driven web developer with 4+ years of
+                    experience developing web applications.
                   </em>
                 </p>
                 <ul>
@@ -37,31 +38,33 @@ const ResumePage = () => {
               </div>
               <h3 className="resume-title">Education</h3>
               <div className="resume-item">
-                <h4>Dev Mountain iOS Immersive Bootcamp</h4>
-                <h5 className="text-white">May 2018 - Aug 2018</h5>
-                <p>
-                  <em>Salt Lake City, UT</em>
-                </p>
-                <p>
-                  Over a course of 13 weeks, I was taught about iOS app
+                <ResumeEdu
+                  educationProgram="iOS Immersive Bootcamp"
+                  startYear="May 2018"
+                  endYear="Aug 2018"
+                  schoolName="Dev Mountain"
+                  city="Salt Lake City"
+                  state="UT"
+                  description="Over a course of 13 weeks, I was taught about iOS app
                   development. We learned major concepts of app development such
                   as architecture, data, sumitting apps to the Apple App Store,
                   app design, how to navigate around xcode, the Apple
-                  programming language Swift, and most importantly debugging.
-                </p>
+                  programming language Swift, and most importantly debugging."
+                />
               </div>
               <div className="resume-item">
-                <h4>CS Student of Utah Valley University</h4>
-                <h5 className="text-white">2016 - 2017</h5>
-                <p>
-                  <em>Utah Valley University, Orem, UT</em>
-                </p>
-                <p>
-                  Spent two years in the CS Program of Utah Valley University.
+                <ResumeEdu
+                  educationProgram="Bachelor of Computer Science"
+                  startYear="2016"
+                  endYear="2017"
+                  schoolName="Utah Valley University"
+                  city="Orem"
+                  state="UT"
+                  description="Spent two years in the CS Program of Utah Valley University.
                   Had great mentors and teachers that taught me the basic
                   concepts of programming such as conditionals, variables,
-                  functions, classes and much more.
-                </p>
+                  functions, classes and much more."
+                />
               </div>
             </div>
             <div className="col-lg-6">

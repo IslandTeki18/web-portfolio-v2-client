@@ -68,9 +68,9 @@ const AdminProjectsListPage = () => {
 
   return (
     <div className="dkAdminProjectListPage">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
-          <div className="col-md-10 offset-md-1 my-4">
+          <div className="col-sm-12 my-4">
             <div className="col">
               <h4 className="text-white">Project List</h4>
             </div>
@@ -109,7 +109,7 @@ const AdminProjectsListPage = () => {
                       <th scope="col">ID</th>
                       <th scope="col">Title</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Last Updated</th>
+                      <th scope="col">Updated</th>
                       <th scope="col">Created</th>
                       <th scope="col"></th>
                       <th scope="col"></th>
@@ -126,14 +126,14 @@ const AdminProjectsListPage = () => {
                           <td>{project.status}</td>
                           <td>
                             {new Intl.DateTimeFormat("en-US", {
-                              dateStyle: "full",
-                              timeStyle: "medium",
+                              dateStyle: "medium",
+                              timeStyle: "short",
                             }).format(new Date(project.updatedAt.toString()))}
                           </td>
                           <td>
                             {new Intl.DateTimeFormat("en-US", {
-                              dateStyle: "full",
-                              timeStyle: "medium",
+                              dateStyle: "medium",
+                              timeStyle: "short",
                             }).format(new Date(project.createdAt.toString()))}
                           </td>
                           <td>

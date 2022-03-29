@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import "./AdminLoginPage.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../actions/userActions";
@@ -14,19 +15,22 @@ const AdminLoginPage = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  useEffect(() => {
-    if (userInfo) navigate(`/`);
-  }, [userInfo, navigate]);
+  useEffect(() => {}, [userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(username, password));
+    try {
+      dispatch(login(username, password));
+      navigate(`/admin/viewprojects`, { replace: true });
+    } catch (error) {
+      console.error(error);
+    }
   };
   return (
     <div className="dkAdminLoginPage">
       <div className="container py-4">
-        <div className="row">
-          <div className="col-md-6 offset-md-3">
+        <div className="row justify-content-center">
+          <div className="col-sm-12 col-md-8 col-lg-5">
             <div className="card">
               <div className="card-header text-center">
                 <h4>Admin Login</h4>
@@ -53,13 +57,13 @@ const AdminLoginPage = () => {
                     <label htmlFor="adminPasswordInput">Password</label>
                     <input
                       type="password"
-                      className="form-control"
+                      className="form-control mb-3"
                       id="adminPasswordInput"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary">
+                  <button type="submit" className="btn btn-primary ">
                     Submit
                   </button>
                 </form>
