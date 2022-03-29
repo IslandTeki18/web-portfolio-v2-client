@@ -1,0 +1,9 @@
+.dkContactMePage {
+  min-height: 90vh;
+  .socialMediaIcons {
+    display: flex;
+    justify-self: flex-start;
+    align-items: center;
+    column-gap: 10px;
+  }
+}

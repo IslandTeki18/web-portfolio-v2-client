@@ -6,75 +6,8 @@ body {
   overflow-x: hidden;
 }
 
-/* HomeSkills - Start */
-
-.skills-section .card hr {
-  border-width: 0.25rem;
-  width: 3rem;
+.lineClamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
-
-/* HomeSkills - End */
-
-/* Footer - Start */
-.footer {
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  background-color: #f5f5f5;
-}
-/* Footer - End */
-
-/* Resume Screen - Start */
-.section-title {
-  text-align: center;
-  padding-bottom: 30px;
-}
-.resume .resume-title {
-  font-size: 26px;
-  font-weight: 700;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  color: #a8bed4;
-}
-.resume .resume-item h4 {
-  line-height: 18px;
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
-  color: #6ca1d4;
-  margin-bottom: 10px;
-}
-.resume .resume-item {
-  padding: 0 0 20px 20px;
-  margin-top: -2px;
-  border-left: 2px solid #6ca1d4;
-  position: relative;
-}
-.resume .resume-item::before {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border-radius: 50px;
-  left: -9px;
-  top: 0;
-  background: #303030;
-  border: 2px solid #6ca1d4;
-}
-.resume .resume-item ul li {
-  padding-bottom: 10px;
-}
-/* Resume Screen - End */
-
-/* Project Detail Screen - Start */
-.details-btn {
-  min-width: 7em;
-}
-/* Project Detail Screen - End */
-
-/* Home Screen - Start */
-.home-card-ht {
-  min-height: 23rem;
-}
-/* Home Screen - End */

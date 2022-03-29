@@ -1,0 +1,13 @@
+.dkHomePage {
+  .home-card-ht {
+    min-height: 23rem;
+  }
+  .cardDescription {
+    width: 100%;
+    height: 130px;
+    overflow: hidden;
+  }
+  img {
+    object-fit: cover;
+  }
+}
