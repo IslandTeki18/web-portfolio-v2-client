@@ -37,15 +37,16 @@ const AdminContactListPage = () => {
     }
   };
 
+  if (loading || loadingDelete) return <Loader />;
+
   return (
     <div className="dkAdminContactListScreen">
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col-md-12 my-4">
             <div className="col">
               <h3 className="text-white">Contact List</h3>
             </div>
-            {loadingDelete && <Loader />}
             {errorDelete && (
               <Message variant="danger" isDismissible>
                 {errorDelete}
@@ -57,81 +58,78 @@ const AdminContactListPage = () => {
                 isDismissible
               >{`Contact Information Deleted`}</Message>
             )}
-            {loading ? (
-              <Loader />
-            ) : error ? (
+            {error && (
               <Message variant="danger" isDismissible>
                 {error}
               </Message>
-            ) : (
-              <div className="table-responsive">
-                <table className="table table-dark table-striped">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>NAME</th>
-                      <th>PHONE</th>
-                      <th>EMAIL</th>
-                      <th className="text-center">HAVE READ?</th>
-                      <th>view</th>
-                      <th>remove</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {contacts.map((contact) => (
-                      <tr key={contact._id}>
-                        <td>{contact._id.substring(18)}</td>
-                        <td>{contact.name}</td>
-                        <td>{contact.phone}</td>
-                        <td>{contact.email}</td>
-                        <td className="text-center">
-                          {contact.haveRead === true ? (
+            )}
+            <div className="table-responsive">
+              <table className="table table-dark table-striped">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>PHONE</th>
+                    <th>EMAIL</th>
+                    <th className="text-center">HAVE READ?</th>
+                    <th>view</th>
+                    <th>remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {contacts.map((contact) => (
+                    <tr key={contact._id}>
+                      <td>{contact._id.substring(18)}</td>
+                      <td>{contact.name}</td>
+                      <td>{contact.phone}</td>
+                      <td>{contact.email}</td>
+                      <td className="text-center">
+                        {contact.haveRead === true ? (
+                          <i
+                            className="fas fa-check"
+                            style={{
+                              color: "green",
+                            }}
+                          ></i>
+                        ) : (
+                          <i
+                            className="fas fa-times"
+                            style={{ color: "red" }}
+                          ></i>
+                        )}
+                      </td>
+                      <td>
+                        <Link to={`/admin/contact/${contact._id}/details`}>
+                          <button className="btn btn-link">
                             <i
-                              className="fas fa-check"
-                              style={{
-                                color: "green",
-                              }}
-                            ></i>
-                          ) : (
-                            <i
-                              className="fas fa-times"
-                              style={{ color: "red" }}
-                            ></i>
-                          )}
-                        </td>
-                        <td>
-                          <Link to={`/admin/contact/${contact._id}/details`}>
-                            <button className="btn btn-link">
-                              <i
-                                className="fas fa-eye"
-                                style={{
-                                  fontSize: "20px",
-                                  color: "white",
-                                }}
-                              ></i>
-                            </button>
-                          </Link>
-                        </td>
-                        <td>
-                          <button
-                            className="btn btn-link"
-                            onClick={() => deleteHandler(contact._id)}
-                          >
-                            <i
-                              className="fas fa-trash"
+                              className="fas fa-eye"
                               style={{
                                 fontSize: "20px",
-                                color: "red",
+                                color: "white",
                               }}
                             ></i>
                           </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-link"
+                          onClick={() => deleteHandler(contact._id)}
+                        >
+                          <i
+                            className="fas fa-trash"
+                            style={{
+                              fontSize: "20px",
+                              color: "red",
+                            }}
+                          ></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

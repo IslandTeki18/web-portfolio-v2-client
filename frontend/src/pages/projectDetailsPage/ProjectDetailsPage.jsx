@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 import { useParams } from "react-router";
-import useGetProjectDetails from "../../customHooks/useGetProjectDetails";
+import { useGetProjectDetails } from "../../customHooks/useGetProjectDetails";
 import Badge from "../../components/atoms/badge/Badge";
 import Img from "../../components/atoms/img/Img";
 

@@ -95,13 +95,10 @@ const AdminProjectsListPage = () => {
                 {errorCreate}
               </Message>
             )}
-            {loading ? (
-              <Loader />
-            ) : error ? (
-              <Message variant="danger" isDismissible>
+            {loading && <Loader />}
+            {error && <Message variant="danger" isDismissible>
                 {error}
-              </Message>
-            ) : (
+              </Message> }
               <div className="table-responsive">
                 <table className="table table-sm table-dark table-striped">
                   <thead>
@@ -173,7 +170,6 @@ const AdminProjectsListPage = () => {
                   </tbody>
                 </table>
               </div>
-            )}
           </div>
         </div>
       </div>
