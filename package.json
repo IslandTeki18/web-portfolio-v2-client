@@ -1,34 +1,47 @@
 {
-  "name": "portfolio",
-  "version": "1.0.0",
-  "description": "This is my personal web portfolio.",
-  "main": "server.js",
-  "type": "module",
-  "scripts": {
-    "start": "node backend/server",
-    "server": "nodemon backend/server",
-    "client": "npm start --prefix frontend",
-    "dev": "concurrently \"node backend/server.js\" \"npm run client\"",
-    "data:import": "node backend/seeder",
-    "data:destroy": "node backend/seeder -d",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
-  },
-  "author": "Landon McKell",
-  "license": "MIT",
+  "name": "frontend",
+  "proxy": "http://127.0.0.1:3001",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "aws-sdk": "^2.1031.0",
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-async-handler": "^1.2.0",
-    "fs": "0.0.1-security",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.13",
-    "multer": "^1.4.3",
-    "path": "^0.12.7"
+    "@testing-library/jest-dom": "^5.15.0",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.24.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^6.0.2",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.4.0",
+    "sass": "^1.49.9",
+    "web-vitals": "^2.1.2"
   },
-  "devDependencies": {
-    "concurrently": "^6.4.0",
-    "nodemon": "^2.0.15"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
