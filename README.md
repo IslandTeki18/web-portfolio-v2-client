@@ -4,8 +4,6 @@
 
 [Portfolio](https://landonmckell.com/) Website
 
-![screenshot](https://github.com/ETM32019/personal-portfolio/blob/main/uploads/image-1611296711643.png)
-
 ## User Stories
 
 - [x] as a user, you can visit all of the public pages such as home, projects, contact, and resume

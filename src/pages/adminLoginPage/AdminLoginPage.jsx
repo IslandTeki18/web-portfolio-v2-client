@@ -15,15 +15,16 @@ const AdminLoginPage = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
 
-  useEffect(() => {}, [userInfo, navigate]);
+  useEffect(() => {
+    if (userInfo) navigate(`/admin/viewprojects`, { replace: true });
+  }, [userInfo, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     try {
       dispatch(login(username, password));
-      navigate(`/admin/viewprojects`, { replace: true });
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
     }
   };
   return (
