@@ -15,7 +15,7 @@ import axios from "axios";
 
 const req =
   process.env.ENV === "production"
-    ? `${process.env.REQUEST_URL}/api/user`
+    ? `${process.env.REQUEST_URL}api/user`
     : "api/user";
 
 export const login = (username, password) => async (dispatch) => {

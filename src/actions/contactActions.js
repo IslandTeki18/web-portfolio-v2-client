@@ -19,7 +19,9 @@ import axios from "axios";
 import { logout } from "./userActions";
 
 const req =
-  process.env.ENV === "production" ? `${process.env.REQUEST_URL}/api` : "api/";
+  process.env.ENV === "production"
+    ? `${process.env.REQUEST_URL}api/contacts`
+    : "api/contacts";
 
 export const listContacts = () => async (dispatch, getState) => {
   try {
@@ -36,7 +38,7 @@ export const listContacts = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`${req}/contacts`, config);
+    const { data } = await axios.get(`${req}`, config);
 
     dispatch({
       type: CONTACT_LIST_SUCCESS,
@@ -66,7 +68,7 @@ export const getContactDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`${req}/contacts${id}`, config);
+    const { data } = await axios.get(`${req}/${id}`, config);
     dispatch({
       type: CONTACT_DETAILS_SUCCESS,
       payload: data,
@@ -94,7 +96,7 @@ export const createContact =
       };
 
       const { data } = await axios.post(
-        `${req}/contacts`,
+        `${req}`,
         {
           name,
           phone,
@@ -133,7 +135,7 @@ export const deleteContact = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`${req}/contacts/${id}`, config);
+    await axios.delete(`${req}/${id}`, config);
 
     dispatch({ type: CONTACT_DELETE_SUCCESS });
   } catch (error) {
@@ -166,11 +168,7 @@ export const updateContact = (contact) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(
-      `${req}/contacts/${contact._id}`,
-      contact,
-      config
-    );
+    const { data } = await axios.put(`${req}/${contact._id}`, contact, config);
 
     dispatch({
       type: CONTACT_UPDATE_SUCCESS,
