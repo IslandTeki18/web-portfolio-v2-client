@@ -18,12 +18,15 @@ import {
 } from "../constants/projectConstants";
 import { logout } from "./userActions";
 
+const req =
+  process.env.ENV === "production" ? `${process.env.REQUEST_URL}/api` : "api/";
+
 export const listProjects = () => async (dispatch) => {
   try {
     dispatch({
       type: PROJECT_LIST_REQUEST,
     });
-    const { data } = await axios.get(`/api/projects`);
+    const { data } = await axios.get(`${req}/projects`);
     dispatch({
       type: PROJECT_LIST_SUCCESS,
       payload: data,
@@ -44,7 +47,7 @@ export const listProjectDetails = (id) => async (dispatch) => {
     dispatch({
       type: PROJECT_DETAILS_REQUEST,
     });
-    const { data } = await axios.get(`/api/projects/${id}`);
+    const { data } = await axios.get(`${req}/projects/${id}`);
     dispatch({
       type: PROJECT_DETAILS_SUCCESS,
       payload: data,
@@ -75,7 +78,7 @@ export const createNewProject = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/projects", {}, config);
+    const { data } = await axios.post(`${req}/projects`, {}, config);
 
     dispatch({
       type: PROJECT_CREATE_SUCCESS,
@@ -106,7 +109,7 @@ export const deleteProject = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    await axios.delete(`/api/projects/${id}`, config);
+    await axios.delete(`${req}/projects/${id}`, config);
     dispatch({
       type: PROJECT_DELETE_SUCCESS,
     });
@@ -140,7 +143,7 @@ export const updateProject = (project) => async (dispatch, getState) => {
       },
     };
     const { data } = await axios.put(
-      `/api/projects/${project._id}`,
+      `${req}/projects/${project._id}`,
       project,
       config
     );

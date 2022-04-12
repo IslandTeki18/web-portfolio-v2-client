@@ -18,6 +18,9 @@ import {
 import axios from "axios";
 import { logout } from "./userActions";
 
+const req =
+  process.env.ENV === "production" ? `${process.env.REQUEST_URL}/api` : "api/";
+
 export const listContacts = () => async (dispatch, getState) => {
   try {
     dispatch({ type: CONTACT_LIST_REQUEST });
@@ -33,7 +36,7 @@ export const listContacts = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get("/api/contacts", config);
+    const { data } = await axios.get(`${req}/contacts`, config);
 
     dispatch({
       type: CONTACT_LIST_SUCCESS,
@@ -63,7 +66,7 @@ export const getContactDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     };
-    const { data } = await axios.get(`/api/contacts/${id}`, config);
+    const { data } = await axios.get(`${req}/contacts${id}`, config);
     dispatch({
       type: CONTACT_DETAILS_SUCCESS,
       payload: data,
@@ -79,43 +82,42 @@ export const getContactDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export const createContact = (name, phone, email, message) => async (
-  dispatch
-) => {
-  try {
-    dispatch({ type: CONTACT_CREATE_REQUEST });
+export const createContact =
+  (name, phone, email, message) => async (dispatch) => {
+    try {
+      dispatch({ type: CONTACT_CREATE_REQUEST });
 
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+      const config = {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    const { data } = await axios.post(
-      "/api/contacts",
-      {
-        name,
-        phone,
-        email,
-        message,
-      },
-      config
-    );
+      const { data } = await axios.post(
+        `${req}/contacts`,
+        {
+          name,
+          phone,
+          email,
+          message,
+        },
+        config
+      );
 
-    dispatch({
-      type: CONTACT_CREATE_SUCCESS,
-      payload: data,
-    });
-  } catch (error) {
-    dispatch({
-      type: CONTACT_CREATE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
-    });
-  }
-};
+      dispatch({
+        type: CONTACT_CREATE_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      dispatch({
+        type: CONTACT_CREATE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      });
+    }
+  };
 
 export const deleteContact = (id) => async (dispatch, getState) => {
   try {
@@ -131,7 +133,7 @@ export const deleteContact = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`/api/contacts/${id}`, config);
+    await axios.delete(`${req}/contacts/${id}`, config);
 
     dispatch({ type: CONTACT_DELETE_SUCCESS });
   } catch (error) {
@@ -165,7 +167,7 @@ export const updateContact = (contact) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `/api/contacts/${contact._id}`,
+      `${req}/contacts/${contact._id}`,
       contact,
       config
     );

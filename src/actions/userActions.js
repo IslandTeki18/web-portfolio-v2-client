@@ -1,118 +1,123 @@
 import {
-    USER_LOGIN_REQUEST,
-    USER_LOGIN_SUCCESS,
-    USER_LOGIN_FAIL,
-    USER_DETAILS_REQUEST,
-    USER_DETAILS_SUCCESS,
-    USER_DETAILS_FAIL,
-    USER_DETAILS_RESET,
-    USER_LOGOUT,
-    USER_UPDATE_SUCCESS,
-    USER_UPDATE_REQUEST,
-    USER_UPDATE_FAIL,
+  USER_LOGIN_REQUEST,
+  USER_LOGIN_SUCCESS,
+  USER_LOGIN_FAIL,
+  USER_DETAILS_REQUEST,
+  USER_DETAILS_SUCCESS,
+  USER_DETAILS_FAIL,
+  USER_DETAILS_RESET,
+  USER_LOGOUT,
+  USER_UPDATE_SUCCESS,
+  USER_UPDATE_REQUEST,
+  USER_UPDATE_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
 
+const req =
+  process.env.ENV === "production"
+    ? `${process.env.REQUEST_URL}/api/user`
+    : "api/user";
+
 export const login = (username, password) => async (dispatch) => {
-    try {
-        dispatch({
-            type: USER_LOGIN_REQUEST,
-        });
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-        const { data } = await axios.post(
-            "/api/users/login",
-            {
-                username,
-                password,
-            },
-            config
-        );
-        dispatch({
-            type: USER_LOGIN_SUCCESS,
-            payload: data,
-        });
-        localStorage.setItem("userInfo", JSON.stringify(data));
-    } catch (error) {
-        dispatch({
-            type: USER_LOGIN_FAIL,
-            payload:
-                error.response && error.response.data.message
-                    ? error.response.data.message
-                    : error.message,
-        });
-    }
+  try {
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+    });
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    const { data } = await axios.post(
+      `${req}/login`,
+      {
+        username,
+        password,
+      },
+      config
+    );
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    });
+    localStorage.setItem("userInfo", JSON.stringify(data));
+  } catch (error) {
+    dispatch({
+      type: USER_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };
 
 export const logout = () => (dispatch) => {
-    localStorage.removeItem("userInfo");
-    dispatch({ type: USER_LOGOUT });
-    dispatch({ type: USER_DETAILS_RESET });
+  localStorage.removeItem("userInfo");
+  dispatch({ type: USER_LOGOUT });
+  dispatch({ type: USER_DETAILS_RESET });
 };
 
 export const getUserDetails = (id) => async (dispatch, getState) => {
-    try {
-        dispatch({
-            type: USER_DETAILS_REQUEST,
-        });
+  try {
+    dispatch({
+      type: USER_DETAILS_REQUEST,
+    });
 
-        const {
-            userLogin: { userInfo },
-        } = getState();
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${userInfo.token}`,
-            },
-        };
-        const { data } = await axios.get(`/api/users/${id}`, config);
-        dispatch({
-            type: USER_DETAILS_SUCCESS,
-            payload: data,
-        });
-    } catch (error) {
-        dispatch({
-            type: USER_DETAILS_FAIL,
-            payload:
-                error.response && error.response.data.message
-                    ? error.response.data.message
-                    : error.message,
-        });
-    }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.get(`${req}/${id}`, config);
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };
 
 export const updateUserProfile = (user) => async (dispatch, getState) => {
-    try {
-        dispatch({
-            type: USER_UPDATE_REQUEST,
-        });
+  try {
+    dispatch({
+      type: USER_UPDATE_REQUEST,
+    });
 
-        const {
-            userLogin: { userInfo },
-        } = getState();
+    const {
+      userLogin: { userInfo },
+    } = getState();
 
-        const config = {
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${userInfo.token}`,
-            },
-        };
-        const { data } = await axios.put(`/api/users/settings`, user, config);
-        dispatch({
-            type: USER_UPDATE_SUCCESS,
-            payload: data,
-        });
-    } catch (error) {
-        dispatch({
-            type: USER_UPDATE_FAIL,
-            payload:
-                error.response && error.response.data.message
-                    ? error.response.data.message
-                    : error.message,
-        });
-    }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    const { data } = await axios.put(`${req}/settings`, user, config);
+    dispatch({
+      type: USER_UPDATE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_UPDATE_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
 };
