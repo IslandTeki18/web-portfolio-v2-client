@@ -11,3 +11,35 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+
+.bg-primaryMain {
+  background-color: #ffc700;
+}
+.bg-secondaryMain {
+  background-color: #373737;
+}
+.bg-teritaryMain {
+  background-color: #c4c4c4;
+}
+.bg-blackMain {
+  background-color: #000000;
+}
+.bg-whiteMain {
+  background-color: #ffffff;
+}
+
+.color-primaryMain {
+  color: #ffc700;
+}
+.color-secondaryMain {
+  color: #373737;
+}
+.color-teritaryMain {
+  color: #c4c4c4;
+}
+.color-blackMain {
+  color: #000000
+}
+.color-whiteMain {
+  color: #ffffff
+}

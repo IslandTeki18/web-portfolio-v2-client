@@ -16,6 +16,7 @@ const HomePage = () => {
   }, []);
 
   function renderProjects() {
+    if (!projects) return;
     return projects
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
       .map((project) => (

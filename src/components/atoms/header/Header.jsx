@@ -1,5 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import "./Header.scss";
+import Icon from "../icon/Icon";
+import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../actions/userActions";
 
@@ -14,10 +16,10 @@ const Header = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container-fluid">
+    <nav className="dkHeader navbar navbar-expand-lg navbar-dark bg-primary">
+      <div className="container">
         <Link className="navbar-brand" to="/">
-          Landon McKell
+          <Icon className="fa-solid fa-fire-flame-curved" size={60} />
         </Link>
         <button
           className="navbar-toggler"
@@ -49,23 +51,23 @@ const Header = () => {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdown"
                   >
-                    <Link className="dropdown-item" to="/admin/viewprojects">
+                    <NavLink className="dropdown-item" to="/admin/viewprojects">
                       View Projects
-                    </Link>
-                    <Link className="dropdown-item" to="/admin/viewcontacts">
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/admin/viewcontacts">
                       View Contacts
-                    </Link>
-                    <Link className="dropdown-item" to="/admin/settings">
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/admin/settings">
                       Settings
-                    </Link>
+                    </NavLink>
                     <div className="dropdown-divider"></div>
-                    <Link
+                    <NavLink
                       className="dropdown-item"
                       to="/"
                       onClick={logoutHandler}
                     >
                       Logout
-                    </Link>
+                    </NavLink>
                   </div>
                 </li>
               </>
@@ -73,29 +75,29 @@ const Header = () => {
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link className="nav-link" to="/">
+              <NavLink className="nav-link" to="/">
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/projects">
-                Projects
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
+              <NavLink className="nav-link" to="/about">
                 About
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
+              <NavLink className="nav-link" to="/projects">
+                Projects
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/resume">
+              <NavLink className="nav-link" to="/resume">
                 Resume
-              </Link>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
             </li>
           </ul>
         </div>

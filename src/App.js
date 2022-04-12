@@ -27,7 +27,7 @@ function App() {
           <Route path="/projects" element={<ProjectsListPage />} />
           <Route path="/contact" element={<ContactMePage />} />
           <Route path="/resume" element={<ResumePage />} />
-          <Route path="/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminLoginPage />} />
           <Route
             path="/admin/settings"
             element={<AdminProfileSettingsPage />}
