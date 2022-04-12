@@ -1,9 +1,14 @@
 main {
-  min-height: 80vh;
+  padding-top: 70px;
+  min-height: 94vh;
 }
 
 body {
   overflow-x: hidden;
+}
+
+.max-view-height {
+  height: 100vh;
 }
 
 .lineClamp {

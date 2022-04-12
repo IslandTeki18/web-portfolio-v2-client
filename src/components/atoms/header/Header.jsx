@@ -7,22 +7,32 @@ import { logout } from "../../../actions/userActions";
 
 const Header = () => {
   const dispatch = useDispatch();
-
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
+  const activeStyle = {
+    color: "#fff",
+    textDecorationLine: "underline",
+    textDecorationColor: "#ffc700",
+    textDecorationThickness: "3px",
+    textUnderlineOffset: "4px",
+  };
 
   const logoutHandler = () => {
     dispatch(logout());
   };
 
   return (
-    <nav className="dkHeader navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="container">
+    <nav className={`dkHeader navbar fixed-top navbar-expand-md navbar-dark`}>
+      <div className={`container`}>
         <Link className="navbar-brand" to="/">
-          <Icon className="fa-solid fa-fire-flame-curved" size={60} />
+          <Icon
+            className="fa-solid fa-fire-flame-curved"
+            size={60}
+            color={"#ffc700"}
+          />
         </Link>
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -30,7 +40,7 @@ const Header = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <Icon className="fa-solid fa-bars" size={35} color={"#ffffff"} />
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,27 +85,47 @@ const Header = () => {
           </ul>
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/">
+              <NavLink
+                className="nav-link menu-item"
+                to="/"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/about">
+              <NavLink
+                className="nav-link menu-item"
+                to="/about"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 About
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/projects">
+              <NavLink
+                className="nav-link menu-item"
+                to="/projects"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 Projects
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/resume">
+              <NavLink
+                className="nav-link menu-item"
+                to="/resume"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 Resume
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/contact">
+              <NavLink
+                className="nav-link menu-item"
+                to="/contact"
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
+              >
                 Contact
               </NavLink>
             </li>

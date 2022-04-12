@@ -1,0 +1,17 @@
+.dkHeader {
+  background-color: #373737;
+  border-bottom: 1px solid #c4c4c47a;
+  .btn-transparent {
+    color: transparent;
+    border-color: transparent;
+  }
+
+  .menu-item {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  a {
+    transition: 0.3s all ease;
+  }
+}

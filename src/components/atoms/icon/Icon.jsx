@@ -28,7 +28,7 @@ Icon.propTypes = {
   margin: PropTypes.string,
   padding: PropTypes.string,
   color: PropTypes.string,
-  size: PropTypes.string || PropTypes.number,
+  size: PropTypes.number,
   paddingTop: PropTypes.string,
   paddingBottom: PropTypes.string,
   paddingLeft: PropTypes.string,

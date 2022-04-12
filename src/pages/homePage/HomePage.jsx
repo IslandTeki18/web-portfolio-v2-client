@@ -53,8 +53,9 @@ const HomePage = () => {
     <div className="dkHomePage">
       <section id="homeHeaderSection">
         <HeroSection
-          displayText="Landon McKell"
-          heroDescrption="I build beautiful custom websites using modern technology such as React, Nodejs, Express, and MongoDB. I am full stack web developer living the Utah area."
+          displayText="Hi, I'm Landon McKell."
+          heroDescrption="I'm a Professional"
+          profession="Web Developer"
         />
       </section>
       <section id="homeProjectsSection">

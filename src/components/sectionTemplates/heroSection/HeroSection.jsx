@@ -1,26 +1,29 @@
 import React from "react";
+import "./HeroSection.scss";
 import PropTypes from "prop-types";
 
 const HeroSection = (props) => {
   return (
-    <header className="bg-primary py-5 mb-5">
+    <div className="dkHeroSection bg-secondaryMain max-view-height">
       <div className="container h-100">
         <div className="row h-100 align-items-center">
-          <div className="col-lg-12">
-            <h1 className="display-4 text-white mt-5 mb-2">
-              {props.displayText}
-            </h1>
-            <p className="lead mb-5 text-white-50">{props.heroDescrption}</p>
+          <div className="col-lg-12 text-center">
+            <h1 className="name-text mt-5 mb-2">{props.displayText}</h1>
+            <p className="subtitle-text mb-5">
+              {props.heroDescrption}
+              <span className="color-primaryMain ms-2">{props.profession}</span>
+            </p>
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 };
 
 HeroSection.propTypes = {
   displayText: PropTypes.string,
   heroDescrption: PropTypes.string,
+  profession: PropTypes.string,
 };
 
 export default HeroSection;
