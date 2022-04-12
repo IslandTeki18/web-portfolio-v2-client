@@ -19,8 +19,8 @@ import axios from "axios";
 import { logout } from "./userActions";
 
 const req =
-  process.env.ENV === "production"
-    ? `${process.env.REQUEST_URL}api/contacts`
+  process.env.NODE_ENV === "production"
+    ? `${process.env.REACT_APP_REQUEST_URL}api/contacts`
     : "api/contacts";
 
 export const listContacts = () => async (dispatch, getState) => {

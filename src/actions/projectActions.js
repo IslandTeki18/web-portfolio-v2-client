@@ -19,8 +19,8 @@ import {
 import { logout } from "./userActions";
 
 const req =
-  process.env.ENV === "production"
-    ? `${process.env.REQUEST_URL}api/projects`
+  process.env.NODE_ENV === "production"
+    ? `${process.env.REACT_APP_REQUEST_URL}api/projects`
     : "/api/projects";
 
 export const listProjects = () => async (dispatch) => {
