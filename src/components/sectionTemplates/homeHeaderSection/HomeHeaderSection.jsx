@@ -1,10 +1,10 @@
 import React from "react";
-import "./HeroSection.scss";
+import "./HomeHeaderSection.scss";
 import PropTypes from "prop-types";
 
-const HeroSection = (props) => {
+const HomeHeaderSection = (props) => {
   return (
-    <div className="dkHeroSection bg-secondaryMain max-view-height">
+    <section className="dkHomeHeaderSection waves-spacer wave-1 max-view-height">
       <div className="container h-100">
         <div className="row h-100 align-items-center">
           <div className="col-lg-12 text-center">
@@ -16,14 +16,14 @@ const HeroSection = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
-HeroSection.propTypes = {
+HomeHeaderSection.propTypes = {
   displayText: PropTypes.string,
   heroDescrption: PropTypes.string,
   profession: PropTypes.string,
 };
 
-export default HeroSection;
+export default HomeHeaderSection;

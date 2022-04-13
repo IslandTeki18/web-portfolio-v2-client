@@ -48,3 +48,24 @@ body {
 .color-whiteMain {
   color: #ffffff;
 }
+
+.waves-spacer {
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.wave-1 {
+  background-image: url("./assets/home-header-wave.svg");
+}
+.waves-1 {
+  background-image: url("./assets/home-projects-waves.svg");
+}
+.stacked-waves-1 {
+  background-image: url("./assets/home-skills-stacked-waves.svg");
+}
+
+.stacked-waves-2 {
+  background-image: url("./assets/home-skills-stacked-waves2.svg");
+}

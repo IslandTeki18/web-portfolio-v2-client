@@ -1,0 +1,29 @@
+.dkHomeProjectSection {
+  position: relative;
+  .title-row {
+    padding-top: 100px;
+    padding-bottom: 80px;
+    .project-title {
+      font-weight: 600;
+      font-size: 48px;
+      z-index: 1;
+    }
+  }
+  .decal {
+    max-height: 620px;
+    height: 100%;
+    max-width: 681px;
+    width: 100%;
+    background-color: #ffc700;
+    border-radius: 0 200px 200px 200px;
+    position: absolute;
+  }
+
+  .spacer {
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

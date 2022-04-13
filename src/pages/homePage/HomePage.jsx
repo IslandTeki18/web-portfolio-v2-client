@@ -5,8 +5,9 @@ import Message from "../../components/atoms/message/Message";
 import { useGetProjects } from "../../customHooks/useGetProjects";
 import useScrollToTop from "../../customHooks/useScrollToTop";
 import Card from "../../components/atoms/card/Card";
-import TechStackSection from "../../components/sectionTemplates/techStackSection/TechStackSection";
-import HeroSection from "../../components/sectionTemplates/heroSection/HeroSection";
+import HomeHeaderSection from "../../components/sectionTemplates/homeHeaderSection/HomeHeaderSection";
+import HomeProjectSection from "../../components/sectionTemplates/homeProjectSection/HomeProjectSection";
+import SkillsSection from "../../components/sectionTemplates/skillsSection/SkillsSection";
 
 const HomePage = () => {
   const { loading, error, projects } = useGetProjects();
@@ -38,6 +39,17 @@ const HomePage = () => {
       ));
   }
 
+  const mySkillsData = [
+    { progress: 80, title: "ReactJS" },
+    { progress: 60, title: "Typescript" },
+    { progress: 50, title: "Bootstrap 4 & 5" },
+    { progress: 80, title: "Javascript" },
+    { progress: 60, title: "NodeJS" },
+    { progress: 60, title: "ExpressJS" },
+    { progress: 60, title: "MongoDB" },
+    { progress: 25, title: "MySQL" },
+  ];
+
   if (loading) {
     <Loader />;
   }
@@ -48,26 +60,13 @@ const HomePage = () => {
   }
   return (
     <div className="dkHomePage">
-      <section id="homeHeaderSection">
-        <HeroSection
-          displayText="Hi, I'm Landon McKell."
-          heroDescrption="I'm a Professional"
-          profession="Web Developer"
-        />
-      </section>
-      <section id="homeProjectsSection">
-        <div className="container">
-          <div className="col-md-12">
-            <h2 className="text-white">
-              <u>Recent Projects</u>
-            </h2>
-          </div>
-          <div className="row">{renderProjects()}</div>
-        </div>
-      </section>
-      <section id="homeTechStackSection">
-        <TechStackSection />
-      </section>
+      <HomeHeaderSection
+        displayText="Hi, I'm Landon McKell."
+        heroDescrption="I'm a Professional"
+        profession="Web Developer"
+      />
+      <HomeProjectSection projects={renderProjects()} />
+      <SkillsSection skillsData={mySkillsData} />
     </div>
   );
 };
