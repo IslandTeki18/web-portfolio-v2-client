@@ -1,9 +1,11 @@
 import React from "react";
 import ResumeEdu from "../../components/molecules/resumeEdu/ResumeEdu";
 import ResumeExp from "../../components/molecules/resumeExp/ResumeExp";
+import useScrollToTop from "../../customHooks/useScrollToTop";
 import "./ResumePage.scss";
 
 const ResumePage = () => {
+  useScrollToTop();
   return (
     <div className="dkResumePage">
       <section className="resume py-2">

@@ -2,9 +2,11 @@ import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 import ProjectListCard from "../../components/organisms/projectListCard/ProjectListCard";
 import { useGetProjects } from "../../customHooks/useGetProjects";
+import useScrollToTop from "../../customHooks/useScrollToTop";
 
 const ProjectsListPage = () => {
   const { loading, error, projects } = useGetProjects();
+  useScrollToTop()
 
   function renderProjects() {
     if (!projects) return;

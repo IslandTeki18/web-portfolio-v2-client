@@ -1,6 +1,8 @@
 import React from "react";
+import useScrollToTop from "../../customHooks/useScrollToTop";
 
 const AboutMePage = () => {
+  useScrollToTop();
   return (
     <div className="dkAboutMePage">
       <div className="container">

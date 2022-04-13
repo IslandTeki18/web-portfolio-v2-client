@@ -1,0 +1,20 @@
+.dkNotFoundPage {
+  .home-link {
+    color: #ffc700;
+  }
+  .center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .spacing-content {
+    height: 75vh;
+  }
+  .not-found-code {
+    text-decoration: underline;
+    text-decoration-thickness: 6px;
+    text-decoration-color: #ffc700;
+    text-underline-offset: 6px;
+  }
+}

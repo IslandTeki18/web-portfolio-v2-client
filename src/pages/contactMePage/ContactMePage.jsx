@@ -5,12 +5,14 @@ import { createContact } from "../../actions/contactActions";
 import ContactForm from "../../components/organisms/contactForm/ContactForm";
 import Icon from "../../components/atoms/icon/Icon";
 import TitleSection from "../../components/sectionTemplates/titleSection/TitleSection";
+import useScrollToTop from "../../customHooks/useScrollToTop";
 
 const ContactMePage = () => {
   const dispatch = useDispatch();
-
   const contactCreate = useSelector((state) => state.contactCreate);
   const { error, success } = contactCreate;
+
+  useScrollToTop()
 
   return (
     <div className="dkContactMePage">

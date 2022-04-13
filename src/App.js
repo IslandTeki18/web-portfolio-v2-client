@@ -11,6 +11,7 @@ import AdminProjectsListPage from "./pages/adminProjectsListPage/AdminProjectsLi
 import AdminProjectEditPage from "./pages/adminProjectEditPage/AdminProjectEditPage";
 import AdminContactListPage from "./pages/adminContactListPage/AdminContactListPage";
 import AdminContactDetailsPage from "./pages/adminContactDetailsPage/AdminContactDetailsPage";
+import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 
 import Header from "./components/atoms/header/Header";
 import Footer from "./components/atoms/footer/Footer";
@@ -49,6 +50,7 @@ function App() {
             path="/admin/viewcontacts"
             element={<AdminContactListPage />}
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
       <Footer />

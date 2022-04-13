@@ -1,5 +1,5 @@
 main {
-  padding-top: 70px;
+  padding-top: 80px;
   min-height: 94vh;
 }
 
@@ -43,8 +43,8 @@ body {
   color: #c4c4c4;
 }
 .color-blackMain {
-  color: #000000
+  color: #000000;
 }
 .color-whiteMain {
-  color: #ffffff
+  color: #ffffff;
 }

@@ -1,19 +1,16 @@
-import { useEffect } from "react";
 import "./HomePage.scss";
 import { Link } from "react-router-dom";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 import { useGetProjects } from "../../customHooks/useGetProjects";
+import useScrollToTop from "../../customHooks/useScrollToTop";
 import Card from "../../components/atoms/card/Card";
 import TechStackSection from "../../components/sectionTemplates/techStackSection/TechStackSection";
 import HeroSection from "../../components/sectionTemplates/heroSection/HeroSection";
 
 const HomePage = () => {
   const { loading, error, projects } = useGetProjects();
-
-  useEffect(() => {
-    window.scrollTo(0, 0, "smooth");
-  }, []);
+  useScrollToTop();
 
   function renderProjects() {
     if (!projects) return;
