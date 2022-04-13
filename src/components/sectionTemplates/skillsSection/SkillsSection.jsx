@@ -20,14 +20,17 @@ const SkillsSection = (props) => {
     ));
   }
   return (
-    <div className="dkSkillsSection waves-spacer stacked-waves-2">
+    <section className="dkSkillsSection waves-spacer stacked-waves-2 py-5">
       <div className="container">
-        <div className="col-12">
+        <div className="col-12 pb-5">
           <p className="skills-title color-whiteMain">My Skills</p>
         </div>
         <div className="row">{renderProgressBars()}</div>
+        <div className="col-12 resume-button-wrapper pb-5">
+          <button className="cv-button">Download CV</button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

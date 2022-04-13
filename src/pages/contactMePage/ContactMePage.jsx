@@ -4,7 +4,6 @@ import Message from "../../components/atoms/message/Message";
 import { createContact } from "../../actions/contactActions";
 import ContactForm from "../../components/organisms/contactForm/ContactForm";
 import Icon from "../../components/atoms/icon/Icon";
-import TitleSection from "../../components/sectionTemplates/titleSection/TitleSection";
 import useScrollToTop from "../../customHooks/useScrollToTop";
 
 const ContactMePage = () => {
@@ -12,19 +11,11 @@ const ContactMePage = () => {
   const contactCreate = useSelector((state) => state.contactCreate);
   const { error, success } = contactCreate;
 
-  useScrollToTop()
+  useScrollToTop();
 
   return (
     <div className="dkContactMePage">
-      <section id="contactTitleSection">
-        <TitleSection
-          className="text-white"
-          titleBegin="CONTACT"
-          titleEnd="ME"
-          titleFont="display-2 pt-3"
-          color="#FFB52E"
-        />
-      </section>
+      <section id="contactTitleSection"></section>
       <section id="contactInformationSection">
         <div className="container py-md-5 py-sm-3">
           <div className="row">

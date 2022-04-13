@@ -8,6 +8,7 @@ import Card from "../../components/atoms/card/Card";
 import HomeHeaderSection from "../../components/sectionTemplates/homeHeaderSection/HomeHeaderSection";
 import HomeProjectSection from "../../components/sectionTemplates/homeProjectSection/HomeProjectSection";
 import SkillsSection from "../../components/sectionTemplates/skillsSection/SkillsSection";
+import ServiceSection from "../../components/sectionTemplates/serviceSection/ServiceSection";
 
 const HomePage = () => {
   const { loading, error, projects } = useGetProjects();
@@ -67,6 +68,7 @@ const HomePage = () => {
       />
       <HomeProjectSection projects={renderProjects()} />
       <SkillsSection skillsData={mySkillsData} />
+      <ServiceSection />
     </div>
   );
 };

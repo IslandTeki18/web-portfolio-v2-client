@@ -4,7 +4,7 @@ import Img from "../img/Img";
 
 const Card = (props) => {
   return (
-    <div className={`dkCard card`}>
+    <div className={`dkCard card ${props.cardClassName}`}>
       {props.imgTop && (
         <Img
           className={`card-img-top ${props.imageClassName}`}
@@ -18,7 +18,12 @@ const Card = (props) => {
   );
 };
 
+Card.defaultProps = {
+  cardClassName: "",
+};
+
 Card.propTypes = {
+  cardClassName: PropTypes.string,
   imgTop: PropTypes.bool,
   imgSrc: PropTypes.string,
   imgAlt: PropTypes.string,

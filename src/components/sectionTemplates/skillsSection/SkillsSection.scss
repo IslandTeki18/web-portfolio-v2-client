@@ -14,4 +14,24 @@
     font-size: 20px;
     padding-bottom: 6px;
   }
+
+  .resume-button-wrapper {
+    display: flex;
+    justify-content: center;
+    .cv-button {
+      width: 266px;
+      height: 50px;
+      border-radius: 5px;
+      border: 2px solid #ffffff;
+      font-weight: 600;
+      background-color: transparent;
+      color: #ffffff;
+
+      &:hover {
+        background-color: #ffffff;
+        color: #000000;
+        transition: 0.3s;
+      }
+    }
+  }
 }

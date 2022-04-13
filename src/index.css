@@ -65,7 +65,12 @@ body {
 .stacked-waves-1 {
   background-image: url("./assets/home-skills-stacked-waves.svg");
 }
-
 .stacked-waves-2 {
   background-image: url("./assets/home-skills-stacked-waves2.svg");
+}
+.blob-scene-1 {
+  background-image: url("./assets/home-service-blob-scene.svg");
+}
+.blob-scene-1-mobile {
+  background-image: url('./assets/home-service-blob-mobile.svg')
 }
