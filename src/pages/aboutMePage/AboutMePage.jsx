@@ -67,7 +67,7 @@ const AboutMePage = () => {
         </div>
       </section>
       <SkillsSection />
-      <div className="custom-spacer spacer-50" />
+      <div className="custom-spacer spacer-50"></div>
       <WorkWithMeBanner />
     </div>
   );
