@@ -7,7 +7,7 @@ const SkillsSection = (props) => {
   function renderProgressBars() {
     if (!props.skillsData) return;
     return props.skillsData.map((skill) => (
-      <div className="col-12 col-md-6">
+      <div className="col-12 col-md-6" key={skill.title}>
         <LabelProgressBar
           label={skill.title}
           progressValue={skill.progress}

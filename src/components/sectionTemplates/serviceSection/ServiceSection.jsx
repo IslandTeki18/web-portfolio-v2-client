@@ -1,28 +1,11 @@
-import React, { useEffect, useState } from "react";
 import "./ServiceSection.scss";
 import Card from "../../atoms/card/Card";
 import Icon from "../../atoms/icon/Icon";
 import { servicesData } from "../../../utils/tempData";
+import useWindowWidthResize from "../../../customHooks/useWindowWidthResize";
 
 const ServiceSection = () => {
-  const [windowWidth, setWindowWidth] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    
-    const updateWindowDimensions = () => {
-      const newWidth = window.innerWidth;
-      setWindowWidth(newWidth);
-      if (windowWidth < 769) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-    window.addEventListener("resize", updateWindowDimensions);
-    return () => {
-      window.removeEventListener("resize", updateWindowDimensions);
-    };
-  }, []);
+  const {isMobile} = useWindowWidthResize()
 
   function renderServiceCards() {
     return servicesData.map((service) => (

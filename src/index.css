@@ -56,11 +56,6 @@ body {
   background-position: center;
   background-size: cover;
 }
-@media screen and (max-width: 769px) {
-  .waves-spacer {
-    aspect-ratio: 540/960;
-  }
-}
 .wave-1 {
   background-image: url("./assets/home-header-wave.svg");
 }
