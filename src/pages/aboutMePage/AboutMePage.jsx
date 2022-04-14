@@ -5,7 +5,7 @@ import WorkWithMeBanner from "../../components/molecules/workWithMeBanner/WorkWi
 import Icon from "../../components/atoms/icon/Icon";
 import useScrollToTop from "../../customHooks/useScrollToTop";
 import Img from "../../components/atoms/img/Img";
-import image from "../../assets/IMG_1423.png";
+import image from "../../assets/images/IMG_1423.png";
 import { socialMediaData, personalData } from "../../utils/tempData";
 
 const AboutMePage = () => {

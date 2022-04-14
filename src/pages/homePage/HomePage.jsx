@@ -1,5 +1,4 @@
 import "./HomePage.scss";
-import { Link } from "react-router-dom";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 import { useGetProjects } from "../../customHooks/useGetProjects";
@@ -22,26 +21,24 @@ const HomePage = () => {
       .map((project) => (
         <div className="col-md-6 mb-5" key={project._id}>
           <Card
-            className="home-card-ht"
+            cardClassName="project-display-card img-fluid"
+            imageClassName="project-image"
+            imageWrapperClassName="image-wrapper"
             imgTop
             imgSrc={project.img}
             imgAlt={project.name}
+            imgLink={`/project/${project._id}`}
           >
-            <div className="card-body cardDescription">
-              <h4 className="card-title">{project.title}</h4>
-              <p className="card-text lineClamp">{project.shortDescription}</p>
-            </div>
-            <div className="card-footer">
-              <Link to={`/project/${project._id}`} className="btn btn-primary">
-                View Project
-              </Link>
+            <div className="card-body cardDescription bg-blackMain">
+              <div className="project-title color-whiteMain">
+                {project.title}
+              </div>
+              <div className="type-label color-primaryMain">Type</div>
             </div>
           </Card>
         </div>
       ));
   }
-
-  
 
   if (loading) {
     <Loader />;

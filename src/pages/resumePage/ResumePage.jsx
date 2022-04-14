@@ -3,6 +3,7 @@ import ResumeEdu from "../../components/molecules/resumeEdu/ResumeEdu";
 import ResumeExp from "../../components/molecules/resumeExp/ResumeExp";
 import useScrollToTop from "../../customHooks/useScrollToTop";
 import "./ResumePage.scss";
+import resumePDF from "../../assets/images/Resume.pdf";
 
 const ResumePage = () => {
   useScrollToTop();
@@ -17,7 +18,7 @@ const ResumePage = () => {
               React, Nodejs, Express, and MongoDB. I am full stack web developer
               living the Utah area.
             </p>
-            <a className="btn btn-primary" href="./images/Resume.pdf" download>
+            <a className="btn btn-primary" href={resumePDF} download>
               Download Resume PDF
             </a>
           </div>
@@ -74,9 +75,10 @@ const ResumePage = () => {
               <div className="resume-item">
                 <ResumeExp
                   employer="Red Sky Technologies"
-                  startMonth="Mar"
+                  startMonth="APR"
                   startYear="2021"
-                  isPresent
+                  endMonth="APR"
+                  endYear="2022"
                   city="Spanish Fork"
                   state="UT"
                   expListItems={[

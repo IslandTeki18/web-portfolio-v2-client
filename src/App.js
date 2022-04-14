@@ -13,7 +13,7 @@ import AdminContactListPage from "./pages/adminContactListPage/AdminContactListP
 import AdminContactDetailsPage from "./pages/adminContactDetailsPage/AdminContactDetailsPage";
 import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 
-import Header from "./components/atoms/header/Header";
+import Header from "./components/molecules/header/Header";
 import Footer from "./components/atoms/footer/Footer";
 
 function App() {
