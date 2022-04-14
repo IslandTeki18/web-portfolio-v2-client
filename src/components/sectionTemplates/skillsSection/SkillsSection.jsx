@@ -1,12 +1,12 @@
 import React from "react";
 import "./SkillsSection.scss";
-import PropTypes from "prop-types";
 import LabelProgressBar from "../../molecules/labelProgressBar/LabelProgressBar";
+import { mySkillsData } from "../../../utils/tempData";
 
-const SkillsSection = (props) => {
+const SkillsSection = () => {
   function renderProgressBars() {
-    if (!props.skillsData) return;
-    return props.skillsData.map((skill) => (
+    if (!mySkillsData) return;
+    return mySkillsData.map((skill) => (
       <div className="col-12 col-md-6" key={skill.title}>
         <LabelProgressBar
           label={skill.title}
@@ -32,10 +32,6 @@ const SkillsSection = (props) => {
       </div>
     </section>
   );
-};
-
-SkillsSection.propTypes = {
-  skillsData: PropTypes.array,
 };
 
 export default SkillsSection;

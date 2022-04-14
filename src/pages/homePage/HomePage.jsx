@@ -41,16 +41,7 @@ const HomePage = () => {
       ));
   }
 
-  const mySkillsData = [
-    { progress: 80, title: "ReactJS" },
-    { progress: 60, title: "Typescript" },
-    { progress: 50, title: "Bootstrap 4 & 5" },
-    { progress: 80, title: "Javascript" },
-    { progress: 60, title: "NodeJS" },
-    { progress: 60, title: "ExpressJS" },
-    { progress: 60, title: "MongoDB" },
-    { progress: 25, title: "MySQL" },
-  ];
+  
 
   if (loading) {
     <Loader />;
@@ -68,7 +59,7 @@ const HomePage = () => {
         profession="Web Developer"
       />
       <HomeProjectSection projects={renderProjects()} />
-      <SkillsSection skillsData={mySkillsData} />
+      <SkillsSection />
       <ServiceSection />
       <WorkWithMeBanner />
     </div>

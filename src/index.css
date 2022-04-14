@@ -56,6 +56,9 @@ body {
   background-position: center;
   background-size: cover;
 }
+.spacer-50 {
+  background-image: url("./assets/spacer-50.svg");
+}
 .wave-1 {
   background-image: url("./assets/home-header-wave.svg");
 }

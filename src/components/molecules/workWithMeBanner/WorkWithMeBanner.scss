@@ -18,6 +18,13 @@
       }
     }
   }
+  &.spacer {
+    aspect-ratio: 960/250;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
 }
 @media screen and (max-width: 450px) {
   .dkWorkWithMeBanner {
@@ -25,3 +32,4 @@
     padding-bottom: 40px;
   }
 }
+

@@ -1,0 +1,89 @@
+.dkAboutMePage {
+  .aboutMe-label {
+    font-weight: 600;
+    font-size: 38px;
+    text-decoration: underline;
+    text-decoration-thickness: 6px;
+    text-decoration-color: #ffc700;
+    text-underline-offset: 6px;
+  }
+  .name-label {
+    font-weight: 600;
+    font-size: 36px;
+  }
+  .subtitle-label {
+    font-weight: 500;
+    font-size: 24px;
+  }
+  .description-label {
+    font-weight: 400;
+    font-size: 20px;
+  }
+  .center-content {
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    .social-media-group {
+      display: flex;
+      max-width: 400px;
+      column-gap: 30px;
+
+      .social-button {
+        background-color: #ffc700;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+    @media screen and (max-width: 992px) {
+      .social-media-group {
+        column-gap: 15px;
+      }
+    }
+    @media screen and (max-width: 376px) {
+      .social-media-group {
+        flex-wrap: wrap;
+        column-gap: 60px;
+        row-gap: 20px;
+        justify-content: space-around;
+      }
+    }
+  }
+  .personal-facts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .personal-fact-wrapper {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 320px;
+      .fact-label {
+        font-weight: 700;
+        font-size: 18px;
+        width: 104px;
+      }
+      .separator {
+        width: 3px;
+        height: 20px;
+        background-color: #ffc700;
+        margin-right: 24px;
+      }
+      .fact-response {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+  }
+  .custom-spacer {
+    aspect-ratio: 960/50;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+}

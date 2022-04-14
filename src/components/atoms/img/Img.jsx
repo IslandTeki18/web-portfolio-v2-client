@@ -10,6 +10,7 @@ const Img = (props) => {
       className={`dkImg ${props.className}`}
       height={props.height}
       width={props.width}
+      loading="lazy"
     />
   );
 };
