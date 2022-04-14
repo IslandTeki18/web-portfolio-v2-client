@@ -6,24 +6,23 @@ import { servicesData } from "../../../utils/tempData";
 
 const ServiceSection = () => {
   const [windowWidth, setWindowWidth] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
+    
     const updateWindowDimensions = () => {
       const newWidth = window.innerWidth;
       setWindowWidth(newWidth);
+      if (windowWidth < 769) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
     };
     window.addEventListener("resize", updateWindowDimensions);
     return () => {
       window.removeEventListener("resize", updateWindowDimensions);
     };
   }, []);
-
-  function isMobleView() {
-    if (windowWidth < 769) {
-      return true;
-    } else {
-      return false;
-    }
-  }
 
   function renderServiceCards() {
     return servicesData.map((service) => (
@@ -47,7 +46,7 @@ const ServiceSection = () => {
   return (
     <section
       className={`dkServiceSection waves-spacer ${
-        isMobleView() ? "blob-scene-1-mobile" : "blob-scene-1"
+        isMobile ? "stacked-steps-mobile" : "stacked-steps-desktop"
       }`}
     >
       <div className="container">

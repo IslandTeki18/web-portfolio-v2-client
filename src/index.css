@@ -56,6 +56,11 @@ body {
   background-position: center;
   background-size: cover;
 }
+@media screen and (max-width: 769px) {
+  .waves-spacer {
+    aspect-ratio: 540/960;
+  }
+}
 .wave-1 {
   background-image: url("./assets/home-header-wave.svg");
 }
@@ -68,9 +73,21 @@ body {
 .stacked-waves-2 {
   background-image: url("./assets/home-skills-stacked-waves2.svg");
 }
-.blob-scene-1 {
-  background-image: url("./assets/home-service-blob-scene.svg");
+.stacked-steps-mobile {
+  background-image: url("./assets/stacked-steps-mobile.svg");
 }
-.blob-scene-1-mobile {
-  background-image: url('./assets/home-service-blob-mobile.svg')
+.stacked-steps-desktop {
+  background-image: url("./assets/stacked-steps-desktop.svg");
+}
+.blob-scene-2 {
+  background-image: url("./assets/banner-blob-1.svg");
+}
+.stacked-peaked-1 {
+  background-image: url("./assets/banner-stacked-peaked.svg");
+}
+.layered-peaks-desktop {
+  background-image: url("./assets/layered-peaks-desktop.svg");
+}
+.layered-peaks-mobile {
+  background-image: url("./assets/layered-peaks-mobile.svg");
 }

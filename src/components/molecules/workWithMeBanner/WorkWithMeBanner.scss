@@ -1,0 +1,21 @@
+.dkWorkWithMeBanner {
+  .content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .hire-button {
+      width: 177px;
+      background-color: #373737;
+      font-weight: 600;
+      font-size: 24px;
+      color: #ffffff;
+      &:hover {
+        color: #373737;
+        border: 2px solid #373737;
+        background-color: transparent;
+      }
+    }
+  }
+}

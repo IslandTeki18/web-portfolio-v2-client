@@ -9,6 +9,7 @@ import HomeHeaderSection from "../../components/sectionTemplates/homeHeaderSecti
 import HomeProjectSection from "../../components/sectionTemplates/homeProjectSection/HomeProjectSection";
 import SkillsSection from "../../components/sectionTemplates/skillsSection/SkillsSection";
 import ServiceSection from "../../components/sectionTemplates/serviceSection/ServiceSection";
+import WorkWithMeBanner from "../../components/molecules/workWithMeBanner/WorkWithMeBanner";
 
 const HomePage = () => {
   const { loading, error, projects } = useGetProjects();
@@ -69,6 +70,7 @@ const HomePage = () => {
       <HomeProjectSection projects={renderProjects()} />
       <SkillsSection skillsData={mySkillsData} />
       <ServiceSection />
+      <WorkWithMeBanner />
     </div>
   );
 };
