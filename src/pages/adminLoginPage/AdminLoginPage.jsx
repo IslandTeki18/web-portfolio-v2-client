@@ -44,7 +44,7 @@ const AdminLoginPage = () => {
                 )}
                 {loading && <Loader />}
                 <form onSubmit={submitHandler}>
-                  <div className="form-group">
+                  <div className="form-group mb-3">
                     <label htmlFor="adminUsernameInput">Username</label>
                     <input
                       type="text"

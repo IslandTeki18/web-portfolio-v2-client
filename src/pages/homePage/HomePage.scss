@@ -1,36 +1,6 @@
 .dkHomePage {
-  .project-display-card {
-    max-height: 290px;
-    height: 100%;
-    max-width: 380px;
-    width: 100%;
-    border: unset;
-    border-radius: unset;
-
-    .project-title {
-      font-size: 20px;
-      font-weight: 500;
-    }
-    .type-label {
-      font-size: 16px;
-      font-weight: 500;
-      text-decoration: none;
-    }
-  }
-  .image-wrapper {
-    overflow: hidden;
-
-    & img {
-      transition: transform 0.3s ease-in;
-    }
-    &:hover img {
-      transform: scale(1.2);
-    }
-  }
-  .cardDescription {
-    width: 100%;
+  .card-wrapper {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
   }
 }

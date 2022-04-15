@@ -1,0 +1,19 @@
+.dkProjectListPage {
+  .card-wrapper:nth-child(4n-7) {
+    background-color: #ffc700;
+  }
+  .card-wrapper:nth-child(4n-6) {
+    background-color: #1d1d1d;
+  }
+  .card-wrapper:nth-child(4n-5) {
+    background-color: #ffffff;
+  }
+  .card-wrapper:nth-child(4n-4) {
+    background-color: #ffc700;
+  }
+  .card-wrapper {
+    padding: 15px;
+  }
+
+  
+}
