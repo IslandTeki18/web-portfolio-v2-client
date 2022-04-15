@@ -1,5 +1,12 @@
 .dkContactMePage {
   min-height: 90vh;
+  .custom-spacer {
+    aspect-ratio: 960/50;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
   .socialMediaIcons {
     display: flex;
     justify-self: flex-start;

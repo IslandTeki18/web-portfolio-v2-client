@@ -1,0 +1,32 @@
+.dkContactFormSection {
+  .section-spacing {
+    padding-top: 40px;
+    padding-bottom: 70px;
+  }
+  .header-label {
+    font-size: 32px;
+    font-weight: 500;
+  }
+  .header-desc {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .semi-label {
+    font-size: 26px;
+    font-weight: 600;
+  }
+  .address-label {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .social-media-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  @media screen and (max-width: 576px) {
+    .contact-form-col {
+      padding-bottom: 30px;
+    }
+  }
+}

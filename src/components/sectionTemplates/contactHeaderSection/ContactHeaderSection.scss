@@ -1,0 +1,30 @@
+.dkContactHeaderSection {
+  .header-spacing {
+    padding-top: 72px;
+    padding-bottom: 10px;
+
+    .subtitle-lable {
+      font-weight: 400;
+      font-size: 14px;
+    }
+    .title-label {
+      font-weight: 500;
+      font-size: 40px;
+      padding-bottom: 10px;
+    }
+    .title-description {
+      font-weight: 400;
+      font-size: 14px;
+      max-width: 500px;
+      text-align: center;
+      margin: 0 auto;
+      padding-bottom: 40px;
+    }
+  }
+  @media screen and (max-width: 992px) {
+    .header-spacing {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
+  }
+}

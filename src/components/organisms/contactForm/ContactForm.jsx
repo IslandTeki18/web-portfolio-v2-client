@@ -3,6 +3,7 @@ import "./ContactForm.scss";
 import PropTypes from "prop-types";
 import Form from "../../atoms/form/Form";
 import Input from "../../atoms/input/Input";
+import Icon from "../../atoms/icon/Icon";
 
 const ContactForm = (props) => {
   const [name, setName] = useState("");
@@ -60,8 +61,13 @@ const ContactForm = (props) => {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button type="submit" className="btn btn-primary">
-          Submit
+        <button type="submit" className="send-button">
+          Send
+          <Icon
+            className="fa-solid fa-arrow-right-long ms-2"
+            size={24}
+            color="#ffffff"
+          />
         </button>
       </Form>
     </div>

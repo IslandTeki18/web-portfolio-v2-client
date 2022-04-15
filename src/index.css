@@ -59,6 +59,12 @@ body {
 .spacer-50 {
   background-image: url("./assets/spacer-50.svg");
 }
+.spacer-50-reverse {
+  background-image: url("./assets/wave-50-reverse.svg");
+}
+.contact-spacer-50 {
+  background-image: url('./assets/white-orange-spacer-50.svg');
+}
 .wave-1 {
   background-image: url("./assets/home-header-wave.svg");
 }

@@ -19,7 +19,7 @@ const ResumePage = () => {
               living the Utah area.
             </p>
             <a className="btn btn-primary" href={resumePDF} download>
-              Download Resume PDF
+              Download CV
             </a>
           </div>
           <div className="row">
