@@ -8,8 +8,18 @@
     border-radius: unset;
 
     .project-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 500;
+      max-width: 215px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    @media screen and (max-width: 426px) {
+      .project-title {
+        font-size: 16px;
+        max-width: 200px;
+      }
     }
     .type-label {
       font-size: 16px;

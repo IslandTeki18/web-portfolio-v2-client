@@ -21,7 +21,7 @@ import { logout } from "./userActions";
 const req =
   process.env.NODE_ENV === "production"
     ? `${process.env.REACT_APP_REQUEST_URL}api/contacts`
-    : "api/contacts";
+    : `http://localhost:3001/api/contacts`;
 
 export const listContacts = () => async (dispatch, getState) => {
   try {

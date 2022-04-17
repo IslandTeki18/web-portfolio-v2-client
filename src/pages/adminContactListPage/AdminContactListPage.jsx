@@ -24,18 +24,66 @@ const AdminContactListPage = () => {
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listContacts());
-    } else {
-      navigate("/admin/login");
-    }
-  }, [dispatch, userInfo, navigate, successDelete, error, errorDelete]);
+    if (!userInfo) navigate("/admin/login");
+    dispatch(listContacts());
+  }, [successDelete, error]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure you want to delete this message?")) {
       dispatch(deleteContact(id));
     }
   };
+
+  function renderTable() {
+    if (!contacts) return
+    return contacts.map((contact) => (
+      <tr key={contact._id}>
+        <td>{contact._id.substring(18)}</td>
+        <td>{contact.name}</td>
+        <td>{contact.phone}</td>
+        <td>{contact.email}</td>
+        <td className="text-center">
+          {contact.haveRead === true ? (
+            <i
+              className="fas fa-check"
+              style={{
+                color: "green",
+              }}
+            ></i>
+          ) : (
+            <i className="fas fa-times" style={{ color: "red" }}></i>
+          )}
+        </td>
+        <td>
+          <Link to={`/admin/contact/${contact._id}/details`}>
+            <button className="btn btn-link">
+              <i
+                className="fas fa-eye"
+                style={{
+                  fontSize: "20px",
+                  color: "white",
+                }}
+              ></i>
+            </button>
+          </Link>
+        </td>
+        <td>
+          <button
+            className="btn btn-link"
+            onClick={() => deleteHandler(contact._id)}
+          >
+            <i
+              className="fas fa-trash"
+              style={{
+                fontSize: "20px",
+                color: "red",
+              }}
+            ></i>
+          </button>
+        </td>
+      </tr>
+    ));
+  }
 
   if (loading || loadingDelete) return <Loader />;
 
@@ -76,58 +124,7 @@ const AdminContactListPage = () => {
                     <th>remove</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {contacts.map((contact) => (
-                    <tr key={contact._id}>
-                      <td>{contact._id.substring(18)}</td>
-                      <td>{contact.name}</td>
-                      <td>{contact.phone}</td>
-                      <td>{contact.email}</td>
-                      <td className="text-center">
-                        {contact.haveRead === true ? (
-                          <i
-                            className="fas fa-check"
-                            style={{
-                              color: "green",
-                            }}
-                          ></i>
-                        ) : (
-                          <i
-                            className="fas fa-times"
-                            style={{ color: "red" }}
-                          ></i>
-                        )}
-                      </td>
-                      <td>
-                        <Link to={`/admin/contact/${contact._id}/details`}>
-                          <button className="btn btn-link">
-                            <i
-                              className="fas fa-eye"
-                              style={{
-                                fontSize: "20px",
-                                color: "white",
-                              }}
-                            ></i>
-                          </button>
-                        </Link>
-                      </td>
-                      <td>
-                        <button
-                          className="btn btn-link"
-                          onClick={() => deleteHandler(contact._id)}
-                        >
-                          <i
-                            className="fas fa-trash"
-                            style={{
-                              fontSize: "20px",
-                              color: "red",
-                            }}
-                          ></i>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
+                <tbody>{renderTable()}</tbody>
               </table>
             </div>
           </div>

@@ -21,7 +21,7 @@ import { logout } from "./userActions";
 const req =
   process.env.NODE_ENV === "production"
     ? `${process.env.REACT_APP_REQUEST_URL}api/projects`
-    : "/api/projects";
+    : `http://localhost:3001/api/projects`;
 
 export const listProjects = () => async (dispatch) => {
   try {

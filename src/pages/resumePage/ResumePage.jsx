@@ -8,17 +8,17 @@ import resumePDF from "../../assets/images/Resume.pdf";
 const ResumePage = () => {
   useScrollToTop();
   return (
-    <div className="dkResumePage">
+    <div className="dkResumePage bg-secondaryMain">
       <section className="resume py-2">
         <div className="container text-white">
           <div className="section-title">
             <h2 className="text-white">Resume</h2>
             <p>
-              I build beautiful custom websites using modern technology such as
-              React, Nodejs, Express, and MongoDB. I am full stack web developer
-              living the Utah area.
+              I'm a professional
+              <span className="ms-1 color-primaryMain">Web Developer</span> located
+              in Spanish Fork, Utah.
             </p>
-            <a className="btn btn-primary" href={resumePDF} download>
+            <a className="btn btn-warning" href={resumePDF} download>
               Download CV
             </a>
           </div>
@@ -48,11 +48,11 @@ const ResumePage = () => {
                   schoolName="Dev Mountain"
                   city="Salt Lake City"
                   state="UT"
-                  description="Over a course of 13 weeks, I was taught about iOS app
+                  description={`Over a course of 13 weeks, I was taught about iOS app
                   development. We learned major concepts of app development such
                   as architecture, data, sumitting apps to the Apple App Store,
                   app design, how to navigate around xcode, the Apple
-                  programming language Swift, and most importantly debugging."
+                  programming language Swift, and most importantly debugging.`}
                 />
               </div>
               <div className="resume-item">
@@ -75,9 +75,9 @@ const ResumePage = () => {
               <div className="resume-item">
                 <ResumeExp
                   employer="Red Sky Technologies"
-                  startMonth="APR"
+                  startMonth="Apr"
                   startYear="2021"
-                  endMonth="APR"
+                  endMonth="Apr"
                   endYear="2022"
                   city="Spanish Fork"
                   state="UT"

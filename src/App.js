@@ -12,7 +12,6 @@ import AdminProjectEditPage from "./pages/adminProjectEditPage/AdminProjectEditP
 import AdminContactListPage from "./pages/adminContactListPage/AdminContactListPage";
 import AdminContactDetailsPage from "./pages/adminContactDetailsPage/AdminContactDetailsPage";
 import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
-
 import Header from "./components/molecules/header/Header";
 import Footer from "./components/atoms/footer/Footer";
 
@@ -42,7 +41,6 @@ function App() {
             element={<AdminContactDetailsPage />}
           />
           <Route
-            exact
             path="/admin/viewprojects"
             element={<AdminProjectsListPage />}
           />

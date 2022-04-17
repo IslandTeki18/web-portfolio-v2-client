@@ -13,7 +13,25 @@
   }
   .card-wrapper {
     padding: 15px;
+    max-width: 410px;
+    margin: 0 auto;
   }
-
-  
+  .title-label {
+    font-size: 38px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-color: #ffc700;
+    text-decoration-thickness: 6px;
+    text-underline-offset: 6px;
+    text-align: center;
+  }
+  @media screen and (max-width: 376px) {
+    .title-label {
+      font-size: 28px;
+    }
+  }
+  .project-row {
+    max-width: 825px;
+    margin: 0 auto;
+  }
 }

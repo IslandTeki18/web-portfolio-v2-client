@@ -9,7 +9,7 @@ export const servicesData = [
     icon: "fa-solid fa-server",
     title: "Backend",
     description:
-      "Able to build and maintain simple to modernately complex REST servers utilizing NodeJS, ExpressJS, and TypescriptJS.",
+      "Able to build and maintain simple to modernately complex REST APIs with a NodeJS Server utilizing ExpressJS, and Typescript.",
   },
   {
     icon: "fa-solid fa-bug",
@@ -38,13 +38,13 @@ export const servicesData = [
 ];
 
 export const mySkillsData = [
-  { progress: 80, title: "ReactJS" },
-  { progress: 60, title: "Typescript" },
-  { progress: 50, title: "Bootstrap 4 & 5" },
+  { progress: 85, title: "ReactJS" },
+  { progress: 65, title: "Typescript" },
+  { progress: 75, title: "Bootstrap 4 & 5" },
   { progress: 80, title: "Javascript" },
-  { progress: 60, title: "NodeJS" },
-  { progress: 60, title: "ExpressJS" },
-  { progress: 60, title: "MongoDB" },
+  { progress: 55, title: "NodeJS" },
+  { progress: 55, title: "ExpressJS" },
+  { progress: 50, title: "MongoDB" },
   { progress: 25, title: "MySQL" },
 ];
 
