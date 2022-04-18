@@ -1,14 +1,124 @@
 .dkProjectDetailsPage {
-  .details-btn {
-    min-width: 7em;
+  .project-overview {
+    font-weight: 500;
+    font-size: 34px;
+    padding-bottom: 13px;
   }
-  .statusUpdateContainer {
+  .project-description {
+    max-width: 630px;
+    margin: 0 auto;
+    padding-bottom: 35px;
+  }
+  .project-details-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .detail-title {
+      font-weight: 600;
+      font-size: 20px;
+    }
+    .subtitle-label {
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .separator {
+      width: 3px;
+      height: 60px;
+      background-color: #ffc700;
+      margin: 0 3.5rem;
+    }
+    @media screen and (max-width: 769px) {
+      .separator {
+        display: none;
+      }
+    }
+  }
+  @media screen and (max-width: 769px) {
+    .project-details-wrapper {
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+  }
+  @media screen and (max-width: 299px) {
+    .project-details-wrapper {
+      justify-content: space-around;
+    }
+  }
+  .project-buttons-wrapper {
+    max-width: 590px;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 65px;
+    margin: 0 auto;
+
+    .details-button {
+      border: 1px solid #ffc700;
+      background-color: #373737;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 10px 20px;
+      text-decoration: none;
+    }
+  }
+  .developer-feedback {
+    .feedback-title-label {
+      font-weight: 600;
+      font-size: 26px;
+    }
+  }
+  .feedback-wrapper {
+    .title-label {
+      font-weight: 600;
+      font-size: 20px;
+    }
+    .date-label {
+      font-weight: 500;
+      font-size: 16px;
+    }
+    .content-label {
+      font-weight: 400;
+      font-size: 16px;
+    }
+  }
+  .related-projects {
+    .related-title-label {
+      font-weight: 600;
+      font-size: 26px;
+    }
+  }
+  .related-project-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px;
+    border: 1px solid #ffc700;
+    border-radius: 10px;
+
+    .title-type-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .visit-button {
+      padding: 8px 40px;
+      background-color: #ffc700;
+      color: #000000;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+    }
   }
-  .dkLabel {
-    display: flex;
-    justify-content: flex-end;
+  @media screen and (max-width: 769px) {
+    .developer-feedback {
+      margin: 3rem 0;
+      order: 1;
+    }
+    .related-projects {
+      order: 0;
+    }
   }
 }

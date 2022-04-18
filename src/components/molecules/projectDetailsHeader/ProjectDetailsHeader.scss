@@ -1,0 +1,54 @@
+.dkProjectDetailsHeader {
+  .project-title {
+    font-weight: 600;
+    font-size: 32px;
+  }
+  .subtitle-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    .subtitle-label {
+      font-weight: 500;
+      font-size: 18px;
+      color: #ffffff;
+    }
+    .separator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin: 0 15px;
+    }
+  }
+  .breadcrumb-column {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .breadcrumb-label {
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 500;
+      color: #000000;
+      &.active {
+        color: #343434;
+      }
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .project-title {
+      font-size: 24px;
+    }
+    .subtitle-wrapper {
+      .subtitle-label {
+        font-size: 14px;
+      }
+    }
+    .breadcrumb-column {
+      justify-content: flex-start;
+      .breadcrumb-label {
+        font-size: 14px;
+      }
+    }
+  }
+}
