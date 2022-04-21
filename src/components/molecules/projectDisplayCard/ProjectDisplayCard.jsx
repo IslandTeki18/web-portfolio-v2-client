@@ -2,7 +2,7 @@ import React from "react";
 import "./ProjectDisplayCard.scss";
 import PropTypes from "prop-types";
 import Card from "../../atoms/card/Card";
-
+import image from "../../../assets/images/underconstructionimage.jpg";
 const ProjectDisplayCard = (props) => {
   return (
     <div className={`dkProjectDisplayCard`}>
@@ -11,7 +11,9 @@ const ProjectDisplayCard = (props) => {
         imageClassName="project-image"
         imageWrapperClassName="image-wrapper"
         imgTop
-        imgSrc={props.project.images[0]}
+        imgSrc={
+          props.project.images.length !== 0 ? props.project.images[0] : image
+        }
         imgAlt={props.project.name}
         imgLink={`/project/${props.project._id}`}
       >

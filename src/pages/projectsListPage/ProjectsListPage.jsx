@@ -14,7 +14,7 @@ const ProjectsListPage = () => {
     return projects
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
       .map((project) => (
-        <div className="col-12 col-md-6 card-wrapper">
+        <div className="col-12 col-lg-6 card-wrapper">
           <ProjectDisplayCard project={project} cardTitle />
         </div>
       ));
@@ -32,7 +32,9 @@ const ProjectsListPage = () => {
     <div className="dkProjectListPage bg-secondaryMain">
       <div className="container py-3 text-white">
         <div className="col-12 py-5">
-          <p className="title-label text-uppercase color-whiteMain">Recent Projects</p>
+          <p className="title-label text-uppercase color-whiteMain">
+            Recent Projects
+          </p>
         </div>
         <div className="row g-0 project-row">{renderProjects()}</div>
       </div>

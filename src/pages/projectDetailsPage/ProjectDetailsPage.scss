@@ -64,6 +64,11 @@
       text-decoration: none;
     }
   }
+
+  .center-single-image {
+    display: flex;
+    justify-content: center;
+  }
   .developer-feedback {
     .feedback-title-label {
       font-weight: 600;

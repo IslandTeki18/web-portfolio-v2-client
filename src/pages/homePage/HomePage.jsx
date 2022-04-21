@@ -20,7 +20,7 @@ const HomePage = () => {
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
       .map((project) => (
         <div
-          className="col-12 col-md-6 col-xl-4 mb-5 card-wrapper"
+          className="col-12 col-lg-6 col-xl-4 mb-5 card-wrapper"
           key={project._id}
         >
           <ProjectDisplayCard project={project} />

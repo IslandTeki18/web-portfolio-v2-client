@@ -20,7 +20,7 @@ Img.defaultProps = {
 };
 
 Img.propTypes = {
-  src: PropTypes.string,
+  src: PropTypes.any,
   alt: PropTypes.string,
   className: PropTypes.string,
   height: PropTypes.number,

@@ -7,6 +7,7 @@ import useScrollToTop from "../../customHooks/useScrollToTop";
 import ProjectDetailsHeader from "../../components/molecules/projectDetailsHeader/ProjectDetailsHeader";
 import Carousel from "../../components/molecules/carousel/Carousel";
 import { Link } from "react-router-dom";
+import Img from "../../components/atoms/img/Img";
 
 const ProjectDetailsPage = () => {
   const { id } = useParams();
@@ -122,10 +123,21 @@ const ProjectDetailsPage = () => {
               </div>
             </div>
           </div>
-          {project.images && (
+          {project.images && project.images.length > 1 ? (
             <div className="row">
               <div className="col-12 pb-0 pb-md-5">
                 <Carousel images={project.images} />
+              </div>
+            </div>
+          ) : (
+            <div className="row">
+              <div className="col-12 pb-0 pb-md-5 center-single-image">
+                <Img
+                  src={project.images}
+                  className="img-fluid"
+                  width={600}
+                  height={300}
+                />
               </div>
             </div>
           )}
