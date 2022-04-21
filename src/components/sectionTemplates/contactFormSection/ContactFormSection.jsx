@@ -1,7 +1,7 @@
 import "./ContactFormSection.scss";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../atoms/message/Message";
-import { createContact } from "../../../actions/contactActions";
+import { createContact } from "../../../redux/actions/contact.actions";
 import ContactForm from "../../organisms/contactForm/ContactForm";
 import { socialMediaData } from "../../../utils/tempData";
 import Icon from "../../atoms/icon/Icon";

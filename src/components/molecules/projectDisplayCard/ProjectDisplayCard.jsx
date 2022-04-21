@@ -7,11 +7,11 @@ const ProjectDisplayCard = (props) => {
   return (
     <div className={`dkProjectDisplayCard`}>
       <Card
-        cardClassName="project-display-card img-fluid"
+        cardClassName="project-display-card"
         imageClassName="project-image"
         imageWrapperClassName="image-wrapper"
         imgTop
-        imgSrc={props.project.img}
+        imgSrc={props.project.images[0]}
         imgAlt={props.project.name}
         imgLink={`/project/${props.project._id}`}
       >
@@ -20,7 +20,9 @@ const ProjectDisplayCard = (props) => {
             <div className="project-title color-whiteMain">
               {props.project.title}
             </div>
-            <div className="type-label color-primaryMain">Type</div>
+            <div className="type-label color-primaryMain">
+              {props.project.type}
+            </div>
           </div>
         )}
       </Card>

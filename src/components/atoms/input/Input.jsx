@@ -12,12 +12,15 @@ const Input = (props) => {
       value={props.value}
       onChange={props.onChange}
       required={props.required}
+      multiple={props.multiple}
     />
   );
 };
 
 Input.defaultProps = {
-  className: ""
+  className: "",
+  multiple: false,
+  required: false
 }
 
 Input.propTypes = {
@@ -29,6 +32,7 @@ Input.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.func,
   required: PropTypes.bool,
+  multiple: PropTypes.bool
 };
 
 export default Input;

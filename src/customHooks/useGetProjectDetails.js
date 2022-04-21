@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listProjectDetails } from "../actions/projectActions";
+import { listProjectDetails } from "../redux/actions/project.actions";
 
 export function useGetProjectDetails(id) {
   const dispatch = useDispatch();

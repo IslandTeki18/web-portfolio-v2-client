@@ -16,7 +16,7 @@ import {
   CONTACT_UPDATE_FAIL,
 } from "../constants/contactConstants";
 import axios from "axios";
-import { logout } from "./userActions";
+import { logout } from "../actions/user.actions";
 
 const req =
   process.env.NODE_ENV === "production"

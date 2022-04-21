@@ -8,8 +8,8 @@ import {
     getContactDetails,
     updateContact,
     deleteContact,
-} from "../../actions/contactActions";
-import { CONTACT_UPDATE_RESET } from "../../constants/contactConstants";
+} from "../../redux/actions/contact.actions";
+import { CONTACT_UPDATE_RESET } from "../../redux/constants/contactConstants";
 
 const AdminContactDetailsPage = () => {
     const navigate = useNavigate();

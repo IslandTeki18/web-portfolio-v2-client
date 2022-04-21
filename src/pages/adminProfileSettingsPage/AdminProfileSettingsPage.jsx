@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { updateUserProfile, getUserDetails } from "../../actions/userActions";
+import { updateUserProfile, getUserDetails } from "../../redux/actions/user.actions";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 

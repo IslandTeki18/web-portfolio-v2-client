@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { listProjects } from "../actions/projectActions";
+import { listProjects } from "../redux/actions/project.actions";
 
 export function useGetProjects() {
   const dispatch = useDispatch();

@@ -3,7 +3,6 @@ import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 import { useParams } from "react-router";
 import { useGetProjectDetails } from "../../customHooks/useGetProjectDetails";
-import { placeholderImages } from "../../utils/tempData";
 import useScrollToTop from "../../customHooks/useScrollToTop";
 import ProjectDetailsHeader from "../../components/molecules/projectDetailsHeader/ProjectDetailsHeader";
 import Carousel from "../../components/molecules/carousel/Carousel";
@@ -76,7 +75,7 @@ const ProjectDetailsPage = () => {
                 Project Overview
               </div>
               <div className="project-description color-whiteMain">
-                {project.longDescription}
+                {project.description}
               </div>
               <div className="project-details-wrapper">
                 <div className="project-details-item">
@@ -123,11 +122,13 @@ const ProjectDetailsPage = () => {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-12 pb-0 pb-md-5">
-              <Carousel images={placeholderImages} />
+          {project.images && (
+            <div className="row">
+              <div className="col-12 pb-0 pb-md-5">
+                <Carousel images={project.images} />
+              </div>
             </div>
-          </div>
+          )}
           <div className="row pb-5">
             <div className="col-12 col-md-6 developer-feedback">
               <p className="feedback-title-label color-primaryMain">

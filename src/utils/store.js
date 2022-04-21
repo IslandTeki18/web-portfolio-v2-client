@@ -1,21 +1,21 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { userDetailsReducer, userLoginReducer, userUpdateReducer } from "../reducers/userReducers";
+import { userDetailsReducer, userLoginReducer, userUpdateReducer } from "../redux/reducers/userReducers";
 import {
   projectCreateReducer,
   projectDeleteReducer,
   projectDetailsReducer,
   projectListReducer,
   projectUpdateReducer,
-} from "../reducers/projectReducers";
+} from "../redux/reducers/projectReducers";
 import {
   contactCreateReducer,
   contactDeleteReducer,
   contactListReducer,
   contactUpdateReducer,
   contactDetailsReducer,
-} from "../reducers/contactReducers";
+} from "../redux/reducers/contactReducers";
 
 const reducer = combineReducers({
   userLogin: userLoginReducer,

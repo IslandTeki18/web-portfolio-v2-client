@@ -3,7 +3,7 @@ import "./Header.scss";
 import Icon from "../../atoms/icon/Icon";
 import { Link, NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../../actions/userActions";
+import { logout } from "../../../redux/actions/user.actions";
 
 const Header = () => {
   const dispatch = useDispatch();

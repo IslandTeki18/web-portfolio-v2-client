@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./AdminLoginPage.scss";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../actions/userActions";
+import { login } from "../../redux/actions/user.actions";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
 

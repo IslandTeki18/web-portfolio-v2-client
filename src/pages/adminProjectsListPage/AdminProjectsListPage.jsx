@@ -8,8 +8,8 @@ import {
   createNewProject,
   deleteProject,
   listProjects,
-} from "../../actions/projectActions";
-import { PROJECT_CREATE_RESET } from "../../constants/projectConstants";
+} from "../../redux/actions/project.actions";
+import { PROJECT_CREATE_RESET } from "../../redux/constants/projectConstants";
 import { useGetProjects } from "../../customHooks/useGetProjects";
 
 const AdminProjectsListPage = () => {

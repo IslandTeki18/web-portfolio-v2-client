@@ -1,23 +1,29 @@
 import React from "react";
+import "./LabelInput.scss";
 import PropTypes from "prop-types";
 import Input from "../../atoms/input/Input";
 
 const LabelInput = (props) => {
   return (
-    <div className={`dkLabelInput input-group ${props.labelInputClassName}`}>
-      <label htmlFor={props.htmlFor} className={props.labelClassName}></label>
-      <Input {...props} id={props.htmlFor} />
+    <div className={`dkLabelInput ${props.className}`}>
+      <label htmlFor={props.htmlFor} className={props.labelClassName}>
+        {props.label}
+      </label>
+      <Input {...props} className={props.inputClassName} id={props.htmlFor} />
     </div>
   );
 };
 LabelInput.defaultProps = {
-  labelInputClassName: "",
+  className: "",
+  labelClassName: "",
+  inputClassName: "",
 };
 
 LabelInput.propTypes = {
   htmlFor: PropTypes.string,
   labelClassName: PropTypes.string,
-  labelInputClassName: PropTypes.string,
+  className: PropTypes.string,
+  inputClassName: PropTypes.string,
 };
 
 export default LabelInput;

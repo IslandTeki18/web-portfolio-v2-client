@@ -16,7 +16,7 @@ import {
   PROJECT_DETAILS_SUCCESS,
   PROJECT_DETAILS_FAIL,
 } from "../constants/projectConstants";
-import { logout } from "./userActions";
+import { logout } from "../actions/user.actions";
 
 const req =
   process.env.NODE_ENV === "production"
