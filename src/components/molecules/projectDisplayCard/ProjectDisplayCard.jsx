@@ -12,7 +12,9 @@ const ProjectDisplayCard = (props) => {
         imageWrapperClassName="image-wrapper"
         imgTop
         imgSrc={
-          props.project.images.length !== 0 ? props.project.images[0] : image
+          props.projet.images && props.project.images.length !== 0
+            ? props.project.images
+            : image
         }
         imgAlt={props.project.name}
         imgLink={`/project/${props.project._id}`}
