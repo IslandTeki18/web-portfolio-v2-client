@@ -11,7 +11,7 @@ const ContactHeaderSection = (props) => {
         <div className="row">
           <div className="col-12 text-center">
             <div className="subtitle-label text-uppercase">
-              we would to talk to you
+              I would love to talk to you
             </div>
             <div className="title-label">How I Can Help</div>
             <div className="title-description">

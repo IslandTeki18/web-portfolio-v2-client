@@ -6,10 +6,19 @@ import Input from "../../atoms/input/Input";
 const LabelInput = (props) => {
   return (
     <div className={`dkLabelInput ${props.className}`}>
-      <label htmlFor={props.htmlFor} className={props.labelClassName}>
+      <label
+        htmlFor={props.htmlFor}
+        className={`form-label ${props.labelClassName}`}
+      >
         {props.label}
       </label>
-      <Input {...props} className={props.inputClassName} id={props.htmlFor} />
+      <Input
+        {...props}
+        className={props.inputClassName}
+        id={props.htmlFor}
+        value={props.value}
+        onChange={props.onChange}
+      />
     </div>
   );
 };
@@ -17,6 +26,7 @@ LabelInput.defaultProps = {
   className: "",
   labelClassName: "",
   inputClassName: "",
+  label: "Placeholder Label",
 };
 
 LabelInput.propTypes = {
@@ -24,6 +34,9 @@ LabelInput.propTypes = {
   labelClassName: PropTypes.string,
   className: PropTypes.string,
   inputClassName: PropTypes.string,
+  label: PropTypes.string,
+  onChange: PropTypes.func,
+  value: PropTypes.any,
 };
 
 export default LabelInput;

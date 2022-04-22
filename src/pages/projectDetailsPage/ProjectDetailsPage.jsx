@@ -8,38 +8,27 @@ import ProjectDetailsHeader from "../../components/molecules/projectDetailsHeade
 import Carousel from "../../components/molecules/carousel/Carousel";
 import { Link } from "react-router-dom";
 import Img from "../../components/atoms/img/Img";
+import Icon from "../../components/atoms/icon/Icon";
+import dateFormatter from "../../utils/dateFormatter";
 
 const ProjectDetailsPage = () => {
   const { id } = useParams();
   const { loading, error, project } = useGetProjectDetails(id);
   useScrollToTop();
 
-  const feedbackPlaceholder = [
-    {
-      title: "Project Repo Update",
-      date: "April 8, 2022",
-      content:
-        "Refactored the github repository to align more with industry standards and allow myself easier implementations of new features and bug fixes.",
-    },
-  ];
-  const relatedProjectPlaceholder = [
-    {
-      title: "King of Aces",
-      type: "Ecommerce / Web App",
-      link: "/projects",
-    },
-  ];
   function renderProjectFeedbackAndUpdates() {
-    return feedbackPlaceholder.map((item) => (
-      <div className="feedback-wrapper color-whiteMain pb-3" key={item.title}>
-        <div className="title-label pb-2">{item.title}</div>
-        <div className="date-label color-primaryMain">{item.date}</div>
-        <div className="content-label">{item.content}</div>
+    return project.developerFeedback.map((feedback) => (
+      <div className="feedback-wrapper color-whiteMain pb-3" key={feedback._id}>
+        <div className="title-label pb-2">{feedback.title}</div>
+        <div className="date-label color-primaryMain">
+          {dateFormatter(feedback.createdAt)}
+        </div>
+        <div className="content-label">{feedback.description}</div>
       </div>
     ));
   }
   function renderRelatedProjects() {
-    return relatedProjectPlaceholder.map((project) => (
+    return project.relatedProjects.map((project) => (
       <div
         className="related-project-wrapper color-whiteMain pb-3"
         key={project.title}
@@ -146,13 +135,31 @@ const ProjectDetailsPage = () => {
               <p className="feedback-title-label color-primaryMain">
                 Developer Feedback & Updates
               </p>
-              {renderProjectFeedbackAndUpdates()}
+              {project.developerFeedback &&
+              project.developerFeedback.length !== 0 ? (
+                renderProjectFeedbackAndUpdates()
+              ) : (
+                <div className="empty-feedback-area">
+                  <Icon
+                    className="fa-solid fa-triangle-exclamation color-primaryMain"
+                    size={20}
+                    marginRight={3}X
+                  />
+                  <p className="fs-5 text-center color-primaryMain">
+                    No developer feedback
+                  </p>
+                  <Icon
+                    className="fa-solid fa-triangle-exclamation color-primaryMain"
+                    size={20}
+                  />
+                </div>
+              )}
             </div>
             <div className="col-12 col-md-6 related-projects">
               <p className="related-title-label color-primaryMain">
                 Related Projects
               </p>
-              {renderRelatedProjects()}
+              {project.relatedProjects && renderRelatedProjects()}
             </div>
           </div>
         </div>

@@ -16,6 +16,13 @@ import {
   PROJECT_DETAILS_REQUEST,
   PROJECT_DETAILS_SUCCESS,
   PROJECT_DETAILS_FAIL,
+  PROJECT_CREATE_FEEDBACK_REQUEST,
+  PROJECT_CREATE_FEEDBACK_SUCCESS,
+  PROJECT_CREATE_FEEDBACK_FAIL,
+  PROJECT_CREATE_FEEDBACK_RESET,
+  PROJECT_DELETE_FEEDBACK_REQUEST,
+  PROJECT_DELETE_FEEDBACK_SUCCESS,
+  PROJECT_DELETE_FEEDBACK_FAIL,
 } from "../constants/projectConstants";
 
 export const projectListReducer = (state = { projects: [] }, action) => {
@@ -86,6 +93,39 @@ export const projectUpdateReducer = (state = { project: {} }, action) => {
       return { loading: false, error: action.payload };
     case PROJECT_UPDATE_RESET:
       return { project: {} };
+
+    default:
+      return state;
+  }
+};
+
+export const projectFeedbackCreateReducer = (
+  state = { feedback: {} },
+  action
+) => {
+  switch (action.type) {
+    case PROJECT_CREATE_FEEDBACK_REQUEST:
+      return { loading: true };
+    case PROJECT_CREATE_FEEDBACK_SUCCESS:
+      return { loading: false, success: true };
+    case PROJECT_CREATE_FEEDBACK_FAIL:
+      return { loading: false, error: action.payload };
+    case PROJECT_CREATE_FEEDBACK_RESET:
+      return {};
+
+    default:
+      return state;
+  }
+};
+
+export const projectDeleteFeedbackReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PROJECT_DELETE_FEEDBACK_REQUEST:
+      return { loading: true };
+    case PROJECT_DELETE_FEEDBACK_SUCCESS:
+      return { loading: false, success: true };
+    case PROJECT_DELETE_FEEDBACK_FAIL:
+      return { loading: false, error: action.payload };
 
     default:
       return state;

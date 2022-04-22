@@ -15,6 +15,12 @@ import {
   PROJECT_DETAILS_REQUEST,
   PROJECT_DETAILS_SUCCESS,
   PROJECT_DETAILS_FAIL,
+  PROJECT_CREATE_FEEDBACK_REQUEST,
+  PROJECT_CREATE_FEEDBACK_SUCCESS,
+  PROJECT_CREATE_FEEDBACK_FAIL,
+  PROJECT_DELETE_FEEDBACK_REQUEST,
+  PROJECT_DELETE_FEEDBACK_SUCCESS,
+  PROJECT_DELETE_FEEDBACK_FAIL,
 } from "../constants/projectConstants";
 import { logout } from "../actions/user.actions";
 
@@ -163,3 +169,70 @@ export const updateProject = (project) => async (dispatch, getState) => {
     });
   }
 };
+
+export const createDeveloperFeedback =
+  (projectId, feedbackObj) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PROJECT_CREATE_FEEDBACK_REQUEST });
+      const {
+        userLogin: { userInfo },
+      } = getState();
+
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        `${req}/${projectId}/feedback`,
+        feedbackObj,
+        config
+      );
+      dispatch({
+        type: PROJECT_CREATE_FEEDBACK_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: PROJECT_CREATE_FEEDBACK_FAIL,
+        payload: message,
+      });
+    }
+  };
+
+export const deleteDeveloperFeedback =
+  (projectId, feedbackId) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: PROJECT_DELETE_FEEDBACK_REQUEST });
+      const {
+        userLogin: { userInfo },
+      } = getState();
+      const config = {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      };
+      const { data } = await axios.delete(
+        `${req}/${projectId}/${feedbackId}`,
+        config
+      );
+      dispatch({
+        type: PROJECT_DELETE_FEEDBACK_SUCCESS,
+        payload: data,
+      });
+    } catch (error) {
+      const message =
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message;
+      dispatch({
+        type: PROJECT_DELETE_FEEDBACK_FAIL,
+        payload: message,
+      });
+    }
+  };

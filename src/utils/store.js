@@ -8,6 +8,8 @@ import {
   projectDetailsReducer,
   projectListReducer,
   projectUpdateReducer,
+  projectFeedbackCreateReducer,
+  projectDeleteFeedbackReducer
 } from "../redux/reducers/projectReducers";
 import {
   contactCreateReducer,
@@ -26,6 +28,8 @@ const reducer = combineReducers({
   projectDetails: projectDetailsReducer,
   projectList: projectListReducer,
   projectUpdate: projectUpdateReducer,
+  projectFeedbackCreate: projectFeedbackCreateReducer,
+  projectDeleteFeedback: projectDeleteFeedbackReducer,
   contactList: contactListReducer,
   contactDetails: contactDetailsReducer,
   contactCreate: contactCreateReducer,

@@ -20,6 +20,10 @@ const ContactForm = (props) => {
       message,
     };
     props.formCallback(form);
+    setEmail("");
+    setMessage("");
+    setName("");
+    setPhone("");
   }
   return (
     <div className={`dkContactForm ${props.className}`}>

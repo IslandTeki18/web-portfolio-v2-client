@@ -4,5 +4,13 @@
     justify-content: space-between;
     align-items: flex-end;
   }
-  
+  .feedback-title {
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .feedback-date {
+    font-weight: 400;
+    font-size: 16px;
+    color: rgb(255, 136, 0);
+  }
 }

@@ -13,7 +13,7 @@ const ProjectDisplayCard = (props) => {
         imgTop
         imgSrc={
           props.project.images && props.project.images.length !== 0
-            ? props.project.images
+            ? props.project.images[0]
             : image
         }
         imgAlt={props.project.name}

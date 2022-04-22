@@ -20,8 +20,8 @@ const Input = (props) => {
 Input.defaultProps = {
   className: "",
   multiple: false,
-  required: false
-}
+  required: false,
+};
 
 Input.propTypes = {
   name: PropTypes.string,
@@ -32,7 +32,7 @@ Input.propTypes = {
   value: PropTypes.any,
   onChange: PropTypes.func,
   required: PropTypes.bool,
-  multiple: PropTypes.bool
+  multiple: PropTypes.bool,
 };
 
 export default Input;

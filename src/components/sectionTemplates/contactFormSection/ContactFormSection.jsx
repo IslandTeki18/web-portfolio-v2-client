@@ -29,8 +29,7 @@ const ContactFormSection = (props) => {
             </div>
             <div className="header-desc color-blackMain mb-2">
               I enjoy building things and it’s what I’m good at. Please share as
-              much info as possible so we can get the most out of first
-              catch-up.
+              much info as possible so we can get the most out of our first meeting.
             </div>
             <div className="semi-label">Living In:</div>
             <p className="address-label mb-2">Spanish Fork, Utah, USA</p>

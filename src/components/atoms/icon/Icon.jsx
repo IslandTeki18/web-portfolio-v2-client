@@ -36,7 +36,7 @@ Icon.propTypes = {
   marginTop: PropTypes.string,
   marginBottom: PropTypes.string,
   marginLeft: PropTypes.string,
-  marginRIght: PropTypes.string,
+  marginRight: PropTypes.string,
 };
 
 export default Icon;

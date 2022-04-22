@@ -74,6 +74,11 @@
       font-weight: 600;
       font-size: 26px;
     }
+    .empty-feedback-area {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
   }
   .feedback-wrapper {
     .title-label {
