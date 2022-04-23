@@ -50,6 +50,27 @@ export const listProjects = () => async (dispatch) => {
   }
 };
 
+export const limitedProjects = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: PROJECT_LIST_REQUEST,
+    });
+    const { data } = await axios.get(`${req}/limited`);
+    dispatch({
+      type: PROJECT_LIST_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: PROJECT_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
 export const listProjectDetails = (id) => async (dispatch) => {
   try {
     dispatch({

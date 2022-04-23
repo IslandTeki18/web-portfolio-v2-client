@@ -43,6 +43,11 @@ const AdminProjectEditPage = () => {
     title: "",
     description: "",
   });
+  const [relatedProjectObj, setRelatedProjectObj] = useState({
+    title: "",
+    projectType: "",
+    link: "",
+  });
   const [selectedFiles, setSelectedFiles] = useState();
   const [progressInfo, setProgressInfo] = useState({ val: [] });
   const [message, setMessage] = useState("");
@@ -193,10 +198,10 @@ const AdminProjectEditPage = () => {
 
   return (
     <div className="dkAdminProjectEditPage bg-secondaryMain">
-      <Link className="btn btn-light m-3" to="/admin/viewprojects">
-        Go Back
-      </Link>
       <div className="container">
+        <Link className="btn btn-light m-3" to="/admin/viewprojects">
+          Go Back
+        </Link>
         <div className="row justify-content-center">
           <div className="col-md-10 py-3 color-whiteMain">
             <h2 className="pb-3">Project Edit</h2>
@@ -495,6 +500,7 @@ const AdminProjectEditPage = () => {
                   <LabelInput
                     className="mb-2"
                     inputClassName="form-control"
+                    placeholder="Feedback Title..."
                     label="Title"
                     htmlFor="feedback-title"
                     value={feedbackObj.title}
@@ -510,6 +516,7 @@ const AdminProjectEditPage = () => {
                   <LabelInput
                     className="mb-2"
                     inputClassName="form-control"
+                    placeholder="Feedback Description..."
                     label="Description"
                     htmlFor="feedback-description"
                     value={feedbackObj.description}
@@ -530,6 +537,9 @@ const AdminProjectEditPage = () => {
                     Submit Feedback
                   </button>
                   <Card cardClassName="color-blackMain">
+                    <div className="card-header text-center">
+                      <div className="fs-5">Feedback & Updates</div>
+                    </div>
                     <div className="card-body">
                       {(createFeedbackLoading || deleteFeedbackLoading) && (
                         <div className="text-center">
@@ -549,7 +559,7 @@ const AdminProjectEditPage = () => {
                       )}
                       <ul>
                         {projectObj.developerFeedback &&
-                        projectObj.developerFeedback.length !== 0 ? (
+                          projectObj.developerFeedback.length !== 0 &&
                           projectObj.developerFeedback.map((feedback) => (
                             <li key={feedback._id} className="mb-3">
                               <div className="row">
@@ -577,12 +587,7 @@ const AdminProjectEditPage = () => {
                               </div>
                               <hr />
                             </li>
-                          ))
-                        ) : (
-                          <li className="mb-3">
-                            <Loader />
-                          </li>
-                        )}
+                          ))}
                       </ul>
                     </div>
                   </Card>
@@ -591,9 +596,64 @@ const AdminProjectEditPage = () => {
             </div>
             <hr />
             <div className="row mt-3">
-              <p className="fs-5">Related Projects</p>
-              <LabelInput inputClassName="form-control" />
-              <LabelInput inputClassName="form-control" />
+              <div className="col-12">
+                <p className="fs-5">Related Projects</p>
+                <LabelInput
+                  label="Title"
+                  htmlFor="relatedProject-title"
+                  placeholder="Related Project Title..."
+                  inputClassName="form-control"
+                  value={relatedProjectObj.title}
+                  onChange={(e) =>
+                    setRelatedProjectObj((prevState) => {
+                      return {
+                        ...prevState,
+                        title: e.target.value,
+                      };
+                    })
+                  }
+                />
+                <LabelInput
+                  label="Project Type"
+                  htmlFor="relatedProject-projectType"
+                  placeholder="Related Project Project Type..."
+                  inputClassName="form-control"
+                  value={relatedProjectObj.projectType}
+                  onChange={(e) =>
+                    setRelatedProjectObj((prevState) => {
+                      return {
+                        ...prevState,
+                        projectType: e.target.value,
+                      };
+                    })
+                  }
+                />
+                <LabelInput
+                  label="Link"
+                  htmlFor="relatedProject-link"
+                  placeholder="Related Project Link..."
+                  inputClassName="form-control"
+                  value={relatedProjectObj.link}
+                  onChange={(e) =>
+                    setRelatedProjectObj((prevState) => {
+                      return {
+                        ...prevState,
+                        link: e.target.value,
+                      };
+                    })
+                  }
+                />
+                <button
+                  className="btn btn-success mt-3"
+                  disabled={
+                    !relatedProjectObj.title ||
+                    !relatedProjectObj.projectType ||
+                    !relatedProjectObj.link
+                  }
+                >
+                  Add Related Project
+                </button>
+              </div>
             </div>
           </div>
         </div>

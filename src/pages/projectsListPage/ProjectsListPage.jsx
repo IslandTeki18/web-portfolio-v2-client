@@ -14,7 +14,7 @@ const ProjectsListPage = () => {
     return projects
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
       .map((project) => (
-        <div className="col-12 col-lg-6 card-wrapper">
+        <div className="col-12 col-lg-6 card-wrapper" key={project._id}>
           <ProjectDisplayCard project={project} cardTitle />
         </div>
       ));

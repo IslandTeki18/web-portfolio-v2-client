@@ -1,6 +1,7 @@
 import React from "react";
 import "./SkillsSection.scss";
 import LabelProgressBar from "../../molecules/labelProgressBar/LabelProgressBar";
+import ResumePDF from "../../../assets/images/Resume.pdf";
 import { mySkillsData } from "../../../utils/tempData";
 
 const SkillsSection = () => {
@@ -27,7 +28,9 @@ const SkillsSection = () => {
         </div>
         <div className="row">{renderProgressBars()}</div>
         <div className="col-12 resume-button-wrapper pb-5">
-          <button className="cv-button">Download CV</button>
+          <a href={ResumePDF}  download>
+            <button className="cv-button">Download CV</button>
+          </a>
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 import "./HomePage.scss";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/atoms/loader/Loader";
 import Message from "../../components/atoms/message/Message";
-import { useGetProjects } from "../../customHooks/useGetProjects";
 import useScrollToTop from "../../customHooks/useScrollToTop";
 import HomeHeaderSection from "../../components/sectionTemplates/homeHeaderSection/HomeHeaderSection";
 import HomeProjectSection from "../../components/sectionTemplates/homeProjectSection/HomeProjectSection";
@@ -9,9 +10,15 @@ import SkillsSection from "../../components/sectionTemplates/skillsSection/Skill
 import ServiceSection from "../../components/sectionTemplates/serviceSection/ServiceSection";
 import WorkWithMeBanner from "../../components/molecules/workWithMeBanner/WorkWithMeBanner";
 import ProjectDisplayCard from "../../components/molecules/projectDisplayCard/ProjectDisplayCard";
+import { limitedProjects } from "../../redux/actions/project.actions";
 
 const HomePage = () => {
-  const { loading, error, projects } = useGetProjects();
+  const dispatch = useDispatch();
+  const projectList = useSelector((state) => state.projectList);
+  const { loading, error, projects } = projectList;
+  useEffect(() => {
+    dispatch(limitedProjects());
+  }, [dispatch]);
   useScrollToTop();
 
   function renderProjects() {

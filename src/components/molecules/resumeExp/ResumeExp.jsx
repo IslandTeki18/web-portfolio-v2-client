@@ -5,8 +5,8 @@ import PropTypes from "prop-types";
 const ResumeExp = (props) => {
   function renderExperienceListItems() {
     if (!props.expListItems) return;
-    return props.expListItems.map((item) => {
-      return <li>{item}</li>;
+    return props.expListItems.map((item, idx) => {
+      return <li key={idx}>{item}</li>;
     });
   }
   return (
