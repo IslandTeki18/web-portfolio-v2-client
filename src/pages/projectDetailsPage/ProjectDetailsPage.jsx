@@ -78,7 +78,7 @@ const ProjectDetailsPage = () => {
                 <div className="project-details-item">
                   <div className="detail-title color-primaryMain">Industry</div>
                   <div className="subtitle-label color-whiteMain">
-                    {project.industry || "Service"}
+                    {project.industry || "N / A"}
                   </div>
                 </div>
                 <div className="separator" />
@@ -92,7 +92,7 @@ const ProjectDetailsPage = () => {
                 <div className="project-details-item">
                   <div className="detail-title color-primaryMain">Year</div>
                   <div className="subtitle-label color-whiteMain">
-                    {project.yearBuilt || "2022"}
+                    {project.yearBuilt || "N / A"}
                   </div>
                 </div>
               </div>
@@ -143,7 +143,8 @@ const ProjectDetailsPage = () => {
                   <Icon
                     className="fa-solid fa-triangle-exclamation color-primaryMain"
                     size={20}
-                    marginRight={3}X
+                    marginRight={3}
+                    X
                   />
                   <p className="fs-5 text-center color-primaryMain">
                     No developer feedback
