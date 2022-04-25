@@ -13,6 +13,7 @@ const ProjectsListPage = () => {
     if (!projects) return;
     return projects
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+      .filter((project) => project.status !== "Not Live")
       .map((project) => (
         <div className="col-12 col-lg-6 card-wrapper" key={project._id}>
           <ProjectDisplayCard project={project} cardTitle />

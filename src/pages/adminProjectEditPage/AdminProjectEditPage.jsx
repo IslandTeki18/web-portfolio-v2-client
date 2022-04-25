@@ -219,7 +219,7 @@ const AdminProjectEditPage = () => {
                 {error}
               </Message>
             )}
-            <form onSubmit={saveChangesHandler}>
+            <form onSubmit={saveChangesHandler} className="was-validated">
               <div className="row mb-2">
                 <div className="col">
                   <LabelInput
@@ -229,6 +229,7 @@ const AdminProjectEditPage = () => {
                     label="Project Title"
                     htmlFor="projectTitle"
                     value={projectObj.title}
+                    isRequired
                     onChange={(e) =>
                       setProjectObj((prevState) => {
                         return {
@@ -247,6 +248,7 @@ const AdminProjectEditPage = () => {
                     label="Project Type"
                     htmlFor="projectType"
                     value={projectObj.type}
+                    isRequired
                     onChange={(e) =>
                       setProjectObj((prevState) => {
                         return {
@@ -263,8 +265,9 @@ const AdminProjectEditPage = () => {
                   <label htmlFor="descInput">Description</label>
                   <textarea
                     type="text"
-                    className="form-control"
+                    className="form-control is-invalid"
                     placeholder="Description"
+                    required
                     rows="4"
                     value={projectObj.description}
                     onChange={(e) =>

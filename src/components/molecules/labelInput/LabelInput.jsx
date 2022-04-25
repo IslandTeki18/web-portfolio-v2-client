@@ -5,7 +5,7 @@ import Input from "../../atoms/input/Input";
 
 const LabelInput = (props) => {
   return (
-    <div className={`dkLabelInput ${props.className}`}>
+    <div className={`dkLabelInput ${props.className} has-validation`}>
       <label
         htmlFor={props.htmlFor}
         className={`form-label ${props.labelClassName}`}
@@ -18,6 +18,7 @@ const LabelInput = (props) => {
         id={props.htmlFor}
         value={props.value}
         onChange={props.onChange}
+        required={props.isRequired}
       />
     </div>
   );
@@ -37,6 +38,7 @@ LabelInput.propTypes = {
   label: PropTypes.string,
   onChange: PropTypes.func,
   value: PropTypes.any,
+  isRequired: PropTypes.bool,
 };
 
 export default LabelInput;

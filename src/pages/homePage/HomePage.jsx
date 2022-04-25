@@ -25,6 +25,7 @@ const HomePage = () => {
     if (!projects) return;
     return projects
       .sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+      .filter((project) => project.status !== "Not Live")
       .map((project) => (
         <div
           className="col-12 col-lg-6 col-xl-4 mb-5 card-wrapper"
