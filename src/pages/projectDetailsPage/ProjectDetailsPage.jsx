@@ -97,18 +97,18 @@ const ProjectDetailsPage = () => {
                 </div>
               </div>
               <div className="project-buttons-wrapper">
-                <Link
-                  to={project.projectUrl || "/projects"}
+                <a
+                  href={project.projectUrl || "/projects"}
                   className="details-button"
                 >
                   Project URL
-                </Link>
-                <Link
-                  to={project.githubUrl || "/projects"}
+                </a>
+                <a
+                  href={project.githubUrl || "/projects"}
                   className="details-button"
                 >
                   Source Code
-                </Link>
+                </a>
               </div>
             </div>
           </div>
