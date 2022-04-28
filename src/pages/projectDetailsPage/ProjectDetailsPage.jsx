@@ -99,12 +99,16 @@ const ProjectDetailsPage = () => {
               <div className="project-buttons-wrapper">
                 <a
                   href={project.projectUrl || "/projects"}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="details-button"
                 >
                   Project URL
                 </a>
                 <a
                   href={project.githubUrl || "/projects"}
+                  target="_blank"
+                  rel="noreferrer noopener"
                   className="details-button"
                 >
                   Source Code
