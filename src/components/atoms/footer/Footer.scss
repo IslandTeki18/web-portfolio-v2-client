@@ -24,4 +24,9 @@
   p {
     line-height: 25px;
   }
+  .iconText {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
 }

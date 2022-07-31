@@ -2,7 +2,7 @@ import React from "react";
 import "./Footer.scss";
 import Icon from "../icon/Icon";
 import { socialMediaData } from "../../../utils/tempData";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   function socialMediaButtons() {
@@ -34,33 +34,38 @@ const Footer = () => {
       <section id="linkSections" className="bg-light py-3">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-md-6 col-12">
+            <div className="col-md-6 col-12">
               <h6 className="text-uppercase fw-bold">Landon McKell</h6>
               <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
               <p>
-                Thanks for visiting my portfolio. This is the second
-                iteration of this portfolio and I'm constantly trying to
-                improve. If you see an bug or an error please reach out to me.
-                Thank you!
+                Thanks for visiting my portfolio. This is the second iteration
+                of this portfolio and I'm constantly trying to improve. If you
+                see an bug or an error please reach out to me. Thank you!
               </p>
             </div>
-            <div className="col-lg-3 col-md-6 col-12">
-              <h6 className="text-uppercase fw-bold">Pages</h6>
-              <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
-              <div className="pageLinks">
-                <Link to="/">Home</Link>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-6 col-12">
-              <h6 className="text-uppercase fw-bold">Useful Links</h6>
-              <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
-            </div>
-            <div className="col-lg-3 col-md-6 col-12">
+            <div className="col-md-6 col-12">
               <h6 className="text-uppercase fw-bold">Contact</h6>
               <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
+              <div className="iconText">
+                <Icon className="fa-solid fa-flag-usa" />
+                <p>Spanish Fork, UT, 84660, USA</p>
+              </div>
+              <div className="iconText">
+                <Icon className="fa-solid fa-envelope" />
+                <p>landon.roney7923@gmail.com</p>
+              </div>
+              <div className="iconText">
+                <Icon className="fa-solid fa-phone" />
+                <p>801-310-5876</p>
+              </div>
             </div>
           </div>
         </div>
+      </section>
+      <section id="bottomBannerSection" className="text-center text-light py-2">
+        <p>
+          2020 Copyright: <span className="fw-bold">landonmckell.com</span>
+        </p>
       </section>
     </footer>
   );
