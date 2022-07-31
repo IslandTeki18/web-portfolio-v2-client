@@ -14,6 +14,7 @@ import AdminContactDetailsPage from "./pages/adminContactDetailsPage/AdminContac
 import NotFoundPage from "./pages/notFoundPage/NotFoundPage";
 import Header from "./components/molecules/header/Header";
 import Footer from "./components/atoms/footer/Footer";
+import AdminSkillSchedulePage from "./pages/adminSkillSchedulePage/AdminSkillSchedulePage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/contact" element={<ContactMePage />} />
           <Route path="/resume" element={<ResumePage />} />
           <Route path="/admin" element={<AdminLoginPage />} />
+          <Route path="/admin/skills" element={<AdminSkillSchedulePage />} />
           <Route
             path="/admin/settings"
             element={<AdminProfileSettingsPage />}
