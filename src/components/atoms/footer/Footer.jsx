@@ -19,7 +19,7 @@ const Footer = () => {
   }
   return (
     <footer className="dkFooter bg-dark">
-      <section id="socialMediaSection" className="container-fluid py-4">
+      <section id="socialMediaSection" className="container-fluid py-3">
         <div className="row align-items-center">
           <div className="col-12 col-sm-6 text-light text-sm-start text-center">
             <h5>Get connected with me on social media:</h5>
@@ -34,7 +34,7 @@ const Footer = () => {
       <section id="linkSections" className="bg-light py-3">
         <div className="container">
           <div className="row">
-            <div className="col-md-6 col-12">
+            <div className="col-md-7 col-12">
               <h6 className="text-uppercase fw-bold">Landon McKell</h6>
               <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
               <p>
@@ -43,7 +43,13 @@ const Footer = () => {
                 see an bug or an error please reach out to me. Thank you!
               </p>
             </div>
-            <div className="col-md-6 col-12">
+            <div className="col-md-2 col-12">
+              <h6 className="text-uppercase fw-bold">Other Links</h6>
+              <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
+              <p className="text-muted">Blog (Coming Soon)</p>
+              <p className="text-muted">Youtube (Coming Soon)</p>
+            </div>
+            <div className="col-md-3 col-12">
               <h6 className="text-uppercase fw-bold">Contact</h6>
               <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
               <div className="iconText">
