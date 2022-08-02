@@ -2,7 +2,6 @@ import React from "react";
 import "./Footer.scss";
 import Icon from "../icon/Icon";
 import { socialMediaData } from "../../../utils/tempData";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
   function socialMediaButtons() {

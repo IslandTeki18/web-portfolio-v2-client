@@ -74,6 +74,20 @@ const ResumePage = () => {
               <h3 className="resume-title">Professional Experience</h3>
               <div className="resume-item">
                 <ResumeExp
+                  employer="Start Studio"
+                  startMonth="May"
+                  startYear="2022"
+                  isPresent
+                  city="Spanish Fork"
+                  state="UT"
+                  expListItems={[
+                    "Implementing snapshot and unit tests to Nextjs project",
+                    "Creating a new website using React Typescript"
+                  ]}
+                />
+              </div>
+              <div className="resume-item">
+                <ResumeExp
                   employer="Red Sky Technologies"
                   startMonth="Apr"
                   startYear="2021"

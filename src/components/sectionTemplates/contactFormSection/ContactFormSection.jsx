@@ -33,8 +33,8 @@ const ContactFormSection = (props) => {
             </div>
             <div className="semi-label">Living In:</div>
             <p className="address-label mb-2">Spanish Fork, Utah, USA</p>
-            <div className="semi-label">Call:</div>
-            <p className="address-label mb-5">Spanish Fork, Utah, USA</p>
+            <div className="semi-label">Call or Text:</div>
+            <p className="address-label mb-5">801-310-5876</p>
             <div className="social-media-group">{renderSocialMediaIcons()}</div>
           </div>
           <div className="col-12 col-sm-6 order-0 order-sm-1 contact-form-col">
