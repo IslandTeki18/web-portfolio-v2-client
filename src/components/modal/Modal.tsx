@@ -1,16 +1,24 @@
-import React from "react";
+import * as React from "react";
 import "./Modal.scss";
-import PropTypes from "prop-types";
 
-const Modal = (props) => {
-    function onProceedHandler() {
-        props.onClick()
-    }
+type ModalProps = {
+  id: string;
+  title?: string;
+  onClick: () => void;
+  exitButtonLabel: string;
+  proceedButtonLabel: string;
+  children: React.ReactElement;
+};
+
+export const Modal = (props: ModalProps) => {
+  function onProceedHandler() {
+    props.onClick();
+  }
   return (
     <div
       className="dkModal modal fade"
       id={props.id}
-      tabindex="-1"
+      tabIndex={-1}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
@@ -36,7 +44,11 @@ const Modal = (props) => {
             >
               {props.exitButtonLabel ? props.exitButtonLabel : "Cancel"}
             </button>
-            <button type="button" className="btn btn-primary" onClick={onProceedHandler()}>
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={onProceedHandler}
+            >
               {props.proceedButtonLabel ? props.proceedButtonLabel : "Finish"}
             </button>
           </div>
@@ -50,11 +62,3 @@ Modal.defaultProps = {
   title: "Sample Title",
   id: "exampleId",
 };
-
-Modal.propTypes = {
-  title: PropTypes.string,
-  id: PropTypes.string.isRequired,
-  onClick: PropTypes.func
-};
-
-export default Modal;

@@ -1,18 +1,30 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import { Link } from "react-router-dom";
-import Img from "../img/Img";
+import {Img} from "../img/Img";
 
-const Card = (props) => {
+type CardProps = {
+  cardClassName: string,
+  imgTop?: boolean,
+  imgSrc?: string,
+  imgAlt?: string,
+  imgLink?: string,
+  imageClassName?: string,
+  imageWrapperClassName?: string,
+  imgWidth?: number,
+  imgHeight?: number,
+  children: React.ReactElement
+}
+
+export const Card = (props: CardProps) => {
   return (
     <div className={`dkCard card ${props.cardClassName}`}>
       {props.imgTop && (
-        <Link to={props.imgLink}>
+        <Link to={props.imgLink || "/"}>
           <div className={props.imageWrapperClassName}>
             <Img
               className={`card-img-top ${props.imageClassName}`}
               src={props.imgSrc}
-              alt={props.imageAlt}
+              alt={props.imgAlt}
               height={props.imgHeight}
               width={props.imgWidth}
             />
@@ -32,16 +44,3 @@ Card.defaultProps = {
   imgWidth: 380,
   imgHeight: 213,
 };
-
-Card.propTypes = {
-  cardClassName: PropTypes.string,
-  imgTop: PropTypes.bool,
-  imgSrc: PropTypes.string,
-  imgAlt: PropTypes.string,
-  imageClassName: PropTypes.string,
-  imageWrapperClassName: PropTypes.string,
-  imgWidth: PropTypes.number,
-  imgHeight: PropTypes.number,
-};
-
-export default Card;

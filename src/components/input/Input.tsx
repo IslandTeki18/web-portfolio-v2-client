@@ -1,7 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-const Input = (props) => {
+type InputProps = {
+  name?: string;
+  type?: string;
+  className?: string;
+  id?: string;
+  placeholder?: string;
+  value?: any;
+  onChange?: () => void;
+  required?: boolean;
+  multiple?: boolean;
+};
+
+export const Input = (props: InputProps) => {
   return (
     <input
       name={props.name}
@@ -22,17 +33,3 @@ Input.defaultProps = {
   multiple: false,
   required: false,
 };
-
-Input.propTypes = {
-  name: PropTypes.string,
-  type: PropTypes.string,
-  className: PropTypes.string,
-  id: PropTypes.string,
-  placeholder: PropTypes.string,
-  value: PropTypes.any,
-  onChange: PropTypes.func,
-  required: PropTypes.bool,
-  multiple: PropTypes.bool,
-};
-
-export default Input;

@@ -1,7 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 
-const ProgressBar = (props) => {
+type ProgressBarProps = {
+  className?: string;
+  progressBarClassName?: string;
+  progressValue?: number;
+  wrapperStyles?: object;
+  id?: string;
+};
+
+export const ProgressBar = (props: ProgressBarProps) => {
   const styles = {
     width: `${props.progressValue}%`,
   };
@@ -13,13 +20,13 @@ const ProgressBar = (props) => {
       id={props.id}
     >
       <div
-        className={`progress-bar ${props.progressBarClassName}}`}
+        className={`progress-bar ${props.progressBarClassName}`}
         role="progressbar"
         style={styles}
         aria-valuenow={props.progressValue}
-        aria-valuemin="0"
-        aria-valuemax="100"
-      />
+        aria-valuemin={0}
+        aria-valuemax={100}
+      ></div>
     </div>
   );
 };
@@ -30,12 +37,4 @@ ProgressBar.defaultProps = {
   className: "",
   id: "default-id",
 };
-ProgressBar.propTypes = {
-  className: PropTypes.string,
-  progressBarClassName: PropTypes.string,
-  progressValue: PropTypes.number,
-  wrapperStyles: PropTypes.object,
-  id: PropTypes.string,
-};
-
-export default ProgressBar;
+ProgressBar.propTypes = {};

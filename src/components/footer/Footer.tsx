@@ -1,20 +1,10 @@
-import React from "react";
+import * as React from "react";
 import "./Footer.scss";
-import Icon from "../icon/Icon";
-import { socialMediaData } from "../../../utils/tempData";
+import {Icon} from "../icon/Icon";
 
-const Footer = () => {
+export const Footer = () => {
   function socialMediaButtons() {
-    return socialMediaData.map((social) => (
-      <a
-        href={social.link}
-        rel="noreferrer noopener"
-        key={social.icon}
-        target="_blank"
-      >
-        <Icon className={social.icon} color="#ffffff" />
-      </a>
-    ));
+  
   }
   return (
     <footer className="dkFooter bg-dark">
@@ -25,7 +15,7 @@ const Footer = () => {
           </div>
           <div className="col-12 col-sm-6">
             <div className="socialMediaWrapper text-white">
-              {socialMediaButtons()}
+              {/* {socialMediaButtons()} */}
             </div>
           </div>
         </div>
@@ -76,4 +66,3 @@ const Footer = () => {
   );
 };
 
-export default Footer;

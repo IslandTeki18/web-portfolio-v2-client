@@ -1,10 +1,18 @@
-import React from "react";
-import PropTypes from "prop-types";
+import * as React from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionPlugin from "@fullcalendar/interaction"
+import interactionPlugin from "@fullcalendar/interaction";
 
-const Calendar = (props) => {
+type CalendarProps = {
+  initialView: string;
+  events: any[];
+  headerToolbar: object;
+  eventClick: () => void;
+  dateClick: () => void;
+  selectable: boolean;
+};
+
+const Calendar = (props: CalendarProps) => {
   return (
     <div className="dkCalendar">
       <FullCalendar
@@ -26,15 +34,6 @@ Calendar.defaultProps = {
   events: [],
   headerToolbar: {},
   selectable: false,
-};
-
-Calendar.propTypes = {
-  initialView: PropTypes.string,
-  events: PropTypes.array,
-  headerToolbar: PropTypes.object,
-  eventClick: PropTypes.func,
-  dateClick: PropTypes.func,
-  selectable: PropTypes.bool,
 };
 
 export default Calendar;
