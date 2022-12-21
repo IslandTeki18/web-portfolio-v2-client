@@ -1,7 +1,11 @@
-import * as React from 'react'
+import * as React from "react";
+import { MainNavbar } from "~src/components";
 
 export const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <MainNavbar />
+      <div className="dkHome">Home</div>
+    </>
+  );
+};
