@@ -1,9 +1,13 @@
 import * as React from 'react'
-import { Home } from "~/src/features/home";
+import { Home, NotFound } from "~/src/features";
 
 export const mainRoutes = [
     {
         path: "/",
         element: <Home />
+    },
+    {
+        path: "*",
+        element: <NotFound />
     }
 ]
