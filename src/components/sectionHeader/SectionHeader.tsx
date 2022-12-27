@@ -12,9 +12,9 @@ type SectionHeaderProps = {
 export const SectionHeader = (props: SectionHeaderProps) => {
   return (
     <div
-      className={`bg-${props.bgColor} md:max-h-[961px] px-[3%] sm:px-[8%] xl:px-[16.666%]`}
+      className={`bg-${props.bgColor} md:max-h-[961px] px-[3%] sm:px-[8.33333%] xl:px-[16.666%]`}
     >
-      <div className="border border-white max-h-[157px] p-8">
+      <div className="border-2 border-white max-h-[157px] p-8">
         {props.isLimitedSection && (
           <div className="flex justify-end">
             <Link

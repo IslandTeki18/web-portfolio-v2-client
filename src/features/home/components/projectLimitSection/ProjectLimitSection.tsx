@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { SectionHeader } from "~src/components";
 
 type Props = {};
 
@@ -45,7 +46,7 @@ export const ProjectLimitSection = (props: Props) => {
           </div>
           <span className="text-white uppercase">{project.projectType}</span>
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between items-end">
           <span className="text-white">{project.date}</span>
           <Link
             to={`/project/${project.id}`}
@@ -59,23 +60,8 @@ export const ProjectLimitSection = (props: Props) => {
   }
 
   return (
-    <div className="bg-dark gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] xl:px-[16.666%]">
-      <div className="border border-white max-h-[157px] p-8">
-        <div className="flex justify-end">
-          <Link
-            to="/projects"
-            className="border border-white px-8 py-2 text-white uppercase"
-          >
-            View All
-          </Link>
-        </div>
-        <div className="flex justify-start">
-          <span className="uppercase text-white text-3xl tracking-wide font-black">
-            MY PROJECTS
-          </span>
-        </div>
-      </div>
+    <SectionHeader title="My Projects" isLimitedSection viewAllLink="/projects">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">{renderProjects()}</div>
-    </div>
+    </SectionHeader>
   );
 };

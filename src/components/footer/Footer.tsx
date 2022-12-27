@@ -1,68 +1,112 @@
 import * as React from "react";
-import "./Footer.scss";
-import {Icon} from "../icon/Icon";
+import { Link } from "react-router-dom";
+import { IFooterListItem } from "~src/types";
 
 export const Footer = () => {
-  function socialMediaButtons() {
-  
+  const mockProjectList: IFooterListItem[] = [
+    { name: "Project One", id: "an34f3" },
+    { name: "Project Two", id: "asdf32f" },
+    { name: "Project Three", id: "asdf4" },
+    { name: "Project Four", id: "an34fasdf3" },
+    { name: "Project Five", id: "q24fqf" },
+  ];
+  const mockServiceList: IFooterListItem[] = [
+    { name: "Service One", id: "an34f3" },
+    { name: "Service Two", id: "asdf32f" },
+    { name: "Service Three", id: "asdf4" },
+    { name: "Service Four", id: "an34fasdf3" },
+    { name: "Service Five", id: "q24fqf" },
+  ];
+
+  const mockBlogList: IFooterListItem[] = [
+    { name: "Blog One", id: "an34f3" },
+    { name: "Blog Two", id: "asdf32f" },
+    { name: "Blog Three", id: "asdf4" },
+    { name: "Blog Four", id: "an34fasdf3" },
+    { name: "Blog Five", id: "q24fqf" },
+  ];
+
+  function renderList(list: IFooterListItem[], name: string) {
+    return list.map((item) => (
+      <Link to={`${name}/${item.id}`} className="text-base font-semibold">
+        {item.name}
+      </Link>
+    ));
   }
+
   return (
-    <footer className="dkFooter bg-dark">
-      <section id="socialMediaSection" className="container-fluid py-3">
-        <div className="row align-items-center">
-          <div className="col-12 col-sm-6 text-light text-sm-start text-center">
-            <h5>Get connected with me on social media:</h5>
-          </div>
-          <div className="col-12 col-sm-6">
-            <div className="socialMediaWrapper text-white">
-              {/* {socialMediaButtons()} */}
+    <>
+      <footer className="text-white border border-white p-6 mx-[3%] sm:mx-[8.33333%] xl:mx-[16.666%]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          <div id="personal-info" className="flex flex-col justify-space">
+            <div className="flex flex-col">
+              <span className="font-bold text-2xl tracking-wide">
+                Landon McKell
+              </span>
+              <span className="text-base mt-4">
+                WEB DEVELOPER <br /> Spanish Fork, UT <br /> 84660, USA
+              </span>
+            </div>
+            <div className="flex gap-10 mt-4">
+              <i className="fa-brands fa-github text-2xl" />
+              <i className="fa-brands fa-twitter text-2xl" />
+              <i className="fa-brands fa-instagram text-2xl" />
             </div>
           </div>
-        </div>
-      </section>
-      <section id="linkSections" className="bg-light py-3">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-7 col-12">
-              <h6 className="text-uppercase fw-bold">Landon McKell</h6>
-              <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
-              <p>
-                Thanks for visiting my portfolio. This is the second iteration
-                of this portfolio and I'm constantly trying to improve. If you
-                see an bug or an error please reach out to me. Thank you!
-              </p>
+          <div id="project-list" className="flex flex-col justify-between ">
+            <span className="uppercase text-3xl font-bold tracking-wide text-center">
+              Projects
+            </span>
+            <div className="flex flex-col gap-4 pt-8 mx-auto">
+              {renderList(mockProjectList, "project")}
             </div>
-            <div className="col-md-2 col-12">
-              <h6 className="text-uppercase fw-bold">Other Links</h6>
-              <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
-              <p className="text-muted">Blog (Coming Soon)</p>
-              <p className="text-muted">Youtube (Coming Soon)</p>
+          </div>
+          <div id="service-list" className="flex flex-col justify-between">
+            <span className="uppercase text-3xl font-bold tracking-wide text-center">
+              Services
+            </span>
+            <div className="flex flex-col gap-4 pt-8 mx-auto">
+              {renderList(mockServiceList, "service")}
             </div>
-            <div className="col-md-3 col-12">
-              <h6 className="text-uppercase fw-bold">Contact</h6>
-              <hr className="hrStyles mb-3 mt-0 d-inline-block mx-auto" />
-              <div className="iconText">
-                <Icon className="fa-solid fa-flag-usa" />
-                <p>Spanish Fork, UT, 84660, USA</p>
-              </div>
-              <div className="iconText">
-                <Icon className="fa-solid fa-envelope" />
-                <p>landon.roney7923@gmail.com</p>
-              </div>
-              <div className="iconText">
-                <Icon className="fa-solid fa-phone" />
-                <p>801-310-5876</p>
-              </div>
+          </div>
+          <div id="blog-list" className="flex flex-col justify-between">
+            <span className="uppercase text-3xl font-bold tracking-wide text-center">
+              Blog
+            </span>
+            <div className="flex flex-col gap-4 pt-8 mx-auto">
+              {renderList(mockBlogList, "blog")}
             </div>
           </div>
         </div>
-      </section>
-      <section id="bottomBannerSection" className="text-center text-light py-2">
-        <p>
-          2020 Copyright: <span className="fw-bold">landonmckell.com</span>
-        </p>
-      </section>
-    </footer>
+      </footer>
+      <hr className="mx-[3%] sm:mx-[8.33333%] xl:mx-[16.666%] my-6 bg-primary-100" />
+      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] xl:mx-[16.666%] p-4">
+        <span>
+          AFI TECH
+          <i className="fa-regular fa-copyright px-1" />
+          2022
+        </span>
+        <div className="flex justify-evenly gap-6">
+          <Link to="/projects" className="uppercase">
+            Projects
+          </Link>
+          <Link to="/services" className="uppercase">
+            Services
+          </Link>
+          <Link to="/about" className="uppercase">
+            About
+          </Link>
+          <Link to="/resume" className="uppercase">
+            Resume
+          </Link>
+          <Link to="/blogs" className="uppercase">
+            Blog
+          </Link>
+          <Link to="/contact" className="uppercase">
+            Contact
+          </Link>
+        </div>
+      </div>
+    </>
   );
 };
-

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MainNavbar } from "~src/components";
+import { MainNavbar, Footer } from "~src/components";
 import { ContactFormSection, IntroductionSection, ProjectLimitSection, ServiceLimitSection } from "../../components";
 
 export const Home = () => {
@@ -20,6 +20,7 @@ export const Home = () => {
           <ContactFormSection />
         </section>
       </div>
+      <Footer />
     </>
   );
 };
