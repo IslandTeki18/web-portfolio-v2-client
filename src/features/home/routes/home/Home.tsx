@@ -1,6 +1,6 @@
 import * as React from "react";
 import { MainNavbar } from "~src/components";
-import { IntroductionSection, ProjectLimitSection, ServiceLimitSection } from "../../components";
+import { ContactFormSection, IntroductionSection, ProjectLimitSection, ServiceLimitSection } from "../../components";
 
 export const Home = () => {
   return (
@@ -15,6 +15,9 @@ export const Home = () => {
         </section>
         <section id="service-limit-section" className="pt-10 pb-10">
           <ServiceLimitSection />
+        </section>
+        <section id="contact-form-section" className="pt-10 pb-10">
+          <ContactFormSection />
         </section>
       </div>
     </>

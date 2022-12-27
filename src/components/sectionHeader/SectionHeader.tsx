@@ -26,7 +26,7 @@ export const SectionHeader = (props: SectionHeaderProps) => {
           </div>
         )}
         <div className="flex justify-start">
-          <span className="uppercase text-white text-3xl tracking-wide font-black">
+          <span className={`uppercase text-white text-3xl tracking-wide font-black ${!props.isLimitedSection ? "mt-12" : ""}`}>
             {props.title}
           </span>
         </div>
