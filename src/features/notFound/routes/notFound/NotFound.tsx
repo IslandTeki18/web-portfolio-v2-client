@@ -13,6 +13,7 @@ export const NotFound = () => {
         <p className="text-gray-500 mt-8 py-2 border-y-2 text-center">
           Whoops, this page doesn't exist yet...
         </p>
+        <button>Go Home</button>
       </div>
     </div>
   );
