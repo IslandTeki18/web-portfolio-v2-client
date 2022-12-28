@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 export const MainNavbar = () => {
   const navigation = [
     { name: "Home", path: "/", current: true },
-    { name: "Projects", path: "projects", current: false },
-    { name: "About", path: "about", current: false },
-    { name: "Resume", path: "resume", current: false },
-    { name: "Contact", path: "contact", current: false },
+    { name: "Projects", path: "/projects", current: false },
+    { name: "About", path: "/about", current: false },
+    { name: "Resume", path: "/resume", current: false },
+    { name: "Contact", path: "/contact", current: false },
   ];
 
   return (
