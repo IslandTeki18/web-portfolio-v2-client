@@ -36,9 +36,9 @@ export const Footer = () => {
 
   return (
     <>
-      <footer className="text-white border border-white p-6 mx-[3%] sm:mx-[8.33333%] xl:mx-[16.666%]">
+      <footer className="text-white border border-white p-6 mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%]">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <div id="personal-info" className="flex flex-col justify-space">
+          <div id="personal-info" className="flex flex-col justify-between">
             <div className="flex flex-col">
               <span className="font-bold text-2xl tracking-wide">
                 Landon McKell
@@ -47,10 +47,10 @@ export const Footer = () => {
                 WEB DEVELOPER <br /> Spanish Fork, UT <br /> 84660, USA
               </span>
             </div>
-            <div className="flex gap-10 mt-4">
-              <i className="fa-brands fa-github text-2xl" />
-              <i className="fa-brands fa-twitter text-2xl" />
-              <i className="fa-brands fa-instagram text-2xl" />
+            <div className="flex gap-10">
+              <i className="fa-brands fa-github text-4xl" />
+              <i className="fa-brands fa-twitter text-4xl" />
+              <i className="fa-brands fa-instagram text-4xl" />
             </div>
           </div>
           <div id="project-list" className="flex flex-col justify-between ">
@@ -79,8 +79,8 @@ export const Footer = () => {
           </div>
         </div>
       </footer>
-      <hr className="mx-[3%] sm:mx-[8.33333%] xl:mx-[16.666%] my-6 bg-primary-100" />
-      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] xl:mx-[16.666%] p-4">
+      <hr className="mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] my-6 bg-primary-100" />
+      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] p-4">
         <span>
           AFI TECH
           <i className="fa-regular fa-copyright px-1" />

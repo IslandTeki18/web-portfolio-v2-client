@@ -43,7 +43,7 @@ export const ServiceLimitSection = (props: Props) => {
     <SectionHeader title="My services" isLimitedSection viewAllLink="services">
       <div className="flex mt-4 gap-4">
         <div className="w-9/10 ">
-          <div className="grid grid-cols-3 gap-4">{renderServiceCards()}</div>
+          <div className="grid grid-cols-3">{renderServiceCards()}</div>
         </div>
         <div className="w-1/10 border border-white"></div>
       </div>

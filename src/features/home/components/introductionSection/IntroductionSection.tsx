@@ -4,7 +4,7 @@ type IntroductionSectionProps = {};
 
 export const IntroductionSection = (props: IntroductionSectionProps) => {
   return (
-    <div className="bg-dark flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] xl:px-[16.666%]">
+    <div className="bg-dark flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] 2xl:px-[16.666%]">
       <div className="flex-1 shrink-0 lg:flex-2">
         <div className="p-12 h-full max-h-[785px] border border-white flex flex-col justify-between text-white">
           <div className="flex flex-col pb-6 w-full">

@@ -11,4 +11,4 @@ export function AppRoutes() {
   }
   const router = createBrowserRouter(routes);
   return <RouterProvider router={router} />;
-};
+}

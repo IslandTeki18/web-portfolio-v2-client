@@ -4,7 +4,7 @@ import { SectionHeader } from "~src/components";
 
 type Props = {};
 
-export const ProjectLimitSection = (props: Props) => {
+export const ProjectListSection = (props: Props) => {
   const mockProjects = [
     {
       title: "Sample One",
@@ -60,7 +60,7 @@ export const ProjectLimitSection = (props: Props) => {
   }
 
   return (
-    <SectionHeader title="My Projects" isLimitedSection viewAllLink="/projects">
+    <SectionHeader title="My Projects">
       <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">{renderProjects()}</div>
     </SectionHeader>
   );
