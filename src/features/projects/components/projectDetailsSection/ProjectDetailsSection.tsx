@@ -50,7 +50,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
   }
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
-      <div className="border border-white p-4 flex flex-col justify-between gap-4 w-full md:w-2/4 xl:w-3/10">
+      <div className="border border-white p-4 flex flex-col justify-between gap-4 w-full order-2 md:order-1 lg:w-2/4 xl:w-3/10">
         <div className="flex flex-col gap-2">
           <span className="font-bold text-lg uppercase">
             {props.isPublic ? (
@@ -102,7 +102,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
           </div>
         </div>
       </div>
-      <div className="border border-white w-full md:w-2/4 xl:w-7/10">
+      <div className="border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-7/10">
         <img
           className="w-full h-auto"
           src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"

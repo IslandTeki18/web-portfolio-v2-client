@@ -9,6 +9,7 @@ type ButtonProps = {
   buttonType?: string;
   labelColor?: string;
   id?: string;
+  className?: string
 };
 
 export const Button = (props: ButtonProps) => {
@@ -18,7 +19,7 @@ export const Button = (props: ButtonProps) => {
       onClick={props.onClick}
       name={props.name}
       disabled={props.isDisabled}
-      className={`bg-${props.buttonType} text-${props.labelColor}`}
+      className={`bg-${props.buttonType} text-${props.labelColor} ${props.className}`}
     >
       {props.label}
     </button>
@@ -29,4 +30,5 @@ Button.defaultProps = {
   buttonType: "dark",
   labelColor: "white",
   isDisabled: false,
+  className: ""
 };
