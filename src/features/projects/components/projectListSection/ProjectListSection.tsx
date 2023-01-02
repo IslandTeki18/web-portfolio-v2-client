@@ -1,10 +1,8 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
 import { SectionHeader } from "~src/components";
+import { ProjectCard } from "../projectCard";
 
-type Props = {};
-
-export const ProjectListSection = (props: Props) => {
+export const ProjectListSection = () => {
   const mockProjects = [
     {
       title: "Sample One",
@@ -33,35 +31,21 @@ export const ProjectListSection = (props: Props) => {
   ];
   function renderProjects() {
     return mockProjects.map((project) => (
-      <div
-        className="flex flex-col justify-between border border-white p-8 h-72"
-        key={project.id}
-      >
-        <div className="flex justify-between">
-          <div className="flex flex-col gap-2">
-            <span className="uppercase text-white font-bold">{project.title}</span>
-            <span className="text-white w-4/5">
-              {project.projectDescription}
-            </span>
-          </div>
-          <span className="text-white uppercase">{project.projectType}</span>
-        </div>
-        <div className="flex justify-between items-end">
-          <span className="text-white">{project.date}</span>
-          <Link
-            to={`/project/${project.id}`}
-            className="border border-white px-6 py-2 text-white"
-          >
-            Learn More
-          </Link>
-        </div>
-      </div>
+      <ProjectCard
+        id={project.id}
+        title={project.title}
+        projectDescription={project.projectDescription}
+        projectType={project.projectType}
+        date={project.date}
+      />
     ));
   }
 
   return (
     <SectionHeader title="My Projects">
-      <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">{renderProjects()}</div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">
+        {renderProjects()}
+      </div>
     </SectionHeader>
   );
 };

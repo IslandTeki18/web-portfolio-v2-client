@@ -10,9 +10,6 @@ export const ProjectList = () => {
       <section id="project-list-section" className="pt-10 pb-8">
         <ProjectListSection />
       </section>
-      <section id="contact-form-section" className="pt-10 pb-8">
-        <ContactFormSection />
-      </section>
       <Footer />
     </>
   );

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { MainNavbar, Footer } from "~src/components";
-import { ProjectDetailsHeader, ProjectDetailsSection, ProjectOverviewSection } from "../../components";
+import { ProjectActivitySection, ProjectDetailsHeader, ProjectDetailsSection, ProjectOverviewSection } from "../../components";
 
 export const ProjectDetails = () => {
   return (
@@ -18,6 +18,9 @@ export const ProjectDetails = () => {
       </section>
       <section id="project-overview-section" className="pt-4 pb-6">
         <ProjectOverviewSection />
+      </section>
+      <section id="project-activity-section" className="pt-4 pb-6">
+        <ProjectActivitySection />
       </section>
       <Footer />
     </>
