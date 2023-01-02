@@ -127,7 +127,7 @@ export const ProjectActivitySection = () => {
         {renderRecentActivity()}
       </div>
       <div className="flex flex-col w-full lg:w-2/4">
-        <div className="border border-white p-2 mb-4">
+        <div className="border border-white p-6 mb-4">
           <span className="text-2xl">Related Projects</span>
         </div>
         {renderProjectCards()}
