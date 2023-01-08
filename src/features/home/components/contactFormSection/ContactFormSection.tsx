@@ -1,13 +1,16 @@
 import * as React from "react";
-import { SectionHeader } from "~src/components";
+import { SectionWrapper } from "~src/components";
 
 type Props = {};
 
 export const ContactFormSection = (props: Props) => {
   return (
-    <SectionHeader title="Let's Connect">
+    <SectionWrapper title="Let's Connect">
       <div className="grid grid-cols-2 gap-6 mt-4">
-        <div id="social-links" className="flex flex-col justify-between border border-white text-white p-6">
+        <div
+          id="social-links"
+          className="flex flex-col justify-between border border-white text-white p-6"
+        >
           <span className="text-2xl font-bold tracking-wide uppercase">
             Let's build something great together
           </span>
@@ -45,6 +48,6 @@ export const ContactFormSection = (props: Props) => {
           </button>
         </div>
       </div>
-    </SectionHeader>
+    </SectionWrapper>
   );
 };

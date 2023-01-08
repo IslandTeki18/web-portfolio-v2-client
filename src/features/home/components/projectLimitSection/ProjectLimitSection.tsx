@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { SectionHeader } from "~src/components";
+import { SectionWrapper } from "~src/components";
 
 type Props = {};
 
@@ -39,7 +39,9 @@ export const ProjectLimitSection = (props: Props) => {
       >
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <span className="uppercase text-white font-bold">{project.title}</span>
+            <span className="uppercase text-white font-bold">
+              {project.title}
+            </span>
             <span className="text-white w-4/5">
               {project.projectDescription}
             </span>
@@ -60,8 +62,14 @@ export const ProjectLimitSection = (props: Props) => {
   }
 
   return (
-    <SectionHeader title="My Projects" isLimitedSection viewAllLink="/projects">
-      <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">{renderProjects()}</div>
-    </SectionHeader>
+    <SectionWrapper
+      title="My Projects"
+      isLimitedSection
+      viewAllLink="/projects"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">
+        {renderProjects()}
+      </div>
+    </SectionWrapper>
   );
 };

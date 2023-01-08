@@ -11,5 +11,5 @@ export * from "./message";
 export * from "./modal";
 export * from "./navbar";
 export * from "./progressBar";
-export * from "./sectionHeader";
+export * from "./sectionWrapper";
 export * from "./button"

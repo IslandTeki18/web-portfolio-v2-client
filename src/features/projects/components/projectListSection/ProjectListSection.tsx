@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SectionHeader } from "~src/components";
+import { SectionWrapper } from "~src/components";
 import { ProjectCard } from "../projectCard";
 
 export const ProjectListSection = () => {
@@ -42,10 +42,10 @@ export const ProjectListSection = () => {
   }
 
   return (
-    <SectionHeader title="My Projects">
+    <SectionWrapper title="My Projects">
       <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">
         {renderProjects()}
       </div>
-    </SectionHeader>
+    </SectionWrapper>
   );
 };

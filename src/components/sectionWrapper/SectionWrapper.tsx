@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-type SectionHeaderProps = {
+type SectionWrapperProps = {
   bgColor?: string;
   isLimitedSection?: boolean;
   viewAllLink?: string;
@@ -9,7 +9,7 @@ type SectionHeaderProps = {
   children: React.ReactNode;
 };
 
-export const SectionHeader = (props: SectionHeaderProps) => {
+export const SectionWrapper = (props: SectionWrapperProps) => {
   return (
     <>
       <div
@@ -42,7 +42,7 @@ export const SectionHeader = (props: SectionHeaderProps) => {
     </>
   );
 };
-SectionHeader.defualtProps = {
+SectionWrapper.defualtProps = {
   bgColor: "dark",
   title: "Sample",
   viewAllLink: "/",

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SectionHeader } from "~src/components";
+import { SectionWrapper } from "~src/components";
 
 type Props = {};
 
@@ -40,13 +40,13 @@ export const ServiceLimitSection = (props: Props) => {
   }
 
   return (
-    <SectionHeader title="My services" isLimitedSection viewAllLink="services">
+    <SectionWrapper title="My services" isLimitedSection viewAllLink="services">
       <div className="flex mt-4 gap-4">
         <div className="w-9/10 ">
           <div className="grid grid-cols-3">{renderServiceCards()}</div>
         </div>
         <div className="w-1/10 border border-white"></div>
       </div>
-    </SectionHeader>
+    </SectionWrapper>
   );
 };

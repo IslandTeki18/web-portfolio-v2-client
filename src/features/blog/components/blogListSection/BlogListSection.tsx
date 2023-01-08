@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button, SectionHeader } from "~src/components";
+import { Button, SectionWrapper } from "~src/components";
 
 type BlogListSectionProps = {};
 
@@ -43,10 +43,10 @@ export const BlogListSection = (props: BlogListSectionProps) => {
   }
 
   return (
-    <SectionHeader title="My Blog">
+    <SectionWrapper title="My Blog">
       <div className="flex flex-wrap md:flex-nowrap gap-4 text-white pt-8">
         {renderBlogCard()}
       </div>
-    </SectionHeader>
+    </SectionWrapper>
   );
 };

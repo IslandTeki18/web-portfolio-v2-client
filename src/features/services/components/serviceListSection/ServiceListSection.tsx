@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SectionHeader } from "~src/components";
+import { SectionWrapper } from "~src/components";
 
 type ServiceListSectionProps = {};
 
@@ -40,12 +40,12 @@ export const ServiceListSection = (props: ServiceListSectionProps) => {
   }
 
   return (
-    <SectionHeader title="My services" viewAllLink="services">
+    <SectionWrapper title="My services" viewAllLink="services">
       <div className="flex mt-4 gap-4">
         <div className="w-full ">
           <div className="grid grid-cols-3">{renderServiceCards()}</div>
         </div>
       </div>
-    </SectionHeader>
+    </SectionWrapper>
   );
 };
