@@ -1,13 +1,24 @@
 import * as React from "react";
-import { Home, NotFound } from "~/src/features";
-import { BlogDetails, BlogList } from "~src/features/blog";
-import { ProjectDetails, ProjectList } from "~src/features/projects/routes";
-import { ServiceDetails, ServiceList } from "~src/features/services";
+import {
+  Home,
+  NotFound,
+  ServiceDetails,
+  ServiceList,
+  ProjectDetails,
+  ProjectList,
+  BlogDetails,
+  BlogList,
+  About,
+} from "~/src/features";
 
 export const mainRoutes = [
   {
     path: "/",
     element: <Home />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
   {
     path: "/blogs",
