@@ -9,7 +9,8 @@ import {
   BlogDetails,
   BlogList,
   About,
-  Contact
+  Contact,
+  Resume
 } from "~/src/features";
 
 export const mainRoutes = [
@@ -40,6 +41,10 @@ export const mainRoutes = [
   {
     path: "/project/:id",
     element: <ProjectDetails />,
+  },
+  {
+    path: "/resume",
+    element: <Resume />
   },
   {
     path: "/services",
