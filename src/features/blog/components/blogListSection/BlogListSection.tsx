@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Button, SectionWrapper } from "~src/components";
+import { SectionWrapper } from "~src/components";
+import { Link } from "react-router-dom";
 
 type BlogListSectionProps = {};
 
@@ -35,7 +36,12 @@ export const BlogListSection = (props: BlogListSectionProps) => {
           <span className="text-base mb-4">{blog.shortDesc}</span>
         </div>
         <div className="flex justify-between items-baseline">
-          <Button label="Read More" className="border border-white px-4 py-2" />
+          <Link
+            to={`/blog/${blog.id}`}
+            className="border border-white px-4 py-2"
+          >
+            Read More
+          </Link>
           <span className="text-base">{blog.dateCreated}</span>
         </div>
       </div>
