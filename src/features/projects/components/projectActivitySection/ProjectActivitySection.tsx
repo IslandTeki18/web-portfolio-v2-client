@@ -1,6 +1,5 @@
 import * as React from "react";
 import { ProjectCard } from "../projectCard";
-import { MONTHS } from "~src/utils";
 
 export const ProjectActivitySection = () => {
   const mockProjects = [
@@ -52,46 +51,10 @@ export const ProjectActivitySection = () => {
     },
   ];
 
-  function sortByDate(
-    arr: {
-      id: string;
-      title: string;
-      date: string;
-      updateDesc: string;
-    }[]
-  ) {
-    return arr.sort((a, b) => {
-      var monthA = a.date.split(" ")[2];
-      var yearA = a.date.split(" ")[3];
-      var monthB = b.date.split(" ")[2];
-      var yearB = b.date.split(" ")[3];
 
-      var monthANum = MONTHS.indexOf(monthA) + 1;
-      var monthBNum = MONTHS.indexOf(monthB) + 1;
-
-      // Compare the years
-      if (yearA < yearB) {
-        return -1;
-      } else if (yearA > yearB) {
-        return 1;
-      } else {
-        // If the years are the same, compare the months
-        if (monthANum < monthBNum) {
-          return -1;
-        } else if (monthANum > monthBNum) {
-          return 1;
-        } else {
-          // If the months are the same, compare the days
-          var dayA: any = a.date.split(" ")[0];
-          var dayB: any = b.date.split(" ")[0];
-          return dayA - dayB;
-        }
-      }
-    });
-  }
 
   function renderRecentActivity() {
-    return sortByDate(mockActivity).map((item) => (
+    return mockActivity.map((item) => (
       <div
         key={item.id}
         className="flex flex-col border-l border-white pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white"
@@ -122,7 +85,7 @@ export const ProjectActivitySection = () => {
   }
   return (
     <div className="flex flex-wrap lg:flex-nowrap gap-4 text-white px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
-      <div className="border border-white p-6 flex flex-col w-full lg:w-2/4">
+      <div className="border border-white p-6 flex flex-col w-full lg:w-2/4 h-fit">
         <span className="text-2xl pb-6">Recent Activity</span>
         {renderRecentActivity()}
       </div>

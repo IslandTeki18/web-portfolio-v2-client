@@ -7,9 +7,13 @@ type ProjectDetailsSectionProps = {
   budget: string;
   startDate: string;
   progress: number;
+  tags?: ITag[]
+  projectImage?: string
 };
 
 export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
+  // TODO: Make a image carousel
+  // TODO: Make a video iframe to show youtube breakdown?
   const mockTags: ITag[] = [
     {
       id: "pq293jd",
@@ -105,7 +109,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
       <div className="border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-7/10">
         <img
           className="w-full h-auto"
-          src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+          src={props.projectImage}
           alt="project"
         />
       </div>
@@ -120,4 +124,5 @@ ProjectDetailsSection.defaultProps = {
   startDate: "22nd of Nov, 2022",
   deadlineDate: "5th of Feb, 2023",
   progress: 100,
+  projectImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
 };

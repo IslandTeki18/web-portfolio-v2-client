@@ -6,7 +6,7 @@ import { ContactFormSection } from "~src/features/home/components";
 export const ProjectList = () => {
   return (
     <>
-      <MainNavbar />
+      <MainNavbar projects />
       <section id="project-list-section" className="pt-10 pb-8">
         <ProjectListSection />
       </section>

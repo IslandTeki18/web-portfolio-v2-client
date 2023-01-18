@@ -4,7 +4,7 @@ type Props = {};
 
 export const ResumeHeader = (props: Props) => {
   return (
-    <div className="border border-white p-6 flex flex-col gap-8 text-white">
+    <div className="border-2 border-white p-6 flex flex-col gap-8 text-white">
       <div className="flex justify-between items-center">
         <span className="text-3xl font-bold uppercase">resume</span>
         <button className="border border-white px-6 py-2">Download CSV</button>

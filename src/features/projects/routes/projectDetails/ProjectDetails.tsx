@@ -3,9 +3,10 @@ import { MainNavbar, Footer } from "~src/components";
 import { ProjectActivitySection, ProjectDetailsHeader, ProjectDetailsSection, ProjectOverviewSection } from "../../components";
 
 export const ProjectDetails = () => {
+  // TODO: Bring in project object
   return (
     <>
-      <MainNavbar />
+      <MainNavbar projects />
       <section id="project-details-header" className="pt-10">
         <ProjectDetailsHeader
           title="Project Sample Title"

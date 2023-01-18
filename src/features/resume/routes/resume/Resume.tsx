@@ -6,8 +6,8 @@ import { EDUCATION, EXPERIENCES } from "../../utils/defaults";
 export const Resume = () => {
   return (
     <>
-      <MainNavbar />
-      <section id="resume-section" className="py-8">
+      <MainNavbar resume />
+      <section id="resume-section" className="pt-10 pb-8">
         <ResumeSection education={EDUCATION} experiences={EXPERIENCES} />
       </section>
       <Footer />

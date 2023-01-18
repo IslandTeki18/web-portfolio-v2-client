@@ -5,7 +5,7 @@ import { BlogDetailsSection } from "../../components";
 export const BlogDetails = () => {
   return (
     <>
-      <MainNavbar />
+      <MainNavbar blogs />
       <section id="blod-details-section" className="py-8">
         <BlogDetailsSection />
       </section>

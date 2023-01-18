@@ -5,7 +5,7 @@ import { ContactFormSection, IntroductionSection, ProjectLimitSection, ServiceLi
 export const Home = () => {
   return (
     <>
-      <MainNavbar />
+      <MainNavbar home />
       <div id="Home" className="h-full bg-dark">
         <section id="intro-section" className="pt-10 pb-10">
           <IntroductionSection />

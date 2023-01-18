@@ -6,8 +6,8 @@ import { BlogListSection } from "~src/features";
 export const About = () => {
   return (
     <>
-      <MainNavbar />
-      <section id="about-me-section" className="py-8">
+      <MainNavbar about />
+      <section id="about-me-section" className="pt-10 pb-8">
         <AboutMeSection />
       </section>
       <section id="blog-list-section" className="mb-8">

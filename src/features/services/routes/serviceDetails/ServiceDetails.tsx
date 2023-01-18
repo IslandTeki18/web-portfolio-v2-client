@@ -4,7 +4,7 @@ import { MainNavbar, Footer } from "~src/components";
 export const ServiceDetails = () => {
   return (
     <>
-      <MainNavbar />
+      <MainNavbar services />
       <Footer />
     </>
   );

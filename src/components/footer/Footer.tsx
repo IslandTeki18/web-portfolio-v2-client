@@ -3,19 +3,14 @@ import { Link } from "react-router-dom";
 import { IFooterListItem } from "~src/types";
 
 export const Footer = () => {
+  // TODO: Hook up icon links
+  
   const mockProjectList: IFooterListItem[] = [
     { name: "Project One", id: "an34f3" },
     { name: "Project Two", id: "asdf32f" },
     { name: "Project Three", id: "asdf4" },
     { name: "Project Four", id: "an34fasdf3" },
     { name: "Project Five", id: "q24fqf" },
-  ];
-  const mockServiceList: IFooterListItem[] = [
-    { name: "Service One", id: "an34f3" },
-    { name: "Service Two", id: "asdf32f" },
-    { name: "Service Three", id: "asdf4" },
-    { name: "Service Four", id: "an34fasdf3" },
-    { name: "Service Five", id: "q24fqf" },
   ];
 
   const mockBlogList: IFooterListItem[] = [
@@ -37,7 +32,7 @@ export const Footer = () => {
   return (
     <>
       <footer className="text-white border border-white p-6 mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%]">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div id="personal-info" className="flex flex-col justify-between">
             <div className="flex flex-col">
               <span className="font-bold text-2xl tracking-wide">
@@ -59,14 +54,6 @@ export const Footer = () => {
             </span>
             <div className="flex flex-col gap-4 pt-8 mx-auto">
               {renderList(mockProjectList, "project")}
-            </div>
-          </div>
-          <div id="service-list" className="flex flex-col justify-between">
-            <span className="uppercase text-3xl font-bold tracking-wide text-center">
-              Services
-            </span>
-            <div className="flex flex-col gap-4 pt-8 mx-auto">
-              {renderList(mockServiceList, "service")}
             </div>
           </div>
           <div id="blog-list" className="flex flex-col justify-between">

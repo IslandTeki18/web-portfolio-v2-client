@@ -6,8 +6,8 @@ import { ContactFormSection } from '~src/features/home/components'
 export const Contact = () => {
   return (
     <>
-        <MainNavbar />
-        <section id="contact-form-section" className="py-8">
+        <MainNavbar contact />
+        <section id="contact-form-section" className="pt-10 pb-8">
             <ContactFormSection />
         </section>
         <Footer />
