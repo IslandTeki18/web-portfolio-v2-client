@@ -42,10 +42,10 @@ export const ServiceLimitSection = (props: Props) => {
   return (
     <SectionWrapper title="My services" isLimitedSection viewAllLink="services">
       <div className="flex mt-4 gap-4">
-        <div className="w-9/10 ">
-          <div className="grid grid-cols-3">{renderServiceCards()}</div>
+        <div className="md:w-9/10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">{renderServiceCards()}</div>
         </div>
-        <div className="w-1/10 border border-white"></div>
+        <div className="md:w-1/10 hidden md:block border border-white"></div>
       </div>
     </SectionWrapper>
   );

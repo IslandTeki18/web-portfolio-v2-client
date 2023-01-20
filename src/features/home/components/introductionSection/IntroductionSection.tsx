@@ -4,9 +4,9 @@ type IntroductionSectionProps = {};
 
 export const IntroductionSection = (props: IntroductionSectionProps) => {
   return (
-    <div className="bg-dark flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] 2xl:px-[16.666%]">
+    <div className="bg-dark flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] 2xl:px-[16.666%] animate__animated animate__fadeInUp">
       <div className="flex-1 shrink-0 lg:flex-2">
-        <div className="p-12 h-full max-h-[785px] border border-white flex flex-col justify-between text-white">
+        <div className="p-6 md:p-12 h-full max-h-[785px] border border-white flex flex-col justify-between text-white">
           <div className="flex flex-col pb-6 w-full">
             <span className="font-bold text-2xl uppercase">Hi,</span>
             <span className="font-bold text-2xl uppercase mb-14">

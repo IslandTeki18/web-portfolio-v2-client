@@ -6,7 +6,7 @@ type Props = {};
 export const ContactFormSection = (props: Props) => {
   return (
     <SectionWrapper title="Let's Connect">
-      <div className="grid grid-cols-2 gap-6 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
         <div
           id="social-links"
           className="flex flex-col justify-between border border-white text-white p-6"

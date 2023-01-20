@@ -1,5 +1,6 @@
 import * as React from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 
 type MainNavBarProps = {
   home?: boolean;
@@ -11,6 +12,7 @@ type MainNavBarProps = {
   contact?: boolean;
 };
 export const MainNavbar = (props: MainNavBarProps) => {
+  const [isBars, setIsBars] = useState(false);
   const navigation = [
     { name: "Home", path: "/", current: props.home },
     { name: "Projects", path: "/projects", current: props.projects },
@@ -22,14 +24,17 @@ export const MainNavbar = (props: MainNavBarProps) => {
   ];
 
   return (
-    <nav className="bg-dark h-16 w-screen md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
+    <nav className="bg-dark h-fit md:h-16 w-screen md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] relative mt-4">
       <div className="flex justify-between items-center w-full h-inher">
-        <span className="text-white text-2xl font-medium tracking-wider uppercase">
+        <Link
+          to="/"
+          className="text-white text-2xl font-medium tracking-wider uppercase"
+        >
           Landon McKell
-        </span>
+        </Link>
         <ul className="flex justify-around gap-6 text-white">
           {navigation.map((item) => (
-            <li>
+            <li className="hidden md:block">
               <NavLink
                 to={item.path}
                 className={`${item.current ? "font-bold underline" : ""}`}
@@ -38,8 +43,30 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
+          <li className="block md:hidden">
+            <i
+              className={`fa-solid fa-${!isBars ? "bars" : "xmark"} text-xl`}
+              onClick={() => setIsBars((prev) => !prev)}
+            />
+          </li>
         </ul>
       </div>
+      {isBars ? (
+        <ul className="border border-white p-2 flex flex-wrap md:flex-nowrap justify-center top-10 gap-4 text-white mt-4 md:hidden animate__animated animate__fadeInDown">
+          {navigation.map((item) => (
+            <li className="block md:hidden">
+              <NavLink
+                to={item.path}
+                className={`${
+                  item.current ? "font-bold underline" : ""
+                } text-xm md:text-2xl`}
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </nav>
   );
 };

@@ -73,7 +73,7 @@ export const Footer = () => {
           <i className="fa-regular fa-copyright px-1" />
           2022
         </span>
-        <div className="flex justify-evenly gap-6">
+        <div className="hidden md:flex justify-evenly gap-6 md">
           <Link to="/projects" className="uppercase">
             Projects
           </Link>

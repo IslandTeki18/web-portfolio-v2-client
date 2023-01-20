@@ -12,13 +12,13 @@ type ProjectCardProps = {
 export const ProjectCard = (props: ProjectCardProps) => {
   return (
     <div
-      className="flex flex-col justify-between border border-white p-8 h-72"
+      className="flex flex-col justify-between border border-white p-4 md:p-8 h-72"
       key={props.id}
     >
       <div className="flex justify-between">
         <div className="flex flex-col gap-2">
           <span className="uppercase text-white font-bold">{props.title}</span>
-          <span className="text-white w-4/5">{props.projectDescription}</span>
+          <span className="text-white w-full md:w-4/5">{props.projectDescription}</span>
         </div>
         <span className="text-white uppercase">{props.projectType}</span>
       </div>

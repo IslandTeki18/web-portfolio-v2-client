@@ -40,7 +40,7 @@ export const EXPERIENCES = [
     companyName: "Start Studio",
     isCurrentEmployment: true,
     location: "Spanish Fork, UT",
-    summary: "Developed most of my time there building applications in ReactJS with Typescript. I started work on a older NextJS project. I was tasked with updating the project and applying basic layout tests.",
+    summary: "My primary role was building applications in ReactJS with Typescript. I started work on a older NextJS project. I was tasked with updating the project and applying basic layout tests.",
   },
   {
     position: "SOFTWARE ENGINEER",
@@ -51,7 +51,7 @@ export const EXPERIENCES = [
     companyName: "Red Sky Technologies",
     isCurrentEmployment: false,
     location: "Spanish Fork, UT",
-    summary: "Developed most of my time there building applications in ReactJS with Typescript. Worked on large scale React applications, from E-Commerce sites to Hotel Booking Application. Also worked with NodeJS, MariaDB, and Express on the backend of some of the projects.",
+    summary: "My primary role was building applications in ReactJS with Typescript. Worked on large scale React applications, from E-Commerce sites to Hotel Booking Application. Also worked with NodeJS, MariaDB, and Express on the backend of some of the projects.",
   },
   {
     position: "SOFTWARE ENGINEER",

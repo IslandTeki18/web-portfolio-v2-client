@@ -43,7 +43,7 @@ export const ServiceListSection = (props: ServiceListSectionProps) => {
     <SectionWrapper title="My services" viewAllLink="services">
       <div className="flex mt-4 gap-4">
         <div className="w-full ">
-          <div className="grid grid-cols-3">{renderServiceCards()}</div>
+          <div className="grid grid-cols-1 md:grid-cols-3">{renderServiceCards()}</div>
         </div>
       </div>
     </SectionWrapper>
