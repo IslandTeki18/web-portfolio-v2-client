@@ -6,7 +6,7 @@ export const BlogDetails = () => {
   return (
     <>
       <MainNavbar blogs />
-      <section id="blod-details-section" className="py-8">
+      <section id="blod-details-section" className="my-20 animate__animated animate__fadeInLeft">
         <BlogDetailsSection />
       </section>
       <Footer />

@@ -20,7 +20,7 @@ export const EducationCard = (props: EducationCardProps) => {
   }
 
   return (
-    <div className="border border-white text-white flex flex-col p-8">
+    <div className="border border-white text-white flex flex-col p-8 animate__animated animate__fadeInLeft">
       <span className="text-2xl sm:text-3xl uppercase font-bold mb-4">Education</span>
       {renderEducation()}
     </div>

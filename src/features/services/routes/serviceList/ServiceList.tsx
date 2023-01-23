@@ -6,7 +6,10 @@ export const ServiceList = () => {
   return (
     <>
       <MainNavbar services />
-      <section id="service-list-section" className="pt-10 pb-6">
+      <section
+        id="service-list-section"
+        className="my-20 animate__animated animate__fadeInLeft"
+      >
         <ServiceListSection />
       </section>
       <Footer />

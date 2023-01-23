@@ -7,7 +7,7 @@ export const Contact = () => {
   return (
     <>
         <MainNavbar contact />
-        <section id="contact-form-section" className="pt-10 pb-8">
+        <section id="contact-form-section" className="my-20 animate__animated animate__fadeInLeft">
             <ContactFormSection />
         </section>
         <Footer />

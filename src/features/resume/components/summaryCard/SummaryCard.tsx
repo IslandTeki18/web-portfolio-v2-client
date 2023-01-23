@@ -16,7 +16,7 @@ export const SummaryCard = (props: SummaryCardProps) => {
     ));
   }
   return (
-    <div className="border border-white text-white flex flex-col gap-4 p-6">
+    <div className="border border-white text-white flex flex-col gap-4 p-6 animate__animated animate__fadeInLeft">
       <span className="text-2xl sm:text-3xl uppercase font-bold">summary</span>
       <div className="flex flex-col gap-y-4 border-l border-white ml-2 pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white">
         <span className="text-xl sm:text-2xl text-danger-500 font-semibold tracking-wide leading-6">

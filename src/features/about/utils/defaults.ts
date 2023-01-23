@@ -39,18 +39,18 @@ export const BIO_POINTS = [
 export const BIO_SOCIAL = [
   {
     icon: "fa-brands fa-github",
-    link: ""
+    link: "https://github.com/IslandTeki18",
   },
   {
     icon: "fa-brands fa-linkedin",
-    link: ""
+    link: "https://www.linkedin.com/in/landon-mckell/",
   },
   {
     icon: "fa-brands fa-instagram",
-    link: ""
+    link: "https://www.instagram.com/landon.mckell/",
   },
   {
     icon: "fa-brands fa-square-twitter",
-    link: ""
+    link: "https://twitter.com/MckellLandon",
   },
-]
+];

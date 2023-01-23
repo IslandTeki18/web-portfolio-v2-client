@@ -22,7 +22,7 @@ export const ResumeSection = (props: Props) => {
           />
           <EducationCard education={props.education} />
         </div>
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 animate__animated animate__fadeInRight">
           <ExperienceCard experiences={props.experiences} />
         </div>
       </div>

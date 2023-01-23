@@ -48,8 +48,9 @@ export const ProjectLimitSection = (props: Props) => {
       title="My Projects"
       isLimitedSection
       viewAllLink="/projects"
+      className="projectLimited"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 pt-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 pt-4 animate__animated animate__fadeIn animate__delay-2s">
         {renderProjects()}
       </div>
     </SectionWrapper>

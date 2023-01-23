@@ -52,7 +52,12 @@ export const MainNavbar = (props: MainNavBarProps) => {
         </ul>
       </div>
       {isBars ? (
-        <ul className="border border-white p-2 flex flex-wrap md:flex-nowrap justify-center top-10 gap-4 text-white mt-4 md:hidden animate__animated animate__fadeInDown">
+        <ul
+          className={`
+            border border-white p-2 flex flex-wrap md:flex-nowrap justify-center top-10 gap-4 text-white mt-4 md:hidden 
+            animate__animated animate__fadeInDown animate__fast
+        `}
+        >
           {navigation.map((item) => (
             <li className="block md:hidden">
               <NavLink

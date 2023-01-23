@@ -15,11 +15,34 @@ export const ContactFormSection = (props: Props) => {
             Let's build something great together
           </span>
           <div className="flex flex-col gap-4 justify-evenly">
-            <span className="text-base uppercase">Instagram</span>
-            <span className="text-base uppercase">Linkedin</span>
-            <span className="text-base uppercase">Twitter</span>
-            <span className="text-base uppercase">Github</span>
-            <span className="text-base uppercase">Slack</span>
+            <a
+              href="https://www.instagram.com/landon.mckell/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-base uppercase">Instagram</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/landon-mckell/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-base uppercase">Linkedin</span>
+            </a>
+            <a
+              href="https://twitter.com/MckellLandon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-base uppercase">Twitter</span>
+            </a>
+            <a
+              href="https://github.com/IslandTeki18"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="text-base uppercase">Github</span>
+            </a>
           </div>
         </div>
         <div id="contact-form" className="flex flex-col gap-6 justify-between">
