@@ -4,7 +4,7 @@ import { IFooterListItem } from "~src/types";
 
 export const Footer = () => {
   // TODO: Hook up icon links
-  
+
   const mockProjectList: IFooterListItem[] = [
     { name: "Project One", id: "an34f3" },
     { name: "Project Two", id: "asdf32f" },
@@ -43,9 +43,15 @@ export const Footer = () => {
               </span>
             </div>
             <div className="flex gap-10">
-              <i className="fa-brands fa-github text-4xl" />
-              <i className="fa-brands fa-twitter text-4xl" />
-              <i className="fa-brands fa-instagram text-4xl" />
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-github text-4xl" />
+              </a>
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-twitter text-4xl" />
+              </a>
+              <a href="http://" target="_blank" rel="noopener noreferrer">
+                <i className="fa-brands fa-instagram text-4xl" />
+              </a>
             </div>
           </div>
           <div id="project-list" className="flex flex-col justify-between ">
@@ -67,7 +73,7 @@ export const Footer = () => {
         </div>
       </footer>
       <hr className="mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] my-6 bg-primary-100" />
-      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] p-4">
+      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] p-4 mb-6">
         <span>
           AFI TECH
           <i className="fa-regular fa-copyright px-1" />

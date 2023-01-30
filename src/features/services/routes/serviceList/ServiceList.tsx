@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Footer, MainNavbar } from "~src/components";
+import { Footer, MainNavbar, ScrollToTop } from "~src/components";
 import { ServiceListSection } from "../../components";
 
 export const ServiceList = () => {
   return (
     <>
+    <ScrollToTop />
       <MainNavbar services />
       <section
         id="service-list-section"

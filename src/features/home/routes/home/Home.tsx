@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useRef } from "react";
-import { MainNavbar, Footer } from "~src/components";
+import { useRef, useState } from "react";
+import { MainNavbar, Footer, Modal } from "~src/components";
 import {
   ContactFormSection,
   IntroductionSection,
@@ -18,6 +18,7 @@ export const Home = () => {
     ref: projectSectionRef,
   });
   useAnimationOnScroll({ ref: contactSectionRef });
+
   return (
     <>
       <MainNavbar home />

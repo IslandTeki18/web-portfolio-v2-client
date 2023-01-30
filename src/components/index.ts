@@ -12,4 +12,5 @@ export * from "./modal";
 export * from "./navbar";
 export * from "./progressBar";
 export * from "./sectionWrapper";
-export * from "./button"
+export * from "./button";
+export * from "./scrollToTop";

@@ -4,10 +4,10 @@ import { mainRoutes } from "./main";
 import { adminRoutes } from "./admin";
 
 export function AppRoutes() {
-  const admin = false;
-  let routes: any[] = mainRoutes;
+  const admin = true;
+  let routes = mainRoutes;
   if (admin) {
-    routes.concat(adminRoutes);
+    routes = [...mainRoutes, ...adminRoutes];
   }
   const router = createBrowserRouter(routes);
   return <RouterProvider router={router} />;
