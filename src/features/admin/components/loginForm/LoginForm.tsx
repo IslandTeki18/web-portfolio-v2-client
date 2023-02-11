@@ -9,12 +9,6 @@ export const LoginForm = (props: Props) => {
     password: "",
   });
 
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  setIsAdmin(prevState => !prevState)
-  // Changes isAdmin to 'true'
-
-
   function onSumitHandler() {
     // Send user creds
   }
