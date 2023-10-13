@@ -16,15 +16,15 @@ export const MainNavbar = (props: MainNavBarProps) => {
   const navigation = [
     { name: "Home", path: "/", current: props.home },
     { name: "Projects", path: "/projects", current: props.projects },
-    { name: "Services", path: "/services", current: props.services },
-    { name: "Blog", path: "/blogs", current: props.blogs },
+    // { name: "Services", path: "/services", current: props.services },
+    // { name: "Blog", path: "/blogs", current: props.blogs },
     { name: "About", path: "/about", current: props.about },
     { name: "Resume", path: "/resume", current: props.resume },
     { name: "Contact", path: "/contact", current: props.contact },
   ];
 
   return (
-    <nav className="bg-dark h-fit md:h-16 w-screen md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] relative mt-4">
+    <nav className="bg-dark h-fit md:h-16 md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] relative mt-4">
       <div className="flex justify-between items-center w-full h-inher">
         <Link
           to="/"
