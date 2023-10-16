@@ -1,7 +1,12 @@
 import * as React from "react";
-import "animate.css"
+import { RecoilRoot } from "recoil";
+import "animate.css";
 import { AppRoutes } from "./routes/index";
 
 export function App() {
-  return <AppRoutes />;
+  return (
+    <RecoilRoot>
+      <AppRoutes />
+    </RecoilRoot>
+  );
 }

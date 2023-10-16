@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RecoilRoot, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { userRoleState } from "~src/stores";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { mainRoutes } from "./main";
@@ -14,8 +14,6 @@ export function AppRoutes() {
   }
   const router = createBrowserRouter(routes);
   return (
-    <RecoilRoot>
       <RouterProvider router={router} />
-    </RecoilRoot>
   );
 }
