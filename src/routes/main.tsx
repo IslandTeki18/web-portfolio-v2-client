@@ -40,7 +40,7 @@ export const mainRoutes = [
     element: <ProjectList />,
   },
   {
-    path: "/project/:id",
+    path: "/project/:projectId",
     element: <ProjectDetails />,
   },
   {

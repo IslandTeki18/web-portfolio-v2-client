@@ -35,7 +35,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
 
   function renderTags() {
     return mockTags.map(tag => (
-        <span className="px-2 py-1 bg-primary-800 text-white">{tag.label}</span>
+        <span key={tag.label} className="px-2 py-1 bg-primary-800 text-white">{tag.label}</span>
     ))
   }
 

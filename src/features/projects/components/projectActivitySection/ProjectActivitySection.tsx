@@ -1,7 +1,13 @@
 import * as React from "react";
 import { ProjectCard } from "../projectCard";
+import { useTimeFormatter } from "~src/hooks";
 
-export const ProjectActivitySection = () => {
+type Props = {
+  developerFeedback?: any[];
+  relatedProjects?: any[];
+};
+
+export const ProjectActivitySection = (props: Props) => {
   const mockProjects = [
     {
       title: "Sample One",
@@ -29,32 +35,9 @@ export const ProjectActivitySection = () => {
     },
   ];
 
-  const mockActivity: {
-    id: string;
-    title: string;
-    date: string;
-    updateDesc: string;
-  }[] = [
-    {
-      id: "34f323j4",
-      title: "Changed the section headers width",
-      date: "22nd of Nov, 2022",
-      updateDesc:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis convallis tellus non ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-    {
-      id: "a34f34ew",
-      title: "This is the most recent",
-      date: "21nd of Nov, 2022",
-      updateDesc:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla mattis convallis tellus non ornare. Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    },
-  ];
-
-
-
   function renderRecentActivity() {
-    return mockActivity.map((item) => (
+    if (!props.developerFeedback) return;
+    return props.developerFeedback.map((item) => (
       <div
         key={item.id}
         className="flex flex-col border-l border-white pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white"
@@ -64,37 +47,52 @@ export const ProjectActivitySection = () => {
         </span>
         <span className="mb-4">
           <span className="font-semibold text-lg pr-2">Date:</span>
-          {item.date}
+          {useTimeFormatter(item.createdAt, 'en-US')}
         </span>
-        <span>{item.updateDesc}</span>
+        <span>{item.description}</span>
       </div>
     ));
   }
 
   function renderProjectCards() {
-    return mockProjects.map((project) => (
+    if (!props.relatedProjects) return;
+    return props.relatedProjects.map((project) => (
       <ProjectCard
         key={project.id}
         id={project.id}
         title={project.title}
         projectDescription={project.projectDescription}
         projectType={project.projectType}
-        date={project.date}
+        date={useTimeFormatter(project.createdAt, "en-US")}
       />
     ));
   }
   return (
     <div className="flex flex-wrap lg:flex-nowrap gap-4 text-white px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
-      <div className="border border-white p-6 flex flex-col w-full lg:w-2/4 h-fit">
-        <span className="text-2xl pb-6">Recent Activity</span>
-        {renderRecentActivity()}
-      </div>
-      <div className="flex flex-col w-full lg:w-2/4">
-        <div className="border border-white p-6 mb-4">
-          <span className="text-2xl">Related Projects</span>
+      {props.developerFeedback && props.developerFeedback.length > 0 ? (
+        <div className="border border-white p-6 flex flex-col w-full lg:w-2/4 h-fit">
+          <span className="text-2xl pb-6">Recent Activity</span>
+          {renderRecentActivity()}
         </div>
-        {renderProjectCards()}
-      </div>
+      ) : (
+        <div className="border border-white p-6 flex flex-col w-full lg:w-2/4 h-fit">
+          <span className="text-2xl">No Developer Feedback</span>
+        </div>
+      )}
+      {props.relatedProjects && props.relatedProjects.length > 0 ? (
+        <div className="flex flex-col w-full lg:w-2/4">
+          <div className="border border-white p-6 mb-4">
+            <span className="text-2xl">Related Projects</span>
+          </div>
+          {renderProjectCards()}
+        </div>
+      ) : (
+        <div className="flex flex-col w-full lg:w-2/4">
+          <div className="border border-white p-6 mb-4">
+            <span className="text-2xl">No Related Projects</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

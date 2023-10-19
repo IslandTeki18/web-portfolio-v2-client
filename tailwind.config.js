@@ -100,6 +100,7 @@ module.exports = {
         100: "#e7ebf0",
       },
       dark: "#262b33",
+      darker: "#1e2229",
       "bg-background": "#2f343f",
       white: "#ffffff",
     },
@@ -220,6 +221,7 @@ module.exports = {
       },
       backgroundColor: {
         dark: "#262b33",
+        darker: "#22272e",
         background: "#2f343f",
       },
       width: {
@@ -231,9 +233,9 @@ module.exports = {
         "6/10": "60%",
         "7/10": "70%",
         "8/10": "80%",
-        "9/10": "90%"
-      }
+        "9/10": "90%",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

@@ -13,7 +13,7 @@ type SectionWrapperProps = {
 export const  SectionWrapper = (props: SectionWrapperProps) => {
   return (
     <div
-      className={`${props.className} bg-${props.bgColor} md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
+      className={`${props.className} bg-${props.bgColor}  px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
     >
       <div className="border-2 border-white flex flex-col max-h-[157px] p-4 sm:p-8">
         {props.isLimitedSection && (

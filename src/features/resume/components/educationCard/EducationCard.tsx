@@ -8,7 +8,7 @@ type EducationCardProps = {
 export const EducationCard = (props: EducationCardProps) => {
   function renderEducation() {
     return props.education.map((item) => (
-      <div className="flex flex-col border-l border-white ml-2 pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white">
+      <div key={item.school} className="flex flex-col border-l border-white ml-2 pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white">
         <span className="text-xl md:text-2xl text-danger-500 font-semibold tracking-wide">
           {item.school}
         </span>

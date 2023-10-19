@@ -9,15 +9,16 @@ type Props = {
 export const ProjectDetailsHeader = (props: Props) => {
   function renderStatusColor(status: string): string {
     switch (status) {
-      case "Complete":
+      case "Completed":
+      case "Live":
         return "text-success-500";
       case "In Development":
         return "text-warning-500";
-      case "Not Available":
+      case "Not Live":
       case "Under Construction":
         return "text-danger-500";
       default:
-        return "white"
+        return "white";
     }
   }
 
@@ -33,7 +34,13 @@ export const ProjectDetailsHeader = (props: Props) => {
           <span className="uppercase text-white text-xl md:text-3xl tracking-wide font-black">
             {props.title}
           </span>
-          <span className={`${renderStatusColor(props.status)} md:text-2xl uppercase`}>{props.status}</span>
+          <span
+            className={`${renderStatusColor(
+              props.status
+            )} md:text-2xl uppercase`}
+          >
+            {props.status}
+          </span>
         </div>
       </div>
     </div>

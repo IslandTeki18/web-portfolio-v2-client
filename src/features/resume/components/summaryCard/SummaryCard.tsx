@@ -9,7 +9,7 @@ type SummaryCardProps = {
 export const SummaryCard = (props: SummaryCardProps) => {
   function renderSummaryPoints() {
     return SUMMARY_POINTS.map((item) => (
-      <div className="flex items-center gap-2">
+      <div key={item.value} className="flex items-center gap-2">
         <i className="fa-solid fa-circle text-lg" />
         <span className="text-ellipsis overflow-hidden">{item.value}</span>
       </div>

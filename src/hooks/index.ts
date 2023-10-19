@@ -1,1 +1,2 @@
-export * from "./useAnimationOnScroll"
+export * from "./useAnimationOnScroll";
+export * from "./useTimeFormatter";

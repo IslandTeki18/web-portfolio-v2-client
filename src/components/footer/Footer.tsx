@@ -23,7 +23,7 @@ export const Footer = () => {
 
   function renderList(list: IFooterListItem[], name: string) {
     return list.map((item) => (
-      <Link to={`${name}/${item.id}`} className="text-base font-semibold">
+      <Link key={item.id} to={`${name}/${item.id}`} className="text-base font-semibold">
         {item.name}
       </Link>
     ));

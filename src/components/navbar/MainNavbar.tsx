@@ -34,7 +34,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
         </Link>
         <ul className="flex justify-around gap-6 text-white">
           {navigation.map((item) => (
-            <li className="hidden md:block">
+            <li className="hidden md:block" key={item.name}>
               <NavLink
                 to={item.path}
                 className={`${item.current ? "font-bold underline" : ""}`}

@@ -1,6 +1,7 @@
 import * as React from "react";
-import { useRef, useState } from "react";
-import { MainNavbar, Footer, Modal } from "~src/components";
+import { useRef } from "react";
+import { useRecoilValue } from "recoil";
+import { MainNavbar, Footer } from "~src/components";
 import {
   ContactFormSection,
   IntroductionSection,
@@ -8,6 +9,8 @@ import {
   ServiceLimitSection,
 } from "../../components";
 import { useAnimationOnScroll } from "~src/hooks";
+import { projectLimitedState } from "~src/features/projects/api";
+import { useGetLimitedProjectList } from "~src/features/projects/hooks";
 
 export const Home = () => {
   const projectSectionRef = useRef<HTMLElement | null>(null);
@@ -18,6 +21,8 @@ export const Home = () => {
     ref: projectSectionRef,
   });
   useAnimationOnScroll({ ref: contactSectionRef });
+  useGetLimitedProjectList()
+  const projectsLimited = useRecoilValue(projectLimitedState)
 
   return (
     <>
@@ -31,7 +36,7 @@ export const Home = () => {
           id="project-limit-section"
           className="py-16 animate__animated"
         >
-          <ProjectLimitSection />
+          <ProjectLimitSection projects={projectsLimited} />
         </section>
         <section
           ref={serviceSectionRef}

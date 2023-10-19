@@ -28,8 +28,8 @@ export const ServiceListSection = (props: ServiceListSectionProps) => {
   ];
 
   function renderServiceCards() {
-    return mockServices.map((service) => (
-      <div className="border border-white p-6 text-white min-w-[16rem] w-full h-52 flex flex-col justify-between">
+    return mockServices.map((service, idx) => (
+      <div key={idx} className="border border-white p-6 text-white min-w-[16rem] w-full h-52 flex flex-col justify-between">
         <div className="flex justify-between align-baseline">
           <span className="uppercase font-bold">{service.title}</span>
           <i className="fa-solid fa-code text-2xl"></i>
