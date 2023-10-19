@@ -1,14 +1,19 @@
 import * as React from "react";
+import { useRecoilValue } from "recoil";
+import { userRoleState } from "~src/stores";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { mainRoutes } from "./main";
 import { adminRoutes } from "./admin";
 
 export function AppRoutes() {
-  const admin = true;
+  const userRole = useRecoilValue(userRoleState)
+  const isAdmin = userRole === "admin"
   let routes = mainRoutes;
-  if (admin) {
+  if (isAdmin) {
     routes = [...mainRoutes, ...adminRoutes];
   }
   const router = createBrowserRouter(routes);
-  return <RouterProvider router={router} />;
+  return (
+      <RouterProvider router={router} />
+  );
 }
