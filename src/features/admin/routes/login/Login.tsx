@@ -1,8 +1,20 @@
 import * as React from "react";
-import { MainNavbar } from "~src/components";
+import { useEffect } from "react";
 import { LoginForm } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userRoleState } from "~src/stores";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const authToken = localStorage.getItem("authToken")
+
+  useEffect(() => {
+    if (authToken) {
+      navigate("/admin/dashboard");
+    }
+  }, []);
+
   return (
     <>
       <section className="flex h-screen flex-col">

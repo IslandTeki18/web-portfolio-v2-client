@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const userRoleState = atom({
     key: 'userRole',
-    default: 'user',
+    default: localStorage.getItem("userRoleState") || 'user',
   });
 
 export const userObjState = atom({

@@ -11,7 +11,7 @@ import {
   About,
   Contact,
   Resume,
-  Login
+  Login,
 } from "~/src/features";
 
 export const mainRoutes = [
@@ -33,7 +33,7 @@ export const mainRoutes = [
   },
   {
     path: "/contact",
-    element: <Contact />
+    element: <Contact />,
   },
   {
     path: "/projects",
@@ -45,7 +45,7 @@ export const mainRoutes = [
   },
   {
     path: "/resume",
-    element: <Resume />
+    element: <Resume />,
   },
   {
     path: "/services",

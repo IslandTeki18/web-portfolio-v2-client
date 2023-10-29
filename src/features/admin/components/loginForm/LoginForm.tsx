@@ -4,7 +4,7 @@ import axios from "axios";
 import { redirect, useNavigate } from "react-router-dom";
 import { userRoleState, userObjState } from "~src/stores";
 import { Button } from "~src/components";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 type Props = {};
 
@@ -14,22 +14,15 @@ const req =
     : "http://localhost:8000/api/users";
 
 export const LoginForm = (props: Props) => {
-  const userRole = useRecoilValue(userRoleState);
   const setUserRole = useSetRecoilState(userRoleState);
   const setUserObj = useSetRecoilState(userObjState);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [loginCreds, setLoginCreds] = useState({
     username: "",
     password: "",
   });
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    if (userRole === "admin") {
-      redirect("/admin/dashboard");
-    }
-  }, [userRole]);
 
   async function onSumitHandler(e: React.FormEvent) {
     e.preventDefault();
@@ -50,9 +43,14 @@ export const LoginForm = (props: Props) => {
 
       setUserObj(userData);
       setUserRole("admin");
-      return navigate("/admin/dashboard");
-    } catch (error) {
+      localStorage.setItem("userRoleState", "admin");
+      localStorage.setItem("authToken", userData.token)
 
+      return navigate("/admin/dashboard", {
+        replace: true
+      });
+      
+    } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message;
         setMessage(errorMessage);
@@ -64,6 +62,7 @@ export const LoginForm = (props: Props) => {
       setTimeout(() => {
         setIsError(false);
       }, 5000);
+      return null
     }
   }
   return (
