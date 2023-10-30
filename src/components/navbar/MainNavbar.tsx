@@ -12,6 +12,7 @@ type MainNavBarProps = {
   contact?: boolean;
 };
 export const MainNavbar = (props: MainNavBarProps) => {
+  const isAdmin = localStorage.getItem("authToken")
   const [isBars, setIsBars] = useState(false);
   const navigation = [
     { name: "Home", path: "/", current: props.home },
@@ -43,6 +44,13 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
+          {isAdmin && <li className="hidden md:block">
+              <NavLink
+                to={"/admin/dashboard"}
+              >
+                Admin
+              </NavLink>
+            </li>}
           <li className="block md:hidden">
             <i
               className={`fa-solid fa-${!isBars ? "bars" : "xmark"} text-xl`}
