@@ -38,13 +38,13 @@ export const Home = () => {
         >
           <ProjectLimitSection projects={projectsLimited} />
         </section>
-        <section
+        {/* <section
           ref={serviceSectionRef}
           id="service-limit-section"
           className="py-16 animate__animated"
         >
           <ServiceLimitSection />
-        </section>
+        </section> */}
         <section
           ref={contactSectionRef}
           id="contact-form-section"

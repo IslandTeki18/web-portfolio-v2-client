@@ -14,13 +14,13 @@ export const About = () => {
       <section id="about-me-section" className="my-20">
         <AboutMeSection />
       </section>
-      <section
+      {/* <section
         ref={blogSectionRef}
         id="blog-list-section"
         className="my-20 animate__animated"
       >
         <BlogListSection />
-      </section>
+      </section> */}
       <Footer />
     </>
   );
