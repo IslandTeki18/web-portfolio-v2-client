@@ -10,10 +10,8 @@ export const ResumeHeader = (props: Props) => {
         <button className="border border-white px-6 py-2 mt-4 sm:mt-0">Download CSV</button>
       </div>
       <span className="text-base">
-        Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex
-        aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos
-        quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat
-        sit in iste officiis commodi quidem hic quas.
+        I worked primarily in the web development space. I love woodworking, football, video games, working out, and making
+        fun things for my family and with my family. I love what I do I want to be able to grow even more in all my areas of interest.
       </span>
     </div>
   );

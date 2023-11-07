@@ -18,7 +18,7 @@ export const ResumeSection = (props: Props) => {
         <div className="flex flex-col gap-4 w-full md:w-1/2">
           <SummaryCard
             title="Landon McKell"
-            summary="Proficient and effective Web Developer with 5 years of web development experience with building  web applications and systems from initial concept to post production."
+            summary="Proficient and effective Web Developer with 6 years of web development experience with building  web applications and systems from initial concept to post production."
           />
           <EducationCard education={props.education} />
         </div>

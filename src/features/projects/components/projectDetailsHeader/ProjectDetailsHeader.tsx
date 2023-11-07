@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Button } from "~src/components";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   title: string;
@@ -7,6 +9,12 @@ type Props = {
 };
 
 export const ProjectDetailsHeader = (props: Props) => {
+  const navigate = useNavigate();
+
+  function onBackClickHandler() {
+    navigate("/projects");
+  }
+
   function renderStatusColor(status: string): string {
     switch (status) {
       case "Completed":
@@ -28,7 +36,13 @@ export const ProjectDetailsHeader = (props: Props) => {
     >
       <div className="text-white border-2 flex flex-col border-white p-2 md:p-8">
         <div className="flex justify-start lg:justify-end order-2 lg:order-1">
-          <span className="my-2">{props.date}</span>
+          {/* <span className="my-2">{props.date}</span> */}
+          <Button
+            variant="secondary"
+            label="Back to Projects"
+            labelColor="dark"
+            onClick={onBackClickHandler}
+          />
         </div>
         <div className="flex justify-between flex-col lg:flex-row items-baseline order-1 lg:order-2 mt-4">
           <span className="uppercase text-white text-xl md:text-3xl tracking-wide font-black">

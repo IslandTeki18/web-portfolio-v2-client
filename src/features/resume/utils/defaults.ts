@@ -1,7 +1,7 @@
 export const SUMMARY_POINTS = [
   {
     title: "Address",
-    value: "Spanish Fork, UT, 84660",
+    value: "Benjamin, UT, 84660",
   },
   {
     title: "Phone",
@@ -33,12 +33,23 @@ export const EDUCATION = [
 export const EXPERIENCES = [
   {
     position: "SOFTWARE ENGINEER",
+    startingMonth: "JAN",
+    startingYear: "2023",
+    endingMonth: "DEC",
+    endingYear: "2022",
+    companyName: "Nerd United",
+    isCurrentEmployment: true,
+    location: "Lehi, UT",
+    summary: "I support multiple brands within the Nerd ecosystem by developing with their blockchain products and applications using ReactJS, Typescript, Tailwindcss.",
+  },
+  {
+    position: "SOFTWARE ENGINEER",
     startingMonth: "MAY",
     startingYear: "2022",
-    endingMonth: "",
-    endingYear: "",
+    endingMonth: "DEC",
+    endingYear: "2022",
     companyName: "Start Studio",
-    isCurrentEmployment: true,
+    isCurrentEmployment: false,
     location: "Spanish Fork, UT",
     summary: "My primary role was building applications in ReactJS with Typescript. I started work on a older NextJS project. I was tasked with updating the project and applying basic layout tests.",
   },
@@ -63,5 +74,16 @@ export const EXPERIENCES = [
     isCurrentEmployment: false,
     location: "Lindon, UT",
     summary: "Worked on their React Project for a new Student Panel. Used Typescript as well. Also learned a good amount of the Unity IDE and helped build custom tutorials that uses Unity.",
+  },
+  {
+    position: "WEB DEVELOPER",
+    startingMonth: "NOV",
+    startingYear: "2018",
+    endingMonth: "DEC",
+    endingYear: "2019",
+    companyName: "Bright Bridge Web",
+    isCurrentEmployment: false,
+    location: "Provo, UT",
+    summary: "Built web applications using React, Bootstrap, and Python Django. Also helped with various wordpress websites. Met with clients and gave software development quotes and helped with the sales process.",
   },
 ];

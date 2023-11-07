@@ -7,7 +7,7 @@ type ButtonProps = {
   type?: string;
   name?: string;
   variant?: "dark" | "primary" | "success" | "danger" | "secondary";
-  labelColor?: string;
+  labelColor?: "dark" | "light";
   id?: string;
   className?: string;
 };
@@ -20,7 +20,7 @@ export const Button = (props: ButtonProps) => {
       case "primary":
         return "bg-primary-500 hover:bg-primary-400 focus-visible:outline-primary-600";
       case "secondary":
-        return "bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600";
+        return "bg-secondary-500 hover:bg-secondary-300 focus-visible:outline-secondary-600";
       case "danger":
         return "bg-danger-500 hover:bg-danger-400 focus-visible:outline-danger-600";
       case "success":
@@ -34,8 +34,10 @@ export const Button = (props: ButtonProps) => {
     switch (color) {
       case "dark":
         return "text-dark";
-      default:
+      case "light":
         return "text-white";
+      default:
+        return "text-gray-500"
     }
   }
 
