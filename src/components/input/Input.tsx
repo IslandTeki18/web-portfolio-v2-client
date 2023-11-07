@@ -17,7 +17,7 @@ export const Input = (props: InputProps) => {
     <input
       name={props.name}
       type={props.type}
-      className={`dkInput ${props.className}`}
+      className={`${props.className}`}
       id={props.id}
       placeholder={props.placeholder}
       value={props.value}

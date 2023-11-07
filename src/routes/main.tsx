@@ -4,8 +4,6 @@ import {
   NotFound,
   ServiceDetails,
   ServiceList,
-  ProjectDetails,
-  ProjectList,
   BlogDetails,
   BlogList,
   About,
@@ -13,6 +11,7 @@ import {
   Resume,
   Login,
 } from "~/src/features";
+import { ProjectList, ProjectDetails } from "~src/features/projects";
 
 export const mainRoutes = [
   {

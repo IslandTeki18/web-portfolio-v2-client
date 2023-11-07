@@ -4,46 +4,24 @@ import { Dialog, Menu, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   Cog6ToothIcon,
-  HomeIcon,
   XMarkIcon,
-  FolderIcon,
   ChevronDownIcon,
   UserIcon,
-  InboxStackIcon,
 } from "@heroicons/react/24/outline";
 import { useSetRecoilState } from "recoil";
 import { userRoleState } from "~src/stores";
 import { Link, useNavigate } from "react-router-dom";
-import { classNames } from "../../utils";
+import { classNames, NAVIGATIONS } from "../../utils";
 
 type SideNavProps = {
-  // Define component props here
+  navItems: any[]
 };
 
 export const SideNav = (props: SideNavProps) => {
   const navigate = useNavigate();
   const setUserRole = useSetRecoilState(userRoleState);
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const navigation = [
-    {
-      name: "Dashboard",
-      href: "/admin/dashboard",
-      icon: HomeIcon,
-      current: true,
-    },
-    {
-      name: "Projects",
-      href: "/admin/projects",
-      icon: FolderIcon,
-      current: false,
-    },
-    {
-      name: "Contacts",
-      href: "/admin/contacts",
-      icon: InboxStackIcon,
-      current: false,
-    },
-  ];
+
   const userNavigation = [
     { name: "Your Profile", onClick: onProfileClickHandler },
     { name: "Logout", onClick: onLogoutHandler },
@@ -127,7 +105,7 @@ export const SideNav = (props: SideNavProps) => {
                     <ul role="list" className="flex flex-1 flex-col gap-y-7">
                       <li>
                         <ul role="list" className="-mx-2 space-y-1">
-                          {navigation.map((item) => (
+                          {props.navItems.map((item) => (
                             <li key={item.name}>
                               <Link
                                 to={item.href}
@@ -177,7 +155,7 @@ export const SideNav = (props: SideNavProps) => {
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
               <li>
                 <ul role="list" className="-mx-2 space-y-1">
-                  {navigation.map((item) => (
+                  {props.navItems.map((item) => (
                     <li key={item.name}>
                       <a
                         href={item.href}

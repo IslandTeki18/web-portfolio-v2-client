@@ -6,7 +6,7 @@ type ButtonProps = {
   isDisabled?: boolean;
   type?: string;
   name?: string;
-  buttonType?: string;
+  variant?: "dark" | "primary" | "success" | "danger" | "secondary";
   labelColor?: string;
   id?: string;
   className?: string;
@@ -23,6 +23,8 @@ export const Button = (props: ButtonProps) => {
         return "bg-secondary-500 hover:bg-secondary-400 focus-visible:outline-secondary-600";
       case "danger":
         return "bg-danger-500 hover:bg-danger-400 focus-visible:outline-danger-600";
+      case "success":
+        return "bg-success-500 hover:bg-success-400 focus-visible:outline-success-600";
       default:
         return "bg-dark hover:bg-slate-400 focus-visible:outline-slate-600";
     }
@@ -44,7 +46,7 @@ export const Button = (props: ButtonProps) => {
       name={props.name}
       disabled={props.isDisabled}
       className={`${setButtonType(
-        props.buttonType || "dark"
+        props.variant || "dark"
       )} ${setButtonTextColor(props.labelColor || "white")} ${
         props.className
       } px-3.5 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`}

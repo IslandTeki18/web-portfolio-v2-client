@@ -121,7 +121,7 @@ export const LoginForm = (props: Props) => {
         <Button
           label="LOGIN"
           className="mt-4"
-          buttonType="dark"
+          variant="dark"
           type="submit"
         />
       </form>

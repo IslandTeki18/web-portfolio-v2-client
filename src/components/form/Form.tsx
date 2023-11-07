@@ -1,5 +1,4 @@
 import * as React from "react";
-import "./Form.scss";
 
 type FormProps = {
   className: string;
@@ -9,7 +8,7 @@ type FormProps = {
 
 const Form = (props: FormProps) => {
   return (
-    <form className={`dkForm ${props.className}`} onSubmit={props.onSubmit}>
+    <form {...props} onSubmit={props.onSubmit}>
       {props.children}
     </form>
   );
