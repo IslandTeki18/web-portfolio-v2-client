@@ -24,6 +24,8 @@ export const Home = () => {
   useGetLimitedProjectList()
   const projectsLimited = useRecoilValue(projectLimitedState)
 
+  console.log(projectsLimited)
+
   return (
     <>
       <MainNavbar home />

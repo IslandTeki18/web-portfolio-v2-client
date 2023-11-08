@@ -8,6 +8,7 @@ type Props = {
 };
 
 export const ProjectLimitSection = (props: Props) => {
+  
   function renderProjects() {
     if (!props.projects) return;
     return props.projects.map((project) => (

@@ -1,19 +1,14 @@
 import * as React from "react";
 
 type FormProps = {
-  className: string;
-  onSubmit: () => void;
-  children: React.ReactElement;
+  onSubmit?: any;
+  children: any;
 };
 
-const Form = (props: FormProps) => {
+export const Form = (props: FormProps) => {
   return (
     <form {...props} onSubmit={props.onSubmit}>
       {props.children}
     </form>
   );
-};
-
-Form.defaultProps = {
-  className: "",
 };

@@ -14,7 +14,6 @@ export const ProjectCard = (props: ProjectCardProps) => {
     <Link to={`/project/${props.id}`}>
       <div
         className="flex flex-col justify-between border border-white bg-dark hover:bg-darker p-4 md:p-8 h-72"
-        key={props.id}
       >
         <div className="flex justify-between ">
           <div className="flex flex-col gap-2 w-full md:w-4/5">

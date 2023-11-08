@@ -9,7 +9,7 @@ export const useGetLimitedProjectList = () => {
     async function getProjects() {
       try {
         const { data } = await axios.get(
-          `${process.env.SERVER_URL}api/projects/limited`
+          `${process.env.REACT_APP_SERVER_URL}api/projects/limited`
         );
         return setProjectLimitList(data);
       } catch (error) {

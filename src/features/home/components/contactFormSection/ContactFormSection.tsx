@@ -1,9 +1,49 @@
 import * as React from "react";
-import { SectionWrapper } from "~src/components";
+import { useState } from "react";
+import { SectionWrapper, Textarea, Form, Modal } from "~src/components";
+import { Input } from "~src/components";
+import { Dialog } from "@headlessui/react";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 type Props = {};
 
 export const ContactFormSection = (props: Props) => {
+  const [openConfirmationModal, setOpenConfirmationModal] = useState(false);
+  const [contactObj, setContactObj] = useState({
+    name: "",
+    email: "",
+    websiteType: "",
+    message: "",
+  });
+
+  function onChangeHandler(e: any) {
+    setContactObj((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
+
+  function onSubmitHandler(e: any) {
+    e.preventDefault();
+    setOpenConfirmationModal(true);
+
+    setTimeout(() => {
+      setOpenConfirmationModal(false);
+      setContactObj({
+        name: "",
+        email: "",
+        websiteType: "",
+        message: "",
+      });
+    }, 5000);
+  }
+
+  function isFormFilledOut() {
+    return !contactObj.email || !contactObj.name || !contactObj.message;
+  }
+
   return (
     <SectionWrapper title="Let's Connect">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
@@ -45,32 +85,64 @@ export const ContactFormSection = (props: Props) => {
             </a>
           </div>
         </div>
-        <div id="contact-form" className="flex flex-col gap-6 justify-between">
-          <input
-            type="text"
-            className="text-white w-full border bg-dark border-white py-2 px-4"
-            placeholder="NAME"
-          />
-          <input
-            type="email"
-            className="text-white w-full border bg-dark border-white py-2 px-4"
-            placeholder="EMAIL"
-          />
-          <input
-            type="text"
-            className="text-white w-full border bg-dark border-white py-2 px-4"
-            placeholder="WEBSITE TYPE"
-          />
-          <textarea
-            className="text-white border border-white bg-dark py-2 px-4"
-            placeholder="TELL ME ABOUT YOUR PROJECT..."
-            rows={5}
-          ></textarea>
-          <button className="border border-white py-2 uppercase text-white w-2/6 hover:bg-white hover:text-dark">
-            send
-          </button>
-        </div>
+        <Form onSubmit={onSubmitHandler}>
+          <div
+            id="contact-form"
+            className="flex flex-col gap-6 justify-between"
+          >
+            <Input
+              type="text"
+              placeholder="NAME"
+              name="name"
+              value={contactObj.name}
+              onChange={onChangeHandler}
+            />
+            <Input
+              type="email"
+              placeholder="EMAIL"
+              name="email"
+              value={contactObj.email}
+              onChange={onChangeHandler}
+            />
+            <Input
+              name="websiteType"
+              type="text"
+              placeholder="WEBSITE TYPE"
+              value={contactObj.websiteType}
+              onChange={onChangeHandler}
+            />
+            <Textarea
+              placeholder="TELL ME ABOUT YOUR PROJECT..."
+              rows={5}
+              value={contactObj.message}
+              name="message"
+              onChange={onChangeHandler}
+            />
+            <button
+              disabled={isFormFilledOut()}
+              type="submit"
+              className="border border-white py-2 uppercase text-white w-2/6 hover:bg-white hover:text-dark disabled:opacity-25 disabled:cursor-not-allowed"
+            >
+              send
+            </button>
+          </div>
+        </Form>
       </div>
+       <Modal isOpen={openConfirmationModal} onClose={() => setOpenConfirmationModal(false)}>
+        <div>
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
+            <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+          </div>
+          <div className="mt-3 text-center sm:mt-5">
+            <Dialog.Title
+              as="h3"
+              className="text-base font-semibold leading-6 text-gray-900"
+            >
+              Message Successfully Sent!
+            </Dialog.Title>
+          </div>
+        </div>
+      </Modal>
     </SectionWrapper>
   );
 };
