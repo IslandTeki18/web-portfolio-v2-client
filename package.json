@@ -22,10 +22,12 @@
     "sass": "^1.57.0"
   },
   "scripts": {
-    "start": "parcel public/index.html"
+    "start": "parcel public/index.html",
+    "build": "parcel build public/index.html"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
+    "@parcel/transformer-image": "^2.10.2",
     "@parcel/transformer-sass": "^2.10.0",
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.17",

@@ -51,7 +51,7 @@ export const mainRoutes = [
     element: <ServiceList />,
   },
   {
-    path: "/service/j:id",
+    path: "/service/:id",
     element: <ServiceDetails />,
   },
   {

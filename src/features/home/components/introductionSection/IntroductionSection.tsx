@@ -1,8 +1,10 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 
 type IntroductionSectionProps = {};
 
 export const IntroductionSection = (props: IntroductionSectionProps) => {
+  const navigate = useNavigate()
   return (
     <div className="bg-dark flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] 2xl:px-[16.666%] animate__animated animate__fadeInUp">
       <div className="flex-1 shrink-0 lg:flex-2">
@@ -25,7 +27,9 @@ export const IntroductionSection = (props: IntroductionSectionProps) => {
               servers that are both robust and secure.
             </span>
           </div>
-          <button className="border border-white px-6 py-2 w-60 uppercase">
+          <button onClick={() => {
+            navigate("/contact")
+          }} className="border border-white px-6 py-2 w-60 uppercase">
             Contact me for work
           </button>
         </div>
