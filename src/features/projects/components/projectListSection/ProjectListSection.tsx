@@ -9,6 +9,7 @@ type ProjectListSectionProps = {
 
 export const ProjectListSection = (props: ProjectListSectionProps) => {
   function renderProjects() {
+    if (!props.projects) return
     return props.projects.map((project) => (
       <ProjectCard
         key={project._id}
