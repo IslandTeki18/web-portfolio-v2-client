@@ -9,6 +9,7 @@
     "@fullcalendar/react": "^5.11.3",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
+    "@parcel/transformer-sass": "^2.10.2",
     "@tailwindcss/line-clamp": "^0.4.2",
     "animate.css": "^4.1.1",
     "axios": "^1.2.1",
@@ -27,8 +28,6 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
-    "@parcel/transformer-image": "^2.10.2",
-    "@parcel/transformer-sass": "^2.10.0",
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
