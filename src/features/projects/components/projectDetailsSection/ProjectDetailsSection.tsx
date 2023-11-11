@@ -1,44 +1,19 @@
 import * as React from "react";
 import { ITag } from "../../types/interfaces";
+// @ts-ignore
+import noImage from "../../assets/noImage2.png"
 
 type ProjectDetailsSectionProps = {
-  isPublic: boolean;
+  isPublic?: boolean;
   client: string;
-  budget: string;
+  budget?: string;
   startDate: string;
-  progress: number;
+  progress?: number;
+  projectImage: string
   tags?: ITag[]
-  projectImage?: string
 };
 
 export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
-  // TODO: Make a image carousel
-  // TODO: Make a video iframe to show youtube breakdown?
-  const mockTags: ITag[] = [
-    {
-      id: "pq293jd",
-      label: "Tailwindcss",
-    },
-    {
-      id: "pq293jd",
-      label: "ReactJS",
-    },
-    {
-      id: "pq293jd",
-      label: "Typescript",
-    },
-    {
-      id: "pq293jd",
-      label: "Axios",
-    },
-  ];
-
-  function renderTags() {
-    return mockTags.map(tag => (
-        <span key={tag.label} className="px-2 py-1 bg-primary-800 text-white">{tag.label}</span>
-    ))
-  }
-
   function renderProjectProgress(progress: number): string {
     if (progress <= 25) {
       return "text-danger-500";
@@ -57,23 +32,23 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
       <div className="border border-white p-4 flex flex-col gap-4 w-full order-2 md:order-1 lg:w-2/4 xl:w-3/10 animate__animated animate__fadeInLeft">
         <div className="flex flex-col gap-2">
           <span className="font-bold text-lg uppercase">
-            {props.isPublic ? (
+            {!props.isPublic ? (
               <i className="fa-solid fa-globe mr-2" />
             ) : (
               <i className="fa-solid fa-lock mr-2" />
             )}
-            {props.isPublic ? "Public" : "Private"} Project
+            {!props.isPublic ? "Public" : "Private"} Project
           </span>
           <span className="font-bold text-lg">
             <i className="fa-solid fa-user mr-2" />
             CLIENT:
             <span className="ml-2 font-normal text-base">{props.client}</span>
           </span>
-          <span className="font-bold text-lg">
+          {/* <span className="font-bold text-lg">
             <i className="fa-regular fa-credit-card mr-2" />
             BUDGET:
             <span className="ml-2 font-normal text-base">${props.budget}</span>
-          </span>
+          </span> */}
         </div>
         <hr />
         <div className="flex flex-col gap-2">
@@ -89,7 +64,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
               {props.startDate}
             </span>
           </span>
-          <span className="font-bold text-xl">
+          {/* <span className="font-bold text-xl">
             PROGRESS:
             <span
               className={`ml-2 font-normal text-base ${renderProjectProgress(
@@ -98,32 +73,19 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
             >
               {props.progress}%
             </span>
-          </span>
+          </span> */}
         </div>
-        {/* <div className="flex flex-col gap-2">
-          <span className="uppercase">Tags</span>
-          <div className="flex flex-wrap items-center gap-2">
-            {renderTags()}
-          </div>
-        </div> */}
+
       </div>
       <div className="border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-7/10 animate__animated animate__fadeInRight">
         <img
           className="w-full h-auto"
-          src={props.projectImage}
+          src={noImage}
           alt="project"
+          width={250}
         />
       </div>
     </div>
   );
 };
 
-ProjectDetailsSection.defaultProps = {
-  isPublic: false,
-  client: "Myself",
-  budget: "0.00",
-  startDate: "22nd of Nov, 2022",
-  deadlineDate: "5th of Feb, 2023",
-  progress: 100,
-  projectImage: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29kZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-};

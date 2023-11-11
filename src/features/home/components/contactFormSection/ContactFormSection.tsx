@@ -4,6 +4,7 @@ import { SectionWrapper, Textarea, Form, Modal } from "~src/components";
 import { Input } from "~src/components";
 import { Dialog } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { useSendContactInfo } from "~src/features/contact/hooks";
 
 type Props = {};
 
@@ -12,7 +13,7 @@ export const ContactFormSection = (props: Props) => {
   const [contactObj, setContactObj] = useState({
     name: "",
     email: "",
-    websiteType: "",
+    phone: "",
     message: "",
   });
 
@@ -27,14 +28,19 @@ export const ContactFormSection = (props: Props) => {
 
   function onSubmitHandler(e: any) {
     e.preventDefault();
+    useSendContactInfo(
+      contactObj.name,
+      contactObj.phone,
+      contactObj.email,
+      contactObj.message
+    );
     setOpenConfirmationModal(true);
-
     setTimeout(() => {
       setOpenConfirmationModal(false);
       setContactObj({
         name: "",
         email: "",
-        websiteType: "",
+        phone: "",
         message: "",
       });
     }, 5000);
@@ -105,10 +111,10 @@ export const ContactFormSection = (props: Props) => {
               onChange={onChangeHandler}
             />
             <Input
-              name="websiteType"
-              type="text"
-              placeholder="WEBSITE TYPE"
-              value={contactObj.websiteType}
+              name="phone"
+              type="tel"
+              placeholder="PHONE"
+              value={contactObj.phone}
               onChange={onChangeHandler}
             />
             <Textarea
@@ -128,7 +134,10 @@ export const ContactFormSection = (props: Props) => {
           </div>
         </Form>
       </div>
-       <Modal isOpen={openConfirmationModal} onClose={() => setOpenConfirmationModal(false)}>
+      <Modal
+        isOpen={openConfirmationModal}
+        onClose={() => setOpenConfirmationModal(false)}
+      >
         <div>
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
             <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />

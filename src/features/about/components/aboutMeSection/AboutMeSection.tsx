@@ -1,6 +1,8 @@
 import * as React from "react";
 import { SectionWrapper } from "~src/components";
 import { BIO, BIO_POINTS, BIO_SOCIAL } from "../../utils/defaults";
+//@ts-ignore
+import familyImage from "../../assets/family.jpg"
 
 type AboutMeSectionProps = {};
 
@@ -44,8 +46,8 @@ export const AboutMeSection = (props: AboutMeSectionProps) => {
         <div className="border border-white hidden md:block md:w-4/10 animate__animated animate__fadeInRight">
           <img
             className="w-full h-auto max-h-[623px] object-cover"
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-            alt="landonmckell"
+            src={familyImage}
+            alt="family"
           />
         </div>
       </div>

@@ -5,17 +5,24 @@ import { projectListState } from "../api";
 
 export const useGetProjectList = () => {
   const setProjectList = useSetRecoilState(projectListState);
+
   useEffect(() => {
-    async function getProjects() {
+    const fetchProjects = async () => {
       try {
-        const { data } = await axios.get(
-          `${process.env.SERVER_URL}api/projects`
+        const response = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}api/projects`
         );
-        return setProjectList(data);
+
+        // Check if the response contains data
+        if (response.data) {
+          setProjectList(response.data);
+        }
       } catch (error) {
-        console.error(error);
+        console.error("Error fetching projects:", error);
       }
-    }
-    getProjects();
-  }, []);
+    };
+
+    fetchProjects();
+  }, [setProjectList]);
+
 };

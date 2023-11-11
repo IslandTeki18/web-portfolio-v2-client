@@ -9,7 +9,7 @@ export const useGetProjectDetails = (projectId: string) => {
     async function getProjectDetails() {
       try {
         const { data } = await axios.get(
-          `${process.env.SERVER_URL}api/projects/${projectId}`
+          `${process.env.REACT_APP_SERVER_URL}api/projects/${projectId}`
         );
         setProjectDetails(data);
       } catch (error) {

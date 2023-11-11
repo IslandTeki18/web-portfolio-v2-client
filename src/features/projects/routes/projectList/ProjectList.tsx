@@ -8,7 +8,6 @@ import { projectListState } from "../../api";
 export const ProjectList = () => {
   useGetProjectList();
   const projectList = useRecoilValue(projectListState)
-  console.log(projectList)
   return (
     <>
       <ScrollToTop />

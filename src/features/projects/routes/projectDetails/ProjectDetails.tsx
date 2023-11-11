@@ -36,6 +36,7 @@ export const ProjectDetails = () => {
         <ProjectDetailsSection
           client={project.client}
           startDate={useTimeFormatter(project.createdAt, "en-US")}
+          projectImage={project.img}
         />
       </section>
       <section

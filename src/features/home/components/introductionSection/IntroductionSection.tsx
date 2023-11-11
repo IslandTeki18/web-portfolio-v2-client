@@ -1,5 +1,7 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+//@ts-ignore
+import meImage from "../../../../assets/images/Me.jpeg"
 
 type IntroductionSectionProps = {};
 
@@ -38,7 +40,7 @@ export const IntroductionSection = (props: IntroductionSectionProps) => {
         <div className="h-full max-h-[785px] border border-white">
           <img
             className="w-full h-auto max-h-[783px] object-cover"
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+            src={meImage}
           />
         </div>
       </div>
