@@ -17,6 +17,7 @@ export const mainRoutes = [
   {
     path: "/",
     element: <Home />,
+    index: true
   },
   {
     path: "/about",
