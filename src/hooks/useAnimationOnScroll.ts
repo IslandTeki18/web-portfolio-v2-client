@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import React = require("react");
 
-type Props = {
+type useAnimationOnScrollProps = {
   ref: React.MutableRefObject<HTMLElement | null>;
 };
 
-export const useAnimationOnScroll = (props: Props) => {
+export const useAnimationOnScroll = (props: useAnimationOnScrollProps) => {
   useEffect(() => {
     if (!props.ref.current) return;
     props.ref.current.classList.remove("animate__fadeIn");

@@ -8,7 +8,7 @@ export const Contact = () => {
       <MainNavbar contact />
       <section
         id="contact-form-section"
-        className="my-20 animate__animated animate__fadeInLeft"
+        className="my-10 md:my-20 animate__animated animate__fadeIn"
       >
         <ContactFormSection />
       </section>

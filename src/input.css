@@ -5,3 +5,7 @@
 body {
     background-color: #262b33;
 }
+
+:root {
+    --animate-delay: 0.5s;
+  }

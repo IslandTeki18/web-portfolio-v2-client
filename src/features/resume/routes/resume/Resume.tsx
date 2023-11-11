@@ -7,7 +7,7 @@ export const Resume = () => {
   return (
     <>
       <MainNavbar resume />
-      <section id="resume-section" className="pt-10 pb-8">
+      <section id="resume-section" className="my-10 md:my-20 animate__animated animate__fadeIn">
         <ResumeSection education={EDUCATION} experiences={EXPERIENCES} />
       </section>
       <Footer />

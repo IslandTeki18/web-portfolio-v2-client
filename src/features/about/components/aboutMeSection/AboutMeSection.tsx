@@ -33,7 +33,7 @@ export const AboutMeSection = (props: AboutMeSectionProps) => {
   return (
     <SectionWrapper title="About Me">
       <div className="flex flex-wrap md:flex-nowrap gap-4 mt-4 text-white">
-        <div className="border border-white p-8 flex flex-col gap-4 w-full md:w-6/10 animate__animated animate__fadeInLeft">
+        <div className="border border-white p-8 flex flex-col gap-4 w-full lg:w-6/10 animate__animated animate__fadeInLeft">
           <span className="font-semibold text-2xl uppercase">
             Landon McKell
           </span>
@@ -43,9 +43,9 @@ export const AboutMeSection = (props: AboutMeSectionProps) => {
             {renderSocialIcons()}
           </div>
         </div>
-        <div className="border border-white hidden md:block md:w-4/10 animate__animated animate__fadeInRight">
+        <div className="border border-white hidden lg:flex lg:w-4/10 animate__animated animate__fadeInRight">
           <img
-            className="w-full h-auto max-h-[623px] object-cover"
+            className="object-cover"
             src={familyImage}
             alt="family"
           />

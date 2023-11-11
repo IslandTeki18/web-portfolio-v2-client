@@ -25,12 +25,12 @@ export const ProjectLimitSection = (props: Props) => {
 
   return (
     <SectionWrapper
-      title="My Projects"
+      title="My Recent Projects"
       isLimitedSection
       viewAllLink="/projects"
       className="projectLimited"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4 animate__animated animate__fadeIn animate__delay-2s">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pt-4">
         {renderProjects()}
       </div>
     </SectionWrapper>

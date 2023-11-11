@@ -14,7 +14,7 @@ export const ProjectList = () => {
       <MainNavbar projects />
       <section
         id="project-list-section"
-        className="my-20 animate__animated animate__fadeInLeft"
+        className="my-10 md:my-20 animate__animated animate__fadeIn"
       >
         <ProjectListSection projects={projectList} />
       </section>
