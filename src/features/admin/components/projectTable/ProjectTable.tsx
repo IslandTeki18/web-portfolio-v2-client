@@ -1,11 +1,15 @@
 import * as React from "react";
 import { Button } from "~src/components";
 import { PROJECT_LIST } from "../../utils";
+import { IProjectDetails } from "~src/types";
+import { Link } from "react-router-dom";
+import { useGetProjectDetails } from "~src/features/projects/hooks";
 
-type ProjectTableProps = {};
+type ProjectTableProps = {
+  projects: IProjectDetails[];
+};
 
 export const ProjectTable = (props: ProjectTableProps) => {
-
   return (
     <div className="border-2 border-gray-300 p-4 rounded-lg">
       <div className="sm:flex sm:items-center">
@@ -19,7 +23,15 @@ export const ProjectTable = (props: ProjectTableProps) => {
           </p>
         </div>
         <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <Button label="Add Project" variant="success" type="button" onClick={() => {console.log("Hit")}} />
+          <Button
+            labelColor="light"
+            label="Add Project"
+            variant="success"
+            type="button"
+            onClick={() => {
+              console.log("Hit");
+            }}
+          />
         </div>
       </div>
       <div className="mt-8 flow-root">
@@ -62,16 +74,19 @@ export const ProjectTable = (props: ProjectTableProps) => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {PROJECT_LIST.map((project) => (
-                    <tr key={project.id}>
+                  {props.projects.map((project) => (
+                    <tr key={project._id}>
                       <td className="whitespace-nowrap py-5 pl-4 pr-3 text-sm sm:pl-0">
                         <div className="flex items-center">
                           <div className="ml-4">
-                            <div className="font-medium text-gray-900">
+                            <Link
+                              to={`/admin/project/${project._id}`}
+                              className="font-medium text-gray-900"
+                            >
                               {project.title}
-                            </div>
+                            </Link>
                             <div className="mt-1 text-gray-500">
-                              {project.type}
+                              {project.projectType}
                             </div>
                           </div>
                         </div>
@@ -85,7 +100,7 @@ export const ProjectTable = (props: ProjectTableProps) => {
                         </span>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                        {project.industry}
+                        {project.applicationType}
                       </td>
                       <td className="relative whitespace-nowrap py-5 pl-3 pr-4 text-center text-sm font-medium">
                         <button

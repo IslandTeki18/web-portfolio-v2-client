@@ -12,7 +12,6 @@ export const useGetProjectList = () => {
         const response = await axios.get(
           `${process.env.REACT_APP_SERVER_URL}api/projects`
         );
-
         // Check if the response contains data
         if (response.data) {
           setProjectList(response.data);
@@ -23,6 +22,5 @@ export const useGetProjectList = () => {
     };
 
     fetchProjects();
-  }, [setProjectList]);
-
+  }, []);
 };

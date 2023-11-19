@@ -13,7 +13,6 @@ import { projectLimitedState } from "~src/features/projects/api";
 import { useGetLimitedProjectList } from "~src/features/projects/hooks";
 
 export const Home = () => {
-  useGetLimitedProjectList();
   const projectsLimited = useRecoilValue(projectLimitedState);
   const projectSectionRef = useRef<HTMLElement | null>(null);
   const serviceSectionRef = useRef<HTMLElement | null>(null);
