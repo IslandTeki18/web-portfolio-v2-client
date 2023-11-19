@@ -7,16 +7,18 @@ type Props = {
   rows?: number;
   cols?: number;
   name?: string;
+  id?: string;
 };
 
 export const Textarea = (props: Props) => {
   return (
     <textarea
+    id={props.id}
       className="text-white border border-white bg-dark py-2 px-4"
       value={props.value}
       onChange={props.onChange}
       rows={props.rows || 4}
-      cols={props.cols || 50}
+      cols={props.cols}
       placeholder={props.placeholder}
       name={props.name}
     />

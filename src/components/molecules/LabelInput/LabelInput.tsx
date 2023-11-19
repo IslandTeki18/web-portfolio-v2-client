@@ -5,7 +5,7 @@ type LabelInputProps = {
   id?: string;
   label: string;
   type?: string;
-  onChange: () => void;
+  onChange: any;
   value: any;
   name?: string;
 };

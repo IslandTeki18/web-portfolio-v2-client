@@ -36,4 +36,6 @@ export interface IProjectDetails {
   developerFeedback: IDeveloperFeedback[];
   relatedProjects: IRelatedProject[];
   status: "Live" | "Under Construction" | "Not Live" | "On Hold" | "Remodeling";
+  createdAt?: string;
+  updatedAt?: string;
 }

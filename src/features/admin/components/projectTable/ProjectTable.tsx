@@ -4,6 +4,7 @@ import { PROJECT_LIST } from "../../utils";
 import { IProjectDetails } from "~src/types";
 import { Link } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
+import { useTimeFormatter } from "~src/hooks";
 
 type ProjectTableProps = {
   projects: IProjectDetails[];
@@ -92,7 +93,7 @@ export const ProjectTable = (props: ProjectTableProps) => {
                         </div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
-                        <div className="text-gray-900">{project.title}</div>
+                        <div className="text-gray-900">{useTimeFormatter(project.createdAt ? project.createdAt : "mm/dd/yyyy", "en-US")}</div>
                       </td>
                       <td className="whitespace-nowrap px-3 py-5 text-sm text-gray-500">
                         <span className="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
@@ -109,7 +110,7 @@ export const ProjectTable = (props: ProjectTableProps) => {
                           }}
                           className="text-indigo-600 hover:text-indigo-900"
                         >
-                          Edit<span className="sr-only">, {project.title}</span>
+                          Edit <span className="sr-only">, {project.title}</span>
                         </button>
                       </td>
                     </tr>
