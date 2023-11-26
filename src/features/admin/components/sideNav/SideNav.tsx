@@ -11,10 +11,10 @@ import {
 import { useSetRecoilState } from "recoil";
 import { userRoleState } from "~src/stores";
 import { Link, useNavigate } from "react-router-dom";
-import { classNames, NAVIGATIONS } from "../../utils";
+import { classNames } from "~src/utils";
 
 type SideNavProps = {
-  navItems: any[]
+  navItems: any[];
 };
 
 export const SideNav = (props: SideNavProps) => {
@@ -25,7 +25,12 @@ export const SideNav = (props: SideNavProps) => {
   const userNavigation = [
     { name: "Your Profile", onClick: onProfileClickHandler },
     { name: "Logout", onClick: onLogoutHandler },
+    { name: "Portfolio", onClick: onPortfolioClickHandler },
   ];
+
+  function onPortfolioClickHandler() {
+    return navigate("/");
+  }
 
   function onProfileClickHandler() {
     return navigate("/admin/profile");

@@ -1,6 +1,11 @@
 import * as React from "react";
 import axios from "axios";
 
+const url =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_DEVELOPMENT_URL
+    : process.env.REACT_APP_SERVER_URL;
+
 export const useSendContactInfo = async (
   name: string,
   phone: string,
@@ -8,10 +13,7 @@ export const useSendContactInfo = async (
   message: string
 ) => {
   function convertPhoneStringToNumber(phoneString: string) {
-    // Remove dashes from the phone string
     const cleanedPhone = phoneString.replace(/-/g, "");
-
-    // Convert the cleaned string to a number
     const phoneNumber = Number(cleanedPhone);
 
     return phoneNumber;
@@ -25,7 +27,7 @@ export const useSendContactInfo = async (
     };
 
     await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}api/contacts`,
+      `${url}api/contacts`,
       {
         name,
         phoneAsNumber,

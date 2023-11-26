@@ -52,14 +52,14 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
         </div>
         <hr />
         <div className="flex flex-col gap-2">
-          <span className="font-bold text-xl">
-            STARTED:
+          <span className="font-bold text-xl uppercase">
+            Started:
             <span className="ml-2 font-normal text-base">
               {props.startDate}
             </span>
           </span>
-          <span className="font-bold text-xl">
-            DEADLINE:
+          <span className="font-bold text-xl uppercase">
+            Finished:
             <span className="ml-2 font-normal text-base">
               {props.startDate}
             </span>
@@ -79,7 +79,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
       </div>
       <div className="flex border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-6/10 animate__animated animate__fadeInRight">
         <img
-          className="max-h-[400px] object-cover"
+          className="max-h-[400px] w-full object-cover object-center"
           src={noImage}
           alt="project"
         />

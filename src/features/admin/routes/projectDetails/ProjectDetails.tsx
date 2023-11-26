@@ -3,23 +3,26 @@ import { useState, useEffect } from "react";
 import { SideNav } from "../../components";
 import { setCurrentNavigation } from "../../utils";
 import { Button, Loader } from "~src/components";
-import { LabelInput } from "~src/components/molecules";
+import {
+  LabelInput,
+  LabelTextArea,
+  LabelToggle,
+} from "~src/components/molecules";
 import { IProjectDetails } from "~src/types";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
 import { useRecoilValue } from "recoil";
 import { projectDetailsState } from "~src/stores/project";
-import { LabelTextArea } from "~src/components/molecules/LabelTextArea/LabelTextArea";
 
 export const ProjectDetails = () => {
   const { id } = useParams();
   useGetProjectDetails(id || "");
   const navigate = useNavigate();
   const projectDetails: IProjectDetails = useRecoilValue(projectDetailsState);
-  console.log(projectDetails);
 
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<IProjectDetails>(projectDetails);
+  console.log(project)
 
   useEffect(() => {
     if (projectDetails) {
@@ -167,6 +170,21 @@ export const ProjectDetails = () => {
                   label="Tech Stack"
                   name="techStackInput"
                   value={project.techStack}
+                />
+              </div>
+              <div className="flex flex-col md:flex-row gap-4">
+                <LabelToggle
+                  label="Is the Project Public"
+                  id="isPublicInput"
+                  isChecked={project.isPublic || false}
+                  onToggle={(val) => {
+                    setProject((prev) => {
+                      return {
+                        ...prev,
+                        isPublic: val,
+                      };
+                    });
+                  }}
                 />
               </div>
             </div>
