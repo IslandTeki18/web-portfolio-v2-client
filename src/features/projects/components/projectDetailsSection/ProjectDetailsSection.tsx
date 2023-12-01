@@ -79,7 +79,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
       </div>
       <div className="flex border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-6/10 animate__animated animate__fadeInRight">
         <img
-          className="max-h-[400px] w-full object-cover object-center"
+          className="h-[400px] w-full object-cover object-center"
           src={noImage}
           alt="project"
         />
