@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { SideNav } from "../../components";
 import { setCurrentNavigation } from "../../utils";
-import { Button, Loader } from "~src/components";
+import { Button } from "~src/components";
 import {
   LabelInput,
   LabelTextArea,
@@ -13,6 +13,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
 import { useRecoilValue } from "recoil";
 import { projectDetailsState } from "~src/stores/project";
+import { updateProject } from "../../api";
 
 export const ProjectDetails = () => {
   const { id } = useParams();
@@ -22,7 +23,6 @@ export const ProjectDetails = () => {
 
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<IProjectDetails>(projectDetails);
-  console.log(project)
 
   useEffect(() => {
     if (projectDetails) {
@@ -39,6 +39,12 @@ export const ProjectDetails = () => {
         [inputName[0]]: e.target.value,
       };
     });
+  }
+
+  function onSubmitHandler(e: React.FormEvent) {
+    e.preventDefault();
+    // const data = updateProject(project, project._id);
+    console.log(project);
   }
 
   if (loading) {
@@ -65,129 +71,140 @@ export const ProjectDetails = () => {
         <main className="py-10">
           <div className="px-4 sm:px-6 lg:px-8">
             {/* Main */}
-            <div className="w-full flex flex-col gap-4">
-              <div className="flex justify-between">
-                <span className="text-white text-3xl">{project.title}</span>
-                <Button
-                  labelColor="light"
-                  label="Go Back"
-                  variant="primary"
-                  onClick={() => {
-                    navigate("/admin/projects-list");
-                  }}
-                />
+            <form onSubmit={onSubmitHandler}>
+              <div className="w-full flex flex-col gap-4">
+                <div className="flex justify-between">
+                  <span className="text-white text-3xl">{project.title}</span>
+                  <Button
+                    labelColor="light"
+                    label="Go Back"
+                    variant="primary"
+                    onClick={() => {
+                      navigate("/admin/projects-list");
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Title"
+                    name="titleInput"
+                    value={project.title}
+                  />
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Project Type"
+                    name="projectTypeInput"
+                    value={project.projectType}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Designer"
+                    name="designerInput"
+                    value={project.designer}
+                  />
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Application Type"
+                    name="applicationTypeInput"
+                    value={project.applicationType}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Budget"
+                    name="budgetInput"
+                    value={project.budget}
+                  />
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Client"
+                    name="clientInput"
+                    value={project.client}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Trello URL"
+                    name="trelloUrlInput"
+                    value={project.trelloUrl}
+                  />
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Github URL"
+                    name="githubUrlInput"
+                    value={project.githubUrl}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Project URL"
+                    name="projectUrlInput"
+                    value={project.projectUrl}
+                  />
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Tags"
+                    name="tagsInput"
+                    value={project.tags}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelTextArea
+                    onChange={onChangeHandler}
+                    label="Description"
+                    name="descriptionInput"
+                    value={project.description}
+                  />
+                  <LabelInput
+                    type="text"
+                    onChange={onChangeHandler}
+                    label="Tech Stack"
+                    name="techStackInput"
+                    value={project.techStack}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <LabelToggle
+                    label="Is the Project Public"
+                    id="isPublicInput"
+                    isChecked={project.isPublic || false}
+                    onToggle={(val) => {
+                      setProject((prev) => {
+                        return {
+                          ...prev,
+                          isPublic: val,
+                        };
+                      });
+                    }}
+                  />
+                </div>
+                <div className="flex flex-col md:flex-row justify-end gap-4">
+                  <Button
+                    label="Update Project"
+                    variant="dark"
+                    labelColor="light"
+                    type="submit"
+                  />
+                </div>
               </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Title"
-                  name="nameInput"
-                  value={project.title}
-                />
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Project Type"
-                  name="projectTypeInput"
-                  value={project.projectType}
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Designer"
-                  name="designerInput"
-                  value={project.designer}
-                />
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Application Type"
-                  name="applicationTypeInput"
-                  value={project.applicationType}
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Budget"
-                  name="budgetInput"
-                  value={project.budget}
-                />
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Client"
-                  name="clientInput"
-                  value={project.client}
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Trello URL"
-                  name="trelloUrlInput"
-                  value={project.trelloUrl}
-                />
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Github URL"
-                  name="githubUrlInput"
-                  value={project.githubUrl}
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Project URL"
-                  name="projectUrlInput"
-                  value={project.projectUrl}
-                />
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Tags"
-                  name="tagsInput"
-                  value={project.tags}
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelTextArea
-                  onChange={onChangeHandler}
-                  label="Description"
-                  name="descriptionInput"
-                  value={project.description}
-                />
-                <LabelInput
-                  type="text"
-                  onChange={onChangeHandler}
-                  label="Tech Stack"
-                  name="techStackInput"
-                  value={project.techStack}
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-4">
-                <LabelToggle
-                  label="Is the Project Public"
-                  id="isPublicInput"
-                  isChecked={project.isPublic || false}
-                  onToggle={(val) => {
-                    setProject((prev) => {
-                      return {
-                        ...prev,
-                        isPublic: val,
-                      };
-                    });
-                  }}
-                />
-              </div>
-            </div>
+            </form>
+            {/* End Main */}
           </div>
         </main>
       </div>

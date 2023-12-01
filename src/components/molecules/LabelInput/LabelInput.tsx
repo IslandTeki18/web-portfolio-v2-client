@@ -5,7 +5,7 @@ type LabelInputProps = {
   id?: string;
   label: string;
   type?: string;
-  onChange: any;
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
   value: any;
   name?: string;
 };

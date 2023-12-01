@@ -19,7 +19,7 @@ export const Input = (props: InputProps) => {
       className={`text-white w-full border bg-dark border-white py-2 px-4`}
       id={props.id}
       placeholder={props.placeholder}
-      value={props.value}
+      value={props.value || ""}
       onChange={props.onChange}
       required={props.required}
       multiple={props.multiple}
