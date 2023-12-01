@@ -16,7 +16,7 @@ export const Button = (props: ButtonProps) => {
   function setButtonType(type: string) {
     switch (type) {
       case "dark":
-        return "bg-dark hover:bg-slate-200 focus-visible:outline-slate-600";
+        return "bg-dark hover:bg-slate-200 focus-visible:outline-slate-600 border border-white";
       case "primary":
         return "bg-primary-500 hover:bg-primary-400 focus-visible:outline-primary-600";
       case "secondary":
@@ -56,12 +56,4 @@ export const Button = (props: ButtonProps) => {
       {props.label}
     </button>
   );
-};
-
-Button.defaultProps = {
-  buttonType: "dark",
-  label: "Example",
-  labelColor: "white",
-  isDisabled: false,
-  className: "",
 };

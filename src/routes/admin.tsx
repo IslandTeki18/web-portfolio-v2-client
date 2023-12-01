@@ -8,7 +8,7 @@ export const adminRoutes = [
     element: <Dashboard />,
   },
   {
-    path: "/admin/project/*",
+    path: "/admin/project/:id",
     element: <ProjectDetails />
   },
   {

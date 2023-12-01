@@ -17,7 +17,7 @@ export const ProjectDetails = () => {
   useGetProjectDetails(projectId!);
   const project = useRecoilValue(projectDetailsState);
   useTimeFormatter(project.createdAt, "en-US");
-  console.log(project);
+  
   return (
     <>
       <ScrollToTop />
