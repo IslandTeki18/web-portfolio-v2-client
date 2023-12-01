@@ -4,7 +4,7 @@ import { SideNav, ProjectTable } from "../../components";
 import { useRecoilValue } from "recoil";
 import { projectListState } from "~src/stores/project";
 
-export const ProjectList = () => {
+export const AdminProjectList = () => {
   const projects = useRecoilValue(projectListState);
   return (
     <div className="h-full">
