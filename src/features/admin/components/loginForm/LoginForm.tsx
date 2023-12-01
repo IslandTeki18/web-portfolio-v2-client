@@ -10,7 +10,7 @@ type Props = {};
 
 const req =
   process.env.NODE_ENV === "production"
-    ? `${process.env.REACT_APP_REQUEST_URL}api/users`
+    ? `${process.env.REACT_APP_SERVER_URL}api/users`
     : "http://localhost:8000/api/users";
 
 export const LoginForm = (props: Props) => {
@@ -44,12 +44,11 @@ export const LoginForm = (props: Props) => {
       setUserObj(userData);
       setUserRole("admin");
       localStorage.setItem("userRoleState", "admin");
-      localStorage.setItem("authToken", userData.token)
+      localStorage.setItem("authToken", userData.token);
 
       return navigate("/admin/dashboard", {
-        replace: true
+        replace: true,
       });
-      
     } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message;
@@ -62,7 +61,7 @@ export const LoginForm = (props: Props) => {
       setTimeout(() => {
         setIsError(false);
       }, 5000);
-      return null
+      return null;
     }
   }
   return (
@@ -118,12 +117,7 @@ export const LoginForm = (props: Props) => {
             }
           />
         </div>
-        <Button
-          label="LOGIN"
-          className="mt-4"
-          variant="dark"
-          type="submit"
-        />
+        <Button label="LOGIN" className="mt-4" variant="dark" type="submit" />
       </form>
     </div>
   );

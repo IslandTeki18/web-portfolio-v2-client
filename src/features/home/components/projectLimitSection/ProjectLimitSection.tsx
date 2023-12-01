@@ -17,7 +17,7 @@ export const ProjectLimitSection = (props: Props) => {
         id={project._id}
         title={project.title}
         projectDescription={project.description}
-        projectType={project.type}
+        projectType={project.type || project.applicationType}
         date={useTimeFormatter(project.createdAt, "en-US")}
       />
     ));
