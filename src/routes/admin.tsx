@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { Dashboard, ProjectDetails, ProjectList } from "~/src/features/admin";
+import { Dashboard, AdminProjectDetails, AdminProjectList } from "~/src/features/admin";
 
 export const adminRoutes = [
   {
@@ -10,10 +10,10 @@ export const adminRoutes = [
   },
   {
     path: "/admin/project/:id",
-    element: <ProjectDetails />,
+    element: <AdminProjectDetails />,
   },
   {
     path: "/admin/projects-list",
-    element: <ProjectList />,
+    element: <AdminProjectList />,
   },
 ];

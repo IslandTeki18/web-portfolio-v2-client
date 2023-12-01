@@ -15,7 +15,7 @@ import { useRecoilValue } from "recoil";
 import { projectDetailsState } from "~src/stores/project";
 import { updateProject } from "../../api";
 
-export const ProjectDetails = () => {
+export const AdminProjectDetails = () => {
   const { id } = useParams();
   useGetProjectDetails(id || "");
   const navigate = useNavigate();
