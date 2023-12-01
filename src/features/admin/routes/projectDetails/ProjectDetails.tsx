@@ -43,8 +43,12 @@ export const ProjectDetails = () => {
 
   function onSubmitHandler(e: React.FormEvent) {
     e.preventDefault();
-    // const data = updateProject(project, project._id);
-    console.log(project);
+    updateProject(project, project._id).then((res: IProjectDetails) => {
+      setProject(res)
+    }).catch((error: any) => {
+      console.error(error)
+    });
+    
   }
 
   if (loading) {

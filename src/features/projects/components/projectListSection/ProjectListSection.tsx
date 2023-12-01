@@ -9,14 +9,14 @@ type ProjectListSectionProps = {
 
 export const ProjectListSection = (props: ProjectListSectionProps) => {
   function renderProjects() {
-    if (!props.projects) return
+    if (!props.projects) return;
     return props.projects.map((project) => (
       <ProjectCard
         key={project._id}
         id={project._id}
         title={project.title}
         projectDescription={project.description}
-        projectType={project.type}
+        projectType={project.type || project.applicationType}
         date={useTimeFormatter(project.createdAt, "en-US")}
       />
     ));
