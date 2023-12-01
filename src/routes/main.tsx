@@ -56,7 +56,7 @@ export const mainRoutes = [
     element: <ServiceDetails />,
   },
   {
-    path: "/admin",
+    path: "/admin/login",
     element: <Login />,
   },
   {

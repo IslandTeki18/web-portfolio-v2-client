@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { SideNav } from "../../components";
-import { setCurrentNavigation } from "../../utils";
+import { SideNav } from "../../../components";
+import { setCurrentNavigation } from "../../../utils";
 import { Button } from "~src/components";
 import {
   LabelInput,
@@ -13,7 +13,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
 import { useRecoilValue } from "recoil";
 import { projectDetailsState } from "~src/stores/project";
-import { updateProject } from "../../api";
+import { updateProject } from "../../../api";
 
 export const AdminProjectDetails = () => {
   const { id } = useParams();

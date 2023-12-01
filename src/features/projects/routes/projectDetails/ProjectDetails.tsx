@@ -17,7 +17,7 @@ export const ProjectDetails = () => {
   useGetProjectDetails(projectId!);
   const project = useRecoilValue(projectDetailsState);
   useTimeFormatter(project.createdAt, "en-US");
-  
+
   return (
     <>
       <ScrollToTop />
@@ -33,9 +33,7 @@ export const ProjectDetails = () => {
         />
       </section>
       <section id="project-details-section" className="pt-4">
-        <ProjectDetailsSection
-          project={project}
-        />
+        <ProjectDetailsSection project={project} />
       </section>
       <section
         id="project-overview-section"

@@ -1,6 +1,6 @@
 import * as React from "react";
-import { setCurrentNavigation } from "../../utils";
-import { SideNav, ProjectTable } from "../../components";
+import { setCurrentNavigation } from "../../../utils";
+import { SideNav, ProjectTable } from "../../../components";
 import { useRecoilValue } from "recoil";
 import { projectListState } from "~src/stores/project";
 
