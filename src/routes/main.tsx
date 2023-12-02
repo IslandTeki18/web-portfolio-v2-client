@@ -10,14 +10,15 @@ import {
   Contact,
   Resume,
   Login,
+  ProjectList,
+  ProjectDetails,
 } from "~/src/features";
-import { ProjectList, ProjectDetails } from "~src/features/projects";
 
 export const mainRoutes = [
   {
     path: "/",
     element: <Home />,
-    index: true
+    index: true,
   },
   {
     path: "/about",
@@ -56,7 +57,7 @@ export const mainRoutes = [
     element: <ServiceDetails />,
   },
   {
-    path: "/admin/login",
+    path: "/login",
     element: <Login />,
   },
   {

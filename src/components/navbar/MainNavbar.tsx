@@ -12,7 +12,7 @@ type MainNavBarProps = {
   contact?: boolean;
 };
 export const MainNavbar = (props: MainNavBarProps) => {
-  const isAdmin = localStorage.getItem("authToken")
+  const isAdmin = localStorage.getItem("authToken");
   const [isBars, setIsBars] = useState(false);
   const navigation = [
     { name: "Home", path: "/", current: props.home },
@@ -26,6 +26,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
 
   return (
     <nav className="bg-dark h-fit md:h-16 md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] relative mt-4">
+      {/* Desktop */}
       <div className="flex justify-between items-center w-full h-inher">
         <Link
           to="/"
@@ -44,13 +45,11 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
-          {isAdmin && <li className="hidden md:block">
-              <NavLink
-                to={"/admin/dashboard"}
-              >
-                Admin
-              </NavLink>
-            </li>}
+          {isAdmin && (
+            <li className="hidden md:block">
+              <NavLink to={"/admin/dashboard"}>Admin</NavLink>
+            </li>
+          )}
           <li className="block md:hidden">
             <i
               className={`fa-solid fa-${!isBars ? "bars" : "xmark"} text-xl`}
@@ -59,6 +58,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
           </li>
         </ul>
       </div>
+      {/* Mobile */}
       {isBars ? (
         <ul
           className={`
@@ -78,6 +78,11 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
+          {isAdmin && (
+            <li className="block md:hidden">
+              <NavLink to={"/admin/dashboard"}>Admin</NavLink>
+            </li>
+          )}
         </ul>
       ) : null}
     </nav>
