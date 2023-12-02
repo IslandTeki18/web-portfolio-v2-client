@@ -31,8 +31,8 @@ export interface IProjectDetails {
   trelloUrl?: string;
   githubUrl?: string;
   projectUrl?: string;
-  techStack: string[];
-  tags: string[];
+  techStack: string;
+  tags: string;
   developerFeedback: IDeveloperFeedback[];
   relatedProjects: IRelatedProject[];
   status: "Live" | "Under Construction" | "Not Live" | "On Hold" | "Remodeling";

@@ -43,12 +43,17 @@ export const AdminProjectDetails = () => {
 
   function onSubmitHandler(e: React.FormEvent) {
     e.preventDefault();
-    updateProject(project, project._id).then((res: IProjectDetails) => {
-      setProject(res)
-    }).catch((error: any) => {
-      console.error(error)
-    });
-    
+    updateProject(project, project._id)
+      .then((res: IProjectDetails) => {
+        setProject(res);
+      })
+      .catch((error: any) => {
+        console.error(error);
+      });
+  }
+
+  function breakDownListString(str: string) {
+    return str.split(",");
   }
 
   if (loading) {
