@@ -46,6 +46,7 @@ export const SideNav = (props: SideNavProps) => {
 
   return (
     <div>
+      {/* Mobile - Collaspable Sidebar */}
       <Transition.Root show={sidebarOpen} as={Fragment}>
         <Dialog
           as="div"
@@ -64,6 +65,7 @@ export const SideNav = (props: SideNavProps) => {
             <div className="fixed inset-0 bg-gray-900/80" />
           </Transition.Child>
 
+          
           <div className="fixed inset-0 flex">
             <Transition.Child
               as={Fragment}
@@ -98,14 +100,7 @@ export const SideNav = (props: SideNavProps) => {
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
-                  <div className="flex h-16 shrink-0 items-center">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                      alt="Your Company"
-                    />
-                  </div>
+                <div id="Mobile-Sidebar" className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 py-4 ring-1 ring-white/10">
                   <nav className="flex flex-1 flex-col">
                     <ul role="list" className="flex flex-1 flex-col gap-y-7">
                       <li>
@@ -152,10 +147,9 @@ export const SideNav = (props: SideNavProps) => {
           </div>
         </Dialog>
       </Transition.Root>
-
-      <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-        <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
-          <div className="flex h-4 shrink-0 items-center"></div>
+      {/* Desktop - Sidenav */}
+      <div id="Desktop-Sidenav" className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 py-4">
           <nav className="flex flex-1 flex-col">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
               <li>
@@ -170,7 +164,6 @@ export const SideNav = (props: SideNavProps) => {
                             : "text-gray-400 hover:text-white hover:bg-gray-800",
                           "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
                         )}
-                        onClick={() => {}}
                       >
                         <item.icon
                           className="h-6 w-6 shrink-0"
@@ -198,12 +191,13 @@ export const SideNav = (props: SideNavProps) => {
           </nav>
         </div>
       </div>
-
+      
       <div className="lg:pl-72">
-        <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-gray-600 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+      {/* Mobile - Navbar */}
+        <div id="Mobile-Navbar" className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-gray-600 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
           <button
             type="button"
-            className="-m-2.5 p-2.5 text-gray-700 lg:hidden"
+            className="-m-2.5 p-2.5 text-gray-900 lg:hidden"
             onClick={() => setSidebarOpen(true)}
           >
             <span className="sr-only">Open sidebar</span>
@@ -211,14 +205,14 @@ export const SideNav = (props: SideNavProps) => {
           </button>
 
           <div
-            className="h-6 w-px bg-gray-900/50 lg:hidden"
+            className="h-6 w-px bg-gray-900/80 lg:hidden"
             aria-hidden="true"
           />
-
+          {/* Desktop - Navbar */}
           <div className="flex flex-1 justify-end gap-x-4 self-stretch lg:gap-x-6">
             <div className="flex items-center gap-x-4 lg:gap-x-6">
               <div
-                className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/10"
+                className="hidden lg:block lg:h-6 lg:w-px lg:bg-gray-900/80"
                 aria-hidden="true"
               />
 
