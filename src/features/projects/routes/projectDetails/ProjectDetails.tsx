@@ -9,14 +9,13 @@ import {
 import { useParams } from "react-router-dom";
 import { useGetProjectDetails } from "../../hooks/useGetProjectDetails";
 import { useRecoilValue } from "recoil";
-import { projectDetailsState } from "../../api";
-import { useTimeFormatter } from "~src/hooks";
+import { projectDetailsState } from "~src/stores";
+import { formatDate } from "~src/utils";
 
 export const ProjectDetails = () => {
   const { projectId } = useParams();
   useGetProjectDetails(projectId!);
   const project = useRecoilValue(projectDetailsState);
-  useTimeFormatter(project.createdAt, "en-US");
 
   return (
     <>
@@ -28,7 +27,7 @@ export const ProjectDetails = () => {
       >
         <ProjectDetailsHeader
           title={project.title}
-          date={useTimeFormatter(project.createdAt, "en-US")}
+          date={formatDate(project.createdAt, "en-US")}
           status={project.status}
         />
       </section>

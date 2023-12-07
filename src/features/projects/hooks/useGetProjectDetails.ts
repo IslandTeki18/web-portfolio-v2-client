@@ -1,6 +1,6 @@
 import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
-import { projectDetailsState } from "../api";
+import { projectDetailsState } from "~src/stores";
 import axios from "axios";
 
 const url =
@@ -17,12 +17,10 @@ export const useGetProjectDetails = (projectId: string) => {
 
   async function getProjectDetails() {
     try {
-      const { data } = await axios.get(
-        `${url}api/projects/${projectId}`
-      );
+      const { data } = await axios.get(`${url}api/projects/${projectId}`);
       setProjectDetails(data);
     } catch (error) {
-      throw error
+      throw error;
     }
   }
 };

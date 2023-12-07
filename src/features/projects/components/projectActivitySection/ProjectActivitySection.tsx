@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ProjectCard } from "../projectCard";
-import { useTimeFormatter } from "~src/hooks";
+import { formatDate } from "~src/utils";
 
 type Props = {
   developerFeedback?: any[];
@@ -47,7 +47,7 @@ export const ProjectActivitySection = (props: Props) => {
         </span>
         <span className="mb-4">
           <span className="font-semibold text-lg pr-2">Date:</span>
-          {useTimeFormatter(item.createdAt, 'en-US')}
+          {formatDate(item.createdAt, 'en-US')}
         </span>
         <span>{item.description}</span>
       </div>
@@ -63,7 +63,7 @@ export const ProjectActivitySection = (props: Props) => {
         title={project.title}
         projectDescription={project.projectDescription}
         projectType={project.projectType}
-        date={useTimeFormatter(project.createdAt, "en-US")}
+        date={formatDate(project.createdAt, "en-US")}
       />
     ));
   }

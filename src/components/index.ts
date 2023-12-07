@@ -15,4 +15,5 @@ export * from "./sectionWrapper";
 export * from "./button";
 export * from "./scrollToTop";
 export * from "./textarea";
-export * from "./toggle"
+export * from "./toggle";
+export * from "./select";

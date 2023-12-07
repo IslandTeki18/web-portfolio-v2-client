@@ -5,7 +5,7 @@ const url =
     ? process.env.REACT_APP_DEVELOPMENT_URL
     : process.env.REACT_APP_SERVER_URL;
 
-export const updateProject = async (projectData: any, projectId: string) => {
+export async function addProject() {
   const userToken = localStorage.getItem("authToken");
   try {
     const config = {
@@ -13,15 +13,10 @@ export const updateProject = async (projectData: any, projectId: string) => {
         Authorization: `Bearer ${userToken}`,
       },
     };
-    const { data } = await axios.put(
-      `${url}api/projects/${projectId}`,
-      projectData,
-      config
-    );
-
-    return data;
+    await axios.post(`${url}`, {}, config);
+    return;
   } catch (error) {
-    console.error(`Error sending updating project: ${error}`);
+    console.error(`Error creating new project: ${error}`);
     return;
   }
-};
+}

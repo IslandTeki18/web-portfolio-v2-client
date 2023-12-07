@@ -4,7 +4,7 @@ import { ITag } from "../../types/interfaces";
 import noImage from "../../assets/noImage2.png";
 import { IProjectDetails } from "~src/types";
 import { formatNumberWithCommas } from "~src/utils";
-import { useTimeFormatter } from "~src/hooks";
+import { formatDate } from "~src/utils";
 
 type ProjectDetailsSectionProps = {
   project: IProjectDetails;
@@ -57,13 +57,13 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
           <span className="font-bold text-xl uppercase">
             Started:
             <span className="ml-2 font-normal text-base">
-              {useTimeFormatter(props.project.createdAt!, "en-US")}
+              {formatDate(props.project.createdAt!, "en-US")}
             </span>
           </span>
           <span className="font-bold text-xl uppercase">
             Updated:
             <span className="ml-2 font-normal text-base">
-              {useTimeFormatter(props.project.updatedAt!, "en-US")}
+              {formatDate(props.project.updatedAt!, "en-US")}
             </span>
           </span>
           {/* <span className="font-bold text-xl">

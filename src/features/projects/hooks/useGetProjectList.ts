@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { useSetRecoilState } from "recoil";
-import { projectListState } from "../api";
+import { projectListState } from "~src/stores/project";
 
 const url =
   process.env.NODE_ENV === "development"
@@ -15,9 +15,7 @@ export const useGetProjectList = () => {
     const fetchProjects = async () => {
       try {
         const response = await axios.get(`${url}api/projects`);
-        if (response.data) {
-          setProjectList(response.data);
-        }
+        setProjectList(response.data);
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
