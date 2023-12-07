@@ -1,9 +1,10 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { SideNav } from "../../../components";
-import { setCurrentNavigation } from "../../../utils";
+import { setCurrentNavigation, PROJECT_STATUSES } from "../../../utils";
 import { Button } from "~src/components";
 import {
+  LabelSelect,
   LabelInput,
   LabelTextArea,
   LabelToggle,
@@ -12,7 +13,7 @@ import { IProjectDetails } from "~src/types";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
 import { useRecoilValue } from "recoil";
-import { projectDetailsState } from "~src/stores/project";
+import { projectDetailsState } from "~src/stores";
 import { updateProject } from "../../../api";
 
 export const AdminProjectDetails = () => {
@@ -50,10 +51,6 @@ export const AdminProjectDetails = () => {
       .catch((error: any) => {
         console.error(error);
       });
-  }
-
-  function breakDownListString(str: string) {
-    return str.split(",");
   }
 
   if (loading) {
@@ -189,19 +186,36 @@ export const AdminProjectDetails = () => {
                   />
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
-                  <LabelToggle
-                    label="Is the Project Public"
-                    id="isPublicInput"
-                    isChecked={project.isPublic || false}
-                    onToggle={(val) => {
-                      setProject((prev) => {
-                        return {
-                          ...prev,
-                          isPublic: val,
-                        };
-                      });
-                    }}
-                  />
+                  <div className="flex flex-col sm:flex-row w-1/2 sm:w-full justify-between items-center">
+                    <LabelToggle
+                      label="Is the Project Public"
+                      id="isPublicInput"
+                      isChecked={project.isPublic || false}
+                      onToggle={(val) => {
+                        setProject((prev) => {
+                          return {
+                            ...prev,
+                            isPublic: val,
+                          };
+                        });
+                      }}
+                    />
+                    <LabelSelect
+                      label="Status"
+                      items={PROJECT_STATUSES}
+                      id="statusInput"
+                      value={project.status}
+                      onSelection={(val) => {
+                        setProject((prev) => {
+                          return {
+                            ...prev,
+                            status: val,
+                          };
+                        });
+                      }}
+                    />
+                  </div>
+                  <div className="flex flex-col sm:flex-row w-1/2 sm:w-full justify-between items-center"></div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-end gap-4">
                   <Button

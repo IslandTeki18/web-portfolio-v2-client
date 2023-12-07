@@ -1,7 +1,7 @@
 import * as React from "react";
 import { SectionWrapper } from "~src/components";
 import { ProjectCard } from "~src/features/projects/components";
-import { useTimeFormatter } from "~src/hooks";
+import { formatDate } from "~src/utils";
 
 type Props = {
   projects?: any[];
@@ -18,7 +18,7 @@ export const ProjectLimitSection = (props: Props) => {
         title={project.title}
         projectDescription={project.description}
         projectType={project.type || project.applicationType}
-        date={useTimeFormatter(project.createdAt, "en-US")}
+        date={formatDate(project.createdAt, "en-US")}
       />
     ));
   }

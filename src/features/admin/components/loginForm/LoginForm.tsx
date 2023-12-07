@@ -8,10 +8,10 @@ import { useSetRecoilState } from "recoil";
 
 type Props = {};
 
-const req =
-  process.env.NODE_ENV === "production"
-    ? `${process.env.REACT_APP_SERVER_URL}api/users`
-    : "http://localhost:8000/api/users";
+const url =
+  process.env.NODE_ENV === "development"
+    ? process.env.REACT_APP_DEVELOPMENT_URL
+    : process.env.REACT_APP_SERVER_URL;
 
 export const LoginForm = (props: Props) => {
   const setUserRole = useSetRecoilState(userRoleState);
@@ -27,7 +27,7 @@ export const LoginForm = (props: Props) => {
   async function onSumitHandler(e: React.FormEvent) {
     e.preventDefault();
     try {
-      const loginEndpoint = `${req}/login`;
+      const loginEndpoint = `${url}api/users/login`;
       const requestBody = {
         username: loginCreds.username,
         password: loginCreds.password,
