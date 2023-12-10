@@ -9,7 +9,7 @@ import {
   ServiceLimitSection,
 } from "../../components";
 import { useOnScrollAnimation } from "~src/hooks";
-import { projectLimitedState } from "~src/features/projects/api";
+import { projectLimitedState } from "~src/stores";
 import { useGetLimitedProjectList } from "~src/features/projects/hooks";
 
 export const Home = () => {
