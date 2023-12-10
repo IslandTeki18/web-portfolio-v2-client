@@ -4,9 +4,11 @@ export interface IFooterListItem {
 }
 
 export interface IDeveloperFeedback {
-  projectId: string;
+  _id?: string;
   title: string;
   description: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface IRelatedProject {
