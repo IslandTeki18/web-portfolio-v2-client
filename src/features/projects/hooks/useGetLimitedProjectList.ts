@@ -4,7 +4,7 @@ import { useSetRecoilState } from "recoil";
 import { projectLimitedState } from "~src/stores";
 
 const url =
-  process.env.REACT_APP_NODE_ENV === "development"
+  process.env.NODE_ENV === "development"
     ? process.env.REACT_APP_DEVELOPMENT_URL
     : process.env.REACT_APP_SERVER_URL;
 

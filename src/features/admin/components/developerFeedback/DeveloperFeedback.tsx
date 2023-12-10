@@ -6,7 +6,7 @@ import { IDeveloperFeedback } from "~src/types";
 import { formatDate } from "~src/utils";
 import { projectDetailsState } from "~src/stores";
 import { useSetRecoilState } from "recoil";
-import { createDeveloperFeedback } from "../../api";
+import { createDeveloperFeedback, removeDeveloperFeedback } from "../../api";
 
 type DeveloperFeedbackProps = {
   projectId: string;
@@ -38,8 +38,24 @@ export const DeveloperFeedback = (props: DeveloperFeedbackProps) => {
         feedbackObj.description
       );
       setNewProjectDetails(data);
+      setFeedbackObj({
+        title: "",
+        description: "",
+      });
     } catch (error) {
       console.error("ERROR: ", error);
+    }
+  }
+
+  async function onDeleteFeedbackHandler(feedbackId: string) {
+    try {
+      const { message, project } = await removeDeveloperFeedback(
+        feedbackId,
+        props.projectId
+      );
+      setNewProjectDetails(project);
+    } catch (error) {
+      console.error;
     }
   }
 
@@ -48,17 +64,29 @@ export const DeveloperFeedback = (props: DeveloperFeedbackProps) => {
       return <span className="text-lg">No Feedbacks Yet.</span>;
     }
     return props.feedbacks.map((item) => (
-      <div className="flex justify-between items-center border border-white rounded p-4" key={item._id}>
-        <div
-          className="w-3/4 flex flex-col text-left"
-          
-        >
+      <div
+        className="flex flex-row border border-white rounded p-4"
+        key={item._id}
+      >
+        <div className="w-full lg:w-3/4 flex flex-col text-left">
           <span className="text-lg font-semibold mb-2">{item.title}</span>
           <span>{item.description}</span>
           <span>Created: {formatDate(item.createdAt || "", "en-US")}</span>
         </div>
-        <div className="w-1/4">
-            <Button label="remove" />
+        <div className="flex md:flex-col justify-end gap-4 w-full lg:w-1/4">
+          <Button
+            className="h-fit"
+            variant="danger"
+            labelColor="light"
+            label="remove"
+            onClick={() => onDeleteFeedbackHandler(item._id as string)}
+          />
+          <Button
+            className="h-fit"
+            variant="primary"
+            labelColor="light"
+            label="edit"
+          />
         </div>
       </div>
     ));
