@@ -2,7 +2,7 @@ import * as React from "react";
 import { useRecoilValue } from "recoil";
 import { Footer, MainNavbar, ScrollToTop } from "~src/components";
 import { ProjectListSection } from "../../components";
-import { projectListState } from "../../api";
+import { projectListState } from "~src/stores";
 
 export const ProjectList = () => {
   const projectList = useRecoilValue(projectListState)

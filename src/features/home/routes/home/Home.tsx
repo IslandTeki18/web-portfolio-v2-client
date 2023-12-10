@@ -10,7 +10,6 @@ import {
 } from "../../components";
 import { useOnScrollAnimation } from "~src/hooks";
 import { projectLimitedState } from "~src/stores";
-import { useGetLimitedProjectList } from "~src/features/projects/hooks";
 
 export const Home = () => {
   const projectsLimited = useRecoilValue(projectLimitedState);
