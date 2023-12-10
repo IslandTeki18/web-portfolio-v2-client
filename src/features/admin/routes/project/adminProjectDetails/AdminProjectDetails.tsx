@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { SideNav } from "../../../components";
+import { DeveloperFeedback, SideNav } from "../../../components";
 import { setCurrentNavigation, PROJECT_STATUSES } from "../../../utils";
 import { Button } from "~src/components";
 import {
@@ -186,7 +186,7 @@ export const AdminProjectDetails = () => {
                   />
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex flex-col sm:flex-row w-1/2 sm:w-full justify-between items-center">
+                  <div className="flex flex-col sm:flex-row w-full sm:w-1/2 justify-between items-center">
                     <LabelToggle
                       label="Is the Project Public"
                       id="isPublicInput"
@@ -215,7 +215,15 @@ export const AdminProjectDetails = () => {
                       }}
                     />
                   </div>
-                  <div className="flex flex-col sm:flex-row w-1/2 sm:w-full justify-between items-center"></div>
+                  <div className="flex flex-col sm:flex-row w-full sm:w-1/2 justify-between items-center"></div>
+                </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  <div className="flex flex-col sm:flex-row w-full sm:w-1/2 justify-between items-center">
+                    <DeveloperFeedback
+                      projectId={project._id}
+                      feedbacks={project.developerFeedback}
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-end gap-4">
                   <Button
