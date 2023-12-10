@@ -1,8 +1,7 @@
 import * as React from "react";
 import { SideNav, ProjectTable, ContactTable } from "../../components";
 import { setCurrentNavigation } from "../../utils";
-import { useRecoilValue } from "recoil";
-import { projectListState } from "~src/stores/project";
+
 
 export const Dashboard = () => {
   return (
