@@ -12,7 +12,7 @@ import {
 import { IProjectDetails } from "~src/types";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import { projectDetailsState } from "~src/stores";
 import { updateProject } from "../../../api";
 
@@ -21,6 +21,7 @@ export const AdminProjectDetails = () => {
   useGetProjectDetails(id || "");
   const navigate = useNavigate();
   const projectDetails: IProjectDetails = useRecoilValue(projectDetailsState);
+  const setProjectState = useSetRecoilState(projectDetailsState);
 
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<IProjectDetails>(projectDetails);
@@ -42,15 +43,14 @@ export const AdminProjectDetails = () => {
     });
   }
 
-  function onSubmitHandler(e: React.FormEvent) {
+  async function onSubmitHandler(e: React.FormEvent) {
     e.preventDefault();
-    updateProject(project, project._id)
-      .then((res: IProjectDetails) => {
-        setProject(res);
-      })
-      .catch((error: any) => {
-        console.error(error);
-      });
+    try {
+      const data = await updateProject(project, project._id);
+      setProjectState(data);
+    } catch (error) {
+      console.error("Error: ", error);
+    }
   }
 
   if (loading) {
@@ -186,7 +186,7 @@ export const AdminProjectDetails = () => {
                   />
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex flex-col sm:flex-row w-full sm:w-1/2 justify-between items-center">
+                  <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">
                     <LabelToggle
                       label="Is the Project Public"
                       id="isPublicInput"
@@ -215,10 +215,10 @@ export const AdminProjectDetails = () => {
                       }}
                     />
                   </div>
-                  <div className="flex flex-col sm:flex-row w-full sm:w-1/2 justify-between items-center"></div>
+                  <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center"></div>
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
-                  <div className="flex flex-col sm:flex-row w-full sm:w-1/2 justify-between items-center">
+                  <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">
                     <DeveloperFeedback
                       projectId={project._id}
                       feedbacks={project.developerFeedback}
