@@ -103,6 +103,10 @@ export const DeveloperFeedback = (props: DeveloperFeedbackProps) => {
         feedbackEditObj
       );
       setNewProjectDetails(project);
+      setFeedbackEditObj({
+        title: "",
+        description: "",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -127,13 +131,13 @@ export const DeveloperFeedback = (props: DeveloperFeedbackProps) => {
                 name="titleInput"
                 label="Title"
                 placeholder="Change Title..."
-                value={feedbackObj.title}
+                value={feedbackEditObj.title}
                 onChange={onEditChangeHandler}
               />
               <LabelTextArea
                 name="descriptionInput"
                 label="Description"
-                value={feedbackObj.description}
+                value={feedbackEditObj.description}
                 onChange={onEditChangeHandler}
                 placeholder="Change Description..."
               />
