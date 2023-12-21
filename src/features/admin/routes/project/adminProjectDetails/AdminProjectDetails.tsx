@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { DeveloperFeedback, SideNav } from "../../../components";
+import { DeveloperFeedback, RelatedProject, SideNav } from "../../../components";
 import { setCurrentNavigation, PROJECT_STATUSES } from "../../../utils";
 import { Button } from "~src/components";
 import {
@@ -215,14 +215,21 @@ export const AdminProjectDetails = () => {
                       }}
                     />
                   </div>
-                  <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center"></div>
+                  <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">
+
+                  </div>
                 </div>
-                <div className="flex flex-col md:flex-row gap-4">
+                <div className="flex flex-col md:flex-row items-start gap-4">
                   <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">
                     <DeveloperFeedback
                       projectId={project._id}
                       feedbacks={project.developerFeedback}
                     />
+                    <hr className="py-6 border-whit" />
+                  </div>
+                  <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">
+                  <RelatedProject relatedProjects={project.relatedProjects} />
+
                   </div>
                 </div>
                 <div className="flex flex-col md:flex-row justify-end gap-4">
