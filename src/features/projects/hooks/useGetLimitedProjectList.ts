@@ -6,7 +6,7 @@ import { projectLimitedState } from "~src/stores";
 const url =
   process.env.NODE_ENV === "development"
     ? process.env.DEVELOPMENT_URL
-    : process.env.SERVER_URL;
+    : process.env.REACT_APP_SERVER_URL;
 
 export const useGetLimitedProjectList = () => {
   const setProjectLimitList = useSetRecoilState(projectLimitedState);

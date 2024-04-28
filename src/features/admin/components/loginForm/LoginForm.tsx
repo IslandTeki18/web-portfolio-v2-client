@@ -11,7 +11,7 @@ type Props = {};
 const url =
   process.env.NODE_ENV === "development"
     ? process.env.DEVELOPMENT_URL
-    : process.env.SERVER_URL;
+    : process.env.REACT_APP_SERVER_URL;
 
 export const LoginForm = (props: Props) => {
   const setUserRole = useSetRecoilState(userRoleState);
