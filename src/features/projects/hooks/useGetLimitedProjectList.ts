@@ -2,11 +2,12 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useSetRecoilState } from "recoil";
 import { projectLimitedState } from "~src/stores";
+import { API_URL } from "~src/config";
 
 const url =
   process.env.NODE_ENV === "development"
     ? process.env.DEVELOPMENT_URL
-    : process.env.REACT_APP_SERVER_URL;
+    : API_URL;
 
 export const useGetLimitedProjectList = () => {
   const setProjectLimitList = useSetRecoilState(projectLimitedState);

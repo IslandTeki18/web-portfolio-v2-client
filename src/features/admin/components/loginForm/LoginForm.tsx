@@ -5,13 +5,14 @@ import { redirect, useNavigate } from "react-router-dom";
 import { userRoleState, userObjState } from "~src/stores";
 import { Button } from "~src/components";
 import { useSetRecoilState } from "recoil";
+import { API_URL } from "~src/config";
 
 type Props = {};
 
 const url =
   process.env.NODE_ENV === "development"
     ? process.env.DEVELOPMENT_URL
-    : process.env.REACT_APP_SERVER_URL;
+    : API_URL;
 
 export const LoginForm = (props: Props) => {
   const setUserRole = useSetRecoilState(userRoleState);

@@ -1,8 +1,9 @@
 import axios from "axios";
+import { API_URL } from "~src/config";
 
 const req =
   process.env.NODE_ENV === "production"
-    ? `${process.env.REACT_APP_SERVER_URL}api/upload`
+    ? `${API_URL}api/upload`
     : `http://localhost:3001/api/upload`;
 
 const upload = (file, onUploadProgress) => {

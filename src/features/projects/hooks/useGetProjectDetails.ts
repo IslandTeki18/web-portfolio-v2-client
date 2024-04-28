@@ -2,11 +2,12 @@ import { useSetRecoilState } from "recoil";
 import { useEffect } from "react";
 import { projectDetailsState } from "~src/stores";
 import axios from "axios";
+import { API_URL } from "~src/config";
 
 const url =
   process.env.NODE_ENV === "development"
     ? process.env.DEVELOPMENT_URL
-    : process.env.REACT_APP_SERVER_URL;
+    : API_URL;
 
 export const useGetProjectDetails = (projectId: string) => {
   const setProjectDetails = useSetRecoilState(projectDetailsState);
