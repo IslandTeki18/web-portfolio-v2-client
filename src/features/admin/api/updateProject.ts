@@ -2,8 +2,8 @@ import axios from "axios";
 
 const url =
   process.env.NODE_ENV === "development"
-    ? process.env.REACT_APP_DEVELOPMENT_URL
-    : process.env.REACT_APP_SERVER_URL;
+    ? process.env.DEVELOPMENT_URL
+    : process.env.SERVER_URL;
 
 export const updateProject = async (projectData: any, projectId: string) => {
   const userToken = localStorage.getItem("authToken");
