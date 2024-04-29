@@ -67,7 +67,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
         `}
         >
           {navigation.map((item) => (
-            <li className="block md:hidden">
+            <li className="block md:hidden" key={item.name}>
               <NavLink
                 to={item.path}
                 className={`${

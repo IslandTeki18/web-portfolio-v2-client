@@ -25,17 +25,19 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
     }
   }
 
+  console.log("ProjectDetailsSection", props.project);
+
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
       <div className="border border-white p-4 flex flex-col gap-4 w-full order-2 md:order-1 lg:w-2/4 xl:w-4/10 animate__animated animate__fadeInLeft">
         <div className="flex flex-col gap-2">
           <span className="font-bold text-lg uppercase">
-            {!props.project.isPublic ? (
+            {props.project.isPublic ? (
               <i className="fa-solid fa-globe mr-2" />
             ) : (
               <i className="fa-solid fa-lock mr-2" />
             )}
-            {!props.project.isPublic ? "Public" : "Private"} Project
+            {props.project.isPublic ? "Public" : "Private"} Project
           </span>
           <span className="font-bold text-lg">
             <i className="fa-solid fa-user mr-2" />

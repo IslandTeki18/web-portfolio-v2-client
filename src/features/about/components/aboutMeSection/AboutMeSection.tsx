@@ -9,10 +9,12 @@ type AboutMeSectionProps = {};
 export const AboutMeSection = (props: AboutMeSectionProps) => {
   function renderBioPoints() {
     return BIO_POINTS.map((bio, idx) => (
-      <div className="flex items-center gap-2 w-full md:w-1/2" key={idx}>
-        <i className="fa-solid fa-circle-chevron-right" />
-        <span className="uppercase font-semibold">{bio.title}:</span>
-        <span className="lg:text-ellipsis overflow-hidden">{bio.value}</span>
+      <div className="flex flex-col md:flex-row gap-2 w-full md:w-1/2" key={idx}>
+        <div className="flex items-center gap-2">
+          <i className="fa-solid fa-circle-chevron-right" />
+          <span className="uppercase font-semibold text-white/80">{bio.title}:</span>
+        </div>
+        <span className="lg:text-ellipsis overflow-hidden text-white" title={bio.value}>{bio.value}</span>
       </div>
     ));
   }
