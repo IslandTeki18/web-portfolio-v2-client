@@ -14,7 +14,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGetProjectDetails } from "~src/features/projects/hooks";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { projectDetailsState } from "~src/stores";
-import { updateProject } from "../../../api";
+import { updateProject, uploadImages } from "../../../api";
 
 export const AdminProjectDetails = () => {
   const { id } = useParams();
@@ -25,6 +25,8 @@ export const AdminProjectDetails = () => {
 
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<IProjectDetails>(projectDetails);
+  const [selectedImages, setSelectedImages] = useState<File[] | null>(null);
+  const [imageLoading, setImageLoading] = useState(false);
 
   useEffect(() => {
     if (projectDetails) {
@@ -41,6 +43,24 @@ export const AdminProjectDetails = () => {
         [inputName[0]]: e.target.value,
       };
     });
+  }
+
+  function onImageChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
+    if (!e.target.files) return;
+    setSelectedImages(Array.from(e.target.files));
+  }
+
+  async function uploadImagesToServer() {
+    if (selectedImages) {
+      setImageLoading(true);
+      try {
+        await uploadImages(id!, selectedImages);
+        setImageLoading(false);
+      } catch (error) {
+        console.error("Error: ", error);
+        setImageLoading(false);
+      }
+    }
   }
 
   async function onSubmitHandler(e: React.FormEvent) {
@@ -184,6 +204,22 @@ export const AdminProjectDetails = () => {
                     name="techStackInput"
                     value={project.techStack}
                   />
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-col gap-2">
+                    <label htmlFor="imagesInput" className="text-white">
+                      Images
+                    </label>
+                    <input
+                      type="file"
+                      name="imagesInput"
+                      id="imagesInput"
+                      className="file-input input-sm max-w-sm w-full"
+                      onChange={(e) => onImageChangeHandler(e)}
+                      multiple
+                    />
+                  </div>
+                  <button className="btn btn-sm w-1/2" onClick={uploadImagesToServer}>Upload Images</button>
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">
