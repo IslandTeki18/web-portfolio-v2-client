@@ -14,7 +14,7 @@ export async function addProject() {
         Authorization: `Bearer ${userToken}`,
       },
     };
-    await axios.post(`${url}`, {}, config);
+    await axios.post(`${url}api/projects`, {}, config);
     return;
   } catch (error) {
     console.error(`Error creating new project: ${error}`);

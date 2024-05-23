@@ -30,7 +30,9 @@ export const ProjectTable = () => {
             label="Add Project"
             variant="success"
             type="button"
-            onClick={() => setOpenModal((prev) => !prev)}
+            onClick={() => {
+              setOpenModal(true)
+            }}
           />
         </div>
       </div>
@@ -128,7 +130,7 @@ export const ProjectTable = () => {
           </div>
         </div>
       </div>
-      <CreateProjectModal isOpen={openModal} />
+      <CreateProjectModal isOpen={openModal} onClose={() => setOpenModal(false)} />
     </div>
   );
 };

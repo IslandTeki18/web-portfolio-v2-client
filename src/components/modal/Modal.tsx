@@ -14,7 +14,7 @@ export const Modal = (props: ModalProps) => {
       <Dialog
         as="div"
         className="relative z-10"
-        onClose={() => props.onClose()}
+        onClose={props.onClose}
       >
         <Transition.Child
           as={Fragment}
