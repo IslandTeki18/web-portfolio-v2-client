@@ -51,7 +51,7 @@ export const Button = (props: ButtonProps) => {
         props.variant || "dark"
       )} ${setButtonTextColor(props.labelColor || "white")} ${
         props.className
-      } px-3.5 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2`}
+      } px-3.5 py-2.5 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none disabled:bg-gray-300 disabled:text-gray-500`}
     >
       {props.label}
     </button>

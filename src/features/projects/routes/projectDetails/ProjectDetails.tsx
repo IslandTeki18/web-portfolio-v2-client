@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import { MainNavbar, Footer, ScrollToTop } from "~src/components";
 import {
   ProjectActivitySection,
@@ -7,15 +8,23 @@ import {
   ProjectOverviewSection,
 } from "../../components";
 import { useParams } from "react-router-dom";
-import { useGetProjectDetails } from "../../hooks/useGetProjectDetails";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { projectDetailsState } from "~src/stores";
 import { formatDate } from "~src/utils";
+import { getProjectById } from "../../api";
 
 export const ProjectDetails = () => {
   const { projectId } = useParams();
-  useGetProjectDetails(projectId!);
-  const project = useRecoilValue(projectDetailsState);
+  const [project, setProject] = useRecoilState(projectDetailsState);
+  useEffect(() => {
+    if (projectId) {
+      getProjectById(projectId).then((response) => {
+        setProject(response.data);
+      });
+    }
+  }, [projectId])
+
+  console.log(project)
 
   return (
     <>
@@ -32,7 +41,7 @@ export const ProjectDetails = () => {
         />
       </section>
       <section id="project-details-section" className="pt-4">
-        <ProjectDetailsSection project={project} />
+        <ProjectDetailsSection />
       </section>
       <section
         id="project-overview-section"

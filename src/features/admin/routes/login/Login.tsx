@@ -3,14 +3,14 @@ import { useEffect } from "react";
 import { LoginForm } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { userRoleState } from "~src/stores";
+import { userState } from "~src/stores";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const authToken = localStorage.getItem("authToken")
+  const user = useRecoilValue(userState);
 
   useEffect(() => {
-    if (authToken) {
+    if (user.role === "admin") {
       navigate("/admin/dashboard");
     }
   }, []);

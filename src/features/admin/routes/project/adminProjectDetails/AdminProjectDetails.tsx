@@ -218,7 +218,7 @@ export const AdminProjectDetails = () => {
                       type="file"
                       name="imagesInput"
                       id="imagesInput"
-                      className="file-input input-sm max-w-sm w-full"
+                      className="file-input file-input-bordered w-full max-w-xs"
                       onChange={(e) => onImageChangeHandler(e)}
                       multiple
                       accept="image/*"

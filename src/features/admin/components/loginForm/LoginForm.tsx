@@ -1,23 +1,16 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import { redirect, useNavigate } from "react-router-dom";
-import { userRoleState, userObjState } from "~src/stores";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { userState } from "~src/stores";
 import { Button } from "~src/components";
 import { useSetRecoilState } from "recoil";
 import { API_URL } from "~src/config";
+import { loginUser } from "../../api/loginUser";
 
-type Props = {};
+export const LoginForm = () => {
 
-const url =
-  process.env.NODE_ENV === "development"
-    ? process.env.DEVELOPMENT_URL
-    : API_URL;
-
-export const LoginForm = (props: Props) => {
-  const setUserRole = useSetRecoilState(userRoleState);
-  const setUserObj = useSetRecoilState(userObjState);
   const navigate = useNavigate();
+  const setUserStateObj = useSetRecoilState(userState);
   const [loginCreds, setLoginCreds] = useState({
     username: "",
     password: "",
@@ -27,43 +20,32 @@ export const LoginForm = (props: Props) => {
 
   async function onSumitHandler(e: React.FormEvent) {
     e.preventDefault();
-    try {
-      const loginEndpoint = `${url}api/users/login`;
-      const requestBody = {
+    loginUser(loginCreds.username, loginCreds.password).then((res) => {
+      setUserStateObj({
         username: loginCreds.username,
-        password: loginCreds.password,
-      };
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      };
-
-      const response = await axios.post(loginEndpoint, requestBody, config);
-      const userData = response.data;
-
-      setUserObj(userData);
-      setUserRole("admin");
-      localStorage.setItem("userRoleState", "admin");
-      localStorage.setItem("authToken", userData.token);
-
-      return navigate("/admin/dashboard", {
+        role: "admin",
+        token: res.data.token,
+      });
+      localStorage.setItem("userInfo", JSON.stringify({
+        username: loginCreds.username,
+        role: "admin",
+        token: res.data.token,
+      }))
+      navigate("/admin/dashboard", {
         replace: true,
       });
-    } catch (error) {
+    }).catch((error) => {
       if (error.response) {
         const errorMessage = error.response.data.message;
         setMessage(errorMessage);
       } else {
         setMessage("An error occurred. Please try again later.");
       }
-
       setIsError(true);
       setTimeout(() => {
         setIsError(false);
       }, 5000);
-      return null;
-    }
+    });
   }
   return (
     <div
@@ -118,7 +100,7 @@ export const LoginForm = (props: Props) => {
             }
           />
         </div>
-        <Button label="LOGIN" className="mt-4" variant="dark" type="submit" />
+        <Button isDisabled={!loginCreds.password || !loginCreds.username} label="LOGIN" className="mt-4" variant="dark" type="submit" />
       </form>
     </div>
   );
