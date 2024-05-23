@@ -25,8 +25,8 @@ export const AdminProjectDetails = () => {
 
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState<IProjectDetails>(projectDetails);
-  const [selectedImages, setSelectedImages] = useState<File[] | null>(null);
   const [imageLoading, setImageLoading] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (projectDetails) {
@@ -47,14 +47,17 @@ export const AdminProjectDetails = () => {
 
   function onImageChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     if (!e.target.files) return;
-    setSelectedImages(Array.from(e.target.files));
+    setFile(e.target.files[0]);
   }
 
   async function uploadImagesToServer() {
-    if (selectedImages) {
+    const formData = new FormData();
+
+    if (file) {
       setImageLoading(true);
+      formData.append("image", file);
       try {
-        await uploadImages(id!, selectedImages);
+        await uploadImages(id!, formData);
         setImageLoading(false);
       } catch (error) {
         console.error("Error: ", error);
@@ -206,6 +209,7 @@ export const AdminProjectDetails = () => {
                   />
                 </div>
                 <div className="flex flex-col gap-4">
+
                   <div className="flex flex-col gap-2">
                     <label htmlFor="imagesInput" className="text-white">
                       Images
@@ -217,9 +221,27 @@ export const AdminProjectDetails = () => {
                       className="file-input input-sm max-w-sm w-full"
                       onChange={(e) => onImageChangeHandler(e)}
                       multiple
+                      accept="image/*"
                     />
                   </div>
                   <button className="btn btn-sm w-1/2" onClick={uploadImagesToServer}>Upload Images</button>
+                  {project.images && (
+                    <div className="flex flex-col gap-2">
+                      <label className="text-white">Project Images</label>
+                      <div className="flex flex-col gap-2">
+                        {project.images.map((image, index) => {
+                          return (
+                            <img
+                              key={index}
+                              src={image}
+                              alt={`Project Image ${index}`}
+                              className="w-1/2"
+                            />
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
                 <div className="flex flex-col md:flex-row gap-4">
                   <div className="flex flex-col md:flex-row w-full md:w-1/2 justify-between items-center">

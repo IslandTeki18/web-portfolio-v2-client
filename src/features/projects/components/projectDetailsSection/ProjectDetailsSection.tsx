@@ -1,5 +1,4 @@
 import * as React from "react";
-import { ITag } from "../../types/interfaces";
 // @ts-ignore
 import noImage from "../../assets/noImage2.png";
 import { IProjectDetails } from "~src/types";
@@ -25,7 +24,6 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
     }
   }
 
-  console.log("ProjectDetailsSection", props.project);
 
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
@@ -83,7 +81,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
       <div className="flex border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-6/10 animate__animated animate__fadeInRight">
         <img
           className="h-[400px] w-full object-cover object-center"
-          src={noImage}
+          src={props.project.images[0] || noImage}
           alt="project"
         />
       </div>
