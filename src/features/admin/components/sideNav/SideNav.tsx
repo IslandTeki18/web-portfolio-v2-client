@@ -8,8 +8,6 @@ import {
   ChevronDownIcon,
   UserIcon,
 } from "@heroicons/react/24/outline";
-import { useSetRecoilState } from "recoil";
-import { userRoleState } from "~src/stores";
 import { Link, useNavigate } from "react-router-dom";
 import { classNames } from "~src/utils";
 
@@ -19,7 +17,6 @@ type SideNavProps = {
 
 export const SideNav = (props: SideNavProps) => {
   const navigate = useNavigate();
-  const setUserRole = useSetRecoilState(userRoleState);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const userNavigation = [
@@ -37,7 +34,6 @@ export const SideNav = (props: SideNavProps) => {
   }
 
   function onLogoutHandler() {
-    setUserRole("user");
     localStorage.clear();
     return navigate("/", {
       replace: true,

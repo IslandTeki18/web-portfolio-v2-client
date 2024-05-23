@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { storage } from "~src/utils";
 
 type MainNavBarProps = {
   home?: boolean;
@@ -12,7 +13,7 @@ type MainNavBarProps = {
   contact?: boolean;
 };
 export const MainNavbar = (props: MainNavBarProps) => {
-  const isAdmin = localStorage.getItem("authToken");
+  const isAuthorized = storage.getUserInfo().role === "admin";
   const [isBars, setIsBars] = useState(false);
   const navigation = [
     { name: "Home", path: "/", current: props.home },
@@ -45,7 +46,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
-          {isAdmin && (
+          {isAuthorized && (
             <li className="hidden md:block">
               <NavLink to={"/admin/dashboard"}>Admin</NavLink>
             </li>
@@ -70,15 +71,14 @@ export const MainNavbar = (props: MainNavBarProps) => {
             <li className="block md:hidden" key={item.name}>
               <NavLink
                 to={item.path}
-                className={`${
-                  item.current ? "font-bold underline" : ""
-                } text-xm md:text-2xl`}
+                className={`${item.current ? "font-bold underline" : ""
+                  } text-xm md:text-2xl`}
               >
                 {item.name}
               </NavLink>
             </li>
           ))}
-          {isAdmin && (
+          {isAuthorized && (
             <li className="block md:hidden">
               <NavLink to={"/admin/dashboard"}>Admin</NavLink>
             </li>
