@@ -52,17 +52,9 @@ export const AdminProjectDetails = () => {
 
   async function uploadImagesToServer() {
     const formData = new FormData();
-
     if (file) {
-      setImageLoading(true);
       formData.append("image", file);
-      try {
-        await uploadImages(id!, formData);
-        setImageLoading(false);
-      } catch (error) {
-        console.error("Error: ", error);
-        setImageLoading(false);
-      }
+      await uploadImages(id!, formData);
     }
   }
 
