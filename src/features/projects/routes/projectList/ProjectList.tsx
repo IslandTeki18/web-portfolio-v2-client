@@ -5,7 +5,6 @@ import { ProjectListSection } from "../../components";
 import { projectListState } from "~src/stores";
 
 export const ProjectList = () => {
-  const projectList = useRecoilValue(projectListState)
   return (
     <>
       <ScrollToTop />
@@ -14,7 +13,7 @@ export const ProjectList = () => {
         id="project-list-section"
         className="my-10 md:my-20 animate__animated animate__fadeIn"
       >
-        <ProjectListSection projects={projectList} />
+        <ProjectListSection />
       </section>
       <Footer />
     </>

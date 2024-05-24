@@ -1,18 +1,14 @@
 import * as React from "react";
 import { useRef } from "react";
-import { useRecoilValue } from "recoil";
 import { MainNavbar, Footer } from "~src/components";
 import {
   ContactFormSection,
   IntroductionSection,
   ProjectLimitSection,
-  ServiceLimitSection,
 } from "../../components";
 import { useOnScrollAnimation } from "~src/hooks";
-import { projectLimitedState } from "~src/stores";
 
 export const Home = () => {
-  const projectsLimited = useRecoilValue(projectLimitedState);
   const projectSectionRef = useRef<HTMLElement | null>(null);
   const serviceSectionRef = useRef<HTMLElement | null>(null);
   const contactSectionRef = useRef<HTMLElement | null>(null);
@@ -31,7 +27,7 @@ export const Home = () => {
           id="project-limit-section"
           className="mb-10 md:mb-16 animate__animated"
         >
-          <ProjectLimitSection projects={projectsLimited} />
+          <ProjectLimitSection />
         </section>
         {/* <section
           ref={serviceSectionRef}

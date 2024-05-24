@@ -2,22 +2,22 @@ import * as React from "react";
 import { SectionWrapper } from "~src/components";
 import { ProjectCard } from "~src/features/projects/components";
 import { formatDate } from "~src/utils";
+import { useRecoilValue } from "recoil";
+import { projectLimitedState } from "~src/stores";
+import { Project } from "~src/features/projects/types";
 
-type Props = {
-  projects?: any[];
-};
-
-export const ProjectLimitSection = (props: Props) => {
+export const ProjectLimitSection = () => {
+  const projects: Project[] = useRecoilValue(projectLimitedState);
 
   function renderProjects() {
-    if (!Array.isArray(props.projects)) return;
-    return props.projects.map((project) => (
+    if (!Array.isArray(projects)) return;
+    return projects.map((project) => (
       <ProjectCard
         key={project._id}
         id={project._id}
         title={project.title}
         projectDescription={project.description}
-        projectType={project.type || project.applicationType}
+        projectType={project.applicationType}
         date={formatDate(project.createdAt, "en-US")}
       />
     ));
