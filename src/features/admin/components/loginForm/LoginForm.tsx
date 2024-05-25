@@ -1,21 +1,26 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { userState } from "~src/stores";
 import { Button } from "~src/components";
-import { useSetRecoilState } from "recoil";
-import { API_URL } from "~src/config";
+import { useRecoilState } from "recoil";
 import { loginUser } from "../../api/loginUser";
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const setUserStateObj = useSetRecoilState(userState);
+  const [userStateObj, setUserStateObj] = useRecoilState(userState);
   const [loginCreds, setLoginCreds] = useState({
     username: "",
     password: "",
   });
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    if (userStateObj.role === "admin") {
+      navigate("/admin/dashboard");
+    }
+  }, [userStateObj])
 
   async function onSumitHandler(e: React.FormEvent) {
     e.preventDefault();
@@ -30,9 +35,6 @@ export const LoginForm = () => {
         role: "admin",
         token: res.data.token,
       }))
-      navigate("/admin/dashboard", {
-        replace: true,
-      });
     }).catch((error) => {
       if (error.response) {
         const errorMessage = error.response.data.message;

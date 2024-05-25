@@ -20,9 +20,7 @@ export const Navbar = () => {
     }
     function onLogoutHandler() {
         localStorage.clear();
-        return navigate("/", {
-            replace: true,
-        });
+        return navigate("/");
     }
     return (
         <Disclosure as="nav" className="bg-gray-800">

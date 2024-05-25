@@ -2,7 +2,6 @@ import * as React from "react";
 import { ProjectTable, ContactTable } from "../../components";
 import { Navbar } from "../../components/navBar";
 
-
 export const Dashboard = () => {
   return (
     <div className="h-full">

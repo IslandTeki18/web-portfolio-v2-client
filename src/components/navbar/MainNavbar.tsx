@@ -13,13 +13,11 @@ type MainNavBarProps = {
   contact?: boolean;
 };
 export const MainNavbar = (props: MainNavBarProps) => {
-  const isAuthorized = storage.getUserInfo().role === "admin";
+  const user = storage.getUserInfo();
   const [isBars, setIsBars] = useState(false);
   const navigation = [
     { name: "Home", path: "/", current: props.home },
     { name: "Projects", path: "/projects", current: props.projects },
-    // { name: "Services", path: "/services", current: props.services },
-    // { name: "Blog", path: "/blogs", current: props.blogs },
     { name: "About", path: "/about", current: props.about },
     { name: "Resume", path: "/resume", current: props.resume },
     { name: "Contact", path: "/contact", current: props.contact },
@@ -46,7 +44,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
-          {isAuthorized && (
+          {user && (
             <li className="hidden md:block">
               <NavLink to={"/admin/dashboard"}>Admin</NavLink>
             </li>
@@ -78,7 +76,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
               </NavLink>
             </li>
           ))}
-          {isAuthorized && (
+          {user && (
             <li className="block md:hidden">
               <NavLink to={"/admin/dashboard"}>Admin</NavLink>
             </li>
