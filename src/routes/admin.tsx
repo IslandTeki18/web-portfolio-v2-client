@@ -1,37 +1,14 @@
 import * as React from "react";
-
-import {
-  Dashboard,
-  AdminProjectDetails,
-  AdminProjectList,
-  AdminRoot,
-} from "~/src/features/admin";
-import { AdminProjectRoot } from "~src/features";
+import { Dashboard } from "~src/features";
+import { AdminProjectDetails } from "~src/features";
 
 export const adminRoutes = [
   {
-    path: "/admin",
-    element: <AdminRoot />,
-    children: [
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "projects-list",
-        element: <AdminProjectList />,
-      },
-      {
-        path: "project",
-        element: <AdminProjectRoot />,
-        children: [
-          {
-            path: ":id",
-            element: <AdminProjectDetails />,
-          },
-        ]
-      },
-      
-    ],
+    path: "admin/dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: "admin/project/:id",
+    element: <AdminProjectDetails />,
   },
 ];

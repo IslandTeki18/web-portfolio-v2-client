@@ -1,3 +1,1 @@
-export * from "./AdminProjectRoot";
-export * from "./adminProjectDetails";
-export * from "./adminProjectList";
+export * from "./AdminProjectDetails"

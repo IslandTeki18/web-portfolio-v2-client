@@ -8,7 +8,6 @@ import { API_URL } from "~src/config";
 import { loginUser } from "../../api/loginUser";
 
 export const LoginForm = () => {
-
   const navigate = useNavigate();
   const setUserStateObj = useSetRecoilState(userState);
   const [loginCreds, setLoginCreds] = useState({

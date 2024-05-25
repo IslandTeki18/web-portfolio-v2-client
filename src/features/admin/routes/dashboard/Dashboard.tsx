@@ -1,13 +1,12 @@
 import * as React from "react";
-import { SideNav, ProjectTable, ContactTable } from "../../components";
-import { setCurrentNavigation } from "../../utils";
+import { ProjectTable, ContactTable } from "../../components";
+import { Navbar } from "../../components/navBar";
 
 
 export const Dashboard = () => {
   return (
     <div className="h-full">
-      <SideNav navItems={setCurrentNavigation(0)}/>
-      <div className="lg:pl-72">
+        <Navbar />
         <main className="py-10">
           <div className="px-4 sm:px-6 lg:px-8">
             <div className="h-screen w-full flex flex-col">
@@ -18,7 +17,6 @@ export const Dashboard = () => {
             </div>
           </div>
         </main>
-      </div>
     </div>
   );
 };

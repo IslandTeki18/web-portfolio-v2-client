@@ -20,17 +20,12 @@ export const SideNav = (props: SideNavProps) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const userNavigation = [
-    { name: "Your Profile", onClick: onProfileClickHandler },
     { name: "Logout", onClick: onLogoutHandler },
     { name: "Portfolio", onClick: onPortfolioClickHandler },
   ];
 
   function onPortfolioClickHandler() {
     return navigate("/");
-  }
-
-  function onProfileClickHandler() {
-    return navigate("/admin/profile");
   }
 
   function onLogoutHandler() {

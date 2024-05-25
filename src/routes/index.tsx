@@ -12,7 +12,7 @@ export function AppRoutes() {
   const setLimitedProjects = useSetRecoilState(projectLimitedState);
   const setProjects = useSetRecoilState(projectListState);
 
-  const isAuthorized = storage.getUserInfo().role === "admin";
+  const isAuthorized = storage.getUserInfo().role === "admin" ? true : false;
   const routes =
     isAuthorized ? [...mainRoutes, ...adminRoutes] : mainRoutes;
 
