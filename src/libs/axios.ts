@@ -1,6 +1,6 @@
 import Axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-import { API_URL, DEV_API_URL } from "~src/config";
+import { API_URL, DEV_API_URL, NODE_ENV } from "~src/config";
 import { storage } from "~src/utils";
 
 function authRequestInterceptor(
@@ -17,7 +17,7 @@ function authRequestInterceptor(
 }
 
 export const axios: AxiosInstance = Axios.create({
-  baseURL: DEV_API_URL,
+  baseURL: NODE_ENV === "development" ? DEV_API_URL : API_URL,
 });
 
 // @ts-ignore
