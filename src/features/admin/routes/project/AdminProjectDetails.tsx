@@ -11,14 +11,13 @@ import {
 } from "~src/components/molecules";
 import { IProjectDetails } from "~src/types";
 import { useParams, useNavigate } from "react-router-dom";
-import { useGetProjectDetails } from "~src/features/projects/hooks";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { projectDetailsState } from "~src/stores";
-import { updateProject, uploadImages } from "../../api";
+import { updateProject, uploadImages, removeImagesFromProject } from "../../api";
+import { getProjectById } from "~src/features/projects/api";
 
 export const AdminProjectDetails = () => {
   const { id } = useParams();
-  useGetProjectDetails(id || "");
   const navigate = useNavigate();
   const projectDetails: IProjectDetails = useRecoilValue(projectDetailsState);
   const setProjectState = useSetRecoilState(projectDetailsState);
@@ -29,11 +28,14 @@ export const AdminProjectDetails = () => {
   const [file, setFile] = useState<File | null>(null);
 
   useEffect(() => {
-    if (projectDetails) {
-      setProject(projectDetails);
-      setLoading(false);
+    if (id) {
+      getProjectById(id).then((res) => {
+        setProjectState(res.data);
+        setProject(res.data);
+        setLoading(false);
+      });
     }
-  }, [projectDetails]);
+  }, [id]);
 
   function onChangeHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const inputName = e.target.name.split("Input");
@@ -51,10 +53,18 @@ export const AdminProjectDetails = () => {
   }
 
   async function uploadImagesToServer() {
-    const formData = new FormData();
     if (file) {
+      const formData = new FormData();
       formData.append("image", file);
       await uploadImages(id!, formData);
+    }
+  }
+
+  async function removeAllImages() {
+    try {
+      await removeImagesFromProject(id!);
+    } catch (error) {
+      console.error("Error removing images: ", error)
     }
   }
 
@@ -206,7 +216,7 @@ export const AdminProjectDetails = () => {
                   </label>
                   <input
                     type="file"
-                    name="imagesInput"
+                    name="image"
                     id="imagesInput"
                     className="file-input file-input-bordered w-full max-w-xs"
                     onChange={(e) => onImageChangeHandler(e)}
@@ -214,7 +224,10 @@ export const AdminProjectDetails = () => {
                     accept="image/*"
                   />
                 </div>
-                <button className="btn btn-sm w-1/2" onClick={uploadImagesToServer}>Upload Images</button>
+                <div className="flex gap-2">
+                  <button className="btn btn-sm w-1/2" onClick={uploadImagesToServer}>Upload Images</button>
+                  <button className="btn btn-error text-white btn-sm w-1/2" onClick={removeAllImages}>Remove All Images</button>
+                </div>
                 {project.images && (
                   <div className="flex flex-col gap-2">
                     <label className="text-white">Project Images</label>

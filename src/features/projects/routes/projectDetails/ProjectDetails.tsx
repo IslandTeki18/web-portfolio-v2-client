@@ -16,6 +16,7 @@ import { getProjectById } from "../../api";
 export const ProjectDetails = () => {
   const { projectId } = useParams();
   const [project, setProject] = useRecoilState(projectDetailsState);
+  
   useEffect(() => {
     if (projectId) {
       getProjectById(projectId).then((response) => {

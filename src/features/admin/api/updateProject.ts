@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_URL } from "~src/config";
+import { storage } from "~src/utils";
 
 const url =
   process.env.NODE_ENV === "development"
@@ -7,11 +8,11 @@ const url =
     : API_URL;
 
 export const updateProject = async (projectData: any, projectId: string) => {
-  const userToken = localStorage.getItem("authToken");
+  const user = storage.getUserInfo();
   try {
     const config = {
       headers: {
-        Authorization: `Bearer ${userToken}`,
+        Authorization: `Bearer ${user.token}`,
       },
     };
     const { data } = await axios.put(
