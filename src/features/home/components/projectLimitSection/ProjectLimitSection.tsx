@@ -3,13 +3,11 @@ import { SectionWrapper } from "~src/components";
 import { ProjectImageCard } from "~src/features/projects/components";
 import { formatDate } from "~src/utils";
 import { useRecoilValue } from "recoil";
-import { projectLimitedState } from "~src/stores";
 import { Project } from "~src/features/projects/types";
 // @ts-ignore
 import noProjectImage from "~src/features/projects/assets/noImage2.png?as=webp";
 
 export const ProjectLimitSection = () => {
-  const projects: Project[] = useRecoilValue(projectLimitedState);
 
   // function renderProjects() {
   //   if (!Array.isArray(projects)) return;

@@ -4,11 +4,9 @@ import noImage from "../../assets/noImage2.png";
 import { formatNumberWithCommas } from "~src/utils";
 import { formatDate } from "~src/utils";
 import { useRecoilValue } from "recoil";
-import { projectDetailsState } from "~src/stores";
 
 
 export const ProjectDetailsSection = () => {
-  const project = useRecoilValue(projectDetailsState);
 
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
