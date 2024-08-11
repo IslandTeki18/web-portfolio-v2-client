@@ -1,23 +1,40 @@
 import * as React from "react";
 import { SectionWrapper } from "~src/components";
-import { ProjectCard } from "~src/features/projects/components";
+import { ProjectImageCard } from "~src/features/projects/components";
 import { formatDate } from "~src/utils";
 import { useRecoilValue } from "recoil";
 import { projectLimitedState } from "~src/stores";
 import { Project } from "~src/features/projects/types";
+// @ts-ignore
+import noProjectImage from "~src/features/projects/assets/noImage2.png?as=webp";
 
 export const ProjectLimitSection = () => {
   const projects: Project[] = useRecoilValue(projectLimitedState);
 
+  // function renderProjects() {
+  //   if (!Array.isArray(projects)) return;
+  //   return projects.map((project) => (
+  //     <ProjectCard
+  //       key={project._id}
+  //       id={project._id}
+  //       title={project.title}
+  //       projectDescription={project.description}
+  //       projectType={project.applicationType}
+  //       date={formatDate(project.createdAt, "en-US")}
+  //     />
+  //   ));
+  // }
+
   function renderProjects() {
     if (!Array.isArray(projects)) return;
     return projects.map((project) => (
-      <ProjectCard
+      <ProjectImageCard
         key={project._id}
         id={project._id}
         title={project.title}
         projectDescription={project.description}
         projectType={project.applicationType}
+        projectImage={project.images[0] || noProjectImage}
         date={formatDate(project.createdAt, "en-US")}
       />
     ));

@@ -1,7 +1,6 @@
 import * as React from "react";
 // @ts-ignore
 import noImage from "../../assets/noImage2.png";
-import { IProjectDetails } from "~src/types";
 import { formatNumberWithCommas } from "~src/utils";
 import { formatDate } from "~src/utils";
 import { useRecoilValue } from "recoil";
