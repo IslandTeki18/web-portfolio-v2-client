@@ -1,7 +1,7 @@
 {
   "name": "web-portfolio-v2-client",
   "version": "1.1.0",
-  "proxy": "http://localhost:8000/",
+  "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {
     "@fullcalendar/daygrid": "^5.11.0",

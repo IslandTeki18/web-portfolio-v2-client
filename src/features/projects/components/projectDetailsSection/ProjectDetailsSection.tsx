@@ -65,7 +65,7 @@ export const ProjectDetailsSection = () => {
         </div>
       </div>
       {project.images ? (
-        <div className="flex border border-white w-full order-1 md:order-2 lg:w-2/4 xl:w-6/10 animate__animated animate__fadeInRight">
+        <div className="flex border border-white p-2 w-full order-1 md:order-2 lg:w-2/4 xl:w-6/10 animate__animated animate__fadeInRight">
           <img
             className="h-[400px] w-full object-contain object-center"
             src={project.images[0] || noImage}

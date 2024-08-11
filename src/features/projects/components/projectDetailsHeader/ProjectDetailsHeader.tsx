@@ -35,8 +35,7 @@ export const ProjectDetailsHeader = (props: Props) => {
       className={`bg-dark md:max-h-[961px] h-fit px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
     >
       <div className="text-white border-2 flex flex-col border-white p-2 md:p-8">
-        <div className="flex justify-end order-2 lg:order-1">
-          {/* <span className="my-2">{props.date}</span> */}
+        <div className="flex justify-end md:justify-start order-2 lg:order-1">
           <Button
             variant="secondary"
             label="Back to Projects"
@@ -45,7 +44,7 @@ export const ProjectDetailsHeader = (props: Props) => {
           />
         </div>
         <div className="flex justify-between flex-col lg:flex-row items-baseline order-1 lg:order-2 mt-0 lg:mt-4">
-          <span className="uppercase text-white text-xl md:text-3xl tracking-wide font-black">
+          <span className="uppercase tracking-wider text-white text-xl md:text-3xl font-black">
             {props.title}
           </span>
           <span

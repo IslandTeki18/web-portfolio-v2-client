@@ -25,7 +25,6 @@ export const ProjectDetails = () => {
     }
   }, [projectId])
 
-  console.log(project)
 
   return (
     <>
@@ -59,7 +58,7 @@ export const ProjectDetails = () => {
         className="pt-4 pb-6 animate__animated animate__fadeInLeft"
       >
         <ProjectActivitySection developerFeedback={project.developerFeedback} />
-      </section>
+      </section> 
       <Footer />
     </>
   );
