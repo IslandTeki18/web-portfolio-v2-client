@@ -1,21 +1,17 @@
 import * as React from "react";
+import { PROJECTS } from "~src/data";
 import { SectionWrapper } from "~src/components";
 import { ProjectCard } from "../projectCard";
 import { formatDate } from "~src/utils";
-import { Project } from "../../types";
-import { useRecoilValue } from "recoil";
-import { projectListState } from "~src/stores";
-
 
 export const ProjectListSection = () => {
-  const projects: Project[] = useRecoilValue(projectListState);
-
+  
   function renderProjects() {
-    if (!Array.isArray(projects)) return;
-    return projects.map((project) => (
+    if (!Array.isArray(PROJECTS)) return;
+    return PROJECTS.map((project) => (
       <ProjectCard
-        key={project._id}
-        id={project._id}
+        key={project.id}
+        id={project.id}
         title={project.title}
         projectDescription={project.description}
         projectType={project.applicationType}

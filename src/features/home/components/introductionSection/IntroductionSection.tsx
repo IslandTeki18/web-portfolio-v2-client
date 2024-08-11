@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
 //@ts-ignore
-import meImage from "../../../../assets/images/Me.jpeg";
+import meImage from "~src/features/home/assets/Me.jpeg"
 
 type IntroductionSectionProps = {};
 

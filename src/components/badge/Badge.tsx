@@ -8,7 +8,7 @@ type BadgeProps = {
 
 export const Badge = (props: BadgeProps) => {
   return (
-    <span className={`dkBadge badge bg-${props.variant} ${props.className}`}>
+    <span className={`${props.className}`}>
       {props.children}
     </span>
   );

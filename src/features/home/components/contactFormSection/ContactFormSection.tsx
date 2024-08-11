@@ -4,7 +4,6 @@ import { SectionWrapper, Textarea, Form, Modal } from "~src/components";
 import { Input } from "~src/components";
 import { Dialog } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
-import { useSendContactInfo } from "~src/features/contact/hooks";
 
 type Props = {};
 
@@ -28,12 +27,7 @@ export const ContactFormSection = (props: Props) => {
 
   function onSubmitHandler(e: any) {
     e.preventDefault();
-    useSendContactInfo(
-      contactObj.name,
-      contactObj.phone,
-      contactObj.email,
-      contactObj.message
-    );
+    
     setOpenConfirmationModal(true);
     setTimeout(() => {
       setOpenConfirmationModal(false);

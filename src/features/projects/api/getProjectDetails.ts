@@ -1,0 +1,1 @@
+export const getProjectDetails = async (projectId: string) => {}

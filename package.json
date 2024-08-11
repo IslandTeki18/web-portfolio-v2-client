@@ -4,27 +4,19 @@
   "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {
-    "@fullcalendar/daygrid": "^5.11.0",
-    "@fullcalendar/interaction": "^5.11.0",
-    "@fullcalendar/react": "^5.11.3",
     "@headlessui/react": "^1.7.7",
     "@heroicons/react": "^2.0.13",
     "@parcel/transformer-sass": "^2.10.2",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/line-clamp": "^0.4.2",
     "animate.css": "^4.1.1",
-    "axios": "^1.2.1",
     "buffer": "^6.0.3",
-    "chart.js": "^4.4.0",
     "parcel": "^2.10.2",
     "process": "^0.11.10",
     "react": "^18.2.0",
-    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "react-router-dom": "^6.17.0",
-    "recoil": "^0.7.7",
-    "sass": "^1.57.0"
+    "react-router-dom": "^6.17.0"
   },
   "scripts": {
     "start": "parcel public/index.html",

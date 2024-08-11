@@ -2,13 +2,12 @@ import * as React from "react";
 import { SectionWrapper } from "~src/components";
 import { ProjectImageCard } from "~src/features/projects/components";
 import { formatDate } from "~src/utils";
-import { useRecoilValue } from "recoil";
-import { Project } from "~src/features/projects/types";
+import { PROJECTS } from "~src/data";
+
 // @ts-ignore
 import noProjectImage from "~src/features/projects/assets/noImage2.png?as=webp";
 
 export const ProjectLimitSection = () => {
-
   // function renderProjects() {
   //   if (!Array.isArray(projects)) return;
   //   return projects.map((project) => (
@@ -24,11 +23,11 @@ export const ProjectLimitSection = () => {
   // }
 
   function renderProjects() {
-    if (!Array.isArray(projects)) return;
-    return projects.map((project) => (
+    if (!Array.isArray(PROJECTS)) return;
+    return PROJECTS.map((project) => (
       <ProjectImageCard
-        key={project._id}
-        id={project._id}
+        key={project.id}
+        id={project.id}
         title={project.title}
         projectDescription={project.description}
         projectType={project.applicationType}

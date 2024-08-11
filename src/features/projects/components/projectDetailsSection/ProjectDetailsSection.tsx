@@ -1,12 +1,14 @@
 import * as React from "react";
+import { useState } from "react";
 // @ts-ignore
 import noImage from "../../assets/noImage2.png";
 import { formatNumberWithCommas } from "~src/utils";
 import { formatDate } from "~src/utils";
-import { useRecoilValue } from "recoil";
+import { Project } from "~src/types/projects";
 
 
 export const ProjectDetailsSection = () => {
+  const [project, setProject] = useState({} as Project)
 
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">

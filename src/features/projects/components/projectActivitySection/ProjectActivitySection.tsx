@@ -8,32 +8,6 @@ type Props = {
 };
 
 export const ProjectActivitySection = (props: Props) => {
-  const mockProjects = [
-    {
-      title: "Sample One",
-      id: "108rh48",
-      date: "12/26/2022",
-      projectType: "web",
-      projectDescription:
-        "Project description has a simple two line description of the project.",
-    },
-    {
-      title: "Sample Two",
-      id: "20dj4uh",
-      date: "12/26/2022",
-      projectType: "web",
-      projectDescription:
-        "Project description has a simple two line description of the project.",
-    },
-    {
-      title: "Sample Three",
-      id: "20d20j",
-      date: "12/26/2022",
-      projectType: "web",
-      projectDescription:
-        "Project description has a simple two line description of the project.",
-    },
-  ];
 
   function renderRecentActivity() {
     if (!props.developerFeedback) return;

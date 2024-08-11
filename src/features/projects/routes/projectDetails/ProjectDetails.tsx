@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useEffect } from "react";
+import { useState } from "react";
 import { MainNavbar, Footer, ScrollToTop } from "~src/components";
 import {
   ProjectActivitySection,
@@ -7,25 +7,11 @@ import {
   ProjectDetailsSection,
   ProjectOverviewSection,
 } from "../../components";
-import { useParams } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { projectDetailsState } from "~src/stores";
 import { formatDate } from "~src/utils";
-import { getProjectById } from "../../api";
+import { Project } from "~src/types/projects";
 
 export const ProjectDetails = () => {
-  const { projectId } = useParams();
-  const [project, setProject] = useRecoilState(projectDetailsState);
-  
-  useEffect(() => {
-    if (projectId) {
-      getProjectById(projectId).then((response) => {
-        setProject(response.data);
-      });
-    }
-  }, [projectId])
-
-
+  const [project, setProject] = useState({} as Project);
   return (
     <>
       <ScrollToTop />
@@ -58,7 +44,7 @@ export const ProjectDetails = () => {
         className="pt-4 pb-6 animate__animated animate__fadeInLeft"
       >
         <ProjectActivitySection developerFeedback={project.developerFeedback} />
-      </section> 
+      </section>
       <Footer />
     </>
   );
