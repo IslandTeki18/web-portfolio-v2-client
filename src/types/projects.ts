@@ -17,8 +17,8 @@ type Project = {
   title: string;
   description: string;
   designer?: string;
-  projectType?: string;
-  applicationType: string;
+  projectType: "Personal" | "Client" | "Open Source";
+  applicationType: "Web" | "Mobile" | "Desktop";
   budget?: string;
   isPublic?: boolean;
   client?: string;

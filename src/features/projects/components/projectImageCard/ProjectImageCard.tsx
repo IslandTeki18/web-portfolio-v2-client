@@ -6,7 +6,7 @@ type ProjectImageCardProps = {
   title?: string;
   projectDescription?: string;
   projectType?: string;
-  date?: string;
+  createdAt?: string;
   projectImage?: string
 };
 
@@ -34,7 +34,7 @@ export const ProjectImageCard = (props: ProjectImageCardProps) => {
           <span className="text-white uppercase">{props.projectType}</span>
         </div>
         <div className="flex justify-between items-end p-4 md:p-8">
-          <span className="text-white">{props.date}</span>
+          <span className="text-white">{props.createdAt}</span>
         </div>
       </div>
     </Link>

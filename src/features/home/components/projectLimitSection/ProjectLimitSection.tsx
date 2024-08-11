@@ -32,7 +32,7 @@ export const ProjectLimitSection = () => {
         projectDescription={project.description}
         projectType={project.applicationType}
         projectImage={project.images[0] || noProjectImage}
-        date={formatDate(project.createdAt, "en-US")}
+        createdAt={project.createdAt}
       />
     ));
   }

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MainNavbar, Footer, ScrollToTop } from "~src/components";
 import {
   ProjectActivitySection,
@@ -7,11 +7,18 @@ import {
   ProjectDetailsSection,
   ProjectOverviewSection,
 } from "../../components";
-import { formatDate } from "~src/utils";
 import { Project } from "~src/types/projects";
+import { PROJECTS } from "~src/data";
 
 export const ProjectDetails = () => {
+  const projectId = window.location.pathname.split("/")[2];
   const [project, setProject] = useState({} as Project);
+
+  useEffect(() => {
+    setProject(PROJECTS.find((p) => p.id === projectId) || ({} as Project));
+    console.log(project);
+  }, [projectId]);
+
   return (
     <>
       <ScrollToTop />
@@ -21,13 +28,20 @@ export const ProjectDetails = () => {
         className="pt-10 animate__animated animate__fadeInLeft"
       >
         <ProjectDetailsHeader
-          title={project.title}
-          date={formatDate(project.createdAt, "en-US")}
+          title={project.title || "No Title"}
+          date={project.createdAt}
           status={project.status}
         />
       </section>
       <section id="project-details-section" className="pt-4">
-        <ProjectDetailsSection />
+        <ProjectDetailsSection
+          isPublic={project.projectType}
+          client={project.client || ""}
+          budget={project.budget || "0"}
+          createdAt={project.createdAt}
+          updatedAt={project.updatedAt}
+          images={project.images}
+        />
       </section>
       <section
         id="project-overview-section"
