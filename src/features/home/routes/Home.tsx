@@ -5,7 +5,7 @@ import {
   ContactFormSection,
   IntroductionSection,
   ProjectLimitSection,
-} from "../../components";
+} from "../components";
 import { useOnScrollAnimation } from "~src/hooks";
 
 export const Home = () => {
