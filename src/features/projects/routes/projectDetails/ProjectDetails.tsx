@@ -9,14 +9,14 @@ import {
 } from "../../components";
 import { Project } from "~src/types/projects";
 import { PROJECTS } from "~src/data";
+import { useParams } from "react-router-dom";
 
 export const ProjectDetails = () => {
-  const projectId = window.location.pathname.split("/")[2];
+  const { projectId } = useParams();
   const [project, setProject] = useState({} as Project);
 
   useEffect(() => {
     setProject(PROJECTS.find((p) => p.id === projectId) || ({} as Project));
-    console.log(project);
   }, [projectId]);
 
   return (
