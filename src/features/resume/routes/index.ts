@@ -1,1 +1,1 @@
-export * from "./resume"
+export * from "./Resume"
