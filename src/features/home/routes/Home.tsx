@@ -7,6 +7,7 @@ import {
   ProjectLimitSection,
 } from "../components";
 import { useOnScrollAnimation } from "~src/hooks";
+import { Helmet } from "react-helmet";
 
 export const Home = () => {
   const projectSectionRef = useRef<HTMLElement | null>(null);
@@ -16,6 +17,17 @@ export const Home = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Landon McKell - Home</title>
+        <meta
+          name="description"
+          content="Welcome to Landon McKell's portfolio. Explore innovative web development projects, detailed case studies, and expertise in front-end and back-end technologies. Discover how Landon can bring your digital ideas to life"
+        />
+        <meta
+          name="keywords"
+          content="Landon McKell, web developer portfolio, front-end developer, back-end developer, full-stack developer, web design, JavaScript, React, Next.js, TailwindCSS, software engineering"
+        />
+      </Helmet>
       <MainNavbar home />
       <div id="Home" className="h-full bg-dark">
         <section id="intro-section" className="my-10 md:my-20">
