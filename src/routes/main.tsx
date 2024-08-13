@@ -10,7 +10,7 @@ import {
   ProjectList,
   ProjectDetails,
 } from "~/src/features";
-import { Login } from "~src/features/admin";
+import { Login, AdminProjectList, AdminProjectDetails } from "~src/features/admin";
 
 export const mainRoutes = [
   {
@@ -49,6 +49,14 @@ export const mainRoutes = [
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/admin/projects",
+    element: <AdminProjectList />,
+  },
+  {
+    path: "/admin/projects/:projectId",
+    element: <AdminProjectDetails />,
   },
   {
     path: "*",
