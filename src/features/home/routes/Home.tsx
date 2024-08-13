@@ -10,7 +10,6 @@ import { useOnScrollAnimation } from "~src/hooks";
 
 export const Home = () => {
   const projectSectionRef = useRef<HTMLElement | null>(null);
-  const serviceSectionRef = useRef<HTMLElement | null>(null);
   const contactSectionRef = useRef<HTMLElement | null>(null);
   useOnScrollAnimation({ ref: projectSectionRef });
   useOnScrollAnimation({ ref: contactSectionRef });
@@ -29,13 +28,6 @@ export const Home = () => {
         >
           <ProjectLimitSection />
         </section>
-        {/* <section
-          ref={serviceSectionRef}
-          id="service-limit-section"
-          className="mb-10 md:mb-16 animate__animated"
-        >
-          <ServiceLimitSection />
-        </section> */}
         <section
           ref={contactSectionRef}
           id="contact-form-section"

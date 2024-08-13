@@ -10,6 +10,7 @@ import {
   ProjectList,
   ProjectDetails,
 } from "~/src/features";
+import { Login } from "~src/features/admin";
 
 export const mainRoutes = [
   {
@@ -44,6 +45,10 @@ export const mainRoutes = [
   {
     path: "/resume",
     element: <Resume />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "*",
