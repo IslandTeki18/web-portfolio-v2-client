@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Footer, MainNavbar, ScrollToTop } from "~src/components";
-import { BlogListSection } from "../../components";
+import { BlogListSection } from "../components";
 
 export const BlogList = () => {
   return (
     <>
-    <ScrollToTop />
+      <ScrollToTop />
       <MainNavbar blogs />
       <section
         id="blog-list-section"
