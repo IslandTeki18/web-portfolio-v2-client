@@ -23,12 +23,3 @@ export const BlogDetailsSection = (props: BlogDetailsSectionProps) => {
   );
 };
 
-BlogDetailsSection.defaultProps = {
-  blog: {
-    title: "There isn't a Title yet...",
-    subTitle: "No Subtitle Yet...",
-    datePublished: "MTH xx, 20xx",
-    content:
-      "There is nothing here...",
-  },
-};

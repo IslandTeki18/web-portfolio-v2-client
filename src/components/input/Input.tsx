@@ -26,8 +26,3 @@ export const Input = (props: InputProps) => {
     />
   );
 };
-
-Input.defaultProps = {
-  multiple: false,
-  required: false,
-};

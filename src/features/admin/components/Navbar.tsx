@@ -17,6 +17,7 @@ import {
 import { PlusIcon } from "@heroicons/react/20/solid";
 // @ts-ignore
 import profileImage from "~src/features/home/assets/Me.jpeg";
+import { NavLink } from "react-router-dom";
 
 const user = {
   name: "Tom Cook",
@@ -37,7 +38,7 @@ export default function Navbar() {
 
   React.useEffect(() => {
     changeNavigationActiveItem();
-  }, [navigation]);
+  }, [window.location.pathname]);
 
   function changeNavigationActiveItem() {
     const currentPath = window.location.pathname;
@@ -74,9 +75,9 @@ export default function Navbar() {
             </div>
             <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
               {navigation.map((item) => (
-                <a
+                <NavLink
                   key={item.name}
-                  href={item.href}
+                  to={item.href}
                   aria-current={item.current ? "page" : undefined}
                   className={classNames(
                     item.current
@@ -86,7 +87,7 @@ export default function Navbar() {
                   )}
                 >
                   {item.name}
-                </a>
+                </NavLink>
               ))}
             </div>
           </div>
