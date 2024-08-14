@@ -8,7 +8,12 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
-import { Bars3Icon, BellIcon, FireIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  BellIcon,
+  FireIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 import { PlusIcon } from "@heroicons/react/20/solid";
 // @ts-ignore
 import profileImage from "~src/features/home/assets/Me.jpeg";
@@ -18,31 +23,32 @@ const user = {
   email: "tom@example.com",
   imageUrl: profileImage,
 };
-const navigation = [
-  { name: "Projects", href: "/admin/projects", current: true },
-  { name: "Blogs", href: "/admin/blogs", current: false },
-];
-const userNavigation = [
-  { name: "Sign out", href: "#" },
-];
+const userNavigation = [{ name: "Sign out", href: "#" }];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
+  const [navigation, setNavigation] = React.useState([
+    { name: "Projects", href: "/admin/projects", current: true },
+    { name: "Blogs", href: "/admin/blogs", current: false },
+  ]);
 
-    function changeNavigationActiveItem() {
-        const currentPath = window.location.pathname;
+  React.useEffect(() => {
+    changeNavigationActiveItem();
+  }, [navigation]);
 
-        for (var i = 0; i < navigation.length; i++) {
-            if (navigation[i].href === currentPath) {
-                navigation[i].current = true;
-            } else {
-                navigation[i].current = false;
-            }
-        }
-    }
+  function changeNavigationActiveItem() {
+    const currentPath = window.location.pathname;
+    const tempNavigation = navigation.map((nav) => ({
+      ...nav,
+      current: nav.href === currentPath,
+    }));
+
+    setNavigation(tempNavigation);
+  }
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
