@@ -19,13 +19,6 @@ export const AdminProjectDetails = () => {
             className="md:w-1/4 w-1/2"
             onClick={() => navigate("/admin/projects")}
           />
-          <Button
-            variant="secondary"
-            labelColor="dark"
-            label="Edit Project"
-            className="md:w-1/4 w-1/2"
-            onClick={() => alert("Edit Project")}
-          />
         </div>
         <h2 className="text-4xl text-gray-100">
           Project - {project.title || "No Title"}
@@ -140,6 +133,22 @@ export const AdminProjectDetails = () => {
         ) : (
           <p className="text-gray-300">No Related Projects</p>
         )}
+        <hr className="mb-4" />
+        <div className="flex flex-col md:flex-row gap-4">
+          <Button
+            variant="danger"
+            labelColor="light"
+            label="Delete Project"
+            className="w-full md:w-1/3"
+          />
+          <Button
+            variant="secondary"
+            labelColor="light"
+            label="Edit Project"
+            className="w-full md:w-1/3"
+          />
+          <Button variant="dark" label="View Project" className="w-full md:w-1/3" />
+        </div>
       </PageWrapper>
     </div>
   );

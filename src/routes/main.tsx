@@ -10,7 +10,13 @@ import {
   ProjectList,
   ProjectDetails,
 } from "~/src/features";
-import { Login, AdminProjectList, AdminProjectDetails } from "~src/features/admin";
+import {
+  Login,
+  AdminProjectList,
+  AdminProjectDetails,
+  AdminBlogList,
+  AdminBlogDetails,
+} from "~src/features/admin";
 
 export const mainRoutes = [
   {
@@ -57,6 +63,14 @@ export const mainRoutes = [
   {
     path: "/admin/projects/:projectId",
     element: <AdminProjectDetails />,
+  },
+  {
+    path: "/admin/blogs",
+    element: <AdminBlogList />,
+  },
+  {
+    path: "/admin/blogs/:blogId",
+    element: <AdminBlogDetails />,
   },
   {
     path: "*",
