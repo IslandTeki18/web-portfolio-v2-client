@@ -6,23 +6,44 @@ type InputProps = {
   id?: string;
   placeholder?: string;
   value?: any;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   required?: boolean;
   multiple?: boolean;
+  hasLabel?: boolean;
+  label?: string;
+  variant?: "light" | "dark";
 };
 
 export const Input = (props: InputProps) => {
   return (
-    <input
-      name={props.name}
-      type={props.type}
-      className={`text-white w-full border bg-dark border-white py-2 px-4`}
-      id={props.id}
-      placeholder={props.placeholder}
-      value={props.value || ""}
-      onChange={props.onChange}
-      required={props.required}
-      multiple={props.multiple}
-    />
+    <div>
+      {props.hasLabel && (
+        <label
+          htmlFor={props.id}
+          className={`block text-sm font-medium leading-6 ${
+            props.variant === "light" ? "text-gray-900" : "text-white"
+          }`}
+        >
+          {props.label}
+        </label>
+      )}
+      <div className="mt-2">
+        <input
+          name={props.name}
+          type={props.type}
+          className={`w-full border ${
+            props.variant === "light"
+              ? "text-gray-1000 bg-white border-dark"
+              : "text-white bg-dark border-white"
+          } py-2 px-4`}
+          id={props.id}
+          placeholder={props.placeholder}
+          value={props.value || ""}
+          onChange={props.onChange}
+          required={props.required}
+          multiple={props.multiple}
+        />
+      </div>
+    </div>
   );
 };

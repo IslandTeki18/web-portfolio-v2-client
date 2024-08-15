@@ -27,7 +27,7 @@ export const ContactFormSection = (props: Props) => {
 
   function onSubmitHandler(e: any) {
     e.preventDefault();
-    
+
     setOpenConfirmationModal(true);
     setTimeout(() => {
       setOpenConfirmationModal(false);

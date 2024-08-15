@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "~src/components";
+import { Button, Input } from "~src/components";
 import { useSignIn } from "../../hooks";
 import { useAuthContext } from "~src/hooks/useAuthContext";
 import { useNavigate } from "react-router-dom";
@@ -38,48 +38,31 @@ export const Login = () => {
             Admin Login
           </h2>
           <form className="mt-4 flex flex-col gap-4" onSubmit={handleSubmit}>
-            <div>
-              <label
-                htmlFor="username"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Username
-              </label>
-              <div className="mt-2">
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  placeholder="Username..."
-                  value={loginCred.username}
-                  onChange={(e) =>
-                    setLoginCred({ ...loginCred, username: e.target.value })
-                  }
-                  className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium leading-6 text-gray-900"
-              >
-                Password
-              </label>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Password..."
-                  value={loginCred.password}
-                  onChange={(e) =>
-                    setLoginCred({ ...loginCred, password: e.target.value })
-                  }
-                  className="block w-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-600 sm:text-sm sm:leading-6"
-                />
-              </div>
-            </div>
+            <Input
+              id="username"
+              name="username"
+              type="text"
+              placeholder="Username..."
+              value={loginCred.username}
+              onChange={(e) =>
+                setLoginCred({ ...loginCred, username: e.target.value })
+              }
+              hasLabel
+              label="Username"
+            />
+            <Input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Password..."
+              value={loginCred.password}
+              onChange={(e) =>
+                setLoginCred({ ...loginCred, password: e.target.value })
+              }
+              hasLabel
+              label="Password"
+            />
+
             <Button
               variant="dark"
               label={isLoading ? "Loading..." : "Login"}

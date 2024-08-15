@@ -22,7 +22,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
   ];
 
   return (
-    <nav className="bg-dark h-fit md:h-16 md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] relative">
+    <nav className="bg-dark h-fit md:h-16 md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] pt-4 relative">
       {/* Desktop */}
       <div className="flex justify-between items-center w-full h-inher">
         <Link

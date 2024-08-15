@@ -7,3 +7,5 @@ export * from "./navbar";
 export * from "./sectionWrapper";
 export * from "./scrollToTop";
 export * from "./textarea";
+export * from "./select";
+export * from "./toggle";
