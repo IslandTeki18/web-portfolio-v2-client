@@ -17,6 +17,7 @@ import {
   AdminBlogList,
   AdminBlogDetails,
 } from "~src/features/admin";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const mainRoutes = [
   {
@@ -58,19 +59,19 @@ export const mainRoutes = [
   },
   {
     path: "/admin/projects",
-    element: <AdminProjectList />,
+    element: <ProtectedRoute element={<AdminProjectList />} />,
   },
   {
     path: "/admin/projects/:projectId",
-    element: <AdminProjectDetails />,
+    element: <ProtectedRoute element={<AdminProjectDetails />} />,
   },
   {
     path: "/admin/blogs",
-    element: <AdminBlogList />,
+    element: <ProtectedRoute element={<AdminBlogList />} />,
   },
   {
     path: "/admin/blogs/:blogId",
-    element: <AdminBlogDetails />,
+    element: <ProtectedRoute element={<AdminBlogDetails />} />,
   },
   {
     path: "*",

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import {
   Disclosure,
   DisclosureButton,
@@ -18,25 +19,29 @@ import { PlusIcon } from "@heroicons/react/20/solid";
 // @ts-ignore
 import profileImage from "~src/features/home/assets/Me.jpeg";
 import { NavLink } from "react-router-dom";
+import { useLogout } from "../hooks/useLogout";
 
 const user = {
   name: "Tom Cook",
   email: "tom@example.com",
   imageUrl: profileImage,
 };
-const userNavigation = [{ name: "Sign out", href: "#" }];
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
-  const [navigation, setNavigation] = React.useState([
+  const { logout } = useLogout();
+  const [navigation, setNavigation] = useState([
     { name: "Projects", href: "/admin/projects", current: true },
     { name: "Blogs", href: "/admin/blogs", current: false },
   ]);
+  const [userNav, setUserNav] = useState([
+    { name: "Sign out", href: "/", onClick: () => logout() },
+  ]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     changeNavigationActiveItem();
   }, [window.location.pathname]);
 
@@ -119,10 +124,11 @@ export default function Navbar() {
                   transition
                   className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 transition focus:outline-none data-[closed]:scale-95 data-[closed]:transform data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-75 data-[enter]:ease-out data-[leave]:ease-in"
                 >
-                  {userNavigation.map((item) => (
+                  {userNav.map((item) => (
                     <MenuItem key={item.name}>
                       <a
                         href={item.href}
+                        onClick={item.onClick}
                         className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100"
                       >
                         {item.name}
@@ -182,11 +188,12 @@ export default function Navbar() {
             </button>
           </div>
           <div className="mt-3 space-y-1 px-2 sm:px-3">
-            {userNavigation.map((item) => (
+            {userNav.map((item) => (
               <DisclosureButton
                 key={item.name}
                 as="a"
                 href={item.href}
+                onClick={item.onClick}
                 className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
               >
                 {item.name}

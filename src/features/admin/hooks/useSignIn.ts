@@ -16,7 +16,7 @@ export const useSignIn = () => {
       const res = await loginUser(username, password);
       localStorage.setItem("userInfo", JSON.stringify(res.data));
       dispatch({ type: "LOGIN", payload: res.data });
-      navigate("/");
+      navigate("/admin/projects");
     } catch (error) {
       console.error("Error signing in: ", error.message);
       if (error.response) {

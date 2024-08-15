@@ -1,19 +1,28 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "~src/components";
 import { useSignIn } from "../../hooks";
+import { useAuthContext } from "~src/hooks/useAuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
+  const { user } = useAuthContext();
   const { error, isLoading, signIn } = useSignIn();
   const [loginCred, setLoginCred] = useState({
     username: "",
     password: "",
   });
 
+  useEffect(() => {
+    if (user) {
+      navigate("/admin/projects");
+    }
+  });
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("Login");
     signIn(loginCred.username, loginCred.password);
   }
 
