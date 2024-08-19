@@ -8,11 +8,15 @@ import {
   Toggle,
   Button,
 } from "~src/components";
+import { ProjectFormData } from "~src/types/projects";
+import { DEV_API_URL, NODE_ENV, API_URL } from "~src/config";
 
 type CreateProjectModalProps = {
   isOpen: boolean;
   onClose: () => void;
 };
+
+const fileTypes = ["image/png", "image/jpeg", "image/jpg"];
 
 const applicationTypeOptions = [
   { value: "web", label: "Web" },
@@ -25,7 +29,47 @@ const projectTypeOptions = [
   { value: "client", label: "Open Source" },
 ];
 
+const statusOptions = [
+  { value: "Live", label: "Live" },
+  { value: "Construction", label: "Under Construction" },
+  { value: "Not live", label: "Not Live" },
+  { value: "Hold", label: "On Hold" },
+  { value: "Remodeling", label: "Remodeling" },
+];
+
+const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
+
 export const CreateProjectModal = (props: CreateProjectModalProps) => {
+  
+  const [error, setError] = useState("");
+  const [newProject, setNewProject] = useState({} as ProjectFormData);
+
+  function handleInputChange(event: any) {
+    const { name, value } = event.target;
+    setNewProject((prev) => ({ ...prev, [name]: value }));
+  }
+  function handleSelectChange(event: any) {
+    const { name, value } = event.target;
+    setNewProject((prev) => ({ ...prev, [name]: value }));
+  }
+  
+  function handleFileChange(event: any) {
+    const files = event.target.files;
+    if (files.length > 0) {
+      const file = files[0];
+      if (fileTypes.includes(file.type)) {
+        setNewProject((prev) => ({ ...prev, images: file }));
+      } else {
+        setError("Invalid file type. Please upload an image file.");
+      }
+    }
+  }
+
+  function handleSubmit(event: any) {
+    event.preventDefault();
+    
+  }
+
   return (
     <Modal
       isOpen={props.isOpen}
@@ -43,6 +87,8 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             placeholder="Title..."
             hasLabel
             label="Title"
+            onChange={handleInputChange}
+            value={newProject.title}
           />
           <hr className="my-2" />
           <span className="text-lg font-medium">General Information</span>
@@ -50,22 +96,37 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             id="description"
             name="description"
             placeholder="Description..."
-            onChange={() => {}}
-            value={""}
+            onChange={handleInputChange}
+            value={newProject.description}
             hasLabel
             label="Description"
           />
           <Select
+            name={"projectType"}
             optionItems={projectTypeOptions}
             variant="dark"
             hasLabel
             labelText="Project Type"
+            value={newProject.projectType}
+            onChange={handleSelectChange}
           />
           <Select
+            name={"applicationType"}
             optionItems={applicationTypeOptions}
             variant="dark"
             hasLabel
             labelText="Application Type"
+            value={newProject.applicationType}
+            onChange={handleSelectChange}
+          />
+          <Select
+            name={"status"}
+            optionItems={statusOptions}
+            variant="dark"
+            hasLabel
+            labelText="Status"
+            value={newProject.status}
+            onChange={handleSelectChange}
           />
           <Input
             id="techStack"
@@ -74,40 +135,50 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             placeholder="Tech Stack..."
             hasLabel
             label="Tech Stack (Comma Separated)"
+            onChange={handleInputChange}
+            value={newProject.techStack}
           />
           <Toggle
             hasLabel
             label="Is Public"
             name="isPublic"
             variant="dark"
-            enabled={false}
-            onChange={() => {}}
+            enabled={newProject.isPublic}
+            onChange={() =>
+              setNewProject((prev) => ({ ...prev, isPublic: !prev.isPublic }))
+            }
           />
           <hr className="my-2" />
           <span className="text-lg font-medium">Project URLs</span>
           <Input
             id="trello"
-            name="trello"
+            name="trelloUrl"
             type="text"
             placeholder="Trello..."
             hasLabel
             label="Trello"
+            onChange={handleInputChange}
+            value={newProject.trelloUrl}
           />
           <Input
             id="Project"
-            name="Project"
+            name="ProjectUrl"
             type="text"
             placeholder="Project..."
             hasLabel
             label="Project"
+            onChange={handleInputChange}
+            value={newProject.projectUrl}
           />
           <Input
             id="github"
-            name="github"
+            name="githubUrl"
             type="text"
             placeholder="Github..."
             hasLabel
             label="Github"
+            onChange={handleInputChange}
+            value={newProject.githubUrl}
           />
           <hr className="my-2" />
           <span className="text-lg font-medium">Other Information</span>
@@ -118,14 +189,18 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             placeholder="Tags..."
             hasLabel
             label="Tags (Comma Separated)"
+            onChange={handleInputChange}
+            value={newProject.tags}
           />
           <Input
-            id="Budget"
-            name="Budget"
+            id="budget"
+            name="budget"
             type="text"
             placeholder="Budget..."
             hasLabel
             label="Budget"
+            onChange={handleInputChange}
+            value={newProject.budget}
           />
           <Input
             id="designer"
@@ -134,6 +209,8 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             placeholder="Designer..."
             hasLabel
             label="Designer"
+            onChange={handleInputChange}
+            value={newProject.designer}
           />
           <Input
             id="client"
@@ -142,7 +219,10 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             placeholder="Client..."
             hasLabel
             label="Client"
+            onChange={handleInputChange}
+            value={newProject.client}
           />
+
           <hr className="my-2" />
           <span className="text-lg font-medium">Images</span>
           <Input
@@ -151,7 +231,10 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             type="file"
             hasLabel
             label="Images"
+            onChange={handleFileChange}
+            value={newProject.images}
           />
+          {error && <span className="text-red-600">{error}</span>}
           <hr className="my-2" />
           <div className="flex justify-between gap-2">
             <Button
@@ -160,12 +243,14 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
               label="Cancel"
               className="w-1/3"
               onClick={props.onClose}
+              type="button"
             />
             <Button
               variant="dark"
               labelColor="light"
               label="Create Project"
               className="w-2/3"
+              type="submit"
             />
           </div>
         </form>

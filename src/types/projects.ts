@@ -35,6 +35,10 @@ type Project = {
   updatedAt: string;
 };
 
+type ProjectFormData = Omit<Project, 'images'> & {
+  images: File[];
+};
+
 type LimitedProjects = {
   id: string;
   title: string;
@@ -46,4 +50,4 @@ type LimitedProjects = {
   updatedAt: string;
 };
 
-export { ProjectFeedback, RelatedProject, Project, LimitedProjects };
+export { ProjectFeedback, RelatedProject, Project, LimitedProjects, ProjectFormData };

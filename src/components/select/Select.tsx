@@ -9,9 +9,9 @@ type LabelSelectProps = {
   hasLabel?: boolean;
   hasError?: boolean;
   labelText?: string;
-  onChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   hasRequiredIndicator?: boolean;
-  value?: string;
+  value: string;
   variant?: "light" | "dark";
 };
 
@@ -21,8 +21,6 @@ type OptionItems = {
 };
 
 export const Select = (props: LabelSelectProps) => {
-  const [selectedValue, setSelectedValue] = useState<string>(props.value || "");
-
   function renderOptions() {
     return props.optionItems.map((item) => {
       return (
@@ -32,13 +30,6 @@ export const Select = (props: LabelSelectProps) => {
       );
     });
   }
-
-  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedValue(event.target.value);
-    if (props.onChange) {
-      props.onChange(event);
-    }
-  };
 
   return (
     <div className="w-full">
@@ -66,8 +57,9 @@ export const Select = (props: LabelSelectProps) => {
               : "bg-white text-dark"
           } 
           `}
-        value={selectedValue}
-        onChange={handleSelectChange}
+        value={props.value}
+        defaultValue={props.placeholder}
+        onChange={props.onChange}
       >
         <option>{props.placeholder || "Select Option..."}</option>
         {renderOptions()}

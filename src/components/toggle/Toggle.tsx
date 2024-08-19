@@ -4,7 +4,7 @@ import { Switch } from "@headlessui/react";
 
 type ToggleProps = {
   enabled?: boolean;
-  onChange?: (checked: boolean) => void;
+  onChange: (checked: boolean) => void;
   hasLabel?: boolean;
   label?: string;
   hasRequiredIndicator?: boolean;

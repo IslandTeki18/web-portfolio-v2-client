@@ -41,7 +41,7 @@ export default function Navbar() {
   const [userNav, setUserNav] = useState([
     { name: "Sign out", href: "/", onClick: () => logout() },
   ]);
-  const [isModalOpen, setIsModalOpen] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     changeNavigationActiveItem();
