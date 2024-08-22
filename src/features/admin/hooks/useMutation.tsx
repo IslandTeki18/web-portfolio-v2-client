@@ -17,7 +17,7 @@ export const useMutation = (url: string) => {
     try {
       await axios.post(url, body, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${user?.token}`,
         },
       });

@@ -5,13 +5,14 @@ type InputProps = {
   type?: string;
   id?: string;
   placeholder?: string;
-  value: any;
+  value?: any;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   multiple?: boolean;
   hasLabel?: boolean;
   label?: string;
   variant?: "light" | "dark";
+  accept?: string;
 };
 
 export const Input = (props: InputProps) => {
@@ -42,6 +43,7 @@ export const Input = (props: InputProps) => {
           onChange={props.onChange}
           required={props.required}
           multiple={props.multiple}
+          accept={props.accept && props.accept}
         />
       </div>
     </div>

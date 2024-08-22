@@ -13,7 +13,6 @@ type RelatedProject = {
 };
 
 type Project = {
-  id: string;
   title: string;
   description: string;
   designer?: string;
@@ -36,7 +35,7 @@ type Project = {
 };
 
 type ProjectFormData = Omit<Project, 'images'> & {
-  images: File[];
+  images: any[];
 };
 
 type LimitedProjects = {

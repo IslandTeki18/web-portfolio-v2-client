@@ -40,6 +40,7 @@ export default function Navbar() {
   ]);
   const [userNav, setUserNav] = useState([
     { name: "Sign out", href: "/", onClick: () => logout() },
+    { name: "Portfolio", href: "/" },
   ]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

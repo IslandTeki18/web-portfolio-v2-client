@@ -8,8 +8,11 @@ import {
   Toggle,
   Button,
 } from "~src/components";
-import { ProjectFormData } from "~src/types/projects";
+import { Project, ProjectFormData } from "~src/types/projects";
 import { DEV_API_URL, NODE_ENV, API_URL } from "~src/config";
+import { useMutation } from "../../hooks/useMutation";
+import axios from "axios";
+import { useAuthContext } from "~src/hooks";
 
 type CreateProjectModalProps = {
   isOpen: boolean;
@@ -19,55 +22,117 @@ type CreateProjectModalProps = {
 const fileTypes = ["image/png", "image/jpeg", "image/jpg"];
 
 const applicationTypeOptions = [
-  { value: "web", label: "Web" },
-  { value: "mobile", label: "Mobile" },
-  { value: "desktop", label: "Desktop" },
+  { value: "Web", label: "Web" },
+  { value: "Mobile", label: "Mobile" },
+  { value: "Desktop", label: "Desktop" },
 ];
 const projectTypeOptions = [
-  { value: "personal", label: "Personal" },
-  { value: "team", label: "Client" },
-  { value: "client", label: "Open Source" },
+  { value: "Personal", label: "Personal" },
+  { value: "Client", label: "Client" },
+  { value: "Open Source", label: "Open Source" },
 ];
 
 const statusOptions = [
   { value: "Live", label: "Live" },
-  { value: "Construction", label: "Under Construction" },
-  { value: "Not live", label: "Not Live" },
-  { value: "Hold", label: "On Hold" },
+  { value: "Under Construction", label: "Under Construction" },
+  { value: "Not Live", label: "Not Live" },
+  { value: "On Hold", label: "On Hold" },
   { value: "Remodeling", label: "Remodeling" },
 ];
 
 const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
 
 export const CreateProjectModal = (props: CreateProjectModalProps) => {
-  
+  const { user } = useAuthContext();
   const [error, setError] = useState("");
-  const [newProject, setNewProject] = useState({} as ProjectFormData);
+  const [newProject, setNewProject] = useState<Project>({
+    title: "",
+    description: "",
+    projectType: "Personal",
+    applicationType: "Web",
+    status: "Not Live",
+    techStack: [],
+    isPublic: false,
+    trelloUrl: "",
+    githubUrl: "",
+    projectUrl: "",
+    tags: [],
+    budget: "",
+    designer: "",
+    client: "",
+    images: [],
+    relatedProjects: [],
+    developerFeedback: [],
+    createdAt: "",
+    updatedAt: "",
+  });
 
   function handleInputChange(event: any) {
     const { name, value } = event.target;
+    if (name === "techStack" || name === "tags") {
+      setNewProject((prev) => ({ ...prev, [name]: value.split(",") }));
+      return;
+    }
     setNewProject((prev) => ({ ...prev, [name]: value }));
   }
   function handleSelectChange(event: any) {
     const { name, value } = event.target;
     setNewProject((prev) => ({ ...prev, [name]: value }));
   }
-  
+
   function handleFileChange(event: any) {
     const files = event.target.files;
-    if (files.length > 0) {
-      const file = files[0];
-      if (fileTypes.includes(file.type)) {
-        setNewProject((prev) => ({ ...prev, images: file }));
-      } else {
-        setError("Invalid file type. Please upload an image file.");
-      }
+    if (files) {
+      setNewProject((prev) => ({ ...prev, images: Array.from(files) }));
     }
   }
 
-  function handleSubmit(event: any) {
+  // Send project data to server
+  async function createProject(data: any) {
+    try {
+      await axios.post(`${URL}/projects`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${user?.token}`,
+        },
+      });
+    } catch (error) {
+      setError(error.message);
+    }
+  }
+
+  async function handleSubmit(event: any) {
     event.preventDefault();
-    
+    let form = new FormData();
+    form.append("title", newProject.title);
+    form.append("description", newProject.description);
+    form.append("projectType", newProject.projectType);
+    form.append("applicationType", newProject.applicationType);
+    form.append("status", newProject.status);
+    form.append("isPublic", newProject.isPublic ? "true" : "false");
+    form.append("trelloUrl", newProject.trelloUrl || "");
+    form.append("githubUrl", newProject.githubUrl || "");
+    form.append("projectUrl", newProject.projectUrl || "");
+    form.append("budget", newProject.budget || "");
+    form.append("designer", newProject.designer || "");
+    form.append("client", newProject.client || "");
+
+    newProject.techStack.forEach((tech) => {
+      form.append("techStack", tech);
+    });
+    newProject.tags.forEach((tag) => {
+      form.append("tags", tag);
+    });
+    newProject.images.forEach((image: any) => {
+      if (fileTypes.includes(image.type)) {
+        form.append("images", image);
+      } else {
+        setError("Invalid file type");
+      }
+    });
+
+    // Create project
+    await createProject(form);
   }
 
   return (
@@ -79,7 +144,7 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
     >
       <div className="flex flex-col gap-4">
         <span className="text-2xl font-semibold">Create New Project</span>
-        <form className="flex flex-col gap-4">
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <Input
             id="title"
             name="title"
@@ -231,8 +296,9 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
             type="file"
             hasLabel
             label="Images"
+            multiple
+            accept="image/*"
             onChange={handleFileChange}
-            value={newProject.images}
           />
           {error && <span className="text-red-600">{error}</span>}
           <hr className="my-2" />
