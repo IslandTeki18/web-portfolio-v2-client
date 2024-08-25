@@ -13,6 +13,7 @@ type ModalProps = {
   children: any;
   variant?: "light" | "dark";
   isFullWidth?: boolean;
+  isFullHeight?: boolean;
 };
 
 export const Modal = (props: ModalProps) => {
@@ -45,7 +46,9 @@ export const Modal = (props: ModalProps) => {
               <DialogPanel
                 className={`${
                   props.isFullWidth ? "w-full " : null
-                }relative transform overflow-hidden rounded-md ${
+                }
+                ${props.isFullHeight ? "h-full " : null}
+                relative transform overflow-hidden rounded-md ${
                   props.variant === "light"
                     ? "bg-white text-gray-1000"
                     : "bg-gray-800 text-gray-100"

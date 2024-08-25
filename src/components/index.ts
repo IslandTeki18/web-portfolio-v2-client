@@ -9,3 +9,4 @@ export * from "./scrollToTop";
 export * from "./textarea";
 export * from "./select";
 export * from "./toggle";
+export * from "./modals";

@@ -3,6 +3,7 @@ import { useState } from "react";
 // @ts-ignore
 import noImage from "../../assets/noImage2.png";
 import { formatNumberWithCommas } from "~src/utils";
+import { LightBox } from "~src/components";
 
 type ProjectDetailsSectionProps = {
   isPublic: string;
@@ -62,10 +63,15 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
             className="h-[400px] w-full object-contain object-center"
             src={props.images[0] || noImage}
             alt="project"
-            onClick={() => setShowLightBox((prev) => !prev)}
+            onClick={() => setShowLightBox(true)}
           />
         </div>
       ) : null}
+      <LightBox
+        isOpen={showLightBox}
+        onClose={() => setShowLightBox(false)}
+        images={props.images}
+      />
     </div>
   );
 };
