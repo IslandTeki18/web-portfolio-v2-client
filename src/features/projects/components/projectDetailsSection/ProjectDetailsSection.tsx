@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useState } from "react";
 // @ts-ignore
 import noImage from "../../assets/noImage2.png";
 import { formatNumberWithCommas } from "~src/utils";
@@ -13,7 +14,8 @@ type ProjectDetailsSectionProps = {
 };
 
 export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
-  console.log(props.client);
+  const [showLightBox, setShowLightBox] = useState(false);
+
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
       <div className="border border-white p-4 flex flex-col gap-4 w-full order-2 md:order-1 lg:w-2/4 xl:w-4/10 animate__animated animate__fadeInLeft">
@@ -60,6 +62,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
             className="h-[400px] w-full object-contain object-center"
             src={props.images[0] || noImage}
             alt="project"
+            onClick={() => setShowLightBox((prev) => !prev)}
           />
         </div>
       ) : null}

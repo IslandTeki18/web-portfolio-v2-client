@@ -8,16 +8,14 @@ import {
   ProjectOverviewSection,
 } from "../../components";
 import { Project } from "~src/types/projects";
-import { PROJECTS } from "~src/data";
 import { useParams } from "react-router-dom";
+import { useFetch } from "~src/hooks";
 
 export const ProjectDetails = () => {
   const { projectId } = useParams();
-  const [project, setProject] = useState({} as Project);
-
-  useEffect(() => {
-    setProject(PROJECTS.find((p) => p.id === projectId) || ({} as Project));
-  }, [projectId]);
+  const { data: project, loading, error } = useFetch<Project>(
+    `/projects/${projectId}`
+  );
 
   return (
     <>
@@ -28,19 +26,19 @@ export const ProjectDetails = () => {
         className="pt-10 animate__animated animate__fadeInLeft"
       >
         <ProjectDetailsHeader
-          title={project.title || "No Title"}
-          date={project.createdAt}
-          status={project.status}
+          title={project?.title || "No Title"}
+          date={project?.createdAt || ""}
+          status={project?.status || ""}
         />
       </section>
       <section id="project-details-section" className="pt-4">
         <ProjectDetailsSection
-          isPublic={project.projectType}
-          client={project.client || ""}
-          budget={project.budget || "0"}
-          createdAt={project.createdAt}
-          updatedAt={project.updatedAt}
-          images={project.images}
+          isPublic={project?.projectType || "N / A"}
+          client={project?.client || ""}
+          budget={project?.budget || "0"}
+          createdAt={project?.createdAt || "N / A"}
+          updatedAt={project?.updatedAt || "N / A"}
+          images={project?.images || []}
         />
       </section>
       <section
@@ -48,16 +46,18 @@ export const ProjectDetails = () => {
         className="pt-4 pb-6 animate__animated animate__fadeInLeft"
       >
         <ProjectOverviewSection
-          overview={project.description}
-          githubURL={project.githubUrl}
-          projectURL={project.projectUrl}
+          overview={project?.description || "N / A"}
+          githubURL={project?.githubUrl}
+          projectURL={project?.projectUrl}
         />
       </section>
       <section
         id="project-activity-section"
         className="pt-4 pb-6 animate__animated animate__fadeInLeft"
       >
-        <ProjectActivitySection developerFeedback={project.developerFeedback} />
+        <ProjectActivitySection
+          developerFeedback={project?.developerFeedback}
+        />
       </section>
       <Footer />
     </>
