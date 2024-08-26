@@ -1,8 +1,9 @@
 import * as React from "react";
 import { useNavigate } from "react-router-dom";
+import { Project } from "~src/types/projects";
 
 type ProjectsTableProps = {
-  projects: any[];
+  projects: Project[];
 };
 
 export const ProjectsTable = (props: ProjectsTableProps) => {
@@ -59,7 +60,7 @@ export const ProjectsTable = (props: ProjectsTableProps) => {
                   {props.projects ? (
                     props.projects.map((project) => (
                       <tr
-                        key={project.id}
+                        key={project._id}
                         onClick={() => {
                           navigate(`/admin/projects/${project._id}`);
                         }}

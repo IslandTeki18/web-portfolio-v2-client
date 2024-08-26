@@ -157,6 +157,8 @@ export const AdminProjectDetails = () => {
                     }).format(new Date(feedback.createdAt as Date))}
                   </p>
                 </div>
+                <hr className="border-gray-400" />
+
                 <div className="flex justify-between items-center">
                   <p className="text-gray-300">Title</p>
                   <p className="text-gray-100">{feedback.title}</p>
@@ -195,6 +197,8 @@ export const AdminProjectDetails = () => {
                     }).format(new Date(project.createdAt as Date))}
                   </p>
                 </div>
+                <hr className="border-gray-400" />
+
                 <div className="flex justify-between items-center">
                   <p className="text-gray-300">Title</p>
                   <p className="text-gray-100">{project.title}</p>
