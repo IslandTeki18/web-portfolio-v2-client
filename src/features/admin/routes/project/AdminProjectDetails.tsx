@@ -11,6 +11,10 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch, useTimeFormatter } from "~src/hooks";
 import { formatNumberWithCommas } from "~src/utils";
 
+
+// TODO: Handle Edit and Delete functionality for Developer Feedback and Related Projects
+// TODO: Implement Edit and Delete functionality for the Project itself
+
 export const AdminProjectDetails = () => {
   const navigate = useNavigate();
   const { projectId } = useParams();
