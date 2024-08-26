@@ -2,7 +2,11 @@ import * as React from "react";
 import Navbar from "../../components/Navbar";
 import { useState } from "react";
 import { Project } from "~src/types/projects";
-import { DevFeedbackForm, PageWrapper } from "../../components";
+import {
+  DevFeedbackForm,
+  PageWrapper,
+  RelatedProjectForm,
+} from "../../components";
 import { Button, WheelSpinner } from "~src/components";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useFetch } from "~src/hooks";
@@ -162,6 +166,11 @@ export const AdminProjectDetails = () => {
         )}
         <hr />
         <h3 className="text-xl font-medium text-gray-100">Related Projects</h3>
+        <RelatedProjectForm
+          callback={(data) => {
+            console.log(data);
+          }}
+        />
         {project?.relatedProjects ? (
           <div className="flex flex-col gap-4">
             {project?.relatedProjects.map((project, index) => (
@@ -169,7 +178,9 @@ export const AdminProjectDetails = () => {
                 <p className="text-gray-300">Related Project {index + 1}</p>
                 <p className="text-gray-100">{project.title}</p>
                 <p className="text-gray-100">{project.projectType}</p>
-                <Link to={project.link}>Link: {project.link}</Link>
+                <Link to={project.link} className="text-gray-100">
+                  Link: {project.link}
+                </Link>
               </div>
             ))}
           </div>
