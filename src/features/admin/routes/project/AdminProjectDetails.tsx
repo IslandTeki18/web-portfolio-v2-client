@@ -1,6 +1,5 @@
 import * as React from "react";
 import Navbar from "../../components/Navbar";
-import { useState } from "react";
 import { Project } from "~src/types/projects";
 import {
   DevFeedbackForm,
@@ -9,7 +8,7 @@ import {
 } from "../../components";
 import { Button, WheelSpinner } from "~src/components";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useFetch } from "~src/hooks";
+import { useFetch, useTimeFormatter } from "~src/hooks";
 import { formatNumberWithCommas } from "~src/utils";
 
 export const AdminProjectDetails = () => {
@@ -20,12 +19,6 @@ export const AdminProjectDetails = () => {
     loading,
     error,
   } = useFetch<Project>(`/projects/${projectId}`);
-
-  const [relatedProjectObj, setRelatedProjectObj] = useState({
-    title: "",
-    projectType: "",
-    link: "",
-  });
 
   if (loading) {
     return (
@@ -155,9 +148,25 @@ export const AdminProjectDetails = () => {
           <div className="flex flex-col gap-4">
             {project?.developerFeedback.map((feedback, index) => (
               <div key={index} className="flex flex-col gap-2">
-                <p className="text-gray-300">Feedback {index + 1}</p>
-                <p className="text-gray-100">{feedback.title}</p>
-                <p className="text-gray-100">{feedback.description}</p>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300 text-lg">Feedback {index + 1}</p>
+                  <p className="text-gray-100">
+                    {new Intl.DateTimeFormat("en-US", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    }).format(new Date(feedback.createdAt as Date))}
+                  </p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300">Title</p>
+                  <p className="text-gray-100">{feedback.title}</p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300 w-1/3">Description</p>
+                  <p className="text-gray-100 w-2/3 text-right">
+                    {feedback.description}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -175,9 +184,25 @@ export const AdminProjectDetails = () => {
           <div className="flex flex-col gap-4">
             {project?.relatedProjects.map((project, index) => (
               <div key={index} className="flex flex-col gap-2">
-                <p className="text-gray-300">Related Project {index + 1}</p>
-                <p className="text-gray-100">{project.title}</p>
-                <p className="text-gray-100">{project.projectType}</p>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300 text-lg">
+                    Related Project {index + 1}
+                  </p>
+                  <p className="text-gray-100">
+                    {new Intl.DateTimeFormat("en-US", {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    }).format(new Date(project.createdAt as Date))}
+                  </p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300">Title</p>
+                  <p className="text-gray-100">{project.title}</p>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300">Project Type</p>
+                  <p className="text-gray-100">{project.projectType}</p>
+                </div>
                 <Link to={project.link} className="text-gray-100">
                   Link: {project.link}
                 </Link>

@@ -2,6 +2,8 @@ type ProjectFeedback = {
   id: string;
   title: string;
   description: string;
+  createdAt?: string | Date;
+  updatedAt?: string | Date;
 };
 
 type RelatedProject = {
@@ -10,6 +12,8 @@ type RelatedProject = {
   projectType: string;
   link: string;
   tags: string[];
+  createdAt?: string | Date;
+  updatedAt?: string | Date;
 };
 
 type Project = {
@@ -34,7 +38,7 @@ type Project = {
   updatedAt: string;
 };
 
-type ProjectFormData = Omit<Project, 'images'> & {
+type ProjectFormData = Omit<Project, "images"> & {
   images: any[];
 };
 
@@ -49,4 +53,10 @@ type LimitedProjects = {
   updatedAt: string;
 };
 
-export { ProjectFeedback, RelatedProject, Project, LimitedProjects, ProjectFormData };
+export {
+  ProjectFeedback,
+  RelatedProject,
+  Project,
+  LimitedProjects,
+  ProjectFormData,
+};
