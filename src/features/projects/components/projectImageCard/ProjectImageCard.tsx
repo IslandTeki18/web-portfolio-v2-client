@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
+import { useTimeFormatter } from "~src/hooks";
 
 type ProjectImageCardProps = {
   id: string;
@@ -7,10 +8,11 @@ type ProjectImageCardProps = {
   projectDescription?: string;
   projectType?: string;
   createdAt?: string;
-  projectImage?: string
+  projectImage?: string;
 };
 
 export const ProjectImageCard = (props: ProjectImageCardProps) => {
+  const formattedCreatedAt = useTimeFormatter(props.createdAt || "", "en-US");
   return (
     <Link to={`/project/${props.id}`}>
       <div className="flex flex-col justify-between border border-white bg-dark hover:bg-darker">
@@ -34,7 +36,7 @@ export const ProjectImageCard = (props: ProjectImageCardProps) => {
           <span className="text-white uppercase">{props.projectType}</span>
         </div>
         <div className="flex justify-between items-end p-4 md:p-8">
-          <span className="text-white">{props.createdAt}</span>
+          <span className="text-white">{formattedCreatedAt}</span>
         </div>
       </div>
     </Link>

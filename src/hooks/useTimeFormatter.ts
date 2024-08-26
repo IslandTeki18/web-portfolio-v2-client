@@ -16,7 +16,7 @@ export const useTimeFormatter = (date: string, locale: string) => {
     }
     const dateTimeFormat = new Intl.DateTimeFormat(locale, {
       year: "numeric",
-      month: "2-digit",
+      month: "short",
       day: "2-digit",
     });
 

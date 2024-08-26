@@ -23,7 +23,7 @@ export const LightBox = (props: LightBoxProps) => {
   if (!props.isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 z-50 p-10">
+    <div className="fixed inset-0 bg-black bg-opacity-75 z-50 p-10 overflow-y-scroll">
       <span
         className="absolute top-5 right-5 text-white text-4xl cursor-pointer"
         onClick={props.onClose}

@@ -9,12 +9,23 @@ import {
 } from "../../components";
 import { Project } from "~src/types/projects";
 import { useParams } from "react-router-dom";
-import { useFetch } from "~src/hooks";
+import { useFetch, useTimeFormatter } from "~src/hooks";
 
 export const ProjectDetails = () => {
   const { projectId } = useParams();
-  const { data: project, loading, error } = useFetch<Project>(
-    `/projects/${projectId}`
+  const {
+    data: project,
+    loading,
+    error,
+  } = useFetch<any>(`/projects/${projectId}`);
+
+  const formattedCreatedAt = useTimeFormatter(
+    project?.createdAt || "",
+    "en-US"
+  );
+  const formattedUpdatedAt = useTimeFormatter(
+    project?.updatedAt || "",
+    "en-US"
   );
 
   return (
@@ -36,8 +47,9 @@ export const ProjectDetails = () => {
           isPublic={project?.projectType || "N / A"}
           client={project?.client || ""}
           budget={project?.budget || "0"}
-          createdAt={project?.createdAt || "N / A"}
-          updatedAt={project?.updatedAt || "N / A"}
+          designer={project?.designer || ""}
+          createdAt={formattedCreatedAt || "N / A"}
+          updatedAt={formattedUpdatedAt || "N / A"}
           images={project?.images || []}
         />
       </section>

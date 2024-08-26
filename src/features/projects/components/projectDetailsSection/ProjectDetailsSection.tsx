@@ -9,6 +9,7 @@ type ProjectDetailsSectionProps = {
   isPublic: string;
   client: string;
   budget: string;
+  designer: string;
   createdAt: string;
   updatedAt: string;
   images: string[];
@@ -16,6 +17,7 @@ type ProjectDetailsSectionProps = {
 
 export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
   const [showLightBox, setShowLightBox] = useState(false);
+  
 
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
@@ -29,6 +31,15 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
               <i className="fa-solid fa-user mr-2" />
               CLIENT:
               <span className="ml-2 font-normal text-base">{props.client}</span>
+            </span>
+          )}
+          {props.designer && (
+            <span className="font-bold text-lg">
+              <i className="fa-solid fa-pen-nib mr-2" />
+              DESIGNER:
+              <span className="ml-2 font-normal text-base">
+                {props.designer}
+              </span>
             </span>
           )}
           {props.budget !== "0" && (
@@ -60,7 +71,7 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
       {props.images ? (
         <div className="flex border border-white p-2 w-full order-1 md:order-2 lg:w-2/4 xl:w-6/10 animate__animated animate__fadeInRight">
           <img
-            className="h-[400px] w-full object-contain object-center"
+            className="h-[400px] w-full object-contain object-center opacity-95 hover:opacity-100 cursor-pointer"
             src={props.images[0] || noImage}
             alt="project"
             onClick={() => setShowLightBox(true)}
