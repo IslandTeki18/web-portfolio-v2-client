@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Project } from "~src/types/projects";
+import { useNavigate } from "react-router-dom";
 
 type ProjectsTableProps = {
-  projects: Project[];
+  projects: any[];
 };
 
 export const ProjectsTable = (props: ProjectsTableProps) => {
+  const navigate = useNavigate();
   return (
     <div className="px-4 my-6 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -55,32 +56,43 @@ export const ProjectsTable = (props: ProjectsTableProps) => {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {props.projects ? props.projects.map((project) => (
-                    <tr key={project.id}>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {project.title}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.isPublic ? "Yes" : "No"}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.projectType}
-                      </td>
-                      <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {project.status}
-                      </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Edit<span className="sr-only">, {project.title}</span>
-                        </a>
-                      </td>
-                    </tr>
-                  )) : (
+                  {props.projects ? (
+                    props.projects.map((project) => (
+                      <tr
+                        key={project.id}
+                        onClick={() => {
+                          navigate(`/admin/projects/${project._id}`);
+                        }}
+                      >
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                          {project.title}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {project.isPublic ? "Yes" : "No"}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {project.projectType}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
+                          {project.status}
+                        </td>
+                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                          <a
+                            href="#"
+                            className="text-indigo-600 hover:text-indigo-900"
+                          >
+                            Edit
+                            <span className="sr-only">, {project.title}</span>
+                          </a>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
                     <tr>
-                      <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6" colSpan={5}>
+                      <td
+                        className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6"
+                        colSpan={5}
+                      >
                         No projects found
                       </td>
                     </tr>

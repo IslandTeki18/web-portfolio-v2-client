@@ -10,3 +10,4 @@ export * from "./textarea";
 export * from "./select";
 export * from "./toggle";
 export * from "./modals";
+export * from "./spinner";
