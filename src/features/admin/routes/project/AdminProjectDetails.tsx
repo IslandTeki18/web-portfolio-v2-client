@@ -148,7 +148,7 @@ export const AdminProjectDetails = () => {
             console.log(data);
           }}
         />
-        {project?.developerFeedback ? (
+        {project?.developerFeedback.length !== 0 ? (
           <div className="flex flex-col gap-4">
             {project?.developerFeedback.map((feedback, index) => (
               <div key={index} className="flex flex-col gap-2">
@@ -186,7 +186,7 @@ export const AdminProjectDetails = () => {
             console.log(data);
           }}
         />
-        {project?.relatedProjects ? (
+        {project?.relatedProjects.length !== 0 ? (
           <div className="flex flex-col gap-4">
             {project?.relatedProjects.map((project, index) => (
               <div key={index} className="flex flex-col gap-2">
