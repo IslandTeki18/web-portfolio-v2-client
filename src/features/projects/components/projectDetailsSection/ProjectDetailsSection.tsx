@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // @ts-ignore
 import noImage from "../../assets/noImage2.png";
 import { formatNumberWithCommas } from "~src/utils";
@@ -10,14 +10,13 @@ type ProjectDetailsSectionProps = {
   client: string;
   budget: string;
   designer: string;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: string | Date;
+  updatedAt: string | Date;
   images: string[];
 };
 
 export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
   const [showLightBox, setShowLightBox] = useState(false);
-  
 
   return (
     <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
@@ -57,13 +56,23 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
           <span className="font-bold text-xl uppercase">
             Started:
             <span className="ml-2 font-normal text-base">
-              {props.createdAt}
+              {(props.createdAt &&
+                new Intl.DateTimeFormat("en-US", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                }).format(new Date(props.createdAt as string))) ||
+                "N / A"}
             </span>
           </span>
           <span className="font-bold text-xl uppercase">
             Updated:
             <span className="ml-2 font-normal text-base">
-              {props.updatedAt}
+              {(props.updatedAt &&
+                new Intl.DateTimeFormat("en-US", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                }).format(new Date(props.updatedAt as string))) ||
+                "N / A"}
             </span>
           </span>
         </div>

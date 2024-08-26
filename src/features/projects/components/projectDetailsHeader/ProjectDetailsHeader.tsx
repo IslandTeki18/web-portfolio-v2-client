@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   title: string;
   status: string;
-  date: string;
+  date: string | Date;
 };
 
 export const ProjectDetailsHeader = (props: Props) => {

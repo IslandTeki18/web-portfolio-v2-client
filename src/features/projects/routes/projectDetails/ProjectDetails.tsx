@@ -17,16 +17,7 @@ export const ProjectDetails = () => {
     data: project,
     loading,
     error,
-  } = useFetch<any>(`/projects/${projectId}`);
-
-  const formattedCreatedAt = useTimeFormatter(
-    project?.createdAt || "",
-    "en-US"
-  );
-  const formattedUpdatedAt = useTimeFormatter(
-    project?.updatedAt || "",
-    "en-US"
-  );
+  } = useFetch<Project>(`/projects/${projectId}`);
 
   return (
     <>
@@ -38,7 +29,7 @@ export const ProjectDetails = () => {
       >
         <ProjectDetailsHeader
           title={project?.title || "No Title"}
-          date={project?.createdAt || ""}
+          date={project?.createdAt as Date}
           status={project?.status || ""}
         />
       </section>
@@ -48,8 +39,8 @@ export const ProjectDetails = () => {
           client={project?.client || ""}
           budget={project?.budget || "0"}
           designer={project?.designer || ""}
-          createdAt={formattedCreatedAt || "N / A"}
-          updatedAt={formattedUpdatedAt || "N / A"}
+          createdAt={project?.createdAt as Date}
+          updatedAt={project?.updatedAt as Date}
           images={project?.images || []}
         />
       </section>

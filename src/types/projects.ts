@@ -35,8 +35,8 @@ type Project = {
   developerFeedback: ProjectFeedback[];
   relatedProjects: RelatedProject[];
   status: "Live" | "Under Construction" | "Not Live" | "On Hold" | "Remodeling";
-  createdAt: string;
-  updatedAt: string;
+  createdAt?: Date | string;
+  updatedAt?: Date | string;
 };
 
 type ProjectFormData = Omit<Project, "images"> & {
