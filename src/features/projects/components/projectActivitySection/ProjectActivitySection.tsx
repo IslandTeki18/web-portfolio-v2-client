@@ -8,12 +8,11 @@ type Props = {
 };
 
 export const ProjectActivitySection = (props: Props) => {
-
   function renderRecentActivity() {
     if (!props.developerFeedback) return;
     return props.developerFeedback.map((item) => (
       <div
-        key={item.id}
+        key={item._id}
         className="flex flex-col border-l border-white pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white"
       >
         <span className="text-2xl text-danger-500 font-semibold tracking-wide">
@@ -21,7 +20,7 @@ export const ProjectActivitySection = (props: Props) => {
         </span>
         <span className="mb-4">
           <span className="font-semibold text-lg pr-2">Date:</span>
-          {formatDate(item.createdAt, 'en-US')}
+          {formatDate(item.createdAt, "en-US")}
         </span>
         <span>{item.description}</span>
       </div>
@@ -32,8 +31,8 @@ export const ProjectActivitySection = (props: Props) => {
     if (!props.relatedProjects) return;
     return props.relatedProjects.map((project) => (
       <ProjectCard
-        key={project.id}
-        id={project.id}
+        key={project._id}
+        id={project._id}
         title={project.title}
         projectDescription={project.projectDescription}
         projectType={project.projectType}

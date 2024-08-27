@@ -1,6 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import { MainNavbar, Footer, ScrollToTop } from "~src/components";
+import { MainNavbar, Footer, ScrollToTop, WheelSpinner } from "~src/components";
 import {
   ProjectActivitySection,
   ProjectDetailsHeader,
@@ -9,7 +8,7 @@ import {
 } from "../../components";
 import { Project } from "~src/types/projects";
 import { useParams } from "react-router-dom";
-import { useFetch, useTimeFormatter } from "~src/hooks";
+import { useFetch } from "~src/hooks";
 
 export const ProjectDetails = () => {
   const { projectId } = useParams();
@@ -18,6 +17,28 @@ export const ProjectDetails = () => {
     loading,
     error,
   } = useFetch<Project>(`/projects/${projectId}`);
+
+  if (loading) {
+    return (
+      <div className="h-screen w-full bg-gray-1000">
+        <MainNavbar />
+        <div className="flex justify-center pt-8">
+          <WheelSpinner size="lg" color="blue" />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="h-screen w-full bg-gray-1000">
+        <MainNavbar />
+        <div className="flex justify-center pt-8">
+          <p className="text-white">Error: {error.message}</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -60,6 +81,7 @@ export const ProjectDetails = () => {
       >
         <ProjectActivitySection
           developerFeedback={project?.developerFeedback}
+          relatedProjects={project?.relatedProjects}
         />
       </section>
       <Footer />

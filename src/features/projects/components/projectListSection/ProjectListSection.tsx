@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SectionWrapper } from "~src/components";
+import { SectionWrapper, WheelSpinner } from "~src/components";
 import { ProjectImageCard } from "../projectImageCard";
 import { useFetch } from "~src/hooks";
 
@@ -10,8 +10,7 @@ export const ProjectListSection = () => {
   const { data: projects, loading, error } = useFetch("/projects");
 
   function renderProjects() {
-    if (loading) return <p className="text-white">Loading...</p>;
-    if (error) return <p className="text-white">Error: {error.message}</p>;
+
     if (!Array.isArray(projects)) return;
     return projects.map((project) => (
       <ProjectImageCard
@@ -25,6 +24,26 @@ export const ProjectListSection = () => {
       />
     ));
   }
+
+  if (loading) {
+    return (
+      <div className="h-screen w-full bg-gray-1000">
+        <div className="flex justify-center pt-8">
+          <WheelSpinner size="lg" color="blue" />
+        </div>
+      </div>
+    );
+  }
+
+   if (error) {
+     return (
+       <div className="h-screen w-full bg-gray-1000">
+         <div className="flex justify-center pt-8">
+           <p className="text-white">Error: {error.message}</p>
+         </div>
+       </div>
+     );
+   }
 
   return (
     <SectionWrapper title="My Projects">

@@ -78,7 +78,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
             </li>
           ))}
           {user && (
-            <li className="hidden md:block">
+            <li className="block md:hidden">
               <NavLink to="/admin/projects">Admin</NavLink>
             </li>
           )}
