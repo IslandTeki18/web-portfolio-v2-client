@@ -87,7 +87,6 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
     }
   }
 
-  // Send project data to server
   async function createProject(data: any) {
     try {
       await axios.post(`${URL}/projects`, data, {

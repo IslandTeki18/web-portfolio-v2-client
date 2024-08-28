@@ -26,31 +26,31 @@ export const ProjectsTable = (props: ProjectsTableProps) => {
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                      className="uppercase py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
                       Title
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="px-3 uppercase py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
                       Is Public
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="px-3 uppercase py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
                       Project Type
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="px-3 uppercase py-3.5 text-left text-sm font-semibold text-gray-900"
                     >
                       Status
                     </th>
                     <th
                       scope="col"
-                      className="relative py-3.5 pl-3 pr-4 sm:pr-6"
+                      className="relative uppercase py-3.5 pl-3 pr-4 sm:pr-6"
                     >
                       <span className="sr-only">Edit</span>
                     </th>
@@ -64,6 +64,7 @@ export const ProjectsTable = (props: ProjectsTableProps) => {
                         onClick={() => {
                           navigate(`/admin/projects/${project._id}`);
                         }}
+                        className="cursor-pointer hover:bg-gray-50"
                       >
                         <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
                           {project.title}

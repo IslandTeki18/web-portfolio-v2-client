@@ -1,28 +1,52 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../../components/Navbar";
 import { Project } from "~src/types/projects";
 import {
+  DeleteProjectModal,
   DevFeedbackForm,
   PageWrapper,
   RelatedProjectForm,
+  UpdateProjectModal,
 } from "../../components";
 import { Button, WheelSpinner } from "~src/components";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useFetch, useTimeFormatter } from "~src/hooks";
 import { formatNumberWithCommas } from "~src/utils";
-
+import axios from "axios";
+import { API_URL, NODE_ENV, DEV_API_URL } from "~src/config";
 
 // TODO: Handle Edit and Delete functionality for Developer Feedback and Related Projects
 // TODO: Implement Edit and Delete functionality for the Project itself
+// TODO: Implement API call for Developer Feedback and Related Projects
+
+const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
 
 export const AdminProjectDetails = () => {
   const navigate = useNavigate();
   const { projectId } = useParams();
-  const {
-    data: project,
-    loading,
-    error,
-  } = useFetch<Project>(`/projects/${projectId}`);
+
+  const [isUpdateProjectModalOpen, setIsUpdateProjectModalOpen] =
+    useState(false);
+  const [isDeleteProjectModalOpen, setIsDeleteProjectModalOpen] =
+    useState(false);
+  const [project, setProject] = useState<Project | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    getProject();
+  }, []);
+
+  async function getProject() {
+    try {
+      const res = await axios.get(`${URL}/projects/${projectId}`);
+      setProject(res.data);
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+      setLoading(false);
+    }
+  }
 
   if (loading) {
     return (
@@ -40,7 +64,7 @@ export const AdminProjectDetails = () => {
       <div className="h-screen w-full bg-gray-1000">
         <Navbar />
         <div className="flex justify-center pt-8">
-          <p className="text-white">Error: {error.message}</p>
+          <p className="text-white">Error: {error}</p>
         </div>
       </div>
     );
@@ -66,7 +90,7 @@ export const AdminProjectDetails = () => {
         </h3>
         <div className="flex justify-between items-start">
           <p className="text-gray-300 w-1/3">Description: </p>
-          <p className="text-gray-100 w-2/3">
+          <p className="text-gray-100 text-right w-2/3">
             {project?.description || "No Description"}
           </p>
         </div>
@@ -139,7 +163,7 @@ export const AdminProjectDetails = () => {
         ) : (
           <p className="text-gray-300">No Images</p>
         )}
-        <hr />
+        <hr className="my-6" />
         <h3 className="text-xl font-medium text-gray-100">
           Developer Feedback
         </h3>
@@ -179,7 +203,7 @@ export const AdminProjectDetails = () => {
         ) : (
           <p className="text-gray-300">No Developer Feedback</p>
         )}
-        <hr />
+        <hr className="my-6" />
         <h3 className="text-xl font-medium text-gray-100">Related Projects</h3>
         <RelatedProjectForm
           callback={(data) => {
@@ -227,20 +251,35 @@ export const AdminProjectDetails = () => {
             labelColor="light"
             label="Delete Project"
             className="w-full md:w-1/3"
+            onClick={() => setIsDeleteProjectModalOpen(true)}
           />
           <Button
             variant="secondary"
             labelColor="light"
             label="Edit Project"
             className="w-full md:w-1/3"
+            onClick={() => setIsUpdateProjectModalOpen(true)}
           />
           <Button
             variant="dark"
             label="View Project"
             className="w-full md:w-1/3"
+            onClick={() => navigate(`/project/${projectId}`)}
           />
         </div>
       </PageWrapper>
+      <UpdateProjectModal
+        callback={() => {
+          getProject();
+        }}
+        isOpen={isUpdateProjectModalOpen}
+        onClose={() => setIsUpdateProjectModalOpen(false)}
+        project={project!}
+      />
+      <DeleteProjectModal
+        isOpen={isDeleteProjectModalOpen}
+        onClose={() => setIsDeleteProjectModalOpen(false)}
+      />
     </div>
   );
 };

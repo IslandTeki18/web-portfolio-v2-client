@@ -17,7 +17,7 @@ type RelatedProject = {
 };
 
 type Project = {
-  _id: string;
+  _id?: string;
   title: string;
   description: string;
   designer?: string;
