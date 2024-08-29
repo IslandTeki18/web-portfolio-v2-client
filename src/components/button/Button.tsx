@@ -16,7 +16,7 @@ export const Button = (props: ButtonProps) => {
   function setButtonType(type: string) {
     switch (type) {
       case "dark":
-        return "bg-dark hover:bg-dark/70 focus-visible:outline-slate-600 border border-white";
+        return "bg-dark hover:bg-gray-800 focus-visible:outline-slate-600 border border-white";
       case "primary":
         return "bg-primary-500 hover:bg-primary-400 focus-visible:outline-primary-600";
       case "secondary":

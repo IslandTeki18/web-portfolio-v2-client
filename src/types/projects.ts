@@ -1,5 +1,5 @@
 type ProjectFeedback = {
-  id: string;
+  _id: string;
   title: string;
   description: string;
   createdAt?: string | Date;
@@ -7,7 +7,7 @@ type ProjectFeedback = {
 };
 
 type RelatedProject = {
-  id: string;
+  _id: string;
   title: string;
   projectType: string;
   link: string;

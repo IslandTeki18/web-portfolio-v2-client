@@ -16,9 +16,8 @@ import axios from "axios";
 import { API_URL, NODE_ENV, DEV_API_URL } from "~src/config";
 import { useAuthContext } from "~src/hooks";
 
-// TODO: Handle Edit and Delete functionality for Developer Feedback and Related Projects
 // TODO: Implement Edit and Delete functionality for the Project itself
-// TODO: Implement API call for Developer Feedback and Related Projects
+// TODO: Implement Developer Feedback and Related Projects Edit functionality
 
 const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
 
@@ -67,6 +66,20 @@ export const AdminProjectDetails = () => {
     }
   }
 
+  async function deleteDeveloperFeedback(feedbackId: string) {
+    try {
+      await axios.delete(`${URL}/projects/${projectId}/${feedbackId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      getProject();
+    } catch (error) {
+      setError(error);
+    }
+  }
+
   async function sendRelatedProject(data: {
     title: string;
     link: string;
@@ -74,6 +87,20 @@ export const AdminProjectDetails = () => {
   }) {
     try {
       await axios.post(`${URL}/projects/${projectId}/related`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      getProject();
+    } catch (error) {
+      setError(error);
+    }
+  }
+
+  async function deleteRelatedProject(relProject: string) {
+    try {
+      await axios.delete(`${URL}/projects/${projectId}/${relProject}/remove`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
@@ -234,6 +261,15 @@ export const AdminProjectDetails = () => {
                     {feedback.description}
                   </p>
                 </div>
+                <div className="flex justify-end gap-4 mt-4">
+                  <Button label="Edit" variant="secondary" labelColor="light" />
+                  <Button
+                    label="Delete"
+                    variant="danger"
+                    labelColor="light"
+                    onClick={() => deleteDeveloperFeedback(feedback._id)}
+                  />
+                </div>
               </div>
             ))}
           </div>
@@ -274,9 +310,21 @@ export const AdminProjectDetails = () => {
                 </div>
                 <div className="flex justify-between items-center">
                   <p className="text-gray-300">Link</p>
-                  <Link to={project.link} className="text-gray-100 hover:underline">
+                  <Link
+                    to={project.link}
+                    className="text-gray-100 hover:underline"
+                  >
                     {project.link}
                   </Link>
+                </div>
+                <div className="flex justify-end gap-4 mt-4">
+                  <Button label="Edit" variant="secondary" labelColor="light" />
+                  <Button
+                    label="Delete"
+                    variant="danger"
+                    labelColor="light"
+                    onClick={() => deleteRelatedProject(project._id)}
+                  />
                 </div>
               </div>
             ))}
