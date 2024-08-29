@@ -8,9 +8,8 @@ import {
   Toggle,
   Button,
 } from "~src/components";
-import { Project, ProjectFormData } from "~src/types/projects";
+import { Project } from "~src/types/projects";
 import { DEV_API_URL, NODE_ENV, API_URL } from "~src/config";
-import { useMutation } from "../../hooks/useMutation";
 import axios from "axios";
 import { useAuthContext } from "~src/hooks";
 
@@ -130,7 +129,6 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
       }
     });
 
-    // Create project
     await createProject(form);
     props.onClose();
   }
