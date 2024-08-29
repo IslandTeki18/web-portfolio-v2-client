@@ -132,6 +132,7 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
 
     // Create project
     await createProject(form);
+    props.onClose();
   }
 
   return (
@@ -139,7 +140,7 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
       isOpen={props.isOpen}
       onClose={props.onClose}
       variant="dark"
-      isFullWidth
+      className="max-w-2xl w-full"
     >
       <div className="flex flex-col gap-4">
         <span className="text-2xl font-semibold">Create New Project</span>

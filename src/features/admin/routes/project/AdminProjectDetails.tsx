@@ -66,6 +66,20 @@ export const AdminProjectDetails = () => {
     }
   }
 
+  async function deleteProject() {
+    try {
+      await axios.delete(`${URL}/projects/${projectId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      navigate("/admin/projects");
+    } catch (error) {
+      setError(error);
+    }
+  }
+
   async function deleteDeveloperFeedback(feedbackId: string) {
     try {
       await axios.delete(`${URL}/projects/${projectId}/${feedbackId}`, {
@@ -367,6 +381,7 @@ export const AdminProjectDetails = () => {
       <DeleteProjectModal
         isOpen={isDeleteProjectModalOpen}
         onClose={() => setIsDeleteProjectModalOpen(false)}
+        onDeleteClick={() => deleteProject()}
       />
     </div>
   );
