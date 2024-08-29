@@ -14,6 +14,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { formatNumberWithCommas } from "~src/utils";
 import axios from "axios";
 import { API_URL, NODE_ENV, DEV_API_URL } from "~src/config";
+import { useAuthContext } from "~src/hooks";
 
 // TODO: Handle Edit and Delete functionality for Developer Feedback and Related Projects
 // TODO: Implement Edit and Delete functionality for the Project itself
@@ -23,6 +24,7 @@ const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
 
 export const AdminProjectDetails = () => {
   const navigate = useNavigate();
+  const { user } = useAuthContext();
   const { projectId } = useParams();
 
   const [isUpdateProjectModalOpen, setIsUpdateProjectModalOpen] =
@@ -45,6 +47,41 @@ export const AdminProjectDetails = () => {
     } catch (error) {
       setError(error);
       setLoading(false);
+    }
+  }
+
+  async function sendDeveloperFeedback(data: {
+    title: string;
+    description: string;
+  }) {
+    try {
+      await axios.post(`${URL}/projects/${projectId}/feedback`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      getProject();
+    } catch (error) {
+      setError(error);
+    }
+  }
+
+  async function sendRelatedProject(data: {
+    title: string;
+    link: string;
+    projectType: string;
+  }) {
+    try {
+      await axios.post(`${URL}/projects/${projectId}/related`, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.token}`,
+        },
+      });
+      getProject();
+    } catch (error) {
+      setError(error);
     }
   }
 
@@ -169,7 +206,7 @@ export const AdminProjectDetails = () => {
         </h3>
         <DevFeedbackForm
           callback={(data) => {
-            console.log(data);
+            sendDeveloperFeedback(data);
           }}
         />
         {project?.developerFeedback.length !== 0 ? (
@@ -207,7 +244,7 @@ export const AdminProjectDetails = () => {
         <h3 className="text-xl font-medium text-gray-100">Related Projects</h3>
         <RelatedProjectForm
           callback={(data) => {
-            console.log(data);
+            sendRelatedProject(data);
           }}
         />
         {project?.relatedProjects.length !== 0 ? (
@@ -235,9 +272,12 @@ export const AdminProjectDetails = () => {
                   <p className="text-gray-300">Project Type</p>
                   <p className="text-gray-100">{project.projectType}</p>
                 </div>
-                <Link to={project.link} className="text-gray-100">
-                  Link: {project.link}
-                </Link>
+                <div className="flex justify-between items-center">
+                  <p className="text-gray-300">Link</p>
+                  <Link to={project.link} className="text-gray-100 hover:underline">
+                    {project.link}
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
