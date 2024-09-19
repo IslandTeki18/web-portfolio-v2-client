@@ -19,8 +19,8 @@ import { PlusIcon } from "@heroicons/react/20/solid";
 // @ts-ignore
 import profileImage from "~src/features/home/assets/Me.jpeg";
 import { NavLink } from "react-router-dom";
-import { useLogout } from "../hooks/useLogout";
 import { CreateProjectModal } from "./modals";
+import { useAuthContext } from "~src/hooks";
 
 const user = {
   name: "Admin Landon",
@@ -32,7 +32,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
-  const { logout } = useLogout();
+  const { logout } = useAuthContext();
   const [navigation, setNavigation] = useState([
     { name: "Projects", href: "/admin/projects", current: true },
     { name: "Blogs", href: "/admin/blogs", current: false },

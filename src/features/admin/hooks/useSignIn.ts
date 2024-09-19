@@ -6,7 +6,7 @@ import { loginUser } from "../api/loginUser";
 export const useSignIn = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { dispatch } = useAuthContext();
+  const { login } = useAuthContext();
   const navigate = useNavigate();
 
   const signIn = async (username: string, password: string) => {
@@ -14,9 +14,10 @@ export const useSignIn = () => {
     if (error !== "") setError("");
     try {
       const res = await loginUser(username, password);
-      localStorage.setItem("userInfo", JSON.stringify(res.data));
-      dispatch({ type: "LOGIN", payload: res.data });
-      navigate("/admin/projects");
+      if (res.data) {
+        login(res.data);
+        navigate("/admin/projects");
+      }
     } catch (error) {
       console.error("Error signing in: ", error.message);
       if (error.response) {
