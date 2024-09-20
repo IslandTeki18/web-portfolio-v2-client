@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 type Props = {
   title: string;
   status: string;
-  date: string;
+  date: string | Date;
 };
 
 export const ProjectDetailsHeader = (props: Props) => {
@@ -21,10 +21,10 @@ export const ProjectDetailsHeader = (props: Props) => {
       case "Live":
         return "text-success-500";
       case "In Development":
-        return "text-warning-500";
+        return "text-red-500";
       case "Not Live":
       case "Under Construction":
-        return "text-danger-500";
+        return "text-red-500";
       default:
         return "white";
     }
@@ -35,7 +35,7 @@ export const ProjectDetailsHeader = (props: Props) => {
       className={`bg-dark md:max-h-[961px] h-fit px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
     >
       <div className="text-white border-2 flex flex-col border-white p-2 md:p-8">
-        <div className="flex justify-end md:justify-start order-2 lg:order-1">
+        <div className="flex justify-end  order-2 md:order-1">
           <Button
             variant="secondary"
             label="Back to Projects"
@@ -50,7 +50,7 @@ export const ProjectDetailsHeader = (props: Props) => {
           <span
             className={`${renderStatusColor(
               props.status
-            )} md:text-2xl uppercase`}
+            )} md:text-2xl uppercase font-semibold tracking-wider`}
           >
             {props.status}
           </span>

@@ -1,28 +1,49 @@
 import * as React from "react";
-import { SectionWrapper } from "~src/components";
-import { ProjectCard } from "../projectCard";
-import { formatDate } from "~src/utils";
-import { Project } from "../../types";
-import { useRecoilValue } from "recoil";
-import { projectListState } from "~src/stores";
+import { SectionWrapper, WheelSpinner } from "~src/components";
+import { ProjectImageCard } from "../projectImageCard";
+import { useFetch } from "~src/hooks";
 
+// @ts-ignore
+import noProjectImage from "~src/features/projects/assets/noImage2.png?as=webp";
 
 export const ProjectListSection = () => {
-  const projects: Project[] = useRecoilValue(projectListState);
+  const { data: projects, loading, error } = useFetch("/projects");
 
   function renderProjects() {
+
     if (!Array.isArray(projects)) return;
     return projects.map((project) => (
-      <ProjectCard
+      <ProjectImageCard
         key={project._id}
         id={project._id}
         title={project.title}
         projectDescription={project.description}
         projectType={project.applicationType}
-        date={formatDate(project.createdAt, "en-US")}
+        projectImage={project.images[0] || noProjectImage}
+        createdAt={project.createdAt}
       />
     ));
   }
+
+  if (loading) {
+    return (
+      <div className="h-screen w-full bg-gray-1000">
+        <div className="flex justify-center pt-8">
+          <WheelSpinner size="lg" color="blue" />
+        </div>
+      </div>
+    );
+  }
+
+   if (error) {
+     return (
+       <div className="h-screen w-full bg-gray-1000">
+         <div className="flex justify-center pt-8">
+           <p className="text-white">Error: {error.message}</p>
+         </div>
+       </div>
+     );
+   }
 
   return (
     <SectionWrapper title="My Projects">

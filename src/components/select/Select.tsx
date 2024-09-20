@@ -1,40 +1,71 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
 
-type SelectProps = {
-  items: any[];
-  onSelection: (val: any) => void;
+type LabelSelectProps = {
+  optionItems: OptionItems[];
+  name?: string;
+  id?: string;
+  placeholder?: string;
+  hasLabel?: boolean;
+  hasError?: boolean;
+  labelText?: string;
+  onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+  hasRequiredIndicator?: boolean;
   value: string;
+  variant?: "light" | "dark";
 };
 
-export const Select = (props: SelectProps) => {
-  const [items, setItems] = useState<any[]>(props.items);
-  const [selectedItem, setSelectedItem] = useState<string>(props.value);
+type OptionItems = {
+  value: string;
+  label: string;
+};
 
-  useEffect(() => {
-    props.onSelection(selectedItem);
-  }, [selectedItem]);
-
-  function renderMenuItems() {
-    return items.map((item) => (
-      <option key={item.value} value={item.value}>
-        {item.name}
-      </option>
-    ));
+export const Select = (props: LabelSelectProps) => {
+  function renderOptions() {
+    return props.optionItems.map((item) => {
+      return (
+        <option key={item.value} value={item.value}>
+          {item.label}
+        </option>
+      );
+    });
   }
+
   return (
-    <div>
+    <div className="w-full">
+      {props.hasLabel && (
+        <label
+          htmlFor={`${props.name}Input`}
+          className={`block text-sm font-medium leading-6 ${
+            props.variant === "dark" ? "text-white" : "text-dark"
+          }`}
+        >
+          {props.labelText}
+          {props.hasRequiredIndicator && (
+            <span className="text-red-600">*</span>
+          )}
+        </label>
+      )}
       <select
-        id="location"
-        name="location"
-        className="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
+        id={`${props.name}Input`}
+        name={props.name}
+        className={`mt-2 block w-full border py-2 pl-3 pr-10 
+          ring-1 ring-white ring-inset focus:ring-2 focus:ring-accent/70 sm:text-sm sm:leading-6
+          ${
+            props.variant === "dark"
+              ? "bg-dark text-white"
+              : "bg-white text-dark"
+          } 
+          `}
         value={props.value}
-        onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-          setSelectedItem(e.target.value)
-        }
+        defaultValue={props.placeholder}
+        onChange={props.onChange}
       >
-        {renderMenuItems()}
+        <option>{props.placeholder || "Select Option..."}</option>
+        {renderOptions()}
       </select>
+      {props.hasError && (
+        <p className="text-red-500 text-sm mt-2">This field is required</p>
+      )}
     </div>
   );
 };

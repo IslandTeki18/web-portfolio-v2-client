@@ -1,12 +1,12 @@
 import * as React from "react";
-import { RecoilRoot } from "recoil";
 import "animate.css";
 import { AppRoutes } from "./routes/index";
+import { AuthProvider } from "./providers";
 
 export function App() {
   return (
-    <RecoilRoot>
+    <AuthProvider>
       <AppRoutes />
-    </RecoilRoot>
+    </AuthProvider>
   );
 }

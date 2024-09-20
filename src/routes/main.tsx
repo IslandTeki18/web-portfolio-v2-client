@@ -2,17 +2,22 @@ import * as React from "react";
 import {
   Home,
   NotFound,
-  ServiceDetails,
-  ServiceList,
   BlogDetails,
   BlogList,
   About,
   Contact,
   Resume,
-  Login,
   ProjectList,
   ProjectDetails,
 } from "~/src/features";
+import {
+  Login,
+  AdminProjectList,
+  AdminProjectDetails,
+  AdminBlogList,
+  AdminBlogDetails,
+} from "~src/features/admin";
+import { ProtectedRoute } from "./ProtectedRoute";
 
 export const mainRoutes = [
   {
@@ -49,16 +54,24 @@ export const mainRoutes = [
     element: <Resume />,
   },
   {
-    path: "/services",
-    element: <ServiceList />,
-  },
-  {
-    path: "/service/:id",
-    element: <ServiceDetails />,
-  },
-  {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/admin/projects",
+    element: <ProtectedRoute element={<AdminProjectList />} />,
+  },
+  {
+    path: "/admin/projects/:projectId",
+    element: <ProtectedRoute element={<AdminProjectDetails />} />,
+  },
+  {
+    path: "/admin/blogs",
+    element: <ProtectedRoute element={<AdminBlogList />} />,
+  },
+  {
+    path: "/admin/blogs/:blogId",
+    element: <ProtectedRoute element={<AdminBlogDetails />} />,
   },
   {
     path: "*",
