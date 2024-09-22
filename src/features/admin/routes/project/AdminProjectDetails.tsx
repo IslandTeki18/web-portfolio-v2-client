@@ -40,7 +40,7 @@ export const AdminProjectDetails = () => {
 
   async function getProject() {
     try {
-      const res = await axios.get(`${URL}/projects/${projectId}`);
+      const res = await axios.get(`${URL}projects/${projectId}`);
       setProject(res.data);
       setLoading(false);
     } catch (error) {
