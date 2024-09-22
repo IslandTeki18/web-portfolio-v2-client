@@ -201,7 +201,7 @@ export const UpdateProjectModal = (props: UpdateProjectModalProps) => {
           />
           <Input
             id="Project"
-            name="ProjectUrl"
+            name="projectUrl"
             type="text"
             placeholder="Project..."
             hasLabel
