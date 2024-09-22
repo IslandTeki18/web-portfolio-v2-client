@@ -7,7 +7,7 @@ import { useFetch } from "~src/hooks";
 import noProjectImage from "~src/features/projects/assets/noImage2.png?as=webp";
 
 export const ProjectListSection = () => {
-  const { data: projects, loading, error } = useFetch("/projects");
+  const { data: projects, loading, error } = useFetch("projects");
 
   function renderProjects() {
 

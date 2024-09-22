@@ -6,7 +6,7 @@ import { WheelSpinner } from "~src/components";
 import { Project } from "~src/types/projects";
 
 export const AdminProjectList = () => {
-  const { data: projects, loading, error } = useFetch<Project[]>("/projects");
+  const { data: projects, loading, error } = useFetch<Project[]>("projects");
 
   if (loading) {
     return (

@@ -16,7 +16,7 @@ export const ProjectDetails = () => {
     data: project,
     loading,
     error,
-  } = useFetch<Project>(`/projects/${projectId}`);
+  } = useFetch<Project>(`projects/${projectId}`);
 
   if (loading) {
     return (

@@ -7,7 +7,7 @@ import { useFetch } from "~src/hooks";
 import noProjectImage from "~src/features/projects/assets/noImage2.png?as=webp";
 
 export const ProjectLimitSection = () => {
-  const { data: projects, loading, error } = useFetch("/projects/limited");
+  const { data: projects, loading, error } = useFetch("projects/limited");
 
   function renderProjects() {
     if (loading) return <p className="text-white">Loading...</p>;
