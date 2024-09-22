@@ -9,7 +9,7 @@ import {
   Button,
 } from "~src/components";
 import { Project } from "~src/types/projects";
-import { DEV_API_URL, NODE_ENV, API_URL } from "~src/config";
+import { DEVELOPMENT_URL, NODE_ENV, PRODUCTION_URL } from "~src/config";
 import axios from "axios";
 import { useAuthContext } from "~src/hooks";
 
@@ -39,7 +39,7 @@ const statusOptions = [
   { value: "Remodeling", label: "Remodeling" },
 ];
 
-const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
+const URL = NODE_ENV === "development" ? DEVELOPMENT_URL : PRODUCTION_URL;
 
 export const CreateProjectModal = (props: CreateProjectModalProps) => {
   const { user } = useAuthContext();

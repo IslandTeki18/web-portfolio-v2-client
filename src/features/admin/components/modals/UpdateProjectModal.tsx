@@ -5,7 +5,7 @@ import { Project } from "~src/types/projects";
 import { Input, Textarea, Select, Toggle, Button } from "~src/components";
 import { useAuthContext } from "~src/hooks";
 import axios from "axios";
-import { DEV_API_URL, NODE_ENV, API_URL } from "~src/config";
+import { DEVELOPMENT_URL, NODE_ENV, PRODUCTION_URL } from "~src/config";
 
 type UpdateProjectModalProps = {
   isOpen: boolean;
@@ -35,7 +35,7 @@ const statusOptions = [
   { value: "Remodeling", label: "Remodeling" },
 ];
 
-const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
+const URL = NODE_ENV === "development" ? DEVELOPMENT_URL : PRODUCTION_URL;
 
 export const UpdateProjectModal = (props: UpdateProjectModalProps) => {
   const { user } = useAuthContext();

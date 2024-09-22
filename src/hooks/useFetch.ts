@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_URL, NODE_ENV, DEV_API_URL } from "~src/config";
+import { PRODUCTION_URL, NODE_ENV, DEVELOPMENT_URL } from "~src/config";
 
 interface FetchState<T> {
   data: T | null;
@@ -7,7 +7,7 @@ interface FetchState<T> {
   error: Error | null;
 }
 
-const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
+const URL = NODE_ENV === "development" ? DEVELOPMENT_URL : PRODUCTION_URL;
 
 const useFetch = <T>(url: string): FetchState<T> => {
   const [data, setData] = useState<T | null>(null);

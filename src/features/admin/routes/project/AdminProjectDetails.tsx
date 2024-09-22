@@ -13,13 +13,13 @@ import { Button, WheelSpinner } from "~src/components";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { formatNumberWithCommas } from "~src/utils";
 import axios from "axios";
-import { API_URL, NODE_ENV, DEV_API_URL } from "~src/config";
+import { PRODUCTION_URL, NODE_ENV, DEVELOPMENT_URL } from "~src/config";
 import { useAuthContext } from "~src/hooks";
 
 // TODO: Implement Edit and Delete functionality for the Project itself
 // TODO: Implement Developer Feedback and Related Projects Edit functionality
 
-const URL = NODE_ENV === "development" ? DEV_API_URL : API_URL;
+const URL = NODE_ENV === "development" ? DEVELOPMENT_URL : PRODUCTION_URL;
 
 export const AdminProjectDetails = () => {
   const navigate = useNavigate();
