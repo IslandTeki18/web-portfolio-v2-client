@@ -66,13 +66,13 @@ export const UpdateProjectModal = (props: UpdateProjectModalProps) => {
       setProject((prev) => ({ ...prev, images: Array.from(files) }));
     }
   }
-
   async function updateProject(data: any) {
+    if (!user) return;
     try {
-      await axios.put(`${URL}/projects/${project._id}`, data, {
+      await axios.put(`${URL}projects/${project._id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${user?.token}`,
+          Authorization: `Bearer ${user.token}`,
         },
       });
     } catch (error) {

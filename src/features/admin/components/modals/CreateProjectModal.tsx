@@ -88,7 +88,7 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
 
   async function createProject(data: any) {
     try {
-      await axios.post(`${URL}/projects`, data, {
+      await axios.post(`${URL}projects`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${user?.token}`,

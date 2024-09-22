@@ -70,7 +70,7 @@ export const AdminProjectDetails = () => {
   async function deleteProject() {
     if (!user) return;
     try {
-      await axios.delete(`${URL}/projects/${projectId}`, {
+      await axios.delete(`${URL}projects/${projectId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
