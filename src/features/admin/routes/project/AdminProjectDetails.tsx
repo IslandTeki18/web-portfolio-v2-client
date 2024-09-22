@@ -53,8 +53,9 @@ export const AdminProjectDetails = () => {
     title: string;
     description: string;
   }) {
+    if (!user) return;
     try {
-      await axios.post(`${URL}/projects/${projectId}/feedback`, data, {
+      await axios.post(`${URL}projects/${projectId}/feedback`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
@@ -67,6 +68,7 @@ export const AdminProjectDetails = () => {
   }
 
   async function deleteProject() {
+    if (!user) return;
     try {
       await axios.delete(`${URL}/projects/${projectId}`, {
         headers: {
@@ -81,8 +83,9 @@ export const AdminProjectDetails = () => {
   }
 
   async function deleteDeveloperFeedback(feedbackId: string) {
+    if (!user) return;
     try {
-      await axios.delete(`${URL}/projects/${projectId}/${feedbackId}`, {
+      await axios.delete(`${URL}projects/${projectId}/${feedbackId}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
@@ -99,8 +102,9 @@ export const AdminProjectDetails = () => {
     link: string;
     projectType: string;
   }) {
+    if (!user) return;
     try {
-      await axios.post(`${URL}/projects/${projectId}/related`, data, {
+      await axios.post(`${URL}projects/${projectId}/related`, data, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
@@ -113,8 +117,9 @@ export const AdminProjectDetails = () => {
   }
 
   async function deleteRelatedProject(relProject: string) {
+    if (!user) return;
     try {
-      await axios.delete(`${URL}/projects/${projectId}/${relProject}/remove`, {
+      await axios.delete(`${URL}projects/${projectId}/${relProject}/remove`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${user.token}`,
