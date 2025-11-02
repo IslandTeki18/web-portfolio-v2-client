@@ -1,23 +1,13 @@
 import * as React from "react";
 import { SectionWrapper } from "~src/components";
-import { BIO, BIO_POINTS, BIO_SOCIAL } from "../../utils/defaults";
+import { BIO, BIO_SOCIAL } from "../../utils/defaults";
 //@ts-ignore
 import familyImage from "../../assets/family.jpg"
 
 type AboutMeSectionProps = {};
 
 export const AboutMeSection = (props: AboutMeSectionProps) => {
-  function renderBioPoints() {
-    return BIO_POINTS.map((bio, idx) => (
-      <div className="flex flex-col md:flex-row gap-2 w-full md:w-1/2" key={idx}>
-        <div className="flex items-center gap-2">
-          <i className="fa-solid fa-circle-chevron-right" />
-          <span className="uppercase font-semibold text-white/80">{bio.title}:</span>
-        </div>
-        <span className="lg:text-ellipsis overflow-hidden text-white" title={bio.value}>{bio.value}</span>
-      </div>
-    ));
-  }
+  
 
   function renderSocialIcons() {
     return BIO_SOCIAL.map((social, idx) => (
@@ -40,7 +30,6 @@ export const AboutMeSection = (props: AboutMeSectionProps) => {
             Landon McKell
           </span>
           <span className="text-base">{BIO}</span>
-          <div className="flex flex-wrap gap-y-4 mb-6">{renderBioPoints()}</div>
           <div className="flex justify-between items-center">
             {renderSocialIcons()}
           </div>

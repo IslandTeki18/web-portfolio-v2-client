@@ -1,7 +1,6 @@
 import * as React from "react";
 import { MainNavbar, Footer, ScrollToTop, WheelSpinner } from "~src/components";
 import {
-  ProjectActivitySection,
   ProjectDetailsHeader,
   ProjectDetailsSection,
   ProjectOverviewSection,
@@ -75,15 +74,7 @@ export const ProjectDetails = () => {
           projectURL={project?.projectUrl}
         />
       </section>
-      <section
-        id="project-activity-section"
-        className="pt-4 pb-6 animate__animated animate__fadeInLeft"
-      >
-        <ProjectActivitySection
-          developerFeedback={project?.developerFeedback}
-          relatedProjects={project?.relatedProjects}
-        />
-      </section>
+     
       <Footer />
     </>
   );

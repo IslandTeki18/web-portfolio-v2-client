@@ -20,7 +20,6 @@ export const MainNavbar = (props: MainNavBarProps) => {
     { name: "Projects", path: "/projects", current: props.projects },
     { name: "About", path: "/about", current: props.about },
     { name: "Resume", path: "/resume", current: props.resume },
-    { name: "Contact", path: "/contact", current: props.contact },
   ];
 
   return (

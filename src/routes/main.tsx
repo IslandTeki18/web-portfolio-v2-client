@@ -5,7 +5,6 @@ import {
   BlogDetails,
   BlogList,
   About,
-  Contact,
   Resume,
   ProjectList,
   ProjectDetails,
@@ -36,10 +35,6 @@ export const mainRoutes = [
   {
     path: "/blog/:id",
     element: <BlogDetails />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
   },
   {
     path: "/projects",
