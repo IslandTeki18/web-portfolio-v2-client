@@ -7,7 +7,7 @@ import familyImage from "../../assets/family.jpg"
 type AboutMeSectionProps = {};
 
 export const AboutMeSection = (props: AboutMeSectionProps) => {
-  
+
 
   function renderSocialIcons() {
     return BIO_SOCIAL.map((social, idx) => (
@@ -24,19 +24,21 @@ export const AboutMeSection = (props: AboutMeSectionProps) => {
   }
   return (
     <SectionWrapper title="About Me">
-      <div className="flex flex-wrap md:flex-nowrap gap-4 mt-4 text-white">
-        <div className="border border-white p-8 flex flex-col gap-4 w-full lg:w-6/10 animate__animated animate__fadeInLeft">
-          <span className="font-semibold text-2xl uppercase">
-            Landon McKell
-          </span>
-          <span className="text-base">{BIO}</span>
-          <div className="flex justify-between items-center">
-            {renderSocialIcons()}
+      <div className="flex flex-wrap md:flex-nowrap gap-4 mt-4">
+        <div className="card bg-base-100 border border-base-content w-full lg:w-6/10 animate__animated animate__fadeInLeft">
+          <div className="card-body flex flex-col gap-4">
+            <span className="font-semibold text-2xl uppercase">
+              Landon McKell
+            </span>
+            <span className="text-base">{BIO}</span>
+            <div className="flex justify-between items-center">
+              {renderSocialIcons()}
+            </div>
           </div>
         </div>
-        <div className="border border-white hidden lg:flex lg:w-4/10 animate__animated animate__fadeInRight">
+        <div className="card bg-base-100 border border-base-content hidden lg:flex lg:w-4/10 animate__animated animate__fadeInRight overflow-hidden p-0">
           <img
-            className="object-cover"
+            className="object-cover w-full h-full"
             src={familyImage}
             alt="family"
           />

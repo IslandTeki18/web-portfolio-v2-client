@@ -10,8 +10,8 @@ export const ProjectLimitSection = () => {
   const { data: projects, loading, error } = useFetch("projects/limited");
 
   function renderProjects() {
-    if (loading) return <p className="text-white">Loading...</p>;
-    if (error) return <p className="text-white">Error: {error.message}</p>;
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error.message}</p>;
     if (!Array.isArray(projects)) return;
 
     return projects.map((project) => (

@@ -13,9 +13,9 @@ export const ProjectActivitySection = (props: Props) => {
     return props.developerFeedback.map((item) => (
       <div
         key={item._id}
-        className="flex flex-col border-l border-white pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-white before:border-2 before:border-white"
+        className="flex flex-col border-l border-base-content pb-5 pl-8 relative before:absolute before:top-0 before:left-[-12px] before:rounded-full before:w-6 before:h-6 before:bg-base-content before:border-2 before:border-base-content"
       >
-        <span className="text-2xl text-danger-500 font-semibold tracking-wide">
+        <span className="text-2xl text-error font-semibold tracking-wide">
           {item.title}
         </span>
         <span className="mb-4">
@@ -41,28 +41,36 @@ export const ProjectActivitySection = (props: Props) => {
     ));
   }
   return (
-    <div className="flex flex-wrap lg:flex-nowrap gap-4 text-white px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
+    <div className="flex flex-wrap lg:flex-nowrap gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
       {props.developerFeedback && props.developerFeedback.length > 0 ? (
-        <div className="border border-white p-6 flex flex-col w-full lg:w-2/4 h-fit">
-          <span className="text-2xl pb-6">Recent Activity</span>
-          {renderRecentActivity()}
+        <div className="card bg-base-100 border border-base-content w-full lg:w-2/4 h-fit">
+          <div className="card-body">
+            <span className="text-2xl pb-6">Recent Activity</span>
+            {renderRecentActivity()}
+          </div>
         </div>
       ) : (
-        <div className="border border-white p-6 flex flex-col w-full lg:w-2/4 h-fit">
-          <span className="text-2xl">No Developer Feedback</span>
+        <div className="card bg-base-100 border border-base-content w-full lg:w-2/4 h-fit">
+          <div className="card-body">
+            <span className="text-2xl">No Developer Feedback</span>
+          </div>
         </div>
       )}
       {props.relatedProjects && props.relatedProjects.length > 0 ? (
         <div className="flex flex-col w-full lg:w-2/4">
-          <div className="border border-white p-6 mb-4">
-            <span className="text-2xl">Related Projects</span>
+          <div className="card bg-base-100 border border-base-content mb-4">
+            <div className="card-body">
+              <span className="text-2xl">Related Projects</span>
+            </div>
           </div>
           {renderProjectCards()}
         </div>
       ) : (
         <div className="flex flex-col w-full lg:w-2/4">
-          <div className="border border-white p-6 mb-4">
-            <span className="text-2xl">No Related Projects</span>
+          <div className="card bg-base-100 border border-base-content mb-4">
+            <div className="card-body">
+              <span className="text-2xl">No Related Projects</span>
+            </div>
           </div>
         </div>
       )}

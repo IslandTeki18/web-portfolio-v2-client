@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { SectionWrapper, Textarea, Form, Modal } from "~src/components";
+import { SectionWrapper, Textarea, Form, Modal, Button } from "~src/components";
 import { Input } from "~src/components";
 import { Dialog } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
@@ -19,7 +19,8 @@ export const ContactFormSection = (props: Props) => {
   function onChangeHandler(e: any) {
     setContactObj((prev) => {
       return {
-        ...prev,
+        ...
+prev,
         [e.target.name]: e.target.value,
       };
     });
@@ -49,40 +50,42 @@ export const ContactFormSection = (props: Props) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
         <div
           id="social-links"
-          className="flex flex-col justify-between border border-white text-white p-6"
+          className="card bg-base-100 border border-base-content"
         >
-          <span className="text-2xl font-bold tracking-wide uppercase">
-            Let's build something great together
-          </span>
-          <div className="flex flex-col gap-4 justify-evenly">
-            <a
-              href="https://www.instagram.com/landon.mckell/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="text-base uppercase">Instagram</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/landon-mckell/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="text-base uppercase">Linkedin</span>
-            </a>
-            <a
-              href="https://twitter.com/MckellLandon"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="text-base uppercase">Twitter</span>
-            </a>
-            <a
-              href="https://github.com/IslandTeki18"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="text-base uppercase">Github</span>
-            </a>
+          <div className="card-body flex flex-col justify-between">
+            <span className="text-2xl font-bold tracking-wide uppercase">
+              Let's build something great together
+            </span>
+            <div className="flex flex-col gap-4 justify-evenly">
+              <a
+                href="https://www.instagram.com/landon.mckell/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-base uppercase">Instagram</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/landon-mckell/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-base uppercase">Linkedin</span>
+              </a>
+              <a
+                href="https://twitter.com/MckellLandon"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-base uppercase">Twitter</span>
+              </a>
+              <a
+                href="https://github.com/IslandTeki18"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="text-base uppercase">Github</span>
+              </a>
+            </div>
           </div>
         </div>
         <Form onSubmit={onSubmitHandler}>
@@ -118,13 +121,13 @@ export const ContactFormSection = (props: Props) => {
               name="message"
               onChange={onChangeHandler}
             />
-            <button
-              disabled={isFormFilledOut()}
+            <Button
+              label="send"
               type="submit"
-              className="border border-white py-2 uppercase text-white w-2/6 hover:bg-white hover:text-dark disabled:opacity-25 disabled:cursor-not-allowed"
-            >
-              send
-            </button>
+              isDisabled={isFormFilledOut()}
+              variant="neutral"
+              className="uppercase w-2/6"
+            />
           </div>
         </Form>
       </div>
@@ -139,7 +142,7 @@ export const ContactFormSection = (props: Props) => {
           <div className="mt-3 text-center sm:mt-5">
             <Dialog.Title
               as="h3"
-              className="text-base font-semibold leading-6 text-gray-900"
+              className="text-base font-semibold leading-6"
             >
               Message Successfully Sent!
             </Dialog.Title>

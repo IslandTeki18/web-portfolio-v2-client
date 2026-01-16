@@ -4,7 +4,7 @@ import { useState } from "react";
 import resumeOne from "../../assets/Resume01.jpg";
 //@ts-ignore
 import resumeTwo from "../../assets/Resume02.jpg";
-import { Modal } from "~src/components";
+import { Modal, Button } from "~src/components";
 import { Dialog } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
 
@@ -30,28 +30,33 @@ export const ResumeHeader = (props: Props) => {
     }, 15000)
   }
   return (
-    <div className="border border-white p-6 flex flex-col gap-8 text-white">
-      <div className="flex justify-between flex-col sm:flex-row items-start sm:items-center">
-        <span className="text-3xl font-bold uppercase">resume</span>
-        <button onClick={downloadMultipleImages} className="border border-white px-6 py-2 mt-4 sm:mt-0">
-          Download CSV
-        </button>
+    <div className="card bg-base-100 border border-base-content">
+      <div className="card-body flex flex-col gap-8">
+        <div className="flex justify-between flex-col sm:flex-row items-start sm:items-center">
+          <span className="text-3xl font-bold uppercase">resume</span>
+          <Button
+            label="Download CSV"
+            onClick={downloadMultipleImages}
+            variant="neutral"
+            className="mt-4 sm:mt-0"
+          />
+        </div>
+        <span className="text-base">
+          I worked primarily in the web development space. I love woodworking,
+          football, video games, working out, and making fun things for my family
+          and with my family. I love what I do I want to be able to grow even more
+          in all my areas of interest.
+        </span>
       </div>
-      <span className="text-base">
-        I worked primarily in the web development space. I love woodworking,
-        football, video games, working out, and making fun things for my family
-        and with my family. I love what I do I want to be able to grow even more
-        in all my areas of interest.
-      </span>
       <Modal isOpen={openModal} onClose={() => setOpenModal(false)}>
-      <div>
+        <div>
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
             <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
           </div>
           <div className="mt-3 text-center sm:mt-5">
             <Dialog.Title
               as="h3"
-              className="text-base font-semibold leading-6 text-gray-900"
+              className="text-base font-semibold leading-6"
             >
               Resume Downloaded, Check your Downloads!
             </Dialog.Title>

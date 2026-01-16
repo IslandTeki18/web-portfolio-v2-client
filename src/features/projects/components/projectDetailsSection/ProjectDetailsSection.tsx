@@ -19,9 +19,9 @@ export const ProjectDetailsSection = (props: ProjectDetailsSectionProps) => {
   const [showLightBox, setShowLightBox] = useState(false);
 
   return (
-    <div className="flex flex-wrap md:flex-nowrap text-white gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
+    <div className="flex flex-wrap md:flex-nowrap gap-4 px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]">
       {props.images ? (
-        <div className="flex border border-white p-2 w-full  animate__animated animate__fadeInRight h-[400px]">
+        <div className="flex card bg-base-100 border border-base-content p-2 w-full animate__animated animate__fadeInRight h-[400px]">
           <img
             className="w-full h-full object-contain object-center opacity-95 hover:opacity-100 cursor-pointer"
             src={props.images[0] || noImage}

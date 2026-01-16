@@ -27,7 +27,7 @@ export const ProjectListSection = () => {
 
   if (loading) {
     return (
-      <div className="h-screen w-full bg-gray-1000">
+      <div className="h-screen w-full bg-base-100">
         <div className="flex justify-center pt-8">
           <WheelSpinner size="lg" color="blue" />
         </div>
@@ -37,9 +37,9 @@ export const ProjectListSection = () => {
 
    if (error) {
      return (
-       <div className="h-screen w-full bg-gray-1000">
+       <div className="h-screen w-full bg-base-100">
          <div className="flex justify-center pt-8">
-           <p className="text-white">Error: {error.message}</p>
+           <p>Error: {error.message}</p>
          </div>
        </div>
      );

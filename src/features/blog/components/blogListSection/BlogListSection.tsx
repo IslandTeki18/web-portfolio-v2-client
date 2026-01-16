@@ -1,10 +1,11 @@
 import * as React from "react";
-import { SectionWrapper } from "~src/components";
-import { Link } from "react-router-dom";
+import { SectionWrapper, Button } from "~src/components";
+import { useNavigate } from "react-router-dom";
 
 type BlogListSectionProps = {};
 
 export const BlogListSection = (props: BlogListSectionProps) => {
+  const navigate = useNavigate();
   const mockBlogList = [
     {
       id: "qojf304fuh",
@@ -26,23 +27,24 @@ export const BlogListSection = (props: BlogListSectionProps) => {
     return mockBlogList.map((blog) => (
       <div
         key={blog.id}
-        className="border border-white flex flex-col justify-between p-4 w-full md:w-1/2 min-h-[250px]"
+        className="card bg-base-100 border border-base-content w-full md:w-1/2 min-h-[250px]"
       >
-        <div className="flex flex-col">
-          <div className="flex justify-between items-baseline mb-8">
-            <span className="text-2xl font-semibold">{blog.title}</span>
-            <i className="fa-solid fa-newspaper text-3xl" />
+        <div className="card-body flex flex-col justify-between">
+          <div className="flex flex-col">
+            <div className="flex justify-between items-baseline mb-8">
+              <span className="text-2xl font-semibold">{blog.title}</span>
+              <i className="fa-solid fa-newspaper text-3xl" />
+            </div>
+            <span className="text-base mb-4">{blog.shortDesc}</span>
           </div>
-          <span className="text-base mb-4">{blog.shortDesc}</span>
-        </div>
-        <div className="flex justify-between items-baseline">
-          <Link
-            to={`/blog/${blog.id}`}
-            className="border border-white px-4 py-2"
-          >
-            Read More
-          </Link>
-          <span className="text-base">{blog.dateCreated}</span>
+          <div className="flex justify-between items-baseline">
+            <Button
+              label="Read More"
+              onClick={() => navigate(`/blog/${blog.id}`)}
+              variant="neutral"
+            />
+            <span className="text-base">{blog.dateCreated}</span>
+          </div>
         </div>
       </div>
     ));
@@ -50,7 +52,7 @@ export const BlogListSection = (props: BlogListSectionProps) => {
 
   return (
     <SectionWrapper title="My Blog">
-      <div className="flex flex-wrap md:flex-nowrap gap-4 text-white pt-8">
+      <div className="flex flex-wrap md:flex-nowrap gap-4 pt-8">
         {renderBlogCard()}
       </div>
     </SectionWrapper>
