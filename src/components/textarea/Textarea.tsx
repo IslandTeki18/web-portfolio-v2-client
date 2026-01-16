@@ -1,38 +1,38 @@
 import * as React from "react";
 
-type Props = {
-  value: any;
-  placeholder: string;
-  onChange: React.ChangeEventHandler<HTMLTextAreaElement>;
-  rows?: number;
-  cols?: number;
+type TextareaProps = {
   name?: string;
   id?: string;
-  hasLabel?: boolean;
   label?: string;
+  placeholder?: string;
+  value?: string;
+  hasLabel?: boolean;
+  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+  required?: boolean;
+  rows?: number;
+  cols?: number;
+  className?: string;
 };
 
-export const Textarea = (props: Props) => {
+export const Textarea = (props: TextareaProps) => {
   return (
-    <>
+    <div className="form-control w-full">
       {props.hasLabel && (
-        <label
-          htmlFor={props.id}
-          className="block text-sm font-medium leading-6 text-white"
-        >
-          {props.label}
+        <label htmlFor={props.id} className="label">
+          <span className="label-text">{props.label}</span>
         </label>
       )}
       <textarea
+        name={props.name}
+        className={`textarea textarea-bordered w-full ${props.className || ""}`}
         id={props.id}
-        className={` border text-white border-white bg-dark py-2 px-4`}
-        value={props.value}
+        placeholder={props.placeholder}
+        value={props.value || ""}
         onChange={props.onChange}
+        required={props.required}
         rows={props.rows || 4}
         cols={props.cols}
-        placeholder={props.placeholder}
-        name={props.name}
       />
-    </>
+    </div>
   );
 };
