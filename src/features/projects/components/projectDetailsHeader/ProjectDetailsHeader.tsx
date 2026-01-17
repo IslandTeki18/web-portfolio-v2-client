@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "~src/components";
+import { Button, TerminalWindow, CommandPrompt } from "~src/components";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
@@ -21,7 +21,7 @@ export const ProjectDetailsHeader = (props: Props) => {
       case "Live":
         return "text-success";
       case "In Development":
-        return "text-error";
+        return "text-warning";
       case "Not Live":
       case "Under Construction":
         return "text-error";
@@ -34,29 +34,30 @@ export const ProjectDetailsHeader = (props: Props) => {
     <div
       className={`md:max-h-[961px] h-fit px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
     >
-      <div className="card border-2 border-base-content">
-        <div className="card-body">
-          <div className="flex justify-end order-2 md:order-1">
-            <Button
-              variant="secondary"
-              label="Back to Projects"
-              onClick={onBackClickHandler}
-            />
-          </div>
-          <div className="flex justify-between flex-col lg:flex-row items-baseline order-1 lg:order-2 mt-0 lg:mt-4">
-            <span className="uppercase tracking-wider text-xl md:text-3xl font-black">
-              {props.title}
-            </span>
-            <span
-              className={`${renderStatusColor(
-                props.status
-              )} md:text-2xl uppercase font-semibold tracking-wider`}
-            >
-              {props.status}
-            </span>
-          </div>
+      <TerminalWindow showChrome title="~/projects/details" glowColor="purple">
+        <div className="flex justify-end mb-4">
+          <Button
+            variant="ghost"
+            label="← cd ~/projects"
+            onClick={onBackClickHandler}
+          />
         </div>
-      </div>
+        <CommandPrompt status="ready">
+          <span className="text-primary font-bold text-xl">cat project.info</span>
+        </CommandPrompt>
+        <div className="flex justify-between flex-col lg:flex-row items-baseline mt-4 pl-6">
+          <span className="text-base-content tracking-wider text-xl md:text-3xl font-bold">
+            {props.title}
+          </span>
+          <span
+            className={`${renderStatusColor(
+              props.status
+            )} md:text-xl font-semibold tracking-wider`}
+          >
+            [{props.status}]
+          </span>
+        </div>
+      </TerminalWindow>
     </div>
   );
 };

@@ -24,7 +24,13 @@ export const Textarea = (props: TextareaProps) => {
       )}
       <textarea
         name={props.name}
-        className={`textarea textarea-bordered w-full ${props.className || ""}`}
+        className={`
+          textarea textarea-bordered w-full
+          focus:ring-2 focus:ring-success focus:ring-opacity-50
+          focus:shadow-glow-green
+          transition-shadow duration-300
+          ${props.className || ""}
+        `}
         id={props.id}
         placeholder={props.placeholder}
         value={props.value || ""}

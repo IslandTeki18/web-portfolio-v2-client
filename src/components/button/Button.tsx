@@ -18,6 +18,21 @@ export const Button = (props: ButtonProps) => {
   const sizeClass = props.size ? `btn-${props.size}` : "";
   const outlineClass = props.outline ? "btn-outline" : "";
 
+  const getHoverGlow = () => {
+    if (props.outline || props.variant === "ghost") return "";
+
+    switch (props.variant) {
+      case "primary":
+        return "hover:shadow-glow-purple";
+      case "success":
+        return "hover:shadow-glow-green";
+      case "info":
+        return "hover:shadow-glow-blue";
+      default:
+        return "";
+    }
+  };
+
   return (
     <button
       id={props.id}
@@ -25,7 +40,15 @@ export const Button = (props: ButtonProps) => {
       name={props.name}
       type={props.type as "button" | "submit" | "reset"}
       disabled={props.isDisabled}
-      className={`btn ${variantClass} ${sizeClass} ${outlineClass} ${props.className || ""}`}
+      className={`
+        btn
+        ${variantClass}
+        ${sizeClass}
+        ${outlineClass}
+        ${getHoverGlow()}
+        transition-shadow duration-300
+        ${props.className || ""}
+      `}
     >
       {props.label}
     </button>

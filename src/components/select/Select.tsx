@@ -11,7 +11,6 @@ type LabelSelectProps = {
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   hasRequiredIndicator?: boolean;
   value: string;
-  variant?: "light" | "dark";
 };
 
 type OptionItems = {
@@ -31,31 +30,26 @@ export const Select = (props: LabelSelectProps) => {
   }
 
   return (
-    <div className="w-full">
+    <div className="form-control w-full">
       {props.hasLabel && (
-        <label
-          htmlFor={`${props.name}Input`}
-          className={`block text-sm font-medium leading-6 ${
-            props.variant === "dark" ? "text-white" : "text-dark"
-          }`}
-        >
-          {props.labelText}
-          {props.hasRequiredIndicator && (
-            <span className="text-red-600">*</span>
-          )}
+        <label htmlFor={`${props.name}Input`} className="label">
+          <span className="label-text">
+            {props.labelText}
+            {props.hasRequiredIndicator && (
+              <span className="text-error">*</span>
+            )}
+          </span>
         </label>
       )}
       <select
         id={`${props.name}Input`}
         name={props.name}
-        className={`mt-2 block w-full border py-2 pl-3 pr-10 
-          ring-1 ring-white ring-inset focus:ring-2 focus:ring-accent/70 sm:text-sm sm:leading-6
-          ${
-            props.variant === "dark"
-              ? "bg-dark text-white"
-              : "bg-white text-dark"
-          } 
-          `}
+        className="
+          select select-bordered w-full
+          focus:ring-2 focus:ring-success focus:ring-opacity-50
+          focus:shadow-glow-green
+          transition-shadow duration-300
+        "
         value={props.value}
         defaultValue={props.placeholder}
         onChange={props.onChange}
@@ -64,7 +58,9 @@ export const Select = (props: LabelSelectProps) => {
         {renderOptions()}
       </select>
       {props.hasError && (
-        <p className="text-red-500 text-sm mt-2">This field is required</p>
+        <label className="label">
+          <span className="label-text-alt text-error">This field is required</span>
+        </label>
       )}
     </div>
   );

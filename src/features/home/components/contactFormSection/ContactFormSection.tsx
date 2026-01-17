@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { SectionWrapper, Textarea, Form, Modal, Button } from "~src/components";
+import { SectionWrapper, Textarea, Form, Modal, Button, TerminalCard, CommandPrompt } from "~src/components";
 import { Input } from "~src/components";
 import { Dialog } from "@headlessui/react";
 import { CheckIcon } from "@heroicons/react/24/outline";
@@ -48,96 +48,108 @@ prev,
   return (
     <SectionWrapper title="Let's Connect">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-4">
-        <div
-          id="social-links"
-          className="card bg-base-100 border border-base-content"
-        >
+        <TerminalCard glow glowColor="blue" id="social-links">
           <div className="card-body flex flex-col justify-between">
-            <span className="text-2xl font-bold tracking-wide uppercase">
-              Let's build something great together
-            </span>
-            <div className="flex flex-col gap-4 justify-evenly">
+            <CommandPrompt status="ready">
+              <span className="text-primary font-bold text-xl">ls -la ~/social</span>
+            </CommandPrompt>
+            <div className="flex flex-col gap-4 justify-evenly pl-6 mt-4">
               <a
                 href="https://www.instagram.com/landon.mckell/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="link link-hover text-info hover:text-accent"
               >
-                <span className="text-base uppercase">Instagram</span>
+                <span className="text-secondary mr-2">▸</span>
+                <span className="text-base">instagram</span>
               </a>
               <a
                 href="https://www.linkedin.com/in/landon-mckell/"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="link link-hover text-info hover:text-accent"
               >
-                <span className="text-base uppercase">Linkedin</span>
+                <span className="text-secondary mr-2">▸</span>
+                <span className="text-base">linkedin</span>
               </a>
               <a
                 href="https://twitter.com/MckellLandon"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="link link-hover text-info hover:text-accent"
               >
-                <span className="text-base uppercase">Twitter</span>
+                <span className="text-secondary mr-2">▸</span>
+                <span className="text-base">twitter</span>
               </a>
               <a
                 href="https://github.com/IslandTeki18"
                 target="_blank"
                 rel="noopener noreferrer"
+                className="link link-hover text-info hover:text-accent"
               >
-                <span className="text-base uppercase">Github</span>
+                <span className="text-secondary mr-2">▸</span>
+                <span className="text-base">github</span>
               </a>
             </div>
           </div>
-        </div>
-        <Form onSubmit={onSubmitHandler}>
-          <div
-            id="contact-form"
-            className="flex flex-col gap-6 justify-between"
-          >
-            <Input
-              type="text"
-              placeholder="NAME"
-              name="name"
-              value={contactObj.name}
-              onChange={onChangeHandler}
-            />
-            <Input
-              type="email"
-              placeholder="EMAIL"
-              name="email"
-              value={contactObj.email}
-              onChange={onChangeHandler}
-            />
-            <Input
-              name="phone"
-              type="tel"
-              placeholder="PHONE"
-              value={contactObj.phone}
-              onChange={onChangeHandler}
-            />
-            <Textarea
-              placeholder="TELL ME ABOUT YOUR PROJECT..."
-              rows={5}
-              value={contactObj.message}
-              name="message"
-              onChange={onChangeHandler}
-            />
-            <Button
-              label="send"
-              type="submit"
-              isDisabled={isFormFilledOut()}
-              variant="neutral"
-              className="uppercase w-2/6"
-            />
+        </TerminalCard>
+        <TerminalCard glow glowColor="green">
+          <div className="card-body">
+            <CommandPrompt status="ready">
+              <span className="text-primary font-bold text-xl">nano ~/contact-form</span>
+            </CommandPrompt>
+            <Form onSubmit={onSubmitHandler}>
+              <div
+                id="contact-form"
+                className="flex flex-col gap-4 mt-4"
+              >
+                <Input
+                  type="text"
+                  placeholder="NAME"
+                  name="name"
+                  value={contactObj.name}
+                  onChange={onChangeHandler}
+                />
+                <Input
+                  type="email"
+                  placeholder="EMAIL"
+                  name="email"
+                  value={contactObj.email}
+                  onChange={onChangeHandler}
+                />
+                <Input
+                  name="phone"
+                  type="tel"
+                  placeholder="PHONE"
+                  value={contactObj.phone}
+                  onChange={onChangeHandler}
+                />
+                <Textarea
+                  placeholder="TELL ME ABOUT YOUR PROJECT..."
+                  rows={5}
+                  value={contactObj.message}
+                  name="message"
+                  onChange={onChangeHandler}
+                />
+                <Button
+                  label="send"
+                  type="submit"
+                  isDisabled={isFormFilledOut()}
+                  variant="success"
+                  className="w-full sm:w-2/6"
+                />
+              </div>
+            </Form>
           </div>
-        </Form>
+        </TerminalCard>
       </div>
       <Modal
         isOpen={openConfirmationModal}
         onClose={() => setOpenConfirmationModal(false)}
       >
         <div>
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100">
-            <CheckIcon className="h-6 w-6 text-green-600" aria-hidden="true" />
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-success">
+            <CheckIcon className="h-6 w-6 text-success-content" aria-hidden="true" />
           </div>
           <div className="mt-3 text-center sm:mt-5">
             <Dialog.Title

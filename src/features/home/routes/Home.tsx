@@ -29,7 +29,7 @@ export const Home = () => {
         />
       </Helmet>
       <MainNavbar home />
-      <div id="Home" className="h-full bg-dark">
+      <div id="Home" className="h-full bg-base-100">
         <section id="intro-section" className="my-10 md:my-20">
           <IntroductionSection />
         </section>

@@ -19,7 +19,7 @@ export const ProjectDetails = () => {
 
   if (loading) {
     return (
-      <div className="h-screen w-full bg-gray-1000">
+      <div className="h-screen w-full bg-base-100">
         <MainNavbar />
         <div className="flex justify-center pt-8">
           <WheelSpinner size="lg" color="blue" />
@@ -30,7 +30,7 @@ export const ProjectDetails = () => {
 
   if (error) {
     return (
-      <div className="h-screen w-full bg-gray-1000">
+      <div className="h-screen w-full bg-base-100">
         <MainNavbar />
         <div className="flex justify-center pt-8">
           <p className="text-white">Error: {error.message}</p>

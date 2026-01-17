@@ -27,7 +27,13 @@ export const Input = (props: InputProps) => {
       <input
         name={props.name}
         type={props.type || "text"}
-        className={`input input-bordered w-full ${props.className || ""}`}
+        className={`
+          input input-bordered w-full
+          focus:ring-2 focus:ring-success focus:ring-opacity-50
+          focus:shadow-glow-green
+          transition-shadow duration-300
+          ${props.className || ""}
+        `}
         id={props.id}
         placeholder={props.placeholder}
         value={props.value || ""}

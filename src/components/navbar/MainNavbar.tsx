@@ -21,21 +21,21 @@ export const MainNavbar = (props: MainNavBarProps) => {
   ];
 
   return (
-    <nav className="bg-dark h-fit md:h-16 md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] pt-4 relative">
+    <nav className="bg-base-100 h-fit md:h-16 md:max-h-[961px] px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%] pt-4 relative">
       {/* Desktop */}
       <div className="flex justify-between items-center w-full h-inher">
         <Link
           to="/"
-          className="text-white text-2xl font-medium tracking-wider uppercase"
+          className="text-base-content text-2xl font-medium tracking-wider uppercase"
         >
           Landon McKell
         </Link>
-        <ul className="flex justify-around gap-6 text-white">
+        <ul className="flex justify-around gap-6 ">
           {navigation.map((item) => (
             <li className="hidden md:block" key={item.name}>
               <NavLink
                 to={item.path}
-                className={`${item.current ? "font-bold underline" : ""}`}
+                className={`link ${item.current ? "link-primary font-bold" : "link-hover"}`}
               >
                 {item.name}
               </NavLink>
@@ -53,7 +53,7 @@ export const MainNavbar = (props: MainNavBarProps) => {
       {isBars ? (
         <ul
           className={`
-            border border-white p-2 flex flex-wrap md:flex-nowrap justify-center top-10 gap-4 text-white mt-4 md:hidden 
+            border border-base-content p-2 flex flex-wrap md:flex-nowrap justify-center top-10 gap-4  mt-4 md:hidden
             animate__animated animate__fadeInDown animate__fast
         `}
         >
@@ -61,8 +61,8 @@ export const MainNavbar = (props: MainNavBarProps) => {
             <li className="block md:hidden" key={item.name}>
               <NavLink
                 to={item.path}
-                className={`${
-                  item.current ? "font-bold underline" : ""
+                className={`link ${
+                  item.current ? "link-primary font-bold" : "link-hover"
                 } text-xm md:text-2xl`}
               >
                 {item.name}

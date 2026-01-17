@@ -11,3 +11,6 @@ export * from "./select";
 export * from "./toggle";
 export * from "./modals";
 export * from "./spinner";
+export * from "./terminalWindow";
+export * from "./terminalCard";
+export * from "./commandPrompt";
