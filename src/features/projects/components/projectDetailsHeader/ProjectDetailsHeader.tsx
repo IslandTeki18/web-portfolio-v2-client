@@ -32,9 +32,9 @@ export const ProjectDetailsHeader = (props: Props) => {
 
   return (
     <div
-      className={`bg-base-100 md:max-h-[961px] h-fit px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
+      className={`md:max-h-[961px] h-fit px-[3%] sm:px-[8.33333%] 2xl:px-[16.666%]`}
     >
-      <div className="card bg-base-100 border-2 border-base-content">
+      <div className="card border-2 border-base-content">
         <div className="card-body">
           <div className="flex justify-end order-2 md:order-1">
             <Button

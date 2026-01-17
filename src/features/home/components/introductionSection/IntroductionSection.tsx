@@ -4,12 +4,11 @@ import { Button } from "~src/components";
 //@ts-ignore
 import meImage from "~src/features/home/assets/Me.jpeg"
 
-type IntroductionSectionProps = {};
 
-export const IntroductionSection = (props: IntroductionSectionProps) => {
+export const IntroductionSection = () => {
   const navigate = useNavigate();
   return (
-    <div className="bg-base-100 flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] 2xl:px-[16.666%] animate__animated animate__fadeInUp">
+    <div className="flex flex-wrap gap-4 md:max-h-[961px] px-[3%] sm:px-[8%] 2xl:px-[16.666%] animate__animated animate__fadeInUp">
       <div className="flex-1 shrink-0 lg:flex-2">
         <div className="card bg-base-100 border border-base-content h-full max-h-[785px]">
           <div className="card-body flex flex-col justify-between">

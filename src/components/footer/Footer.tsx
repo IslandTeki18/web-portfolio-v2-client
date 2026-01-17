@@ -27,7 +27,7 @@ export const Footer = () => {
         </div>
       </footer>
       <hr className="mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] my-6 bg-primary-100" />
-      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] p-4 mb-6">
+      <div className="flex justify-between text-white border border-white mx-[3%] sm:mx-[8.33333%] 2xl:mx-[16.666%] p-4 pb-6">
         <span>
           AFI TECH
           <i className="fa-regular fa-copyright px-1" />
