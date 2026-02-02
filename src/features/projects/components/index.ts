@@ -5,3 +5,5 @@ export * from "./projectOverviewSection";
 export * from "./projectActivitySection";
 export * from "./projectCard";
 export * from "./projectImageCard";
+export * from "./projectMetadataSection";
+export * from "./techStackSection";

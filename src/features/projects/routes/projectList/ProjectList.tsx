@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Footer, MainNavbar, ScrollToTop } from "~src/components";
+import { ScrollToTop } from "~src/components";
+import { PortfolioHeader, PortfolioFooter } from "~src/features/home/components";
 import { ProjectListSection } from "../../components";
 import { Helmet } from "react-helmet";
 
@@ -18,14 +19,14 @@ export const ProjectList = () => {
         />
       </Helmet>
       <ScrollToTop />
-      <MainNavbar projects />
+      <PortfolioHeader />
       <section
         id="project-list-section"
         className="my-10 md:my-20 animate__animated animate__fadeIn"
       >
         <ProjectListSection />
       </section>
-      <Footer />
+      <PortfolioFooter />
     </>
   );
 };

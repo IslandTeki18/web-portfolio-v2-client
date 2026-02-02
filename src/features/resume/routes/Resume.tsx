@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Footer, MainNavbar } from "~src/components";
+import { PortfolioHeader, PortfolioFooter } from "~src/features/home/components";
+import { ResumeHeader } from "../components/resumeHeader";
 import { ResumeSection } from "../components/resumeSection";
 import { EDUCATION, EXPERIENCES } from "../utils/defaults";
 import { Helmet } from "react-helmet";
@@ -18,14 +19,12 @@ export const Resume = () => {
           content="Landon McKell resume, web developer resume, software engineer resume, download resume, web development experience, programming skills, professional achievements."
         />
       </Helmet>
-      <MainNavbar resume />
-      <section
-        id="resume-section"
-        className="my-10 md:my-20 animate__animated animate__fadeIn"
-      >
+      <PortfolioHeader />
+      <main className="bg-[#0A0F1C] min-h-screen animate__animated animate__fadeIn">
+        <ResumeHeader />
         <ResumeSection education={EDUCATION} experiences={EXPERIENCES} />
-      </section>
-      <Footer />
+      </main>
+      <PortfolioFooter />
     </>
   );
 };

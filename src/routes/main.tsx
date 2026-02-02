@@ -2,9 +2,6 @@ import * as React from "react";
 import {
   Home,
   NotFound,
-  BlogDetails,
-  BlogList,
-  About,
   Resume,
   ProjectList,
   ProjectDetails,
@@ -15,18 +12,6 @@ export const mainRoutes = [
     path: "/",
     element: <Home />,
     index: true,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/blogs",
-    element: <BlogList />,
-  },
-  {
-    path: "/blog/:id",
-    element: <BlogDetails />,
   },
   {
     path: "/projects",

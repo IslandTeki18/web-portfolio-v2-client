@@ -6,8 +6,6 @@ type MainNavBarProps = {
   home?: boolean;
   projects?: boolean;
   services?: boolean;
-  blogs?: boolean;
-  about?: boolean;
   resume?: boolean;
   contact?: boolean;
 };
@@ -16,7 +14,6 @@ export const MainNavbar = (props: MainNavBarProps) => {
   const navigation = [
     { name: "Home", path: "/", current: props.home },
     { name: "Projects", path: "/projects", current: props.projects },
-    { name: "About", path: "/about", current: props.about },
     { name: "Resume", path: "/resume", current: props.resume },
   ];
 
